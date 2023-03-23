@@ -1,0 +1,2574 @@
+============================== Prover9 ===============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 4011 was started by student on SO-VirtualBox,
+Thu Jan 12 11:42:41 2023
+The command was "prover9 -f puzzle4.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file puzzle4.in
+
+
+formulas(assumptions).
+differentFrom(person1,person2).
+differentFrom(person1,person3).
+differentFrom(person1,person4).
+differentFrom(person2,person3).
+differentFrom(person2,person4).
+differentFrom(person3,person4).
+differentFrom(x,y) -> differentFrom(y,x).
+Betty(x) | Carol(x) | Daisy(x) | Emily(x).
+backstroke(x) | butterfly(x) | dolphin(x) | freestyle(x).
+lane1(x) | lane2(x) | lane3(x) | lane4(x).
+Australia(x) | Canada(x) | UK(x) | USA(x).
+Betty(person1).
+Carol(person2).
+Daisy(person3).
+Emily(person4).
+Betty(x) & Betty(y) -> -differentFrom(x,y).
+Carol(x) & Carol(y) -> -differentFrom(x,y).
+Daisy(x) & Daisy(y) -> -differentFrom(x,y).
+Emily(x) & Emily(y) -> -differentFrom(x,y).
+backstroke(x) & backstroke(y) -> -differentFrom(x,y).
+butterfly(x) & butterfly(y) -> -differentFrom(x,y).
+dolphin(x) & dolphin(y) -> -differentFrom(x,y).
+freestyle(x) & freestyle(y) -> -differentFrom(x,y).
+lane1(x) & lane1(y) -> -differentFrom(x,y).
+lane2(x) & lane2(y) -> -differentFrom(x,y).
+lane3(x) & lane3(y) -> -differentFrom(x,y).
+lane4(x) & lane4(y) -> -differentFrom(x,y).
+Australia(x) & Australia(y) -> -differentFrom(x,y).
+Canada(x) & Canada(y) -> -differentFrom(x,y).
+UK(x) & UK(y) -> -differentFrom(x,y).
+USA(x) & USA(y) -> -differentFrom(x,y).
+Betty(x) -> -UK(x).
+Betty(x) & UK(y) -> (lane1(x) & lane2(y) | lane2(x) & lane3(y) | lane3(x) & lane4(y) | lane1(y) & lane2(x) | lane2(y) & lane3(x) | lane3(y) & lane4(x)) & -butterfly(x) & -butterfly(y).
+Emily(x) -> -backstroke(x).
+Emily(x) & backstroke(y) -> UK(x) & lane4(y) | UK(y) & lane4(x).
+Carol(x) -> (butterfly(x) | freestyle(x)) & (UK(x) | Canada(x) | USA(x)) & (lane1(x) | lane3(x)).
+Daisy(x) -> -USA(x).
+freestyle(x) -> -USA(x).
+Daisy(x) & freestyle(y) & USA(z) -> lane1(x) & lane2(y) & lane3(z) | lane2(x) & lane3(y) & lane4(z) | lane1(z) & lane2(y) & lane3(x) | lane2(z) & lane3(y) & lane4(x).
+Carol(x) -> -USA(x).
+USA(x) & Carol(y) -> lane1(x) & lane2(y) | lane2(x) & lane3(y) | lane3(x) & lane4(y) | lane1(y) & lane2(x) | lane2(y) & lane3(x) | lane3(y) & lane4(x).
+Daisy(x) -> lane1(x) | lane3(x) | lane4(x).
+end_of_list.
+
+formulas(goals).
+Daisy(person3) & Australia(person3).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 differentFrom(x,y) -> differentFrom(y,x) # label(non_clause).  [assumption].
+2 Betty(x) & Betty(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+3 Carol(x) & Carol(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+4 Daisy(x) & Daisy(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+5 Emily(x) & Emily(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+6 backstroke(x) & backstroke(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+7 butterfly(x) & butterfly(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+8 dolphin(x) & dolphin(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+9 freestyle(x) & freestyle(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+10 lane1(x) & lane1(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+11 lane2(x) & lane2(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+12 lane3(x) & lane3(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+13 lane4(x) & lane4(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+14 Australia(x) & Australia(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+15 Canada(x) & Canada(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+16 UK(x) & UK(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+17 USA(x) & USA(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+18 Betty(x) -> -UK(x) # label(non_clause).  [assumption].
+19 Betty(x) & UK(y) -> (lane1(x) & lane2(y) | lane2(x) & lane3(y) | lane3(x) & lane4(y) | lane1(y) & lane2(x) | lane2(y) & lane3(x) | lane3(y) & lane4(x)) & -butterfly(x) & -butterfly(y) # label(non_clause).  [assumption].
+20 Emily(x) -> -backstroke(x) # label(non_clause).  [assumption].
+21 Emily(x) & backstroke(y) -> UK(x) & lane4(y) | UK(y) & lane4(x) # label(non_clause).  [assumption].
+22 Carol(x) -> (butterfly(x) | freestyle(x)) & (UK(x) | Canada(x) | USA(x)) & (lane1(x) | lane3(x)) # label(non_clause).  [assumption].
+23 Daisy(x) -> -USA(x) # label(non_clause).  [assumption].
+24 freestyle(x) -> -USA(x) # label(non_clause).  [assumption].
+25 Daisy(x) & freestyle(y) & USA(z) -> lane1(x) & lane2(y) & lane3(z) | lane2(x) & lane3(y) & lane4(z) | lane1(z) & lane2(y) & lane3(x) | lane2(z) & lane3(y) & lane4(x) # label(non_clause).  [assumption].
+26 Carol(x) -> -USA(x) # label(non_clause).  [assumption].
+27 USA(x) & Carol(y) -> lane1(x) & lane2(y) | lane2(x) & lane3(y) | lane3(x) & lane4(y) | lane1(y) & lane2(x) | lane2(y) & lane3(x) | lane3(y) & lane4(x) # label(non_clause).  [assumption].
+28 Daisy(x) -> lane1(x) | lane3(x) | lane4(x) # label(non_clause).  [assumption].
+29 Daisy(person3) & Australia(person3) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+differentFrom(person1,person2).  [assumption].
+differentFrom(person1,person3).  [assumption].
+differentFrom(person1,person4).  [assumption].
+differentFrom(person2,person3).  [assumption].
+differentFrom(person2,person4).  [assumption].
+differentFrom(person3,person4).  [assumption].
+-differentFrom(x,y) | differentFrom(y,x).  [clausify(1)].
+Betty(x) | Carol(x) | Daisy(x) | Emily(x).  [assumption].
+backstroke(x) | butterfly(x) | dolphin(x) | freestyle(x).  [assumption].
+lane1(x) | lane2(x) | lane3(x) | lane4(x).  [assumption].
+Australia(x) | Canada(x) | UK(x) | USA(x).  [assumption].
+Betty(person1).  [assumption].
+Carol(person2).  [assumption].
+Daisy(person3).  [assumption].
+Emily(person4).  [assumption].
+-Betty(x) | -Betty(y) | -differentFrom(x,y).  [clausify(2)].
+-Carol(x) | -Carol(y) | -differentFrom(x,y).  [clausify(3)].
+-Daisy(x) | -Daisy(y) | -differentFrom(x,y).  [clausify(4)].
+-Emily(x) | -Emily(y) | -differentFrom(x,y).  [clausify(5)].
+-backstroke(x) | -backstroke(y) | -differentFrom(x,y).  [clausify(6)].
+-butterfly(x) | -butterfly(y) | -differentFrom(x,y).  [clausify(7)].
+-dolphin(x) | -dolphin(y) | -differentFrom(x,y).  [clausify(8)].
+-freestyle(x) | -freestyle(y) | -differentFrom(x,y).  [clausify(9)].
+-lane1(x) | -lane1(y) | -differentFrom(x,y).  [clausify(10)].
+-lane2(x) | -lane2(y) | -differentFrom(x,y).  [clausify(11)].
+-lane3(x) | -lane3(y) | -differentFrom(x,y).  [clausify(12)].
+-lane4(x) | -lane4(y) | -differentFrom(x,y).  [clausify(13)].
+-Australia(x) | -Australia(y) | -differentFrom(x,y).  [clausify(14)].
+-Canada(x) | -Canada(y) | -differentFrom(x,y).  [clausify(15)].
+-UK(x) | -UK(y) | -differentFrom(x,y).  [clausify(16)].
+-USA(x) | -USA(y) | -differentFrom(x,y).  [clausify(17)].
+-Betty(x) | -UK(x).  [clausify(18)].
+-Betty(x) | -UK(y) | lane1(x) | lane2(x) | lane3(x) | lane3(y).  [clausify(19)].
+-Betty(x) | -UK(y) | lane1(x) | lane2(x) | lane3(x) | lane4(x).  [clausify(19)].
+-Betty(x) | -UK(y) | lane1(x) | lane3(y) | lane3(x) | lane1(y).  [clausify(19)].
+-Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane3(x) | lane3(y).  [clausify(19)].
+-Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane3(x) | lane4(x).  [clausify(19)].
+-Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane4(y) | lane3(y).  [clausify(19)].
+-Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane4(y) | lane4(x).  [clausify(19)].
+-Betty(x) | -UK(y) | lane2(y) | lane3(y) | lane3(x) | lane1(y).  [clausify(19)].
+-Betty(x) | -UK(y) | lane2(y) | lane3(y) | lane4(y) | lane1(y).  [clausify(19)].
+-Betty(x) | -UK(y) | -butterfly(x).  [clausify(19)].
+-Betty(x) | -UK(y) | -butterfly(y).  [clausify(19)].
+-Emily(x) | -backstroke(x).  [clausify(20)].
+-Emily(x) | -backstroke(y) | UK(x) | UK(y).  [clausify(21)].
+-Emily(x) | -backstroke(y) | UK(x) | lane4(x).  [clausify(21)].
+-Emily(x) | -backstroke(y) | lane4(y) | UK(y).  [clausify(21)].
+-Emily(x) | -backstroke(y) | lane4(y) | lane4(x).  [clausify(21)].
+-Carol(x) | butterfly(x) | freestyle(x).  [clausify(22)].
+-Carol(x) | UK(x) | Canada(x) | USA(x).  [clausify(22)].
+-Carol(x) | lane1(x) | lane3(x).  [clausify(22)].
+-Daisy(x) | -USA(x).  [clausify(23)].
+-freestyle(x) | -USA(x).  [clausify(24)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane1(z) | lane2(z).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane1(z) | lane4(x).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane3(x) | lane2(z).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane3(x) | lane4(x).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane3(y) | lane1(z).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane3(y) | lane3(x).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane1(z) | lane2(z).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane1(z) | lane4(x).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane3(x) | lane2(z).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane3(x) | lane4(x).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane2(x) | lane2(z).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane2(x) | lane4(x).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane3(y).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane4(z) | lane2(z).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane4(z) | lane4(x).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane1(z) | lane2(z).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane1(z) | lane4(x).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane3(x) | lane2(z).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane3(x) | lane4(x).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane3(y) | lane1(z).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane3(y) | lane3(x).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane1(z) | lane2(z).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane1(z) | lane4(x).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane3(x) | lane2(z).  [clausify(25)].
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane3(x) | lane4(x).  [clausify(25)].
+-Carol(x) | -USA(x).  [clausify(26)].
+-USA(x) | -Carol(y) | lane1(x) | lane2(x) | lane3(x) | lane3(y).  [clausify(27)].
+-USA(x) | -Carol(y) | lane1(x) | lane2(x) | lane3(x) | lane4(x).  [clausify(27)].
+-USA(x) | -Carol(y) | lane1(x) | lane3(y) | lane3(x) | lane1(y).  [clausify(27)].
+-USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane3(x) | lane3(y).  [clausify(27)].
+-USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane3(x) | lane4(x).  [clausify(27)].
+-USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane4(y) | lane3(y).  [clausify(27)].
+-USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane4(y) | lane4(x).  [clausify(27)].
+-USA(x) | -Carol(y) | lane2(y) | lane3(y) | lane3(x) | lane1(y).  [clausify(27)].
+-USA(x) | -Carol(y) | lane2(y) | lane3(y) | lane4(y) | lane1(y).  [clausify(27)].
+-Daisy(x) | lane1(x) | lane3(x) | lane4(x).  [clausify(28)].
+-Daisy(person3) | -Australia(person3).  [deny(29)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ lane3, lane2, lane4, USA, lane1, Daisy, freestyle, UK, Carol, Betty, Emily, backstroke, Canada, butterfly, Australia, dolphin, differentFrom ]).
+Function symbol precedence:  function_order([ person1, person2, person3, person4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+30 differentFrom(person1,person2).  [assumption].
+31 differentFrom(person1,person3).  [assumption].
+32 differentFrom(person1,person4).  [assumption].
+33 differentFrom(person2,person3).  [assumption].
+34 differentFrom(person2,person4).  [assumption].
+35 differentFrom(person3,person4).  [assumption].
+36 -differentFrom(x,y) | differentFrom(y,x).  [clausify(1)].
+37 Betty(x) | Carol(x) | Daisy(x) | Emily(x).  [assumption].
+38 backstroke(x) | butterfly(x) | dolphin(x) | freestyle(x).  [assumption].
+39 lane1(x) | lane2(x) | lane3(x) | lane4(x).  [assumption].
+40 Australia(x) | Canada(x) | UK(x) | USA(x).  [assumption].
+41 Betty(person1).  [assumption].
+42 Carol(person2).  [assumption].
+43 Daisy(person3).  [assumption].
+44 Emily(person4).  [assumption].
+45 -Betty(x) | -Betty(y) | -differentFrom(x,y).  [clausify(2)].
+46 -Carol(x) | -Carol(y) | -differentFrom(x,y).  [clausify(3)].
+47 -Daisy(x) | -Daisy(y) | -differentFrom(x,y).  [clausify(4)].
+48 -Emily(x) | -Emily(y) | -differentFrom(x,y).  [clausify(5)].
+49 -backstroke(x) | -backstroke(y) | -differentFrom(x,y).  [clausify(6)].
+50 -butterfly(x) | -butterfly(y) | -differentFrom(x,y).  [clausify(7)].
+51 -dolphin(x) | -dolphin(y) | -differentFrom(x,y).  [clausify(8)].
+52 -freestyle(x) | -freestyle(y) | -differentFrom(x,y).  [clausify(9)].
+53 -lane1(x) | -lane1(y) | -differentFrom(x,y).  [clausify(10)].
+54 -lane2(x) | -lane2(y) | -differentFrom(x,y).  [clausify(11)].
+55 -lane3(x) | -lane3(y) | -differentFrom(x,y).  [clausify(12)].
+56 -lane4(x) | -lane4(y) | -differentFrom(x,y).  [clausify(13)].
+57 -Australia(x) | -Australia(y) | -differentFrom(x,y).  [clausify(14)].
+58 -Canada(x) | -Canada(y) | -differentFrom(x,y).  [clausify(15)].
+59 -UK(x) | -UK(y) | -differentFrom(x,y).  [clausify(16)].
+60 -USA(x) | -USA(y) | -differentFrom(x,y).  [clausify(17)].
+61 -Betty(x) | -UK(x).  [clausify(18)].
+62 -Betty(x) | -UK(y) | lane1(x) | lane2(x) | lane3(x) | lane3(y).  [clausify(19)].
+63 -Betty(x) | -UK(y) | lane1(x) | lane3(y) | lane3(x) | lane1(y).  [clausify(19)].
+64 -Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane3(x) | lane3(y).  [clausify(19)].
+65 -Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane3(x) | lane4(x).  [clausify(19)].
+66 -Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane4(y) | lane3(y).  [clausify(19)].
+67 -Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane4(y) | lane4(x).  [clausify(19)].
+68 -Betty(x) | -UK(y) | lane2(y) | lane3(y) | lane3(x) | lane1(y).  [clausify(19)].
+69 -Betty(x) | -UK(y) | -butterfly(x).  [clausify(19)].
+70 -Betty(x) | -UK(y) | -butterfly(y).  [clausify(19)].
+71 -Emily(x) | -backstroke(x).  [clausify(20)].
+72 -Emily(x) | -backstroke(y) | UK(x) | UK(y).  [clausify(21)].
+73 -Emily(x) | -backstroke(y) | UK(x) | lane4(x).  [clausify(21)].
+74 -Emily(x) | -backstroke(y) | lane4(y) | UK(y).  [clausify(21)].
+75 -Emily(x) | -backstroke(y) | lane4(y) | lane4(x).  [clausify(21)].
+76 -Carol(x) | butterfly(x) | freestyle(x).  [clausify(22)].
+77 -Carol(x) | UK(x) | Canada(x) | USA(x).  [clausify(22)].
+78 -Carol(x) | lane1(x) | lane3(x).  [clausify(22)].
+79 -Daisy(x) | -USA(x).  [clausify(23)].
+80 -freestyle(x) | -USA(x).  [clausify(24)].
+81 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane1(z) | lane2(z).  [clausify(25)].
+82 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane1(z) | lane4(x).  [clausify(25)].
+83 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane3(x) | lane2(z).  [clausify(25)].
+84 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane3(y) | lane1(z).  [clausify(25)].
+85 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane3(y) | lane3(x).  [clausify(25)].
+86 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane1(z) | lane2(z).  [clausify(25)].
+87 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane1(z) | lane4(x).  [clausify(25)].
+88 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane3(x) | lane2(z).  [clausify(25)].
+90 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane2(x) | lane2(z).  [clausify(25)].
+91 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane2(x) | lane4(x).  [clausify(25)].
+92 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane3(y).  [clausify(25)].
+93 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane4(z) | lane2(z).  [clausify(25)].
+94 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane4(z) | lane4(x).  [clausify(25)].
+95 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane1(z) | lane2(z).  [clausify(25)].
+96 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane1(z) | lane4(x).  [clausify(25)].
+97 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane3(x) | lane2(z).  [clausify(25)].
+98 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane3(x) | lane4(x).  [clausify(25)].
+99 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane3(y) | lane1(z).  [clausify(25)].
+100 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane3(y) | lane3(x).  [clausify(25)].
+101 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane1(z) | lane4(x).  [clausify(25)].
+102 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane3(x) | lane2(z).  [clausify(25)].
+103 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane3(x) | lane4(x).  [clausify(25)].
+104 -Carol(x) | -USA(x).  [clausify(26)].
+105 -USA(x) | -Carol(y) | lane1(x) | lane2(x) | lane3(x) | lane3(y).  [clausify(27)].
+106 -USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane3(x) | lane3(y).  [clausify(27)].
+107 -USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane3(x) | lane4(x).  [clausify(27)].
+108 -USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane4(y) | lane3(y).  [clausify(27)].
+109 -USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane4(y) | lane4(x).  [clausify(27)].
+110 -Daisy(x) | lane1(x) | lane3(x) | lane4(x).  [clausify(28)].
+112 -Australia(person3).  [copy(111),unit_del(a,43)].
+113 -Betty(x) | -differentFrom(x,x).  [factor(45,a,b)].
+114 -Carol(x) | -differentFrom(x,x).  [factor(46,a,b)].
+115 -Daisy(x) | -differentFrom(x,x).  [factor(47,a,b)].
+116 -Emily(x) | -differentFrom(x,x).  [factor(48,a,b)].
+117 -backstroke(x) | -differentFrom(x,x).  [factor(49,a,b)].
+118 -butterfly(x) | -differentFrom(x,x).  [factor(50,a,b)].
+119 -dolphin(x) | -differentFrom(x,x).  [factor(51,a,b)].
+120 -freestyle(x) | -differentFrom(x,x).  [factor(52,a,b)].
+121 -lane1(x) | -differentFrom(x,x).  [factor(53,a,b)].
+122 -lane2(x) | -differentFrom(x,x).  [factor(54,a,b)].
+123 -lane3(x) | -differentFrom(x,x).  [factor(55,a,b)].
+124 -lane4(x) | -differentFrom(x,x).  [factor(56,a,b)].
+125 -Australia(x) | -differentFrom(x,x).  [factor(57,a,b)].
+126 -Canada(x) | -differentFrom(x,x).  [factor(58,a,b)].
+127 -UK(x) | -differentFrom(x,x).  [factor(59,a,b)].
+128 -USA(x) | -differentFrom(x,x).  [factor(60,a,b)].
+129 -Daisy(x) | -freestyle(x) | -USA(y) | lane1(x) | lane3(x).  [factor(85,e,f)].
+130 -Daisy(x) | -freestyle(x) | -USA(y) | lane2(x) | lane2(y).  [factor(90,d,e)].
+131 -Daisy(x) | -freestyle(x) | -USA(y) | lane2(x) | lane4(x).  [factor(91,d,e)].
+132 -Daisy(x) | -freestyle(x) | -USA(y) | lane3(y) | lane3(x).  [factor(100,e,f)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=3): 30 differentFrom(person1,person2).  [assumption].
+
+given #2 (I,wt=3): 31 differentFrom(person1,person3).  [assumption].
+
+given #3 (I,wt=3): 32 differentFrom(person1,person4).  [assumption].
+
+given #4 (I,wt=3): 33 differentFrom(person2,person3).  [assumption].
+
+given #5 (I,wt=3): 34 differentFrom(person2,person4).  [assumption].
+
+given #6 (I,wt=3): 35 differentFrom(person3,person4).  [assumption].
+
+given #7 (I,wt=6): 36 -differentFrom(x,y) | differentFrom(y,x).  [clausify(1)].
+
+given #8 (I,wt=8): 37 Betty(x) | Carol(x) | Daisy(x) | Emily(x).  [assumption].
+
+given #9 (I,wt=8): 38 backstroke(x) | butterfly(x) | dolphin(x) | freestyle(x).  [assumption].
+
+given #10 (I,wt=8): 39 lane1(x) | lane2(x) | lane3(x) | lane4(x).  [assumption].
+
+given #11 (I,wt=8): 40 Australia(x) | Canada(x) | UK(x) | USA(x).  [assumption].
+
+given #12 (I,wt=2): 41 Betty(person1).  [assumption].
+
+given #13 (I,wt=2): 42 Carol(person2).  [assumption].
+
+given #14 (I,wt=2): 43 Daisy(person3).  [assumption].
+
+given #15 (I,wt=2): 44 Emily(person4).  [assumption].
+
+given #16 (I,wt=7): 45 -Betty(x) | -Betty(y) | -differentFrom(x,y).  [clausify(2)].
+
+given #17 (I,wt=7): 46 -Carol(x) | -Carol(y) | -differentFrom(x,y).  [clausify(3)].
+
+given #18 (I,wt=7): 47 -Daisy(x) | -Daisy(y) | -differentFrom(x,y).  [clausify(4)].
+
+given #19 (I,wt=7): 48 -Emily(x) | -Emily(y) | -differentFrom(x,y).  [clausify(5)].
+
+given #20 (I,wt=7): 49 -backstroke(x) | -backstroke(y) | -differentFrom(x,y).  [clausify(6)].
+
+given #21 (I,wt=7): 50 -butterfly(x) | -butterfly(y) | -differentFrom(x,y).  [clausify(7)].
+
+given #22 (I,wt=7): 51 -dolphin(x) | -dolphin(y) | -differentFrom(x,y).  [clausify(8)].
+
+given #23 (I,wt=7): 52 -freestyle(x) | -freestyle(y) | -differentFrom(x,y).  [clausify(9)].
+
+given #24 (I,wt=7): 53 -lane1(x) | -lane1(y) | -differentFrom(x,y).  [clausify(10)].
+
+given #25 (I,wt=7): 54 -lane2(x) | -lane2(y) | -differentFrom(x,y).  [clausify(11)].
+
+given #26 (I,wt=7): 55 -lane3(x) | -lane3(y) | -differentFrom(x,y).  [clausify(12)].
+
+given #27 (I,wt=7): 56 -lane4(x) | -lane4(y) | -differentFrom(x,y).  [clausify(13)].
+
+given #28 (I,wt=7): 57 -Australia(x) | -Australia(y) | -differentFrom(x,y).  [clausify(14)].
+
+given #29 (I,wt=7): 58 -Canada(x) | -Canada(y) | -differentFrom(x,y).  [clausify(15)].
+
+given #30 (I,wt=7): 59 -UK(x) | -UK(y) | -differentFrom(x,y).  [clausify(16)].
+
+given #31 (I,wt=7): 60 -USA(x) | -USA(y) | -differentFrom(x,y).  [clausify(17)].
+
+given #32 (I,wt=4): 61 -Betty(x) | -UK(x).  [clausify(18)].
+
+given #33 (I,wt=12): 62 -Betty(x) | -UK(y) | lane1(x) | lane2(x) | lane3(x) | lane3(y).  [clausify(19)].
+
+given #34 (I,wt=12): 63 -Betty(x) | -UK(y) | lane1(x) | lane3(y) | lane3(x) | lane1(y).  [clausify(19)].
+
+given #35 (I,wt=12): 64 -Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane3(x) | lane3(y).  [clausify(19)].
+
+given #36 (I,wt=12): 65 -Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane3(x) | lane4(x).  [clausify(19)].
+
+given #37 (I,wt=12): 66 -Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane4(y) | lane3(y).  [clausify(19)].
+
+given #38 (I,wt=12): 67 -Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane4(y) | lane4(x).  [clausify(19)].
+
+given #39 (I,wt=12): 68 -Betty(x) | -UK(y) | lane2(y) | lane3(y) | lane3(x) | lane1(y).  [clausify(19)].
+
+given #40 (I,wt=6): 69 -Betty(x) | -UK(y) | -butterfly(x).  [clausify(19)].
+
+given #41 (I,wt=6): 70 -Betty(x) | -UK(y) | -butterfly(y).  [clausify(19)].
+
+given #42 (I,wt=4): 71 -Emily(x) | -backstroke(x).  [clausify(20)].
+
+given #43 (I,wt=8): 72 -Emily(x) | -backstroke(y) | UK(x) | UK(y).  [clausify(21)].
+
+given #44 (I,wt=8): 73 -Emily(x) | -backstroke(y) | UK(x) | lane4(x).  [clausify(21)].
+
+given #45 (I,wt=8): 74 -Emily(x) | -backstroke(y) | lane4(y) | UK(y).  [clausify(21)].
+
+given #46 (I,wt=8): 75 -Emily(x) | -backstroke(y) | lane4(y) | lane4(x).  [clausify(21)].
+
+given #47 (I,wt=6): 76 -Carol(x) | butterfly(x) | freestyle(x).  [clausify(22)].
+
+given #48 (I,wt=8): 77 -Carol(x) | UK(x) | Canada(x) | USA(x).  [clausify(22)].
+
+given #49 (I,wt=6): 78 -Carol(x) | lane1(x) | lane3(x).  [clausify(22)].
+
+given #50 (I,wt=4): 79 -Daisy(x) | -USA(x).  [clausify(23)].
+
+given #51 (I,wt=4): 80 -freestyle(x) | -USA(x).  [clausify(24)].
+
+given #52 (I,wt=14): 81 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane1(z) | lane2(z).  [clausify(25)].
+
+given #53 (I,wt=14): 82 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane1(z) | lane4(x).  [clausify(25)].
+
+given #54 (I,wt=14): 83 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane3(x) | lane2(z).  [clausify(25)].
+
+given #55 (I,wt=12): 84 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane3(y) | lane1(z).  [clausify(25)].
+
+given #56 (I,wt=12): 85 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane3(y) | lane3(x).  [clausify(25)].
+
+given #57 (I,wt=14): 86 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane1(z) | lane2(z).  [clausify(25)].
+
+given #58 (I,wt=14): 87 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane1(z) | lane4(x).  [clausify(25)].
+
+given #59 (I,wt=14): 88 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane3(x) | lane2(z).  [clausify(25)].
+
+given #60 (I,wt=12): 90 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane2(x) | lane2(z).  [clausify(25)].
+
+given #61 (I,wt=12): 91 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane2(x) | lane4(x).  [clausify(25)].
+
+given #62 (I,wt=10): 92 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane3(y).  [clausify(25)].
+
+given #63 (I,wt=12): 93 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane4(z) | lane2(z).  [clausify(25)].
+
+given #64 (I,wt=12): 94 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane4(z) | lane4(x).  [clausify(25)].
+
+given #65 (I,wt=14): 95 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane1(z) | lane2(z).  [clausify(25)].
+
+given #66 (I,wt=14): 96 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane1(z) | lane4(x).  [clausify(25)].
+
+given #67 (I,wt=14): 97 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane3(x) | lane2(z).  [clausify(25)].
+
+given #68 (I,wt=14): 98 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane3(x) | lane4(x).  [clausify(25)].
+
+given #69 (I,wt=12): 99 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane3(y) | lane1(z).  [clausify(25)].
+
+given #70 (I,wt=12): 100 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane3(y) | lane3(x).  [clausify(25)].
+
+given #71 (I,wt=14): 101 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane1(z) | lane4(x).  [clausify(25)].
+
+given #72 (I,wt=14): 102 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane3(x) | lane2(z).  [clausify(25)].
+
+given #73 (I,wt=14): 103 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane3(x) | lane4(x).  [clausify(25)].
+
+given #74 (I,wt=4): 104 -Carol(x) | -USA(x).  [clausify(26)].
+
+given #75 (I,wt=12): 105 -USA(x) | -Carol(y) | lane1(x) | lane2(x) | lane3(x) | lane3(y).  [clausify(27)].
+
+given #76 (I,wt=12): 106 -USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane3(x) | lane3(y).  [clausify(27)].
+
+given #77 (I,wt=12): 107 -USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane3(x) | lane4(x).  [clausify(27)].
+
+given #78 (I,wt=12): 108 -USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane4(y) | lane3(y).  [clausify(27)].
+
+given #79 (I,wt=12): 109 -USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane4(y) | lane4(x).  [clausify(27)].
+
+given #80 (I,wt=8): 110 -Daisy(x) | lane1(x) | lane3(x) | lane4(x).  [clausify(28)].
+
+given #81 (I,wt=2): 112 -Australia(person3).  [copy(111),unit_del(a,43)].
+
+given #82 (I,wt=5): 113 -Betty(x) | -differentFrom(x,x).  [factor(45,a,b)].
+
+given #83 (I,wt=5): 114 -Carol(x) | -differentFrom(x,x).  [factor(46,a,b)].
+
+given #84 (I,wt=5): 115 -Daisy(x) | -differentFrom(x,x).  [factor(47,a,b)].
+
+given #85 (I,wt=5): 116 -Emily(x) | -differentFrom(x,x).  [factor(48,a,b)].
+
+given #86 (I,wt=5): 117 -backstroke(x) | -differentFrom(x,x).  [factor(49,a,b)].
+
+given #87 (I,wt=5): 118 -butterfly(x) | -differentFrom(x,x).  [factor(50,a,b)].
+
+given #88 (I,wt=5): 119 -dolphin(x) | -differentFrom(x,x).  [factor(51,a,b)].
+
+given #89 (I,wt=5): 120 -freestyle(x) | -differentFrom(x,x).  [factor(52,a,b)].
+
+given #90 (I,wt=5): 121 -lane1(x) | -differentFrom(x,x).  [factor(53,a,b)].
+
+given #91 (I,wt=5): 122 -lane2(x) | -differentFrom(x,x).  [factor(54,a,b)].
+
+given #92 (I,wt=5): 123 -lane3(x) | -differentFrom(x,x).  [factor(55,a,b)].
+
+given #93 (I,wt=5): 124 -lane4(x) | -differentFrom(x,x).  [factor(56,a,b)].
+
+given #94 (I,wt=5): 125 -Australia(x) | -differentFrom(x,x).  [factor(57,a,b)].
+
+given #95 (I,wt=5): 126 -Canada(x) | -differentFrom(x,x).  [factor(58,a,b)].
+
+given #96 (I,wt=5): 127 -UK(x) | -differentFrom(x,x).  [factor(59,a,b)].
+
+given #97 (I,wt=5): 128 -USA(x) | -differentFrom(x,x).  [factor(60,a,b)].
+
+given #98 (I,wt=10): 129 -Daisy(x) | -freestyle(x) | -USA(y) | lane1(x) | lane3(x).  [factor(85,e,f)].
+
+given #99 (I,wt=10): 130 -Daisy(x) | -freestyle(x) | -USA(y) | lane2(x) | lane2(y).  [factor(90,d,e)].
+
+given #100 (I,wt=10): 131 -Daisy(x) | -freestyle(x) | -USA(y) | lane2(x) | lane4(x).  [factor(91,d,e)].
+
+given #101 (I,wt=10): 132 -Daisy(x) | -freestyle(x) | -USA(y) | lane3(y) | lane3(x).  [factor(100,e,f)].
+
+given #102 (A,wt=3): 133 differentFrom(person4,person3).  [resolve(36,a,35,a)].
+
+given #103 (F,wt=2): 142 -Betty(person4).  [resolve(45,c,32,a),unit_del(a,41)].
+
+given #104 (F,wt=2): 143 -Betty(person3).  [resolve(45,c,31,a),unit_del(a,41)].
+
+given #105 (F,wt=2): 144 -Betty(person2).  [resolve(45,c,30,a),unit_del(a,41)].
+
+given #106 (F,wt=2): 147 -Carol(person4).  [resolve(46,c,34,a),unit_del(a,42)].
+
+given #107 (T,wt=3): 134 differentFrom(person4,person2).  [resolve(36,a,34,a)].
+
+given #108 (T,wt=3): 135 differentFrom(person3,person2).  [resolve(36,a,33,a)].
+
+given #109 (T,wt=3): 136 differentFrom(person4,person1).  [resolve(36,a,32,a)].
+
+given #110 (T,wt=3): 137 differentFrom(person3,person1).  [resolve(36,a,31,a)].
+
+given #111 (A,wt=3): 138 differentFrom(person2,person1).  [resolve(36,a,30,a)].
+
+given #112 (F,wt=2): 148 -Carol(person3).  [resolve(46,c,33,a),unit_del(a,42)].
+
+given #113 (F,wt=2): 149 -Carol(person1).  [resolve(46,c,30,a),unit_del(b,42)].
+
+given #114 (F,wt=2): 151 -Daisy(person4).  [resolve(47,c,35,a),unit_del(a,43)].
+
+given #115 (F,wt=2): 152 -Daisy(person2).  [resolve(47,c,33,a),unit_del(b,43)].
+
+given #116 (T,wt=4): 237 butterfly(person2) | freestyle(person2).  [resolve(76,a,42,a)].
+
+given #117 (T,wt=4): 239 lane1(person2) | lane3(person2).  [resolve(78,a,42,a)].
+
+given #118 (T,wt=4): 242 UK(person2) | Canada(person2).  [back_unit_del(238),unit_del(c,241)].
+
+given #119 (T,wt=4): 249 Canada(person3) | UK(person3).  [resolve(112,a,40,a),unit_del(c,240)].
+
+given #120 (A,wt=3): 145 -differentFrom(person1,person1).  [ur(45,a,41,a,b,41,a)].
+
+given #121 (F,wt=2): 153 -Daisy(person1).  [resolve(47,c,31,a),unit_del(b,43)].
+
+given #122 (F,wt=2): 155 -Emily(person3).  [resolve(48,c,35,a),unit_del(b,44)].
+
+given #123 (F,wt=2): 156 -Emily(person2).  [resolve(48,c,34,a),unit_del(b,44)].
+
+given #124 (F,wt=2): 157 -Emily(person1).  [resolve(48,c,32,a),unit_del(b,44)].
+
+given #125 (T,wt=6): 248 lane1(person3) | lane3(person3) | lane4(person3).  [resolve(110,a,43,a)].
+
+given #126 (T,wt=6): 250 freestyle(person2) | -Betty(x) | -UK(person2).  [resolve(237,a,70,c)].
+
+given #127 (T,wt=4): 251 freestyle(person2) | -UK(person2).  [resolve(250,b,41,a)].
+
+given #128 (T,wt=10): 229 -UK(x) | lane1(person1) | lane2(person1) | lane3(person1) | lane3(x).  [resolve(62,a,41,a)].
+
+given #129 (A,wt=3): 150 -differentFrom(person2,person2).  [ur(46,a,42,a,b,42,a)].
+
+given #130 (F,wt=2): 228 -UK(person1).  [resolve(61,a,41,a)].
+
+given #131 (F,wt=2): 236 -backstroke(person4).  [ur(71,a,44,a)].
+
+given #132 (F,wt=2): 240 -USA(person3).  [resolve(79,a,43,a)].
+
+given #133 (F,wt=2): 241 -USA(person2).  [resolve(104,a,42,a)].
+
+given #134 (T,wt=10): 230 -UK(x) | lane1(person1) | lane3(x) | lane3(person1) | lane1(x).  [resolve(63,a,41,a)].
+
+given #135 (T,wt=10): 231 -UK(x) | lane2(x) | lane2(person1) | lane3(person1) | lane3(x).  [resolve(64,a,41,a)].
+
+given #136 (T,wt=10): 232 -UK(x) | lane2(x) | lane2(person1) | lane3(person1) | lane4(person1).  [resolve(65,a,41,a)].
+
+given #137 (T,wt=10): 233 -UK(x) | lane2(x) | lane2(person1) | lane4(x) | lane3(x).  [resolve(66,a,41,a)].
+
+given #138 (A,wt=3): 154 -differentFrom(person3,person3).  [ur(47,a,43,a,b,43,a)].
+
+given #139 (F,wt=3): 158 -differentFrom(person4,person4).  [ur(48,a,44,a,b,44,a)].
+
+given #140 (F,wt=4): 161 -backstroke(person2) | -backstroke(person3).  [resolve(49,c,33,a)].
+
+given #141 (F,wt=4): 163 -backstroke(person1) | -backstroke(person3).  [resolve(49,c,31,a)].
+
+given #142 (F,wt=4): 164 -backstroke(person1) | -backstroke(person2).  [resolve(49,c,30,a)].
+
+given #143 (T,wt=10): 234 -UK(x) | lane2(x) | lane2(person1) | lane4(x) | lane4(person1).  [resolve(67,a,41,a)].
+
+given #144 (T,wt=10): 235 -UK(x) | lane2(x) | lane3(x) | lane3(person1) | lane1(x).  [resolve(68,a,41,a)].
+
+given #145 (T,wt=10): 243 -USA(x) | lane1(x) | lane2(x) | lane3(x) | lane3(person2).  [resolve(105,b,42,a)].
+
+given #146 (T,wt=10): 244 -USA(x) | lane2(person2) | lane2(x) | lane3(x) | lane3(person2).  [resolve(106,b,42,a)].
+
+given #147 (A,wt=4): 165 -butterfly(person3) | -butterfly(person4).  [resolve(50,c,35,a)].
+
+given #148 (F,wt=4): 166 -butterfly(person2) | -butterfly(person4).  [resolve(50,c,34,a)].
+
+given #149 (F,wt=4): 167 -butterfly(person2) | -butterfly(person3).  [resolve(50,c,33,a)].
+
+given #150 (F,wt=4): 168 -butterfly(person1) | -butterfly(person4).  [resolve(50,c,32,a)].
+
+given #151 (F,wt=4): 169 -butterfly(person1) | -butterfly(person3).  [resolve(50,c,31,a)].
+
+given #152 (T,wt=10): 245 -USA(x) | lane2(person2) | lane2(x) | lane3(x) | lane4(x).  [resolve(107,b,42,a)].
+
+given #153 (T,wt=10): 246 -USA(x) | lane2(person2) | lane2(x) | lane4(person2) | lane3(person2).  [resolve(108,b,42,a)].
+
+given #154 (T,wt=10): 247 -USA(x) | lane2(person2) | lane2(x) | lane4(person2) | lane4(x).  [resolve(109,b,42,a)].
+
+given #155 (A,wt=4): 170 -butterfly(person1) | -butterfly(person2).  [resolve(50,c,30,a)].
+
+given #156 (F,wt=4): 171 -dolphin(person3) | -dolphin(person4).  [resolve(51,c,35,a)].
+
+given #157 (F,wt=4): 172 -dolphin(person2) | -dolphin(person4).  [resolve(51,c,34,a)].
+
+given #158 (F,wt=4): 173 -dolphin(person2) | -dolphin(person3).  [resolve(51,c,33,a)].
+
+given #159 (F,wt=4): 174 -dolphin(person1) | -dolphin(person4).  [resolve(51,c,32,a)].
+
+given #160 (T,wt=4): 252 -butterfly(person1) | freestyle(person2).  [resolve(170,b,237,a)].
+
+given #161 (T,wt=6): 253 -dolphin(person3) | butterfly(person4) | freestyle(person4).  [resolve(171,b,38,c),unit_del(b,236)].
+
+given #162 (T,wt=6): 254 -dolphin(person2) | butterfly(person4) | freestyle(person4).  [resolve(172,b,38,c),unit_del(b,236)].
+
+given #163 (T,wt=6): 256 -dolphin(person1) | butterfly(person4) | freestyle(person4).  [resolve(174,b,38,c),unit_del(b,236)].
+
+given #164 (A,wt=4): 175 -dolphin(person1) | -dolphin(person3).  [resolve(51,c,31,a)].
+
+given #165 (F,wt=4): 176 -dolphin(person1) | -dolphin(person2).  [resolve(51,c,30,a)].
+
+given #166 (F,wt=4): 177 -freestyle(person3) | -freestyle(person4).  [resolve(52,c,35,a)].
+
+given #167 (F,wt=4): 178 -freestyle(person2) | -freestyle(person4).  [resolve(52,c,34,a)].
+
+given #168 (F,wt=4): 179 -freestyle(person2) | -freestyle(person3).  [resolve(52,c,33,a)].
+
+given #169 (T,wt=8): 255 -dolphin(person2) | backstroke(person3) | butterfly(person3) | freestyle(person3).  [resolve(173,b,38,c)].
+
+given #170 (T,wt=8): 259 -dolphin(person1) | backstroke(person3) | butterfly(person3) | freestyle(person3).  [resolve(175,b,38,c)].
+
+given #171 (T,wt=10): 257 butterfly(person4) | freestyle(person4) | backstroke(person3) | butterfly(person3) | freestyle(person3).  [resolve(253,a,38,c)].
+
+given #172 (T,wt=10): 258 butterfly(person4) | freestyle(person4) | backstroke(person1) | butterfly(person1) | freestyle(person1).  [resolve(256,a,38,c)].
+
+given #173 (A,wt=4): 180 -freestyle(person1) | -freestyle(person4).  [resolve(52,c,32,a)].
+
+given #174 (F,wt=4): 181 -freestyle(person1) | -freestyle(person3).  [resolve(52,c,31,a)].
+
+given #175 (F,wt=4): 182 -freestyle(person1) | -freestyle(person2).  [resolve(52,c,30,a)].
+
+given #176 (F,wt=4): 183 -lane1(person3) | -lane1(person4).  [resolve(53,c,35,a)].
+
+given #177 (F,wt=4): 184 -lane1(person2) | -lane1(person4).  [resolve(53,c,34,a)].
+
+given #178 (T,wt=8): 267 -lane1(person3) | lane2(person4) | lane3(person4) | lane4(person4).  [resolve(183,b,39,a)].
+
+given #179 (T,wt=8): 268 -lane1(person2) | lane2(person4) | lane3(person4) | lane4(person4).  [resolve(184,b,39,a)].
+
+given #180 (T,wt=8): 270 lane2(person4) | lane3(person4) | lane4(person4) | lane3(person2).  [resolve(268,a,239,a)].
+
+given #181 (T,wt=10): 261 freestyle(person4) | backstroke(person3) | butterfly(person3) | freestyle(person3) | -butterfly(person1).  [resolve(257,a,168,b)].
+
+given #182 (A,wt=4): 185 -lane1(person2) | -lane1(person3).  [resolve(53,c,33,a)].
+
+given #183 (F,wt=4): 186 -lane1(person1) | -lane1(person4).  [resolve(53,c,32,a)].
+
+given #184 (F,wt=4): 187 -lane1(person1) | -lane1(person3).  [resolve(53,c,31,a)].
+
+given #185 (F,wt=4): 188 -lane1(person1) | -lane1(person2).  [resolve(53,c,30,a)].
+
+given #186 (F,wt=4): 189 -lane2(person3) | -lane2(person4).  [resolve(54,c,35,a)].
+
+given #187 (T,wt=4): 274 -lane1(person1) | lane3(person2).  [resolve(188,b,239,a)].
+
+given #188 (T,wt=6): 271 -lane1(person2) | lane3(person3) | lane4(person3).  [resolve(185,b,248,a)].
+
+given #189 (T,wt=6): 273 -lane1(person1) | lane3(person3) | lane4(person3).  [resolve(187,b,248,a)].
+
+given #190 (T,wt=6): 276 lane3(person3) | lane4(person3) | lane3(person2).  [resolve(271,a,239,a)].
+
+given #191 (A,wt=4): 190 -lane2(person2) | -lane2(person4).  [resolve(54,c,34,a)].
+
+given #192 (F,wt=4): 191 -lane2(person2) | -lane2(person3).  [resolve(54,c,33,a)].
+
+given #193 (F,wt=4): 192 -lane2(person1) | -lane2(person4).  [resolve(54,c,32,a)].
+
+given #194 (F,wt=4): 193 -lane2(person1) | -lane2(person3).  [resolve(54,c,31,a)].
+
+given #195 (F,wt=4): 194 -lane2(person1) | -lane2(person2).  [resolve(54,c,30,a)].
+
+given #196 (T,wt=8): 272 -lane1(person1) | lane2(person4) | lane3(person4) | lane4(person4).  [resolve(186,b,39,a)].
+
+given #197 (T,wt=8): 275 lane3(person2) | lane2(person1) | lane3(person1) | lane4(person1).  [resolve(274,a,39,a)].
+
+given #198 (T,wt=10): 262 freestyle(person4) | backstroke(person3) | butterfly(person3) | freestyle(person3) | -butterfly(person2).  [resolve(257,a,166,b)].
+
+given #199 (T,wt=10): 264 freestyle(person4) | backstroke(person1) | butterfly(person1) | freestyle(person1) | -butterfly(person2).  [resolve(258,a,166,b)].
+
+given #200 (A,wt=4): 195 -lane3(person3) | -lane3(person4).  [resolve(55,c,35,a)].
+
+given #201 (F,wt=4): 196 -lane3(person2) | -lane3(person4).  [resolve(55,c,34,a)].
+
+given #202 (F,wt=4): 197 -lane3(person2) | -lane3(person3).  [resolve(55,c,33,a)].
+
+given #203 (F,wt=4): 198 -lane3(person1) | -lane3(person4).  [resolve(55,c,32,a)].
+
+given #204 (F,wt=4): 199 -lane3(person1) | -lane3(person3).  [resolve(55,c,31,a)].
+
+given #205 (T,wt=10): 265 freestyle(person4) | backstroke(person1) | butterfly(person1) | freestyle(person1) | -butterfly(person3).  [resolve(258,a,165,b)].
+
+given #206 (T,wt=10): 269 lane2(person4) | lane3(person4) | lane4(person4) | lane3(person3) | lane4(person3).  [resolve(267,a,248,a)].
+
+given #207 (T,wt=10): 277 lane3(person3) | lane4(person3) | lane2(person1) | lane3(person1) | lane4(person1).  [resolve(273,a,39,a)].
+
+given #208 (T,wt=10): 279 freestyle(person4) | backstroke(person3) | butterfly(person3) | freestyle(person3) | freestyle(person2).  [resolve(262,e,237,a)].
+
+given #209 (A,wt=4): 200 -lane3(person1) | -lane3(person2).  [resolve(55,c,30,a)].
+
+given #210 (F,wt=4): 201 -lane4(person3) | -lane4(person4).  [resolve(56,c,35,a)].
+
+given #211 (F,wt=4): 202 -lane4(person2) | -lane4(person4).  [resolve(56,c,34,a)].
+
+given #212 (F,wt=4): 203 -lane4(person2) | -lane4(person3).  [resolve(56,c,33,a)].
+
+given #213 (F,wt=4): 204 -lane4(person1) | -lane4(person4).  [resolve(56,c,32,a)].
+
+given #214 (T,wt=6): 287 -lane4(person2) | lane3(person3) | lane3(person2).  [resolve(203,b,276,b)].
+
+given #215 (T,wt=8): 283 -lane4(person3) | lane2(person4) | lane3(person4) | lane3(person2).  [resolve(201,b,270,c)].
+
+given #216 (T,wt=8): 284 -lane4(person2) | lane2(person4) | lane3(person4) | lane3(person2).  [resolve(202,b,270,c)].
+
+given #217 (T,wt=8): 288 -lane4(person1) | lane2(person4) | lane3(person4) | lane3(person2).  [resolve(204,b,270,c)].
+
+given #218 (A,wt=4): 205 -lane4(person1) | -lane4(person3).  [resolve(56,c,31,a)].
+
+given #219 (F,wt=4): 206 -lane4(person1) | -lane4(person2).  [resolve(56,c,30,a)].
+
+given #220 (F,wt=4): 207 -Australia(person2) | -Australia(person4).  [resolve(57,c,34,a)].
+
+given #221 (F,wt=4): 208 -Australia(person1) | -Australia(person4).  [resolve(57,c,32,a)].
+
+given #222 (F,wt=4): 209 -Australia(person1) | -Australia(person2).  [resolve(57,c,30,a)].
+
+given #223 (T,wt=6): 292 -lane4(person1) | lane3(person3) | lane3(person2).  [resolve(205,b,276,b)].
+
+given #224 (T,wt=8): 290 lane2(person4) | lane3(person4) | lane3(person2) | lane3(person3).  [resolve(283,a,276,b),merge(e)].
+
+given #225 (T,wt=8): 293 -Australia(person2) | Canada(person4) | UK(person4) | USA(person4).  [resolve(207,b,40,a)].
+
+given #226 (T,wt=8): 294 -Australia(person1) | Canada(person4) | UK(person4) | USA(person4).  [resolve(208,b,40,a)].
+
+given #227 (A,wt=4): 210 -Canada(person3) | -Canada(person4).  [resolve(58,c,35,a)].
+
+given #228 (F,wt=4): 211 -Canada(person2) | -Canada(person4).  [resolve(58,c,34,a)].
+
+given #229 (F,wt=4): 212 -Canada(person2) | -Canada(person3).  [resolve(58,c,33,a)].
+
+given #230 (F,wt=4): 213 -Canada(person1) | -Canada(person4).  [resolve(58,c,32,a)].
+
+given #231 (F,wt=4): 214 -Canada(person1) | -Canada(person3).  [resolve(58,c,31,a)].
+
+given #232 (T,wt=4): 300 -Canada(person2) | UK(person3).  [resolve(212,b,249,a)].
+
+given #233 (T,wt=4): 301 -Canada(person1) | UK(person3).  [resolve(214,b,249,a)].
+
+given #234 (T,wt=4): 302 UK(person3) | UK(person2).  [resolve(300,a,242,b)].
+
+given #235 (T,wt=8): 295 lane3(person3) | lane3(person2) | lane2(person1) | lane3(person1).  [resolve(292,a,275,d),merge(c)].
+
+given #236 (A,wt=4): 215 -Canada(person1) | -Canada(person2).  [resolve(58,c,30,a)].
+
+given #237 (F,wt=4): 216 -UK(person3) | -UK(person4).  [resolve(59,c,35,a)].
+
+given #238 (F,wt=4): 217 -UK(person2) | -UK(person4).  [resolve(59,c,34,a)].
+
+given #239 (F,wt=4): 218 -UK(person2) | -UK(person3).  [resolve(59,c,33,a)].
+
+given #240 (F,wt=4): 225 -USA(person1) | -USA(person4).  [resolve(60,c,32,a)].
+
+given #241 (T,wt=4): 310 -Canada(person1) | UK(person2).  [resolve(215,b,242,b)].
+
+given #242 (T,wt=8): 296 lane3(person4) | lane3(person2) | lane3(person3) | -lane2(person1).  [resolve(290,a,192,b)].
+
+given #243 (T,wt=8): 297 lane3(person4) | lane3(person2) | lane3(person3) | -lane2(person2).  [resolve(290,a,190,b)].
+
+given #244 (T,wt=8): 298 lane3(person4) | lane3(person2) | lane3(person3) | -lane2(person3).  [resolve(290,a,189,b)].
+
+given #245 (A,wt=12): 260 backstroke(person3) | butterfly(person3) | freestyle(person3) | backstroke(person1) | butterfly(person1) | freestyle(person1).  [resolve(259,a,38,c)].
+
+given #246 (T,wt=8): 311 lane3(person4) | lane3(person2) | lane3(person3) | lane3(person1).  [resolve(296,d,295,c),merge(d),merge(e)].
+
+given #247 (T,wt=10): 280 freestyle(person4) | backstroke(person1) | butterfly(person1) | freestyle(person1) | freestyle(person2).  [resolve(264,e,237,a)].
+
+given #248 (T,wt=8): 315 freestyle(person4) | backstroke(person1) | freestyle(person1) | freestyle(person2).  [resolve(280,c,252,a),merge(e)].
+
+given #249 (T,wt=10): 281 freestyle(person4) | backstroke(person3) | freestyle(person3) | freestyle(person2) | -butterfly(person2).  [resolve(279,c,167,b)].
+
+given #250 (A,wt=12): 263 freestyle(person4) | backstroke(person3) | butterfly(person3) | freestyle(person3) | -Betty(x) | -UK(person4).  [resolve(257,a,70,c)].
+
+given #251 (T,wt=8): 320 freestyle(person4) | backstroke(person3) | freestyle(person3) | freestyle(person2).  [resolve(281,e,237,a),merge(e)].
+
+given #252 (T,wt=8): 322 freestyle(person4) | freestyle(person3) | freestyle(person2) | -backstroke(person1).  [resolve(320,b,163,b)].
+
+given #253 (T,wt=8): 323 freestyle(person4) | freestyle(person3) | freestyle(person2) | -backstroke(person2).  [resolve(320,b,161,b)].
+
+given #254 (T,wt=8): 328 freestyle(person4) | freestyle(person3) | freestyle(person2) | freestyle(person1).  [resolve(322,d,315,b),merge(d),merge(f)].
+
+given #255 (A,wt=12): 266 freestyle(person4) | backstroke(person1) | butterfly(person1) | freestyle(person1) | -Betty(x) | -UK(person4).  [resolve(258,a,70,c)].
+
+given #256 (T,wt=8): 351 freestyle(person3) | freestyle(person2) | freestyle(person1) | -USA(person4).  [resolve(328,a,80,a)].
+
+given #257 (T,wt=10): 285 -lane4(person2) | lane2(person4) | lane3(person4) | lane3(person3) | lane4(person3).  [resolve(202,b,269,c)].
+
+given #258 (T,wt=10): 286 -lane4(person2) | lane3(person3) | lane2(person1) | lane3(person1) | lane4(person1).  [resolve(203,b,277,b)].
+
+given #259 (T,wt=10): 289 -lane4(person1) | lane2(person4) | lane3(person4) | lane3(person3) | lane4(person3).  [resolve(204,b,269,c)].
+
+given #260 (A,wt=12): 278 lane2(person4) | lane3(person4) | lane4(person4) | lane2(person1) | lane3(person1) | lane4(person1).  [resolve(272,a,39,a)].
+
+given #261 (T,wt=10): 291 lane2(person4) | lane3(person4) | lane3(person2) | lane2(person1) | lane3(person1).  [resolve(288,a,275,d),merge(d)].
+
+given #262 (T,wt=10): 299 Canada(person4) | UK(person4) | USA(person4) | Canada(person1) | USA(person1).  [resolve(294,a,40,a),unit_del(e,228)].
+
+given #263 (T,wt=10): 303 UK(person2) | lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3).  [resolve(302,a,235,a)].
+
+given #264 (T,wt=10): 304 UK(person2) | lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1).  [resolve(302,a,234,a)].
+
+given #265 (A,wt=10): 305 UK(person2) | lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3).  [resolve(302,a,233,a)].
+
+given #266 (T,wt=10): 306 UK(person2) | lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1).  [resolve(302,a,232,a)].
+
+given #267 (T,wt=10): 307 UK(person2) | lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3).  [resolve(302,a,231,a)].
+
+given #268 (T,wt=10): 308 UK(person2) | lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3).  [resolve(302,a,230,a)].
+
+given #269 (T,wt=10): 309 UK(person2) | lane1(person1) | lane2(person1) | lane3(person1) | lane3(person3).  [resolve(302,a,229,a)].
+
+given #270 (A,wt=12): 312 backstroke(person3) | freestyle(person3) | backstroke(person1) | butterfly(person1) | freestyle(person1) | freestyle(person4).  [resolve(260,b,265,e),merge(g),merge(h),merge(i)].
+
+given #271 (T,wt=10): 317 freestyle(person4) | freestyle(person1) | freestyle(person2) | -Emily(x) | lane4(person1).  [resolve(315,b,74,b),unit_del(f,228)].
+
+given #272 (T,wt=8): 374 freestyle(person4) | freestyle(person1) | freestyle(person2) | lane4(person1).  [resolve(317,d,44,a)].
+
+given #273 (T,wt=8): 375 freestyle(person1) | freestyle(person2) | lane4(person1) | -freestyle(person3).  [resolve(374,a,177,b)].
+
+given #274 (T,wt=8): 398 freestyle(person1) | freestyle(person2) | lane4(person1) | -USA(person4).  [resolve(374,a,80,a)].
+
+given #275 (A,wt=12): 313 backstroke(person3) | freestyle(person3) | backstroke(person1) | butterfly(person1) | freestyle(person1) | -butterfly(person2).  [resolve(260,b,167,b)].
+
+given #276 (T,wt=10): 319 freestyle(person4) | freestyle(person1) | freestyle(person2) | -Emily(x) | UK(x).  [resolve(315,b,72,b),unit_del(f,228)].
+
+given #277 (T,wt=8): 408 freestyle(person4) | freestyle(person1) | freestyle(person2) | UK(person4).  [resolve(319,d,44,a)].
+
+given #278 (T,wt=8): 415 freestyle(person4) | freestyle(person1) | freestyle(person2) | -UK(person3).  [resolve(408,d,216,b)].
+
+given #279 (T,wt=8): 416 freestyle(person4) | freestyle(person1) | freestyle(person2) | UK(person2).  [resolve(415,d,302,a)].
+
+given #280 (A,wt=14): 314 backstroke(person3) | freestyle(person3) | backstroke(person1) | butterfly(person1) | freestyle(person1) | -Betty(x) | -UK(person3).  [resolve(260,b,70,c)].
+
+given #281 (T,wt=6): 417 freestyle(person4) | freestyle(person1) | freestyle(person2).  [resolve(416,d,251,b),merge(d)].
+
+given #282 (T,wt=6): 419 freestyle(person1) | freestyle(person2) | -freestyle(person3).  [resolve(417,a,177,b)].
+
+given #283 (T,wt=6): 442 freestyle(person1) | freestyle(person2) | -USA(person4).  [resolve(417,a,80,a)].
+
+given #284 (T,wt=10): 321 freestyle(person4) | backstroke(person3) | butterfly(person3) | freestyle(person3) | -UK(person4).  [resolve(263,e,41,a)].
+
+given #285 (A,wt=12): 324 freestyle(person4) | freestyle(person3) | freestyle(person2) | -Emily(x) | lane4(person3) | lane4(x).  [resolve(320,b,75,b)].
+
+given #286 (T,wt=10): 352 freestyle(person4) | backstroke(person1) | butterfly(person1) | freestyle(person1) | -UK(person4).  [resolve(266,e,41,a)].
+
+given #287 (T,wt=10): 355 lane3(person4) | lane3(person2) | lane2(person1) | lane3(person1) | -lane2(person2).  [resolve(291,a,190,b)].
+
+given #288 (T,wt=10): 356 lane3(person4) | lane3(person2) | lane2(person1) | lane3(person1) | -lane2(person3).  [resolve(291,a,189,b)].
+
+given #289 (T,wt=10): 357 UK(person4) | USA(person4) | Canada(person1) | USA(person1) | -Canada(person2).  [resolve(299,a,211,b)].
+
+given #290 (A,wt=12): 325 freestyle(person4) | freestyle(person3) | freestyle(person2) | -Emily(x) | lane4(person3) | UK(person3).  [resolve(320,b,74,b)].
+
+given #291 (T,wt=10): 358 UK(person4) | USA(person4) | Canada(person1) | USA(person1) | -Canada(person3).  [resolve(299,a,210,b)].
+
+given #292 (T,wt=10): 359 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | freestyle(person2).  [resolve(303,a,251,b)].
+
+given #293 (T,wt=10): 362 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | freestyle(person2).  [resolve(304,a,251,b)].
+
+given #294 (T,wt=10): 365 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | freestyle(person2).  [resolve(305,a,251,b)].
+
+given #295 (A,wt=12): 326 freestyle(person4) | freestyle(person3) | freestyle(person2) | -Emily(x) | UK(x) | lane4(x).  [resolve(320,b,73,b)].
+
+given #296 (T,wt=10): 366 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | freestyle(person2).  [resolve(306,a,251,b)].
+
+given #297 (T,wt=10): 368 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | lane2(person2).  [resolve(306,a,232,a),merge(f),merge(g),merge(h)].
+
+given #298 (T,wt=10): 369 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | freestyle(person2).  [resolve(307,a,251,b)].
+
+given #299 (T,wt=10): 370 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | freestyle(person2).  [resolve(308,a,251,b)].
+
+given #300 (A,wt=12): 327 freestyle(person4) | freestyle(person3) | freestyle(person2) | -Emily(x) | UK(x) | UK(person3).  [resolve(320,b,72,b)].
+
+given #301 (T,wt=10): 371 lane1(person1) | lane2(person1) | lane3(person1) | lane3(person3) | freestyle(person2).  [resolve(309,a,251,b)].
+
+given #302 (T,wt=10): 443 freestyle(person4) | freestyle(person3) | freestyle(person2) | lane4(person3) | lane4(person4).  [resolve(324,d,44,a)].
+
+given #303 (T,wt=10): 445 UK(person4) | USA(person4) | Canada(person1) | USA(person1) | UK(person2).  [resolve(357,e,242,b)].
+
+given #304 (T,wt=8): 685 UK(person4) | USA(person4) | USA(person1) | UK(person2).  [resolve(445,c,310,a),merge(e)].
+
+given #305 (A,wt=12): 353 lane2(person4) | lane3(person4) | lane2(person1) | lane3(person1) | lane4(person1) | -lane4(person2).  [resolve(278,c,202,b)].
+
+given #306 (T,wt=8): 695 USA(person4) | USA(person1) | UK(person2) | -UK(person3).  [resolve(685,a,216,b)].
+
+given #307 (T,wt=6): 696 USA(person4) | USA(person1) | UK(person2).  [resolve(695,d,302,a),merge(d)].
+
+given #308 (T,wt=6): 697 USA(person4) | USA(person1) | freestyle(person2).  [resolve(696,c,251,b)].
+
+given #309 (T,wt=6): 703 USA(person4) | USA(person1) | -freestyle(person1).  [resolve(697,c,182,b)].
+
+given #310 (A,wt=12): 354 lane2(person4) | lane3(person4) | lane2(person1) | lane3(person1) | lane4(person1) | -lane4(person3).  [resolve(278,c,201,b)].
+
+given #311 (T,wt=10): 446 freestyle(person4) | freestyle(person3) | freestyle(person2) | lane4(person3) | UK(person3).  [resolve(325,d,44,a)].
+
+given #312 (T,wt=10): 447 UK(person4) | USA(person4) | Canada(person1) | USA(person1) | UK(person3).  [resolve(358,e,249,a)].
+
+given #313 (T,wt=8): 727 UK(person4) | USA(person4) | USA(person1) | UK(person3).  [resolve(447,c,301,a),merge(e)].
+
+given #314 (T,wt=8): 737 USA(person4) | USA(person1) | UK(person3) | -UK(person2).  [resolve(727,a,217,b)].
+
+given #315 (A,wt=12): 363 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | lane2(person2) | lane4(person2).  [resolve(304,a,234,a),merge(f),merge(h)].
+
+given #316 (T,wt=6): 738 USA(person4) | USA(person1) | UK(person3).  [resolve(737,d,696,c),merge(d),merge(e)].
+
+given #317 (T,wt=6): 747 USA(person4) | USA(person1) | -UK(person2).  [resolve(738,c,218,b)].
+
+given #318 (T,wt=4): 748 USA(person4) | USA(person1).  [resolve(747,c,696,c),merge(c),merge(d)].
+
+given #319 (T,wt=6): 749 USA(person1) | freestyle(person1) | freestyle(person2).  [resolve(748,a,442,c)].
+
+given #320 (A,wt=12): 372 backstroke(person3) | freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | butterfly(person3).  [resolve(312,d,261,e),merge(f),merge(g),merge(i)].
+
+given #321 (T,wt=10): 448 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -freestyle(person1).  [resolve(359,e,182,b)].
+
+given #322 (T,wt=10): 484 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -freestyle(person1).  [resolve(362,e,182,b)].
+
+given #323 (T,wt=10): 521 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | -freestyle(person1).  [resolve(365,e,182,b)].
+
+given #324 (T,wt=10): 545 freestyle(person4) | freestyle(person3) | freestyle(person2) | UK(person4) | lane4(person4).  [resolve(326,d,44,a)].
+
+given #325 (A,wt=12): 373 backstroke(person3) | freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | -UK(x).  [resolve(312,d,69,c),unit_del(f,41)].
+
+given #326 (T,wt=10): 547 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -freestyle(person1).  [resolve(366,e,182,b)].
+
+given #327 (T,wt=10): 568 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -freestyle(person1).  [resolve(369,e,182,b)].
+
+given #328 (T,wt=10): 592 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -USA(person1).  [factor(588,b,g),merge(f)].
+
+given #329 (T,wt=10): 593 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -freestyle(person1).  [resolve(370,e,182,b)].
+
+given #330 (A,wt=12): 407 backstroke(person3) | freestyle(person3) | backstroke(person1) | butterfly(person1) | freestyle(person1) | freestyle(person2).  [resolve(313,f,237,a)].
+
+given #331 (T,wt=10): 627 freestyle(person4) | freestyle(person3) | freestyle(person2) | UK(person4) | UK(person3).  [resolve(327,d,44,a)].
+
+given #332 (T,wt=10): 629 lane1(person1) | lane2(person1) | lane3(person1) | lane3(person3) | -freestyle(person1).  [resolve(371,e,182,b)].
+
+given #333 (T,wt=10): 653 freestyle(person3) | freestyle(person2) | lane4(person3) | lane4(person4) | -freestyle(person1).  [resolve(443,a,180,b)].
+
+given #334 (T,wt=10): 676 freestyle(person3) | freestyle(person2) | lane4(person3) | lane4(person4) | -USA(person4).  [resolve(443,a,80,a)].
+
+given #335 (A,wt=12): 418 backstroke(person3) | freestyle(person3) | backstroke(person1) | butterfly(person1) | freestyle(person1) | -UK(person3).  [resolve(314,f,41,a)].
+
+given #336 (T,wt=10): 750 USA(person1) | lane2(person2) | lane2(person4) | lane4(person2) | lane4(person4).  [resolve(748,a,247,a)].
+
+given #337 (T,wt=10): 751 USA(person1) | lane2(person2) | lane2(person4) | lane4(person2) | lane3(person2).  [resolve(748,a,246,a)].
+
+given #338 (T,wt=10): 752 USA(person1) | lane2(person2) | lane2(person4) | lane3(person4) | lane4(person4).  [resolve(748,a,245,a)].
+
+given #339 (T,wt=10): 753 USA(person1) | lane2(person2) | lane2(person4) | lane3(person4) | lane3(person2).  [resolve(748,a,244,a)].
+
+given #340 (A,wt=16): 420 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane4(x).  [resolve(417,a,103,b)].
+
+given #341 (T,wt=10): 754 USA(person1) | lane1(person4) | lane2(person4) | lane3(person4) | lane3(person2).  [resolve(748,a,243,a)].
+
+given #342 (T,wt=10): 783 freestyle(person4) | freestyle(person3) | freestyle(person2) | lane4(person4) | -UK(person3).  [resolve(545,d,216,b)].
+
+given #343 (T,wt=10): 792 backstroke(person3) | freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2).  [resolve(407,d,252,a),merge(f)].
+
+given #344 (T,wt=10): 798 freestyle(person3) | freestyle(person2) | lane4(person3) | lane4(person4) | USA(person1).  [resolve(676,e,748,a)].
+
+given #345 (A,wt=16): 421 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane2(y).  [resolve(417,a,102,b)].
+
+given #346 (T,wt=10): 804 lane2(person2) | lane2(person4) | lane4(person2) | lane3(person2) | lane2(person1).  [resolve(751,a,246,a),merge(e),merge(g),merge(h)].
+
+given #347 (T,wt=10): 807 USA(person1) | lane2(person4) | lane3(person4) | lane3(person2) | -lane1(person2).  [resolve(754,b,184,b)].
+
+given #348 (T,wt=8): 846 USA(person1) | lane2(person4) | lane3(person4) | lane3(person2).  [resolve(807,e,239,a),merge(e)].
+
+given #349 (T,wt=10): 809 freestyle(person4) | freestyle(person3) | freestyle(person2) | lane4(person4) | UK(person2).  [resolve(783,e,302,a)].
+
+given #350 (A,wt=16): 422 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane1(y) | lane4(x).  [resolve(417,a,101,b)].
+
+given #351 (T,wt=8): 847 freestyle(person4) | freestyle(person3) | freestyle(person2) | lane4(person4).  [resolve(809,e,251,b),merge(e)].
+
+given #352 (T,wt=8): 849 freestyle(person3) | freestyle(person2) | lane4(person4) | -freestyle(person1).  [resolve(847,a,180,b)].
+
+given #353 (T,wt=8): 872 freestyle(person3) | freestyle(person2) | lane4(person4) | -USA(person4).  [resolve(847,a,80,a)].
+
+given #354 (T,wt=8): 873 freestyle(person3) | freestyle(person2) | lane4(person4) | USA(person1).  [resolve(872,d,748,a)].
+
+given #355 (A,wt=14): 423 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane3(y) | lane3(person4) | lane3(x).  [resolve(417,a,100,b)].
+
+given #356 (T,wt=8): 874 freestyle(person2) | lane4(person4) | USA(person1) | -freestyle(person1).  [resolve(873,a,181,b)].
+
+given #357 (T,wt=10): 810 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | -backstroke(person2).  [resolve(792,a,161,b)].
+
+given #358 (T,wt=10): 843 lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1) | lane3(person3).  [resolve(804,c,287,a),merge(f)].
+
+given #359 (T,wt=10): 844 lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1) | lane3(person4).  [resolve(804,c,284,a),merge(e),merge(g)].
+
+given #360 (A,wt=14): 424 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane3(y) | lane3(person4) | lane1(y).  [resolve(417,a,99,b)].
+
+given #361 (T,wt=10): 845 lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1) | -lane4(person1).  [resolve(804,c,206,b)].
+
+given #362 (T,wt=10): 904 lane2(person2) | lane3(person2) | lane2(person1) | lane3(person3) | -lane2(person3).  [resolve(843,b,189,b)].
+
+given #363 (T,wt=10): 905 lane2(person2) | lane3(person2) | lane2(person1) | lane3(person4) | -lane2(person3).  [resolve(844,b,189,b)].
+
+given #364 (T,wt=10): 908 lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1) | lane3(person1).  [resolve(845,e,275,d),merge(e),merge(f)].
+
+given #365 (A,wt=16): 425 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane4(x).  [resolve(417,a,98,b)].
+
+given #366 (T,wt=10): 909 lane2(person2) | lane3(person2) | lane2(person1) | lane3(person1) | -lane2(person3).  [resolve(908,b,189,b)].
+
+given #367 (T,wt=12): 431 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane2(person4) | lane3(person4).  [resolve(417,a,92,b)].
+
+given #368 (T,wt=10): 911 freestyle(person1) | freestyle(person2) | -USA(x) | lane2(person4) | lane3(person4).  [resolve(431,c,43,a)].
+
+given #369 (T,wt=10): 912 freestyle(person1) | freestyle(person2) | lane2(person4) | lane3(person4) | lane3(person2).  [resolve(911,c,846,a),merge(e),merge(f)].
+
+given #370 (A,wt=16): 426 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane2(y).  [resolve(417,a,97,b)].
+
+given #371 (T,wt=12): 482 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -USA(x) | lane3(person2).  [factor(466,b,i),merge(g),unit_del(e,43)].
+
+given #372 (T,wt=12): 483 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -USA(x) | lane2(x).  [factor(468,a,h),merge(g),merge(h),unit_del(e,43)].
+
+given #373 (T,wt=12): 515 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -USA(x) | lane2(person2).  [factor(497,a,h),merge(h),unit_del(e,43)].
+
+given #374 (T,wt=12): 540 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | -USA(x) | lane3(x).  [factor(525,a,h),merge(h),merge(i),unit_del(e,43)].
+
+given #375 (A,wt=16): 427 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane1(y) | lane4(x).  [resolve(417,a,96,b)].
+
+given #376 (T,wt=12): 542 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | -USA(x) | lane2(person2).  [factor(531,a,h),merge(h),unit_del(e,43)].
+
+given #377 (T,wt=12): 626 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -USA(x) | lane3(person2).  [factor(611,b,i),merge(g),unit_del(e,43)].
+
+given #378 (T,wt=12): 726 lane2(person4) | lane3(person4) | lane2(person1) | lane3(person1) | lane4(person1) | lane3(person3).  [resolve(354,f,277,b),merge(g),merge(h),merge(i)].
+
+given #379 (T,wt=12): 766 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane2(person2) | lane3(person2).  [resolve(749,c,92,b)].
+
+given #380 (A,wt=16): 428 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane1(y) | lane2(y).  [resolve(417,a,95,b)].
+
+given #381 (T,wt=10): 941 USA(person1) | freestyle(person1) | -USA(x) | lane2(person2) | lane3(person2).  [resolve(766,c,43,a)].
+
+given #382 (T,wt=8): 943 USA(person1) | freestyle(person1) | lane2(person2) | lane3(person2).  [resolve(941,c,748,a),merge(e)].
+
+given #383 (T,wt=10): 944 USA(person1) | lane2(person2) | lane3(person2) | freestyle(person2) | lane4(person4).  [resolve(943,b,874,d),merge(f)].
+
+given #384 (T,wt=10): 964 USA(person1) | lane2(person2) | lane3(person2) | lane4(person4) | -freestyle(person1).  [resolve(944,d,182,b)].
+
+given #385 (A,wt=14): 429 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane2(person4) | lane4(y) | lane4(x).  [resolve(417,a,94,b)].
+
+given #386 (T,wt=8): 970 USA(person1) | lane2(person2) | lane3(person2) | lane4(person4).  [resolve(964,e,943,b),merge(e),merge(f),merge(g)].
+
+given #387 (T,wt=10): 976 lane2(person2) | lane3(person2) | lane4(person4) | lane2(person1) | lane4(person2).  [resolve(970,a,246,a),merge(d),merge(g)].
+
+given #388 (T,wt=10): 977 lane2(person2) | lane3(person2) | lane4(person4) | lane2(person1) | lane3(person1).  [resolve(970,a,244,a),merge(d),merge(g)].
+
+given #389 (T,wt=10): 978 lane2(person2) | lane3(person2) | lane2(person1) | lane4(person2) | -lane4(person1).  [resolve(976,c,204,b)].
+
+given #390 (A,wt=14): 430 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane2(person4) | lane4(y) | lane2(y).  [resolve(417,a,93,b)].
+
+given #391 (T,wt=10): 979 lane2(person2) | lane3(person2) | lane2(person1) | lane4(person2) | -lane4(person3).  [resolve(976,c,201,b)].
+
+given #392 (T,wt=10): 980 lane2(person2) | lane3(person2) | lane2(person1) | lane3(person1) | -lane4(person1).  [resolve(977,c,204,b)].
+
+given #393 (T,wt=8): 989 lane2(person2) | lane3(person2) | lane2(person1) | lane3(person1).  [resolve(980,e,275,d),merge(e),merge(f),merge(g)].
+
+given #394 (T,wt=8): 990 lane3(person2) | lane2(person1) | lane3(person1) | lane3(person4).  [resolve(989,a,355,e),merge(e),merge(f),merge(g)].
+
+given #395 (A,wt=14): 432 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane2(person4) | lane2(x) | lane4(x).  [resolve(417,a,91,b)].
+
+given #396 (T,wt=10): 987 lane2(person2) | lane3(person2) | lane2(person1) | lane4(person2) | lane3(person3).  [resolve(979,e,276,b),merge(f)].
+
+given #397 (T,wt=8): 992 lane2(person2) | lane3(person2) | lane2(person1) | lane3(person3).  [resolve(987,d,287,a),merge(e),merge(f)].
+
+given #398 (T,wt=8): 993 lane3(person2) | lane2(person1) | lane3(person3) | lane3(person4).  [resolve(992,a,297,d),merge(e),merge(f)].
+
+given #399 (T,wt=6): 994 lane3(person2) | lane3(person3) | lane3(person4).  [resolve(993,b,296,d),merge(d),merge(e),merge(f)].
+
+given #400 (A,wt=14): 433 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane2(person4) | lane2(x) | lane2(y).  [resolve(417,a,90,b)].
+
+given #401 (T,wt=6): 995 lane3(person2) | lane3(person3) | -lane3(person1).  [resolve(994,c,198,b)].
+
+given #402 (T,wt=12): 777 backstroke(person3) | freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | -butterfly(person1).  [resolve(372,f,169,b)].
+
+given #403 (T,wt=10): 997 backstroke(person3) | freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4).  [resolve(777,f,312,d),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #404 (T,wt=10): 998 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | -backstroke(person2).  [resolve(997,a,161,b)].
+
+given #405 (A,wt=16): 434 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane3(x) | lane2(y).  [resolve(417,a,88,b)].
+
+given #406 (T,wt=12): 799 backstroke(person3) | freestyle(person3) | backstroke(person1) | butterfly(person1) | freestyle(person1) | UK(person2).  [resolve(418,f,302,a)].
+
+given #407 (T,wt=12): 801 lane2(person2) | lane2(person4) | lane4(person2) | lane4(person4) | lane2(person1) | lane4(person1).  [resolve(750,a,247,a),merge(e),merge(g)].
+
+given #408 (T,wt=12): 817 freestyle(person2) | lane4(person3) | lane4(person4) | USA(person1) | -USA(x) | lane2(person3).  [resolve(798,a,131,b),merge(h),unit_del(e,43)].
+
+given #409 (T,wt=10): 1006 freestyle(person2) | lane4(person3) | lane4(person4) | USA(person1) | lane2(person3).  [resolve(817,e,748,a),merge(f)].
+
+given #410 (A,wt=16): 435 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane4(x).  [resolve(417,a,87,b)].
+
+given #411 (T,wt=10): 1007 lane4(person3) | lane4(person4) | USA(person1) | lane2(person3) | -freestyle(person1).  [resolve(1006,a,182,b)].
+
+given #412 (T,wt=12): 875 freestyle(person2) | lane4(person4) | USA(person1) | -USA(x) | lane3(x) | lane3(person3).  [resolve(873,a,132,b),unit_del(d,43)].
+
+given #413 (T,wt=10): 1044 freestyle(person2) | lane4(person4) | USA(person1) | lane3(person4) | lane3(person3).  [resolve(875,d,748,a),merge(f)].
+
+given #414 (T,wt=10): 1045 lane4(person4) | USA(person1) | lane3(person4) | lane3(person3) | -freestyle(person1).  [resolve(1044,a,182,b)].
+
+given #415 (A,wt=16): 436 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane2(y).  [resolve(417,a,86,b)].
+
+given #416 (T,wt=12): 876 freestyle(person2) | lane4(person4) | USA(person1) | -USA(x) | lane2(person3) | lane2(x).  [resolve(873,a,130,b),unit_del(d,43)].
+
+given #417 (T,wt=10): 1075 freestyle(person2) | lane4(person4) | USA(person1) | lane2(person3) | lane2(person4).  [resolve(876,d,748,a),merge(f)].
+
+given #418 (T,wt=10): 1076 lane4(person4) | USA(person1) | lane2(person3) | lane2(person4) | -freestyle(person1).  [resolve(1075,a,182,b)].
+
+given #419 (T,wt=12): 877 freestyle(person2) | lane4(person4) | USA(person1) | -USA(x) | lane1(person3) | lane3(person3).  [resolve(873,a,129,b),unit_del(d,43)].
+
+given #420 (A,wt=14): 437 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane1(x) | lane3(person4) | lane3(x).  [resolve(417,a,85,b)].
+
+given #421 (T,wt=10): 1113 freestyle(person2) | lane4(person4) | USA(person1) | lane1(person3) | lane3(person3).  [resolve(877,d,748,a),merge(f)].
+
+given #422 (T,wt=10): 1115 lane4(person4) | USA(person1) | lane1(person3) | lane3(person3) | -freestyle(person1).  [resolve(1113,a,182,b)].
+
+given #423 (T,wt=12): 903 freestyle(person1) | freestyle(person2) | -USA(x) | lane3(x) | lane3(person4) | lane3(person3).  [resolve(423,c,43,a)].
+
+given #424 (T,wt=12): 906 freestyle(person1) | freestyle(person2) | -USA(x) | lane3(x) | lane3(person4) | lane1(x).  [resolve(424,c,43,a)].
+
+given #425 (A,wt=14): 438 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane1(x) | lane3(person4) | lane1(y).  [resolve(417,a,84,b)].
+
+given #426 (T,wt=12): 913 freestyle(person1) | freestyle(person2) | lane2(person4) | lane3(person4) | lane2(person2) | lane4(person4).  [resolve(911,c,752,a),merge(f),merge(g)].
+
+given #427 (T,wt=12): 930 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | lane3(person2) | USA(person1).  [resolve(482,e,748,a)].
+
+given #428 (T,wt=12): 931 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | lane2(person4) | USA(person1).  [resolve(483,e,748,a)].
+
+given #429 (T,wt=12): 933 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | lane2(person2) | USA(person1).  [resolve(515,e,748,a)].
+
+given #430 (A,wt=16): 439 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane3(x) | lane2(y).  [resolve(417,a,83,b)].
+
+given #431 (T,wt=10): 1166 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | lane2(person2).  [resolve(933,f,515,e),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #432 (T,wt=10): 1168 lane2(person3) | lane2(person1) | lane4(person1) | lane2(person2) | -lane4(person2).  [resolve(1166,c,203,b)].
+
+given #433 (T,wt=12): 934 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | lane3(person4) | USA(person1).  [resolve(540,e,748,a)].
+
+given #434 (T,wt=12): 937 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | lane2(person2) | USA(person1).  [resolve(542,e,748,a)].
+
+given #435 (A,wt=16): 440 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane4(x).  [resolve(417,a,82,b)].
+
+given #436 (T,wt=10): 1173 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | lane2(person2).  [resolve(937,f,542,e),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #437 (T,wt=10): 1175 lane2(person3) | lane2(person1) | lane3(person3) | lane2(person2) | -lane4(person1).  [resolve(1173,c,205,b)].
+
+given #438 (T,wt=10): 1176 lane2(person3) | lane2(person1) | lane3(person3) | lane2(person2) | -lane4(person2).  [resolve(1173,c,203,b)].
+
+given #439 (T,wt=10): 1178 lane2(person3) | lane2(person1) | lane3(person3) | lane2(person2) | lane3(person1).  [resolve(1175,e,368,d),merge(e),merge(f),merge(h)].
+
+given #440 (A,wt=16): 441 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane2(y).  [resolve(417,a,81,b)].
+
+given #441 (T,wt=12): 939 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | lane3(person2) | USA(person1).  [resolve(626,e,748,a)].
+
+given #442 (T,wt=12): 940 lane2(person4) | lane3(person4) | lane2(person1) | lane3(person1) | lane3(person3) | lane4(person3).  [resolve(726,e,289,a),merge(f),merge(g),merge(h)].
+
+given #443 (T,wt=12): 971 freestyle(person1) | freestyle(person2) | -USA(x) | lane2(person4) | lane4(x) | lane4(person3).  [resolve(429,c,43,a)].
+
+given #444 (T,wt=12): 985 freestyle(person1) | freestyle(person2) | -USA(x) | lane2(person4) | lane4(x) | lane2(x).  [resolve(430,c,43,a)].
+
+given #445 (A,wt=16): 444 freestyle(person4) | freestyle(person3) | freestyle(person2) | lane4(person3) | lane4(x) | Betty(x) | Carol(x) | Daisy(x).  [resolve(324,d,37,d)].
+
+given #446 (T,wt=12): 986 lane2(person2) | lane3(person2) | lane2(person1) | lane4(person2) | lane2(person3) | lane4(person1).  [resolve(979,e,363,c),merge(f),merge(h),merge(i)].
+
+given #447 (T,wt=10): 1193 lane2(person2) | lane3(person2) | lane2(person1) | lane2(person3) | lane4(person1).  [resolve(986,d,1168,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #448 (T,wt=10): 1194 lane2(person2) | lane3(person2) | lane2(person1) | lane2(person3) | lane4(person2).  [resolve(1193,e,978,e),merge(e),merge(f),merge(g)].
+
+given #449 (T,wt=10): 1195 lane2(person2) | lane3(person2) | lane2(person1) | lane2(person3) | lane2(person4).  [resolve(1193,e,845,e),merge(e),merge(g),merge(h)].
+
+given #450 (A,wt=20): 449 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane4(x).  [resolve(359,e,103,b)].
+
+given #451 (T,wt=10): 1196 lane2(person2) | lane3(person2) | lane2(person1) | lane2(person3) | -lane4(person1).  [resolve(1194,e,206,b)].
+
+given #452 (T,wt=8): 1197 lane2(person2) | lane3(person2) | lane2(person1) | lane2(person3).  [resolve(1196,e,1193,e),merge(e),merge(f),merge(g),merge(h)].
+
+given #453 (T,wt=8): 1198 lane2(person2) | lane3(person2) | lane2(person1) | lane3(person4).  [resolve(1197,d,905,e),merge(d),merge(e),merge(f)].
+
+given #454 (T,wt=12): 991 freestyle(person1) | freestyle(person2) | -USA(x) | lane2(person4) | lane2(person3) | lane4(person3).  [resolve(432,c,43,a)].
+
+given #455 (A,wt=20): 451 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane1(y) | lane4(x).  [resolve(359,e,101,b)].
+
+given #456 (T,wt=12): 996 freestyle(person1) | freestyle(person2) | -USA(x) | lane2(person4) | lane2(person3) | lane2(x).  [resolve(433,c,43,a)].
+
+given #457 (T,wt=12): 1004 backstroke(person3) | freestyle(person3) | backstroke(person1) | freestyle(person1) | UK(person2) | -UK(x).  [resolve(799,d,69,c),unit_del(f,41)].
+
+given #458 (T,wt=10): 1203 backstroke(person3) | freestyle(person3) | backstroke(person1) | freestyle(person1) | UK(person2).  [resolve(1004,f,302,a),merge(f)].
+
+given #459 (T,wt=10): 1204 freestyle(person3) | backstroke(person1) | freestyle(person1) | UK(person2) | -backstroke(person2).  [resolve(1203,a,161,b)].
+
+given #460 (A,wt=20): 454 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane4(x).  [resolve(359,e,98,b)].
+
+given #461 (T,wt=12): 1005 lane2(person2) | lane2(person4) | lane4(person2) | lane2(person1) | lane4(person1) | -lane4(person3).  [resolve(801,d,201,b)].
+
+given #462 (T,wt=12): 1037 lane4(person3) | lane4(person4) | USA(person1) | lane2(person3) | -USA(x) | lane2(person2).  [factor(1019,a,i),merge(h),unit_del(e,43)].
+
+given #463 (T,wt=10): 1210 lane4(person3) | lane4(person4) | USA(person1) | lane2(person3) | lane2(person2).  [resolve(1037,e,748,a),merge(f)].
+
+given #464 (T,wt=12): 1072 lane4(person4) | USA(person1) | lane3(person4) | lane3(person3) | -USA(person4) | lane4(person3).  [factor(1063,d,g),unit_del(e,43)].
+
+given #465 (A,wt=20): 456 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane1(y) | lane4(x).  [resolve(359,e,96,b)].
+
+given #466 (T,wt=10): 1215 lane4(person4) | USA(person1) | lane3(person4) | lane3(person3) | lane4(person3).  [resolve(1072,e,748,a),merge(f)].
+
+given #467 (T,wt=12): 1073 lane4(person4) | USA(person1) | lane3(person4) | lane3(person3) | -USA(person4) | lane2(person4).  [factor(1065,d,g),unit_del(e,43)].
+
+given #468 (T,wt=10): 1219 lane4(person4) | USA(person1) | lane3(person4) | lane3(person3) | lane2(person4).  [resolve(1073,e,748,a),merge(f)].
+
+given #469 (T,wt=12): 1110 lane4(person4) | USA(person1) | lane2(person3) | lane2(person4) | -USA(person4) | lane2(person2).  [factor(1104,d,g)].
+
+given #470 (A,wt=18): 458 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane2(person2) | lane4(y) | lane4(x).  [resolve(359,e,94,b)].
+
+given #471 (T,wt=10): 1224 lane4(person4) | USA(person1) | lane2(person3) | lane2(person4) | lane2(person2).  [resolve(1110,e,748,a),merge(f)].
+
+given #472 (T,wt=12): 1114 freestyle(person1) | freestyle(person2) | -USA(x) | lane1(person3) | lane3(person4) | lane3(person3).  [resolve(437,c,43,a)].
+
+given #473 (T,wt=12): 1146 lane4(person4) | USA(person1) | lane1(person3) | lane3(person3) | -USA(x) | lane3(person2).  [factor(1132,c,g),merge(h),unit_del(e,43)].
+
+given #474 (T,wt=10): 1226 lane4(person4) | USA(person1) | lane1(person3) | lane3(person3) | lane3(person2).  [resolve(1146,e,748,a),merge(f)].
+
+given #475 (A,wt=18): 461 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane2(person2) | lane2(x) | lane4(x).  [resolve(359,e,91,b)].
+
+given #476 (T,wt=10): 1227 lane4(person4) | USA(person1) | lane3(person3) | lane3(person2) | -lane1(person2).  [resolve(1226,c,185,b)].
+
+given #477 (T,wt=8): 1228 lane4(person4) | USA(person1) | lane3(person3) | lane3(person2).  [resolve(1227,e,239,a),merge(e)].
+
+given #478 (T,wt=12): 1148 lane4(person4) | USA(person1) | lane1(person3) | lane3(person3) | -USA(person4) | lane2(person4).  [factor(1142,c,g),merge(g),unit_del(e,43)].
+
+given #479 (T,wt=10): 1233 lane4(person4) | USA(person1) | lane1(person3) | lane3(person3) | lane2(person4).  [resolve(1148,e,748,a),merge(f)].
+
+given #480 (A,wt=20): 464 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane4(x).  [resolve(359,e,87,b)].
+
+given #481 (T,wt=10): 1234 lane4(person4) | USA(person1) | lane3(person3) | lane2(person4) | -lane1(person1).  [resolve(1233,c,187,b)].
+
+given #482 (T,wt=10): 1235 lane4(person4) | USA(person1) | lane3(person3) | lane2(person4) | -lane1(person2).  [resolve(1233,c,185,b)].
+
+given #483 (T,wt=12): 1150 freestyle(person1) | freestyle(person2) | -USA(x) | lane1(person3) | lane3(person4) | lane1(x).  [resolve(438,c,43,a)].
+
+given #484 (T,wt=12): 1161 lane2(person3) | lane3(person3) | lane3(person1) | lane3(person2) | USA(person1) | -lane1(person2).  [resolve(930,d,185,b)].
+
+given #485 (A,wt=20): 469 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane4(x).  [resolve(359,e,82,b)].
+
+given #486 (T,wt=10): 1239 lane2(person3) | lane3(person3) | lane3(person1) | lane3(person2) | USA(person1).  [resolve(1161,f,239,a),merge(f)].
+
+given #487 (T,wt=10): 1241 lane2(person3) | lane3(person3) | lane3(person1) | lane3(person2) | lane1(person3).  [resolve(1239,e,482,e),merge(e),merge(f),merge(g),merge(i)].
+
+given #488 (T,wt=10): 1242 lane2(person3) | lane3(person3) | lane3(person1) | lane3(person2) | -lane1(person2).  [resolve(1241,e,185,b)].
+
+given #489 (T,wt=8): 1243 lane2(person3) | lane3(person3) | lane3(person1) | lane3(person2).  [resolve(1242,e,239,a),merge(e)].
+
+given #490 (A,wt=18): 471 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(person1) | lane4(person1) | lane3(x) | lane4(x).  [factor(449,c,g)].
+
+given #491 (T,wt=8): 1244 lane3(person3) | lane3(person1) | lane3(person2) | -lane2(person1).  [resolve(1243,a,193,b)].
+
+given #492 (T,wt=6): 1246 lane3(person3) | lane3(person1) | lane3(person2).  [resolve(1244,d,295,c),merge(d),merge(e),merge(f)].
+
+given #493 (T,wt=12): 1163 lane2(person3) | lane3(person3) | lane3(person1) | lane2(person4) | USA(person1) | -lane1(person1).  [resolve(931,d,187,b)].
+
+given #494 (T,wt=12): 1164 lane2(person3) | lane3(person3) | lane3(person1) | lane2(person4) | USA(person1) | -lane1(person2).  [resolve(931,d,185,b)].
+
+given #495 (A,wt=18): 476 lane2(person3) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(person1) | lane2(x) | lane3(x) | lane4(x).  [factor(454,c,g)].
+
+given #496 (T,wt=12): 1170 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | lane3(person4) | lane3(person1).  [resolve(934,f,592,e),merge(f),merge(g),merge(i)].
+
+given #497 (T,wt=12): 1181 lane2(person4) | lane3(person4) | lane2(person1) | lane3(person1) | lane3(person3) | -lane4(person1).  [resolve(940,f,205,b)].
+
+given #498 (T,wt=10): 1250 lane2(person4) | lane3(person4) | lane2(person1) | lane3(person1) | lane3(person3).  [resolve(1181,f,726,e),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #499 (T,wt=10): 1251 lane3(person4) | lane2(person1) | lane3(person1) | lane3(person3) | -lane2(person2).  [resolve(1250,a,190,b)].
+
+given #500 (A,wt=20): 485 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane4(x).  [resolve(362,e,103,b)].
+
+given #501 (T,wt=10): 1252 lane3(person4) | lane2(person1) | lane3(person1) | lane3(person3) | -lane2(person3).  [resolve(1250,a,189,b)].
+
+given #502 (T,wt=10): 1253 lane3(person4) | lane2(person1) | lane3(person1) | lane3(person3) | lane2(person2).  [resolve(1252,e,1178,a),merge(e),merge(f),merge(h)].
+
+given #503 (T,wt=8): 1254 lane3(person4) | lane2(person1) | lane3(person1) | lane3(person3).  [resolve(1253,e,1251,e),merge(e),merge(f),merge(g),merge(h)].
+
+given #504 (T,wt=12): 1208 lane2(person2) | lane2(person4) | lane4(person2) | lane2(person1) | lane4(person1) | lane2(person3).  [resolve(1005,f,1166,c),merge(g),merge(h),merge(i)].
+
+given #505 (A,wt=20): 486 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane2(y).  [resolve(362,e,102,b)].
+
+given #506 (T,wt=10): 1256 lane2(person2) | lane2(person4) | lane2(person1) | lane4(person1) | lane2(person3).  [resolve(1208,c,1168,e),merge(f),merge(g),merge(h),merge(i)].
+
+given #507 (T,wt=10): 1257 lane2(person2) | lane2(person4) | lane2(person1) | lane2(person3) | lane3(person3).  [resolve(1256,d,1175,e),merge(e),merge(f),merge(h)].
+
+given #508 (T,wt=12): 1222 lane4(person4) | lane3(person4) | lane3(person3) | lane2(person4) | freestyle(person1) | freestyle(person2).  [resolve(1219,b,911,c),merge(g),merge(h)].
+
+given #509 (T,wt=12): 1277 lane4(person4) | lane3(person4) | lane3(person3) | lane2(person4) | freestyle(person1) | -USA(person4).  [factor(1272,c,h),unit_del(f,43)].
+
+given #510 (A,wt=18): 488 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane3(person2) | lane3(x).  [resolve(362,e,100,b)].
+
+given #511 (T,wt=14): 512 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -USA(x) | lane3(x) | lane1(x).  [factor(492,a,h),merge(i),unit_del(e,43)].
+
+given #512 (T,wt=14): 520 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -USA(x) | lane1(person3) | lane1(x).  [factor(505,a,h),merge(i),unit_del(e,43)].
+
+given #513 (T,wt=14): 562 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(person1) | lane3(x).  [factor(549,b,j),merge(g),merge(h)].
+
+given #514 (T,wt=14): 588 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -USA(x) | lane3(x) | lane2(x).  [factor(573,a,h),merge(h),unit_del(e,43)].
+
+given #515 (A,wt=20): 490 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane4(x).  [resolve(362,e,98,b)].
+
+given #516 (T,wt=14): 625 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -USA(x) | lane4(x) | lane2(x).  [factor(608,b,i),merge(g),unit_del(e,43)].
+
+given #517 (T,wt=14): 652 lane1(person1) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(person1) | lane2(x).  [factor(636,a,i),merge(g),merge(i)].
+
+given #518 (T,wt=14): 681 freestyle(person3) | freestyle(person2) | lane4(person3) | lane4(person4) | -USA(x) | lane2(person4) | lane4(x).  [factor(663,c,i),unit_del(e,43)].
+
+given #519 (T,wt=14): 682 freestyle(person3) | freestyle(person2) | lane4(person3) | lane4(person4) | -USA(x) | lane2(person4) | lane2(person3).  [factor(666,c,i),unit_del(e,43)].
+
+given #520 (A,wt=20): 491 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane2(y).  [resolve(362,e,97,b)].
+
+given #521 (T,wt=14): 758 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane3(person2) | lane3(x).  [resolve(749,c,100,b)].
+
+given #522 (T,wt=12): 1286 USA(person1) | freestyle(person1) | -USA(x) | lane3(x) | lane3(person2) | lane3(person3).  [resolve(758,c,43,a)].
+
+given #523 (T,wt=14): 759 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane3(person2) | lane1(y).  [resolve(749,c,99,b)].
+
+given #524 (T,wt=12): 1287 USA(person1) | freestyle(person1) | -USA(x) | lane3(x) | lane3(person2) | lane1(x).  [resolve(759,c,43,a)].
+
+given #525 (A,wt=20): 499 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane3(x) | lane2(y).  [resolve(362,e,88,b)].
+
+given #526 (T,wt=10): 1288 USA(person1) | freestyle(person1) | lane3(person4) | lane3(person2) | lane1(person4).  [resolve(1287,c,748,a),merge(f)].
+
+given #527 (T,wt=12): 1290 USA(person1) | lane3(person4) | lane3(person2) | lane1(person4) | freestyle(person2) | lane4(person4).  [resolve(1288,b,874,d),merge(g)].
+
+given #528 (T,wt=12): 1317 USA(person1) | lane3(person4) | lane3(person2) | lane1(person4) | lane4(person4) | -freestyle(person1).  [resolve(1290,e,182,b)].
+
+given #529 (T,wt=10): 1324 USA(person1) | lane3(person4) | lane3(person2) | lane1(person4) | lane4(person4).  [resolve(1317,f,1288,b),merge(f),merge(g),merge(h),merge(i)].
+
+given #530 (A,wt=20): 500 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane4(x).  [resolve(362,e,87,b)].
+
+given #531 (T,wt=10): 1325 USA(person1) | lane3(person4) | lane3(person2) | lane4(person4) | -lane1(person2).  [resolve(1324,d,184,b)].
+
+given #532 (T,wt=8): 1327 USA(person1) | lane3(person4) | lane3(person2) | lane4(person4).  [resolve(1325,e,239,a),merge(e)].
+
+given #533 (T,wt=14): 764 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane2(person2) | lane4(y) | lane4(x).  [resolve(749,c,94,b)].
+
+given #534 (T,wt=12): 1331 USA(person1) | freestyle(person1) | -USA(x) | lane2(person2) | lane4(x) | lane4(person3).  [resolve(764,c,43,a)].
+
+given #535 (A,wt=20): 501 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane2(y).  [resolve(362,e,86,b)].
+
+given #536 (T,wt=10): 1332 USA(person1) | freestyle(person1) | lane2(person2) | lane4(person4) | lane4(person3).  [resolve(1331,c,748,a),merge(f)].
+
+given #537 (T,wt=10): 1333 USA(person1) | lane2(person2) | lane4(person4) | lane4(person3) | freestyle(person2).  [resolve(1332,b,874,d),merge(f),merge(g)].
+
+given #538 (T,wt=10): 1370 USA(person1) | lane2(person2) | lane4(person4) | lane4(person3) | -freestyle(person1).  [resolve(1333,e,182,b)].
+
+given #539 (T,wt=8): 1379 USA(person1) | lane2(person2) | lane4(person4) | lane4(person3).  [resolve(1370,e,1332,b),merge(e),merge(f),merge(g),merge(h)].
+
+given #540 (A,wt=18): 502 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane3(person2) | lane3(x).  [resolve(362,e,85,b)].
+
+given #541 (T,wt=12): 1385 lane2(person2) | lane4(person4) | lane4(person3) | lane2(person1) | lane4(person2) | lane4(person1).  [resolve(1379,a,247,a),merge(d)].
+
+given #542 (T,wt=12): 1386 lane2(person2) | lane4(person4) | lane4(person3) | lane2(person1) | lane3(person1) | lane4(person1).  [resolve(1379,a,245,a),merge(d)].
+
+given #543 (T,wt=12): 1387 lane2(person2) | lane4(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -lane4(person2).  [resolve(1386,b,202,b)].
+
+given #544 (T,wt=14): 765 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane2(person2) | lane4(y) | lane2(y).  [resolve(749,c,93,b)].
+
+given #545 (A,wt=18): 503 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane3(person2) | lane1(y).  [resolve(362,e,84,b)].
+
+given #546 (T,wt=12): 1388 USA(person1) | freestyle(person1) | -USA(x) | lane2(person2) | lane4(x) | lane2(x).  [resolve(765,c,43,a)].
+
+given #547 (T,wt=10): 1389 USA(person1) | freestyle(person1) | lane2(person2) | lane4(person4) | lane2(person4).  [resolve(1388,c,748,a),merge(f)].
+
+given #548 (T,wt=10): 1390 USA(person1) | lane2(person2) | lane4(person4) | lane2(person4) | freestyle(person2).  [resolve(1389,b,874,d),merge(f),merge(g)].
+
+given #549 (T,wt=10): 1418 USA(person1) | lane2(person2) | lane4(person4) | lane2(person4) | -freestyle(person1).  [resolve(1390,e,182,b)].
+
+given #550 (A,wt=20): 504 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane3(x) | lane2(y).  [resolve(362,e,83,b)].
+
+given #551 (T,wt=8): 1425 USA(person1) | lane2(person2) | lane4(person4) | lane2(person4).  [resolve(1418,e,1389,b),merge(e),merge(f),merge(g),merge(h)].
+
+given #552 (T,wt=12): 1427 lane2(person2) | lane4(person4) | lane2(person4) | lane2(person1) | lane3(person1) | lane4(person1).  [resolve(1425,a,245,a),merge(d)].
+
+given #553 (T,wt=12): 1428 lane2(person2) | lane2(person4) | lane2(person1) | lane3(person1) | lane4(person1) | -lane4(person2).  [resolve(1427,b,202,b)].
+
+given #554 (T,wt=12): 1429 lane2(person2) | lane2(person4) | lane2(person1) | lane3(person1) | lane4(person1) | -lane4(person3).  [resolve(1427,b,201,b)].
+
+given #555 (A,wt=20): 505 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane4(x).  [resolve(362,e,82,b)].
+
+given #556 (T,wt=12): 1430 lane2(person2) | lane2(person4) | lane2(person1) | lane3(person1) | lane4(person1) | lane3(person3).  [resolve(1429,f,277,b),merge(g),merge(h),merge(i)].
+
+given #557 (T,wt=14): 767 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane2(person2) | lane2(x) | lane4(x).  [resolve(749,c,91,b)].
+
+given #558 (T,wt=12): 1431 USA(person1) | freestyle(person1) | -USA(x) | lane2(person2) | lane2(person3) | lane4(person3).  [resolve(767,c,43,a)].
+
+given #559 (T,wt=10): 1432 USA(person1) | freestyle(person1) | lane2(person2) | lane2(person3) | lane4(person3).  [resolve(1431,c,748,a),merge(f)].
+
+given #560 (A,wt=20): 506 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane2(y).  [resolve(362,e,81,b)].
+
+given #561 (T,wt=12): 1459 USA(person1) | lane2(person2) | lane2(person3) | lane4(person3) | -USA(x) | lane2(person1).  [factor(1444,c,h),merge(h),unit_del(e,43)].
+
+given #562 (T,wt=10): 1462 USA(person1) | lane2(person2) | lane2(person3) | lane4(person3) | lane2(person1).  [resolve(1459,e,748,a),merge(f)].
+
+given #563 (T,wt=14): 768 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane2(person2) | lane2(x) | lane2(y).  [resolve(749,c,90,b)].
+
+given #564 (T,wt=12): 1466 USA(person1) | freestyle(person1) | -USA(x) | lane2(person2) | lane2(person3) | lane2(x).  [resolve(768,c,43,a)].
+
+given #565 (A,wt=16): 516 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(person1) | lane1(x) | lane3(x).  [factor(499,b,j),merge(h)].
+
+given #566 (T,wt=10): 1467 USA(person1) | freestyle(person1) | lane2(person2) | lane2(person3) | lane2(person4).  [resolve(1466,c,748,a),merge(f)].
+
+given #567 (T,wt=12): 1499 USA(person1) | lane2(person2) | lane2(person3) | lane2(person4) | -USA(person4) | lane2(person1).  [factor(1492,d,g)].
+
+given #568 (T,wt=10): 1502 USA(person1) | lane2(person2) | lane2(person3) | lane2(person4) | lane2(person1).  [resolve(1499,e,748,a),merge(f)].
+
+given #569 (T,wt=12): 1504 lane2(person2) | lane2(person3) | lane2(person4) | lane2(person1) | freestyle(person1) | freestyle(person2).  [resolve(1502,a,996,c),merge(g),merge(h),merge(i)].
+
+given #570 (A,wt=16): 519 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(person1) | lane1(x) | lane1(person1).  [factor(501,b,j),merge(h)].
+
+given #571 (T,wt=12): 1524 lane2(person2) | lane2(person3) | lane2(person4) | lane2(person1) | freestyle(person1) | -USA(person4).  [factor(1521,c,g)].
+
+given #572 (T,wt=12): 1525 lane2(person2) | lane2(person3) | lane2(person4) | lane2(person1) | freestyle(person1) | -USA(person1).  [factor(1521,d,g)].
+
+given #573 (T,wt=10): 1526 lane2(person2) | lane2(person3) | lane2(person4) | lane2(person1) | freestyle(person1).  [resolve(1525,f,1502,a),merge(f),merge(g),merge(h),merge(i)].
+
+given #574 (T,wt=10): 1541 lane2(person2) | lane2(person3) | lane2(person4) | lane2(person1) | -USA(person1).  [resolve(1526,e,80,a)].
+
+given #575 (A,wt=20): 533 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane3(x) | lane2(y).  [resolve(365,e,88,b)].
+
+given #576 (T,wt=8): 1550 lane2(person2) | lane2(person3) | lane2(person4) | lane2(person1).  [resolve(1541,e,1502,a),merge(e),merge(f),merge(g),merge(h)].
+
+given #577 (T,wt=14): 772 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane3(person2) | lane3(x).  [resolve(749,c,85,b)].
+
+given #578 (T,wt=12): 1551 USA(person1) | freestyle(person1) | -USA(x) | lane1(person3) | lane3(person2) | lane3(person3).  [resolve(772,c,43,a)].
+
+given #579 (T,wt=10): 1552 USA(person1) | freestyle(person1) | lane1(person3) | lane3(person2) | lane3(person3).  [resolve(1551,c,748,a),merge(f)].
+
+given #580 (A,wt=20): 534 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane4(x).  [resolve(365,e,87,b)].
+
+given #581 (T,wt=14): 773 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane3(person2) | lane1(y).  [resolve(749,c,84,b)].
+
+given #582 (T,wt=12): 1573 USA(person1) | freestyle(person1) | -USA(x) | lane1(person3) | lane3(person2) | lane1(x).  [resolve(773,c,43,a)].
+
+given #583 (T,wt=10): 1574 USA(person1) | freestyle(person1) | lane1(person3) | lane3(person2) | lane1(person4).  [resolve(1573,c,748,a),merge(f)].
+
+given #584 (T,wt=12): 1577 USA(person1) | lane1(person3) | lane3(person2) | lane1(person4) | freestyle(person2) | lane4(person4).  [resolve(1574,b,874,d),merge(g)].
+
+given #585 (A,wt=20): 535 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane2(y).  [resolve(365,e,86,b)].
+
+given #586 (T,wt=12): 1609 USA(person1) | lane1(person3) | lane3(person2) | lane1(person4) | -USA(person4) | lane3(person1).  [factor(1602,d,g)].
+
+given #587 (T,wt=10): 1619 USA(person1) | lane1(person3) | lane3(person2) | lane1(person4) | lane3(person1).  [resolve(1609,e,748,a),merge(f)].
+
+given #588 (T,wt=10): 1620 USA(person1) | lane1(person3) | lane3(person2) | lane3(person1) | -lane1(person2).  [resolve(1619,d,184,b)].
+
+given #589 (T,wt=8): 1621 USA(person1) | lane1(person3) | lane3(person2) | lane3(person1).  [resolve(1620,e,239,a),merge(e)].
+
+given #590 (A,wt=20): 536 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane3(x) | lane2(y).  [resolve(365,e,83,b)].
+
+given #591 (T,wt=8): 1622 USA(person1) | lane3(person2) | lane3(person1) | -lane1(person2).  [resolve(1621,b,185,b)].
+
+given #592 (T,wt=6): 1623 USA(person1) | lane3(person2) | lane3(person1).  [resolve(1622,d,239,a),merge(d)].
+
+given #593 (T,wt=8): 1631 lane3(person2) | lane3(person1) | lane1(person1) | lane2(person1).  [resolve(1623,a,243,a),merge(e),merge(f)].
+
+given #594 (T,wt=6): 1632 lane3(person2) | lane3(person1) | lane2(person1).  [resolve(1631,c,274,a),merge(d)].
+
+given #595 (A,wt=20): 537 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane4(x).  [resolve(365,e,82,b)].
+
+given #596 (T,wt=12): 1612 USA(person1) | lane1(person3) | lane3(person2) | lane1(person4) | lane4(person4) | -freestyle(person1).  [resolve(1577,e,182,b)].
+
+given #597 (T,wt=10): 1633 USA(person1) | lane1(person3) | lane3(person2) | lane1(person4) | lane4(person4).  [resolve(1612,f,1574,b),merge(f),merge(g),merge(h),merge(i)].
+
+given #598 (T,wt=10): 1634 USA(person1) | lane1(person3) | lane3(person2) | lane4(person4) | -lane1(person2).  [resolve(1633,d,184,b)].
+
+given #599 (T,wt=8): 1635 USA(person1) | lane1(person3) | lane3(person2) | lane4(person4).  [resolve(1634,e,239,a),merge(e)].
+
+given #600 (A,wt=20): 538 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane2(y).  [resolve(365,e,81,b)].
+
+given #601 (T,wt=8): 1636 USA(person1) | lane3(person2) | lane4(person4) | -lane1(person2).  [resolve(1635,b,185,b)].
+
+given #602 (T,wt=6): 1637 USA(person1) | lane3(person2) | lane4(person4).  [resolve(1636,d,239,a),merge(d)].
+
+given #603 (T,wt=12): 1628 lane3(person2) | lane3(person1) | freestyle(person1) | freestyle(person2) | lane3(person4) | lane1(person1).  [resolve(1623,a,906,c),merge(e)].
+
+given #604 (T,wt=14): 806 freestyle(person1) | freestyle(person2) | -USA(x) | lane3(x) | lane4(x) | lane3(person3) | lane4(person3).  [resolve(420,c,43,a)].
+
+given #605 (A,wt=18): 543 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | -Daisy(x) | -USA(person1) | lane1(x) | lane2(x) | lane3(x).  [factor(536,b,j)].
+
+given #606 (T,wt=14): 811 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | -Emily(x) | lane4(person3) | lane4(x).  [resolve(792,a,75,b)].
+
+given #607 (T,wt=12): 1667 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | lane4(person3) | lane4(person4).  [resolve(811,e,44,a)].
+
+given #608 (T,wt=12): 1673 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person3) | lane4(person4) | lane4(person1).  [factor(1669,e,h),unit_del(f,44)].
+
+given #609 (T,wt=10): 1675 freestyle(person1) | freestyle(person2) | lane4(person3) | lane4(person4) | lane4(person1).  [resolve(1673,a,419,c),merge(f),merge(g)].
+
+given #610 (A,wt=18): 544 lane2(person3) | lane2(person1) | lane4(person3) | lane3(person3) | -Daisy(x) | -USA(person1) | lane1(x) | lane2(x) | lane1(person1).  [factor(538,b,j)].
+
+given #611 (T,wt=12): 1674 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person3) | lane4(person4) | UK(person4).  [factor(1671,e,h),unit_del(f,44)].
+
+given #612 (T,wt=12): 1722 freestyle(person1) | lane4(person3) | lane4(person4) | lane4(person1) | -USA(person4) | lane2(person2).  [factor(1706,c,g)].
+
+given #613 (T,wt=12): 1723 freestyle(person1) | lane4(person3) | lane4(person4) | lane4(person1) | -USA(person1) | lane2(person2).  [factor(1706,d,g)].
+
+given #614 (T,wt=10): 1732 freestyle(person1) | lane4(person3) | lane4(person4) | lane4(person1) | lane2(person2).  [resolve(1723,e,1379,a),merge(f),merge(g),merge(h)].
+
+given #615 (A,wt=16): 546 freestyle(person4) | freestyle(person3) | freestyle(person2) | UK(x) | lane4(x) | Betty(x) | Carol(x) | Daisy(x).  [resolve(326,d,37,d)].
+
+given #616 (T,wt=10): 1754 lane4(person3) | lane4(person4) | lane4(person1) | lane2(person2) | -USA(person1).  [resolve(1732,a,80,a)].
+
+given #617 (T,wt=8): 1777 lane4(person3) | lane4(person4) | lane4(person1) | lane2(person2).  [resolve(1754,e,1379,a),merge(e),merge(f),merge(g)].
+
+given #618 (T,wt=8): 1778 lane4(person3) | lane4(person1) | lane2(person2) | -lane4(person2).  [resolve(1777,b,202,b)].
+
+given #619 (T,wt=12): 1729 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person3) | lane4(person4) | -UK(person3).  [resolve(1674,f,216,b)].
+
+given #620 (A,wt=20): 548 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane4(x).  [resolve(366,e,103,b)].
+
+given #621 (T,wt=12): 1779 lane4(person3) | lane4(person1) | lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1).  [resolve(1778,d,804,c),merge(d)].
+
+given #622 (T,wt=12): 1780 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person3) | lane4(person4) | UK(person2).  [resolve(1729,f,302,a)].
+
+given #623 (T,wt=10): 1782 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person3) | lane4(person4).  [resolve(1780,f,251,b),merge(f)].
+
+given #624 (T,wt=8): 1783 freestyle(person1) | freestyle(person2) | lane4(person3) | lane4(person4).  [resolve(1782,a,419,c),merge(e),merge(f)].
+
+given #625 (A,wt=20): 549 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane2(y).  [resolve(366,e,102,b)].
+
+given #626 (T,wt=10): 1822 freestyle(person1) | lane4(person3) | lane4(person4) | -USA(person4) | lane2(person2).  [factor(1812,c,f)].
+
+given #627 (T,wt=12): 1781 lane4(person1) | lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1) | -lane4(person2).  [resolve(1779,a,203,b)].
+
+given #628 (T,wt=10): 1824 lane4(person1) | lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1).  [resolve(1781,f,804,c),merge(f),merge(g),merge(h),merge(i)].
+
+given #629 (T,wt=8): 1825 lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1).  [resolve(1824,a,845,e),merge(e),merge(f),merge(g),merge(h)].
+
+given #630 (A,wt=20): 550 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane1(y) | lane4(x).  [resolve(366,e,101,b)].
+
+given #631 (T,wt=8): 1826 lane2(person2) | lane3(person2) | lane2(person1) | -lane2(person3).  [resolve(1825,b,189,b)].
+
+given #632 (T,wt=6): 1827 lane2(person2) | lane3(person2) | lane2(person1).  [resolve(1826,d,1197,d),merge(d),merge(e),merge(f)].
+
+given #633 (T,wt=12): 1812 freestyle(person1) | lane4(person3) | lane4(person4) | -USA(x) | lane2(person2) | lane4(x).  [factor(1793,b,h),unit_del(d,43)].
+
+given #634 (T,wt=12): 1814 freestyle(person1) | lane4(person3) | lane4(person4) | -USA(x) | lane2(person2) | lane2(person3).  [factor(1796,b,h),unit_del(d,43)].
+
+given #635 (A,wt=20): 551 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane4(x).  [resolve(366,e,98,b)].
+
+given #636 (T,wt=10): 1831 freestyle(person1) | lane4(person3) | lane4(person4) | lane2(person2) | lane2(person3).  [resolve(1814,d,1379,a),merge(f),merge(g),merge(h)].
+
+given #637 (T,wt=10): 1854 lane4(person3) | lane4(person4) | lane2(person2) | lane2(person3) | -USA(person1).  [resolve(1831,a,80,a)].
+
+given #638 (T,wt=8): 1870 lane4(person3) | lane4(person4) | lane2(person2) | lane2(person3).  [resolve(1854,e,1379,a),merge(e),merge(f),merge(g)].
+
+given #639 (T,wt=8): 1871 lane4(person3) | lane2(person2) | lane2(person3) | -lane4(person1).  [resolve(1870,b,204,b)].
+
+given #640 (A,wt=20): 552 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane2(y).  [resolve(366,e,97,b)].
+
+given #641 (T,wt=8): 1872 lane4(person3) | lane2(person2) | lane2(person3) | -lane4(person2).  [resolve(1870,b,202,b)].
+
+given #642 (T,wt=10): 1873 lane4(person3) | lane2(person2) | lane2(person3) | lane2(person1) | lane3(person1).  [resolve(1871,d,368,d),merge(d),merge(g)].
+
+given #643 (T,wt=10): 1874 lane2(person2) | lane2(person3) | lane2(person1) | lane3(person1) | -lane4(person1).  [resolve(1873,a,205,b)].
+
+given #644 (T,wt=8): 1876 lane2(person2) | lane2(person3) | lane2(person1) | lane3(person1).  [resolve(1874,e,368,d),merge(e),merge(f),merge(g),merge(h)].
+
+given #645 (A,wt=20): 553 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane1(y) | lane4(x).  [resolve(366,e,96,b)].
+
+given #646 (T,wt=12): 1820 freestyle(person1) | lane4(person3) | lane4(person4) | -USA(person4) | lane3(person4) | lane3(person3).  [factor(1806,c,f)].
+
+given #647 (T,wt=12): 1821 freestyle(person1) | lane4(person3) | lane4(person4) | -USA(person4) | lane3(person4) | lane1(person4).  [factor(1809,c,f)].
+
+given #648 (T,wt=12): 1823 freestyle(person1) | lane4(person3) | lane4(person4) | -USA(person4) | lane1(person3) | lane1(person4).  [factor(1816,c,f)].
+
+given #649 (T,wt=12): 1877 freestyle(person1) | lane4(person3) | lane4(person4) | lane3(person4) | lane1(person4) | USA(person1).  [resolve(1821,d,748,a)].
+
+given #650 (A,wt=20): 555 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane3(x) | lane2(y).  [resolve(366,e,88,b)].
+
+given #651 (T,wt=12): 1878 freestyle(person1) | lane4(person3) | lane4(person4) | lane1(person3) | lane1(person4) | USA(person1).  [resolve(1823,d,748,a)].
+
+given #652 (T,wt=12): 1879 lane4(person3) | lane4(person4) | lane3(person4) | lane1(person4) | USA(person1) | lane2(person3).  [resolve(1877,a,1007,e),merge(f),merge(g),merge(h)].
+
+given #653 (T,wt=12): 1880 lane4(person3) | lane4(person4) | lane3(person4) | lane1(person4) | USA(person1) | freestyle(person2).  [resolve(1877,a,874,d),merge(g),merge(h)].
+
+given #654 (T,wt=12): 1910 lane4(person3) | lane4(person4) | lane3(person4) | lane1(person4) | USA(person1) | -USA(person4).  [factor(1904,b,h),merge(g),merge(h)].
+
+given #655 (A,wt=20): 556 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane4(x).  [resolve(366,e,87,b)].
+
+given #656 (T,wt=10): 1949 lane4(person3) | lane4(person4) | lane3(person4) | lane1(person4) | USA(person1).  [resolve(1910,f,748,a),merge(f)].
+
+given #657 (T,wt=10): 1950 lane4(person3) | lane4(person4) | lane3(person4) | USA(person1) | -lane1(person1).  [resolve(1949,d,186,b)].
+
+given #658 (T,wt=10): 1951 lane4(person3) | lane4(person4) | lane3(person4) | USA(person1) | -lane1(person2).  [resolve(1949,d,184,b)].
+
+given #659 (T,wt=10): 1952 lane4(person3) | lane4(person4) | lane3(person4) | USA(person1) | -lane1(person3).  [resolve(1949,d,183,b)].
+
+given #660 (A,wt=20): 557 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane2(y).  [resolve(366,e,86,b)].
+
+given #661 (T,wt=12): 1912 lane4(person3) | lane4(person4) | lane1(person3) | lane1(person4) | USA(person1) | lane2(person3).  [resolve(1878,a,1007,e),merge(f),merge(g),merge(h)].
+
+given #662 (T,wt=12): 1913 lane4(person3) | lane4(person4) | lane1(person3) | lane1(person4) | USA(person1) | freestyle(person2).  [resolve(1878,a,874,d),merge(g),merge(h)].
+
+given #663 (T,wt=12): 1944 lane4(person3) | lane4(person4) | lane1(person3) | lane1(person4) | USA(person1) | -USA(person4).  [factor(1940,b,g),merge(g)].
+
+given #664 (T,wt=10): 1957 lane4(person3) | lane4(person4) | lane1(person3) | lane1(person4) | USA(person1).  [resolve(1944,f,748,a),merge(f)].
+
+given #665 (A,wt=20): 558 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane3(x) | lane2(y).  [resolve(366,e,83,b)].
+
+given #666 (T,wt=10): 1958 lane4(person3) | lane4(person4) | lane1(person3) | USA(person1) | -lane1(person1).  [resolve(1957,d,186,b)].
+
+given #667 (T,wt=10): 1959 lane4(person3) | lane4(person4) | lane1(person3) | USA(person1) | -lane1(person2).  [resolve(1957,d,184,b)].
+
+given #668 (T,wt=14): 812 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | -Emily(x) | lane4(person3) | UK(person3).  [resolve(792,a,74,b)].
+
+given #669 (T,wt=12): 1961 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | lane4(person3) | UK(person3).  [resolve(812,e,44,a)].
+
+given #670 (A,wt=20): 559 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane4(x).  [resolve(366,e,82,b)].
+
+given #671 (T,wt=14): 813 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | -Emily(x) | UK(x) | lane4(x).  [resolve(792,a,73,b)].
+
+given #672 (T,wt=12): 1966 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | UK(person4) | lane4(person4).  [resolve(813,e,44,a)].
+
+given #673 (T,wt=10): 1973 freestyle(person3) | freestyle(person1) | freestyle(person2) | UK(person4) | lane4(person4).  [factor(1970,d,g),merge(g),unit_del(f,44)].
+
+given #674 (T,wt=10): 1978 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person4) | -UK(person3).  [resolve(1973,d,216,b)].
+
+given #675 (A,wt=20): 560 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane2(y).  [resolve(366,e,81,b)].
+
+given #676 (T,wt=10): 1979 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person4) | UK(person2).  [resolve(1978,e,302,a)].
+
+given #677 (T,wt=8): 1980 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person4).  [resolve(1979,e,251,b),merge(e)].
+
+given #678 (T,wt=6): 1981 freestyle(person1) | freestyle(person2) | lane4(person4).  [resolve(1980,a,419,c),merge(d),merge(e)].
+
+given #679 (T,wt=12): 1993 freestyle(person1) | lane4(person4) | -Daisy(x) | -USA(y) | lane2(person2) | lane3(person2).  [resolve(1981,b,92,b)].
+
+given #680 (A,wt=16): 564 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -USA(x) | lane3(x) | lane1(x) | lane2(x).  [factor(554,a,h),unit_del(e,43)].
+
+given #681 (T,wt=10): 2012 freestyle(person1) | lane4(person4) | -USA(x) | lane2(person2) | lane3(person2).  [resolve(1993,c,43,a)].
+
+given #682 (T,wt=8): 2014 freestyle(person1) | lane4(person4) | lane2(person2) | lane3(person2).  [resolve(2012,c,1637,a),merge(e),merge(f)].
+
+given #683 (T,wt=8): 2030 lane4(person4) | lane2(person2) | lane3(person2) | -USA(person1).  [resolve(2014,a,80,a)].
+
+given #684 (T,wt=6): 2036 lane4(person4) | lane2(person2) | lane3(person2).  [resolve(2030,d,1637,a),merge(d),merge(e)].
+
+given #685 (A,wt=16): 565 lane2(person3) | lane2(person1) | lane3(person1) | lane4(person1) | -USA(x) | lane1(person3) | lane1(x) | lane2(x).  [factor(560,a,h),unit_del(e,43)].
+
+given #686 (T,wt=6): 2037 lane2(person2) | lane3(person2) | -lane4(person1).  [resolve(2036,a,204,b)].
+
+given #687 (T,wt=6): 2038 lane2(person2) | lane3(person2) | -lane4(person2).  [resolve(2036,a,202,b)].
+
+given #688 (T,wt=6): 2039 lane2(person2) | lane3(person2) | -lane4(person3).  [resolve(2036,a,201,b)].
+
+given #689 (T,wt=6): 2041 lane2(person2) | lane3(person2) | lane3(person3).  [resolve(2039,c,276,b),merge(d)].
+
+given #690 (A,wt=20): 569 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane4(x).  [resolve(369,e,103,b)].
+
+given #691 (T,wt=6): 2042 lane3(person2) | lane3(person3) | -lane2(person1).  [resolve(2041,a,194,b)].
+
+given #692 (T,wt=12): 2007 freestyle(person1) | lane4(person4) | -Daisy(x) | -USA(person4) | lane2(person2) | lane4(x).  [factor(1991,b,f)].
+
+given #693 (T,wt=12): 2008 freestyle(person1) | lane4(person4) | -Daisy(x) | -USA(person4) | lane2(person2) | lane2(person4).  [factor(1992,b,f)].
+
+given #694 (T,wt=10): 2043 freestyle(person1) | lane4(person4) | -USA(person4) | lane2(person2) | lane2(person4).  [resolve(2008,c,43,a)].
+
+given #695 (A,wt=20): 571 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane1(y) | lane4(x).  [resolve(369,e,101,b)].
+
+given #696 (T,wt=14): 814 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | -Emily(x) | UK(x) | UK(person3).  [resolve(792,a,72,b)].
+
+given #697 (T,wt=12): 2044 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | UK(person4) | UK(person3).  [resolve(814,e,44,a)].
+
+given #698 (T,wt=10): 2050 freestyle(person3) | freestyle(person1) | freestyle(person2) | UK(person4) | UK(person3).  [factor(2049,d,g),unit_del(f,44)].
+
+given #699 (T,wt=14): 842 freestyle(person1) | freestyle(person2) | -USA(x) | lane3(x) | lane4(x) | lane3(person3) | lane2(x).  [resolve(421,c,43,a)].
+
+given #700 (A,wt=20): 572 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane4(x).  [resolve(369,e,98,b)].
+
+given #701 (T,wt=14): 848 freestyle(person1) | freestyle(person2) | -USA(x) | lane3(x) | lane4(x) | lane1(x) | lane4(person3).  [resolve(422,c,43,a)].
+
+given #702 (T,wt=14): 861 freestyle(person3) | freestyle(person2) | lane4(person4) | -Daisy(x) | -USA(y) | lane2(person4) | lane3(person4).  [resolve(847,a,92,b)].
+
+given #703 (T,wt=12): 2057 freestyle(person3) | freestyle(person2) | lane4(person4) | -USA(x) | lane2(person4) | lane3(person4).  [resolve(861,d,43,a)].
+
+given #704 (T,wt=12): 2058 freestyle(person3) | freestyle(person2) | lane4(person4) | lane2(person4) | lane3(person4) | lane2(person2).  [resolve(2057,d,1425,a),merge(g),merge(h)].
+
+given #705 (A,wt=20): 574 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane1(y) | lane4(x).  [resolve(369,e,96,b)].
+
+given #706 (T,wt=12): 2059 freestyle(person3) | freestyle(person2) | lane4(person4) | lane2(person4) | lane3(person4) | lane3(person3).  [resolve(2057,d,1219,b),merge(f),merge(g),merge(i)].
+
+given #707 (T,wt=12): 2060 freestyle(person2) | lane4(person4) | lane2(person4) | lane3(person4) | lane2(person2) | -freestyle(person1).  [resolve(2058,a,181,b)].
+
+given #708 (T,wt=12): 2081 freestyle(person2) | lane4(person4) | lane2(person4) | lane3(person4) | lane3(person3) | -freestyle(person1).  [resolve(2059,a,181,b)].
+
+given #709 (T,wt=12): 2092 freestyle(person2) | lane4(person4) | lane2(person4) | lane3(person4) | lane3(person3) | -USA(person4).  [factor(2082,d,g)].
+
+given #710 (A,wt=20): 580 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane3(x) | lane2(y).  [resolve(369,e,88,b)].
+
+given #711 (T,wt=14): 886 freestyle(person2) | lane4(person4) | USA(person1) | -Daisy(x) | -USA(y) | lane2(person3) | lane3(person3).  [resolve(873,a,92,b)].
+
+given #712 (T,wt=12): 2093 freestyle(person2) | lane4(person4) | USA(person1) | -USA(x) | lane2(person3) | lane3(person3).  [resolve(886,d,43,a)].
+
+given #713 (T,wt=10): 2094 freestyle(person2) | lane4(person4) | USA(person1) | lane2(person3) | lane3(person3).  [resolve(2093,d,748,a),merge(f)].
+
+given #714 (T,wt=10): 2095 lane4(person4) | USA(person1) | lane2(person3) | lane3(person3) | -freestyle(person1).  [resolve(2094,a,182,b)].
+
+given #715 (A,wt=20): 581 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane4(x).  [resolve(369,e,87,b)].
+
+given #716 (T,wt=14): 899 freestyle(person2) | lane4(person4) | USA(person1) | -Daisy(x) | -USA(person4) | lane2(person3) | lane4(x).  [factor(885,b,g)].
+
+given #717 (T,wt=14): 910 freestyle(person1) | freestyle(person2) | -USA(x) | lane3(x) | lane2(person3) | lane3(person3) | lane4(person3).  [resolve(425,c,43,a)].
+
+given #718 (T,wt=14): 921 freestyle(person1) | lane2(person4) | lane3(person4) | lane3(person2) | -Daisy(x) | -USA(y) | lane2(person2).  [resolve(912,b,92,b),merge(h)].
+
+given #719 (T,wt=12): 2118 freestyle(person1) | lane2(person4) | lane3(person4) | lane3(person2) | -USA(x) | lane2(person2).  [resolve(921,e,43,a)].
+
+given #720 (A,wt=20): 582 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane2(y).  [resolve(369,e,86,b)].
+
+given #721 (T,wt=10): 2120 freestyle(person1) | lane2(person4) | lane3(person4) | lane3(person2) | lane2(person2).  [resolve(2118,e,846,a),merge(f),merge(g),merge(h)].
+
+given #722 (T,wt=10): 2135 lane2(person4) | lane3(person4) | lane3(person2) | lane2(person2) | -USA(person1).  [resolve(2120,a,80,a)].
+
+given #723 (T,wt=8): 2137 lane2(person4) | lane3(person4) | lane3(person2) | lane2(person2).  [resolve(2135,e,846,a),merge(e),merge(f),merge(g)].
+
+given #724 (T,wt=8): 2138 lane3(person4) | lane3(person2) | lane2(person2) | -lane2(person1).  [resolve(2137,a,192,b)].
+
+given #725 (A,wt=20): 583 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane3(x) | lane2(y).  [resolve(369,e,83,b)].
+
+given #726 (T,wt=8): 2139 lane3(person4) | lane3(person2) | lane2(person2) | -lane2(person3).  [resolve(2137,a,189,b)].
+
+given #727 (T,wt=8): 2140 lane3(person4) | lane3(person2) | lane2(person2) | lane3(person1).  [resolve(2138,d,1632,c),merge(d)].
+
+given #728 (T,wt=8): 2141 lane3(person4) | lane3(person2) | lane3(person1) | -lane2(person1).  [resolve(2140,c,194,b)].
+
+given #729 (T,wt=6): 2142 lane3(person4) | lane3(person2) | lane3(person1).  [resolve(2141,d,1632,c),merge(d),merge(e)].
+
+given #730 (A,wt=20): 584 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane4(x).  [resolve(369,e,82,b)].
+
+given #731 (T,wt=6): 2143 lane3(person2) | lane3(person1) | -lane3(person3).  [resolve(2142,a,195,b)].
+
+given #732 (T,wt=4): 2144 lane3(person2) | lane3(person1).  [resolve(2143,c,1246,a),merge(c),merge(d)].
+
+given #733 (T,wt=14): 927 freestyle(person1) | lane2(person4) | lane3(person4) | lane3(person2) | -Daisy(x) | -USA(person4) | lane3(x).  [factor(917,c,g)].
+
+given #734 (T,wt=14): 928 freestyle(person1) | freestyle(person2) | -USA(x) | lane3(x) | lane2(person3) | lane3(person3) | lane2(x).  [resolve(426,c,43,a)].
+
+given #735 (A,wt=20): 585 lane2(person3) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane2(y).  [resolve(369,e,81,b)].
+
+given #736 (T,wt=14): 935 freestyle(person1) | freestyle(person2) | -USA(x) | lane3(x) | lane2(person3) | lane1(x) | lane4(person3).  [resolve(427,c,43,a)].
+
+given #737 (T,wt=14): 942 freestyle(person1) | freestyle(person2) | -USA(x) | lane3(x) | lane2(person3) | lane1(x) | lane2(x).  [resolve(428,c,43,a)].
+
+given #738 (T,wt=14): 999 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | -Emily(x) | lane4(person3) | lane4(x).  [resolve(997,a,75,b)].
+
+given #739 (T,wt=12): 2145 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | lane4(person3) | lane4(person4).  [resolve(999,e,44,a)].
+
+given #740 (A,wt=20): 594 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane4(x).  [resolve(370,e,103,b)].
+
+given #741 (T,wt=12): 2151 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person3) | lane4(person4) | lane4(person1).  [factor(2147,e,h),unit_del(f,44)].
+
+given #742 (T,wt=12): 2152 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person3) | lane4(person4) | UK(person4).  [factor(2149,e,h),unit_del(f,44)].
+
+given #743 (T,wt=12): 2153 freestyle(person3) | freestyle(person1) | lane4(person3) | lane4(person4) | lane4(person1) | -freestyle(person2).  [resolve(2151,c,178,b)].
+
+given #744 (T,wt=10): 2175 freestyle(person3) | freestyle(person1) | lane4(person3) | lane4(person4) | lane4(person1).  [resolve(2153,f,1981,b),merge(f),merge(g)].
+
+given #745 (A,wt=20): 596 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane1(y) | lane4(x).  [resolve(370,e,101,b)].
+
+given #746 (T,wt=10): 2176 freestyle(person1) | lane4(person3) | lane4(person4) | lane4(person1) | -freestyle(person2).  [resolve(2175,a,179,b)].
+
+given #747 (T,wt=8): 2182 freestyle(person1) | lane4(person3) | lane4(person4) | lane4(person1).  [resolve(2176,e,1981,b),merge(e),merge(f)].
+
+given #748 (T,wt=8): 2213 lane4(person3) | lane4(person4) | lane4(person1) | -USA(person1).  [resolve(2182,a,80,a)].
+
+given #749 (T,wt=8): 2231 lane4(person3) | lane4(person4) | lane4(person1) | lane3(person2).  [resolve(2213,d,1637,a),merge(e)].
+
+given #750 (A,wt=20): 599 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane4(x).  [resolve(370,e,98,b)].
+
+given #751 (T,wt=8): 2233 lane4(person3) | lane4(person1) | lane3(person2) | -lane4(person2).  [resolve(2231,b,202,b)].
+
+given #752 (T,wt=10): 2185 lane4(person3) | lane4(person4) | lane4(person1) | USA(person1) | lane2(person3).  [resolve(2182,a,1007,e),merge(d),merge(e)].
+
+given #753 (T,wt=8): 2234 lane4(person3) | lane4(person4) | lane4(person1) | lane2(person3).  [resolve(2185,d,2213,d),merge(e),merge(f),merge(g)].
+
+given #754 (T,wt=8): 2235 lane4(person3) | lane4(person1) | lane2(person3) | -lane4(person2).  [resolve(2234,b,202,b)].
+
+given #755 (A,wt=20): 600 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane2(y).  [resolve(370,e,97,b)].
+
+given #756 (T,wt=10): 2186 lane4(person3) | lane4(person4) | lane4(person1) | freestyle(person2) | USA(person1).  [resolve(2182,a,874,d),merge(e)].
+
+given #757 (T,wt=10): 2187 lane4(person3) | lane4(person4) | lane4(person1) | freestyle(person3) | freestyle(person2).  [resolve(2182,a,849,d),merge(f)].
+
+given #758 (T,wt=10): 2229 lane4(person3) | lane4(person4) | lane4(person1) | -USA(person4) | lane2(person1).  [factor(2220,b,f)].
+
+given #759 (T,wt=10): 2232 lane4(person3) | lane4(person4) | lane4(person1) | lane3(person4) | lane3(person3).  [resolve(2213,d,1215,b),merge(d),merge(g)].
+
+given #760 (A,wt=20): 601 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane1(y) | lane4(x).  [resolve(370,e,96,b)].
+
+given #761 (T,wt=10): 2236 lane4(person3) | lane4(person4) | lane4(person1) | USA(person1) | -freestyle(person1).  [resolve(2186,d,182,b)].
+
+given #762 (T,wt=8): 2243 lane4(person3) | lane4(person4) | lane4(person1) | USA(person1).  [resolve(2236,e,2182,a),merge(e),merge(f),merge(g)].
+
+given #763 (T,wt=6): 2244 lane4(person3) | lane4(person4) | lane4(person1).  [resolve(2243,d,2213,d),merge(d),merge(e),merge(f)].
+
+given #764 (T,wt=6): 2245 lane4(person3) | lane4(person1) | -lane4(person2).  [resolve(2244,b,202,b)].
+
+given #765 (A,wt=20): 602 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane1(y) | lane2(y).  [resolve(370,e,95,b)].
+
+given #766 (T,wt=12): 2172 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person3) | lane4(person4) | -UK(person2).  [resolve(2152,f,217,b)].
+
+given #767 (T,wt=12): 2173 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person3) | lane4(person4) | -UK(person3).  [resolve(2152,f,216,b)].
+
+given #768 (T,wt=12): 2249 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person3) | lane4(person4) | UK(person2).  [resolve(2173,f,302,a)].
+
+given #769 (T,wt=10): 2250 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person3) | lane4(person4).  [resolve(2249,f,2172,f),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #770 (A,wt=18): 603 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane2(person2) | lane4(y) | lane4(x).  [resolve(370,e,94,b)].
+
+given #771 (T,wt=10): 2251 freestyle(person3) | freestyle(person1) | lane4(person3) | lane4(person4) | -freestyle(person2).  [resolve(2250,c,178,b)].
+
+given #772 (T,wt=8): 2265 freestyle(person3) | freestyle(person1) | lane4(person3) | lane4(person4).  [resolve(2251,e,1981,b),merge(e),merge(f)].
+
+given #773 (T,wt=8): 2266 freestyle(person1) | lane4(person3) | lane4(person4) | -freestyle(person2).  [resolve(2265,a,179,b)].
+
+given #774 (T,wt=6): 2272 freestyle(person1) | lane4(person3) | lane4(person4).  [resolve(2266,d,1981,b),merge(d),merge(e)].
+
+given #775 (A,wt=18): 606 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane2(person2) | lane2(x) | lane4(x).  [resolve(370,e,91,b)].
+
+given #776 (T,wt=6): 2304 lane4(person3) | lane4(person4) | -USA(person1).  [resolve(2272,a,80,a)].
+
+given #777 (T,wt=6): 2323 lane4(person3) | lane4(person4) | lane3(person2).  [resolve(2304,c,1637,a),merge(d)].
+
+given #778 (T,wt=6): 2325 lane4(person3) | lane4(person4) | lane2(person2).  [resolve(2304,c,1379,a),merge(d),merge(e)].
+
+given #779 (T,wt=6): 2327 lane4(person3) | lane3(person2) | -lane4(person1).  [resolve(2323,b,204,b)].
+
+given #780 (A,wt=18): 607 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane2(person2) | lane2(x) | lane2(y).  [resolve(370,e,90,b)].
+
+given #781 (T,wt=6): 2328 lane4(person3) | lane3(person2) | -lane4(person2).  [resolve(2323,b,202,b)].
+
+given #782 (T,wt=6): 2329 lane4(person3) | lane2(person2) | -lane4(person1).  [resolve(2325,b,204,b)].
+
+given #783 (T,wt=6): 2330 lane4(person3) | lane2(person2) | -lane4(person2).  [resolve(2325,b,202,b)].
+
+given #784 (T,wt=8): 2276 lane4(person3) | lane4(person4) | USA(person1) | lane2(person3).  [resolve(2272,a,1007,e),merge(c),merge(d)].
+
+given #785 (A,wt=20): 609 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane4(x).  [resolve(370,e,87,b)].
+
+given #786 (T,wt=6): 2332 lane4(person3) | lane4(person4) | lane2(person3).  [resolve(2276,c,2304,c),merge(d),merge(e)].
+
+given #787 (T,wt=6): 2333 lane4(person3) | lane2(person3) | -lane4(person1).  [resolve(2332,b,204,b)].
+
+given #788 (T,wt=6): 2334 lane4(person3) | lane2(person3) | -lane4(person2).  [resolve(2332,b,202,b)].
+
+given #789 (T,wt=8): 2277 lane4(person3) | lane4(person4) | freestyle(person2) | USA(person1).  [resolve(2272,a,874,d),merge(d)].
+
+given #790 (A,wt=20): 613 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane3(x) | lane2(y).  [resolve(370,e,83,b)].
+
+given #791 (T,wt=8): 2278 lane4(person3) | lane4(person4) | freestyle(person3) | freestyle(person2).  [resolve(2272,a,849,d),merge(e)].
+
+given #792 (T,wt=8): 2321 lane4(person3) | lane4(person4) | -USA(person4) | lane2(person1).  [factor(2311,b,e)].
+
+given #793 (T,wt=8): 2326 lane4(person3) | lane4(person4) | lane3(person4) | lane3(person3).  [resolve(2304,c,1215,b),merge(c),merge(f)].
+
+given #794 (T,wt=8): 2335 lane4(person3) | lane4(person4) | USA(person1) | -freestyle(person1).  [resolve(2277,c,182,b)].
+
+given #795 (A,wt=20): 614 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane4(x).  [resolve(370,e,82,b)].
+
+given #796 (T,wt=6): 2343 lane4(person3) | lane4(person4) | USA(person1).  [resolve(2335,d,2272,a),merge(d),merge(e)].
+
+given #797 (T,wt=4): 2344 lane4(person3) | lane4(person4).  [resolve(2343,c,2304,c),merge(c),merge(d)].
+
+given #798 (T,wt=4): 2345 lane4(person3) | -lane4(person1).  [resolve(2344,b,204,b)].
+
+given #799 (T,wt=4): 2346 lane4(person3) | -lane4(person2).  [resolve(2344,b,202,b)].
+
+given #800 (A,wt=20): 615 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane2(y).  [resolve(370,e,81,b)].
+
+given #801 (T,wt=12): 2331 lane4(person3) | lane2(person2) | lane2(person4) | lane2(person1) | lane3(person1) | lane3(person3).  [resolve(2329,c,1430,e),merge(c)].
+
+given #802 (T,wt=12): 2347 lane2(person2) | lane2(person4) | lane2(person1) | lane3(person1) | lane3(person3) | -lane4(person1).  [resolve(2331,a,205,b)].
+
+given #803 (T,wt=10): 2349 lane2(person2) | lane2(person4) | lane2(person1) | lane3(person1) | lane3(person3).  [resolve(2347,f,1430,e),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #804 (T,wt=10): 2350 lane2(person2) | lane2(person1) | lane3(person1) | lane3(person3) | -lane2(person3).  [resolve(2349,b,189,b)].
+
+given #805 (A,wt=16): 618 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(person1) | lane4(person1) | lane4(x).  [factor(596,a,i),merge(g)].
+
+given #806 (T,wt=8): 2351 lane2(person2) | lane2(person1) | lane3(person1) | lane3(person3).  [resolve(2350,e,1876,b),merge(e),merge(f),merge(g)].
+
+given #807 (T,wt=14): 1000 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | -Emily(x) | lane4(person3) | UK(person3).  [resolve(997,a,74,b)].
+
+given #808 (T,wt=12): 2352 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | lane4(person3) | UK(person3).  [resolve(1000,e,44,a)].
+
+given #809 (T,wt=14): 1001 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | -Emily(x) | UK(x) | lane4(x).  [resolve(997,a,73,b)].
+
+given #810 (A,wt=16): 623 lane1(person1) | lane3(person3) | lane3(person1) | lane1(person3) | -Daisy(x) | -USA(person1) | lane2(x) | lane4(x).  [factor(601,a,i),merge(g)].
+
+given #811 (T,wt=12): 2357 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | UK(person4) | lane4(person4).  [resolve(1001,e,44,a)].
+
+given #812 (T,wt=10): 2364 freestyle(person3) | freestyle(person1) | freestyle(person4) | UK(person4) | lane4(person4).  [factor(2361,d,g),merge(g),unit_del(f,44)].
+
+given #813 (T,wt=10): 2371 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person4) | -UK(person2).  [resolve(2364,d,217,b)].
+
+given #814 (T,wt=10): 2372 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person4) | -UK(person3).  [resolve(2364,d,216,b)].
+
+given #815 (A,wt=16): 628 freestyle(person4) | freestyle(person3) | freestyle(person2) | UK(x) | UK(person3) | Betty(x) | Carol(x) | Daisy(x).  [resolve(327,d,37,d)].
+
+given #816 (T,wt=10): 2378 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person4) | UK(person2).  [resolve(2372,e,302,a)].
+
+given #817 (T,wt=8): 2384 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person4).  [resolve(2378,e,2371,e),merge(e),merge(f),merge(g),merge(h)].
+
+given #818 (T,wt=8): 2385 freestyle(person3) | freestyle(person1) | lane4(person4) | -freestyle(person2).  [resolve(2384,c,178,b)].
+
+given #819 (T,wt=6): 2397 freestyle(person3) | freestyle(person1) | lane4(person4).  [resolve(2385,d,1981,b),merge(d),merge(e)].
+
+given #820 (A,wt=20): 630 lane1(person1) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane4(x).  [resolve(371,e,103,b)].
+
+given #821 (T,wt=6): 2398 freestyle(person1) | lane4(person4) | -freestyle(person2).  [resolve(2397,a,179,b)].
+
+given #822 (T,wt=4): 2409 freestyle(person1) | lane4(person4).  [resolve(2398,c,1981,b),merge(c),merge(d)].
+
+given #823 (T,wt=4): 2445 lane4(person4) | -USA(person1).  [resolve(2409,a,80,a)].
+
+given #824 (T,wt=4): 2454 lane4(person4) | lane3(person2).  [resolve(2445,b,1637,a),merge(c)].
+
+given #825 (A,wt=20): 632 lane1(person1) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane1(y) | lane4(x).  [resolve(371,e,101,b)].
+
+given #826 (T,wt=4): 2456 lane3(person2) | -lane4(person1).  [resolve(2454,a,204,b)].
+
+given #827 (T,wt=4): 2457 lane3(person2) | -lane4(person2).  [resolve(2454,a,202,b)].
+
+given #828 (T,wt=4): 2458 lane3(person2) | -lane4(person3).  [resolve(2454,a,201,b)].
+
+given #829 (T,wt=4): 2459 lane3(person2) | lane3(person3).  [resolve(2458,b,276,b),merge(c)].
+
+given #830 (A,wt=20): 633 lane1(person1) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane4(x).  [resolve(371,e,98,b)].
+
+given #831 (T,wt=4): 2460 lane3(person2) | -lane3(person1).  [resolve(2459,b,199,b)].
+
+given #832 (T,wt=6): 2416 lane4(person4) | freestyle(person2) | USA(person1).  [resolve(2409,a,874,d),merge(c)].
+
+given #833 (T,wt=6): 2417 lane4(person4) | freestyle(person3) | freestyle(person2).  [resolve(2409,a,849,d),merge(d)].
+
+given #834 (T,wt=6): 2455 lane4(person4) | lane2(person2) | lane2(person4).  [resolve(2445,b,1425,a),merge(c)].
+
+given #835 (A,wt=20): 634 lane1(person1) | lane2(person1) | lane3(person1) | lane3(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane2(y).  [resolve(371,e,97,b)].
+
+given #836 (T,wt=6): 2461 lane4(person4) | USA(person1) | -freestyle(person1).  [resolve(2416,b,182,b)].
+
+given #837 (T,wt=4): 2480 lane4(person4) | USA(person1).  [resolve(2461,c,2409,a),merge(c)].
+
+given #838 (T,wt=2): 2481 lane4(person4).  [resolve(2480,b,2445,b),merge(b)].
+
+given #839 (T,wt=4): 2587 -lane1(person1) | lane3(person3).  [back_unit_del(273),unit_del(c,2484)].
+
+given #840 (A,wt=16): 755 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane4(x).  [resolve(749,c,103,b)].
+
+given #841 (F,wt=2): 2482 -lane4(person1).  [back_unit_del(204),unit_del(b,2481)].
+
+given #842 (F,wt=2): 2483 -lane4(person2).  [back_unit_del(202),unit_del(b,2481)].
+
+given #843 (F,wt=2): 2484 -lane4(person3).  [back_unit_del(201),unit_del(b,2481)].
+
+given #844 (F,wt=2): 2591 -backstroke(person1).  [ur(74,a,44,a,c,2482,a,d,228,a)].
+
+given #845 (T,wt=4): 2588 -lane1(person2) | lane3(person3).  [back_unit_del(271),unit_del(c,2484)].
+
+given #846 (T,wt=4): 2589 lane1(person3) | lane3(person3).  [back_unit_del(248),unit_del(c,2484)].
+
+given #847 (T,wt=6): 2495 lane2(person3) | lane2(person1) | lane2(person2).  [back_unit_del(1166),unit_del(c,2484),unit_del(d,2482)].
+
+given #848 (T,wt=6): 2531 lane2(person3) | lane2(person1) | -freestyle(person1).  [back_unit_del(484),unit_del(c,2484),unit_del(d,2482)].
+
+given #849 (A,wt=16): 756 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane2(y).  [resolve(749,c,102,b)].
+
+given #850 (T,wt=6): 2534 lane2(person3) | lane2(person1) | freestyle(person2).  [back_unit_del(362),unit_del(c,2484),unit_del(d,2482)].
+
+given #851 (T,wt=6): 2536 UK(person2) | lane2(person3) | lane2(person1).  [back_unit_del(304),unit_del(d,2484),unit_del(e,2482)].
+
+given #852 (T,wt=6): 2537 lane3(person3) | lane2(person1) | lane3(person1).  [back_unit_del(277),unit_del(b,2484),unit_del(e,2482)].
+
+given #853 (T,wt=8): 2538 -UK(x) | lane2(x) | lane2(person1) | lane4(x).  [back_unit_del(234),unit_del(e,2482)].
+
+given #854 (A,wt=16): 757 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane1(y) | lane4(x).  [resolve(749,c,101,b)].
+
+given #855 (T,wt=8): 2539 -UK(x) | lane2(x) | lane2(person1) | lane3(person1).  [back_unit_del(232),unit_del(e,2482)].
+
+given #856 (T,wt=8): 2540 USA(person1) | lane2(person2) | lane2(person4) | lane3(person2).  [back_unit_del(751),unit_del(d,2483)].
+
+given #857 (T,wt=8): 2541 -USA(x) | lane2(person2) | lane2(x) | lane4(x).  [back_unit_del(247),unit_del(d,2483)].
+
+given #858 (T,wt=8): 2542 -USA(x) | lane2(person2) | lane2(x) | lane3(person2).  [back_unit_del(246),unit_del(d,2483)].
+
+given #859 (A,wt=16): 760 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane4(x).  [resolve(749,c,98,b)].
+
+given #860 (T,wt=8): 2563 USA(person1) | freestyle(person1) | lane2(person2) | lane2(person3).  [back_unit_del(1432),unit_del(e,2484)].
+
+given #861 (T,wt=8): 2584 freestyle(person4) | freestyle(person3) | freestyle(person2) | UK(person3).  [back_unit_del(446),unit_del(d,2484)].
+
+given #862 (T,wt=8): 2596 freestyle(person3) | freestyle(person1) | freestyle(person2) | UK(person3).  [back_unit_del(2545),unit_del(b,2591)].
+
+given #863 (T,wt=8): 2598 freestyle(person3) | freestyle(person1) | freestyle(person4) | UK(person3).  [back_unit_del(2543),unit_del(b,2591)].
+
+given #864 (A,wt=16): 761 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane2(y).  [resolve(749,c,97,b)].
+
+given #865 (T,wt=8): 2599 freestyle(person3) | freestyle(person1) | UK(person2) | -backstroke(person2).  [back_unit_del(1204),unit_del(b,2591)].
+
+given #866 (T,wt=8): 2600 backstroke(person3) | freestyle(person3) | freestyle(person1) | UK(person2).  [back_unit_del(1203),unit_del(c,2591)].
+
+given #867 (T,wt=8): 2601 freestyle(person3) | freestyle(person1) | freestyle(person4) | -backstroke(person2).  [back_unit_del(998),unit_del(b,2591)].
+
+given #868 (T,wt=8): 2602 backstroke(person3) | freestyle(person3) | freestyle(person1) | freestyle(person4).  [back_unit_del(997),unit_del(c,2591)].
+
+given #869 (A,wt=16): 762 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane1(y) | lane4(x).  [resolve(749,c,96,b)].
+
+given #870 (T,wt=8): 2603 freestyle(person3) | freestyle(person1) | freestyle(person2) | -backstroke(person2).  [back_unit_del(810),unit_del(b,2591)].
+
+given #871 (T,wt=8): 2604 backstroke(person3) | freestyle(person3) | freestyle(person1) | freestyle(person2).  [back_unit_del(792),unit_del(c,2591)].
+
+given #872 (T,wt=8): 2606 freestyle(person4) | butterfly(person1) | freestyle(person1) | -UK(person4).  [back_unit_del(352),unit_del(b,2591)].
+
+given #873 (T,wt=8): 2608 freestyle(person4) | butterfly(person1) | freestyle(person1) | -butterfly(person3).  [back_unit_del(265),unit_del(b,2591)].
+
+given #874 (A,wt=16): 763 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane1(y) | lane2(y).  [resolve(749,c,95,b)].
+
+given #875 (T,wt=8): 2609 freestyle(person4) | butterfly(person1) | freestyle(person1) | -butterfly(person2).  [back_unit_del(264),unit_del(b,2591)].
+
+given #876 (T,wt=8): 2611 butterfly(person4) | freestyle(person4) | butterfly(person1) | freestyle(person1).  [back_unit_del(258),unit_del(c,2591)].
+
+given #877 (T,wt=8): 2616 freestyle(person3) | freestyle(person1) | freestyle(person4) | -UK(person2).  [resolve(2598,d,218,b)].
+
+given #878 (T,wt=10): 2490 lane2(person3) | lane2(person1) | lane1(person3) | lane1(person4) | USA(person1).  [back_unit_del(1280),unit_del(c,2484),unit_del(d,2482)].
+
+given #879 (A,wt=16): 769 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane3(x) | lane2(y).  [resolve(749,c,88,b)].
+
+given #880 (T,wt=10): 2492 lane2(person3) | lane2(person1) | lane3(person4) | lane1(person4) | USA(person1).  [back_unit_del(1278),unit_del(c,2484),unit_del(d,2482)].
+
+given #881 (T,wt=10): 2494 freestyle(person1) | freestyle(person2) | lane2(person4) | lane2(person2) | lane3(person2).  [back_unit_del(1184),unit_del(d,2482),unit_del(e,2484),unit_del(g,2483)].
+
+given #882 (T,wt=10): 2514 lane2(person3) | lane2(person1) | -USA(x) | lane1(person3) | lane1(x).  [back_unit_del(520),unit_del(c,2484),unit_del(d,2482)].
+
+given #883 (T,wt=10): 2517 lane2(person3) | lane2(person1) | -USA(x) | lane3(x) | lane1(x).  [back_unit_del(512),unit_del(c,2484),unit_del(d,2482)].
+
+given #884 (A,wt=16): 770 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane4(x).  [resolve(749,c,87,b)].
+
+given #885 (T,wt=10): 2564 USA(person1) | freestyle(person1) | -USA(x) | lane2(person2) | lane4(x).  [back_unit_del(1331),unit_del(f,2484)].
+
+given #886 (T,wt=10): 2575 freestyle(person1) | freestyle(person2) | -USA(x) | lane2(person4) | lane2(person3).  [back_unit_del(991),unit_del(f,2484)].
+
+given #887 (T,wt=10): 2576 freestyle(person1) | freestyle(person2) | -USA(x) | lane2(person4) | lane4(x).  [back_unit_del(971),unit_del(f,2484)].
+
+given #888 (T,wt=10): 2578 lane2(person3) | lane2(person1) | lane3(person3) | lane3(person4) | USA(person1).  [back_unit_del(934),unit_del(c,2484)].
+
+given #889 (A,wt=16): 771 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane4(y) | lane1(y) | lane2(y).  [resolve(749,c,86,b)].
+
+given #890 (T,wt=10): 2583 lane2(person3) | lane2(person1) | lane3(person3) | -USA(x) | lane3(x).  [back_unit_del(540),unit_del(c,2484)].
+
+given #891 (T,wt=10): 2586 freestyle(person4) | freestyle(person3) | freestyle(person2) | -Emily(x) | lane4(x).  [back_unit_del(324),unit_del(e,2484)].
+
+given #892 (T,wt=10): 2592 freestyle(person3) | freestyle(person1) | freestyle(person2) | -Emily(x) | lane4(x).  [back_unit_del(2581),unit_del(b,2591)].
+
+given #893 (T,wt=10): 2593 freestyle(person3) | freestyle(person1) | freestyle(person4) | -Emily(x) | lane4(x).  [back_unit_del(2574),unit_del(b,2591)].
+
+given #894 (A,wt=16): 774 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane3(x) | lane2(y).  [resolve(749,c,83,b)].
+
+given #895 (T,wt=10): 2594 freestyle(person3) | freestyle(person1) | UK(person2) | -Emily(x) | lane4(x).  [back_unit_del(2565),unit_del(b,2591)].
+
+given #896 (T,wt=10): 2605 backstroke(person3) | freestyle(person3) | butterfly(person1) | freestyle(person1) | -UK(person3).  [back_unit_del(418),unit_del(c,2591)].
+
+given #897 (T,wt=10): 2607 backstroke(person3) | freestyle(person3) | butterfly(person1) | freestyle(person1) | -butterfly(person2).  [back_unit_del(313),unit_del(c,2591)].
+
+given #898 (T,wt=10): 2610 backstroke(person3) | butterfly(person3) | freestyle(person3) | butterfly(person1) | freestyle(person1).  [back_unit_del(260),unit_del(d,2591)].
+
+given #899 (A,wt=16): 775 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane4(x).  [resolve(749,c,82,b)].
+
+given #900 (T,wt=10): 2615 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane2(person3) | lane2(person1).  [resolve(2598,d,2538,a),unit_del(f,2484)].
+
+given #901 (T,wt=10): 2618 lane2(person3) | lane2(person1) | lane1(person3) | USA(person1) | -lane1(person1).  [resolve(2490,d,186,b)].
+
+given #902 (T,wt=10): 2619 lane2(person3) | lane2(person1) | lane1(person3) | USA(person1) | -lane1(person2).  [resolve(2490,d,184,b)].
+
+given #903 (T,wt=10): 2620 lane2(person3) | lane2(person1) | lane3(person4) | USA(person1) | -lane1(person1).  [resolve(2492,d,186,b)].
+
+given #904 (A,wt=16): 776 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane2(x) | lane1(y) | lane2(y).  [resolve(749,c,81,b)].
+
+given #905 (T,wt=10): 2621 lane2(person3) | lane2(person1) | lane3(person4) | USA(person1) | -lane1(person2).  [resolve(2492,d,184,b)].
+
+given #906 (T,wt=10): 2622 lane2(person3) | lane2(person1) | lane3(person4) | USA(person1) | -lane1(person3).  [resolve(2492,d,183,b)].
+
+given #907 (T,wt=10): 2632 freestyle(person3) | freestyle(person1) | lane2(person3) | lane2(person1) | -freestyle(person2).  [resolve(2615,c,178,b)].
+
+given #908 (T,wt=8): 2648 freestyle(person3) | freestyle(person1) | lane2(person3) | lane2(person1).  [resolve(2632,e,2534,c),merge(e),merge(f)].
+
+given #909 (A,wt=16): 917 freestyle(person1) | lane2(person4) | lane3(person4) | lane3(person2) | -Daisy(x) | -USA(y) | lane3(y) | lane3(x).  [resolve(912,b,100,b),merge(h)].
+
+given #910 (T,wt=8): 2649 freestyle(person1) | lane2(person3) | lane2(person1) | -freestyle(person2).  [resolve(2648,a,179,b)].
+
+given #911 (T,wt=6): 2651 freestyle(person1) | lane2(person3) | lane2(person1).  [resolve(2649,d,2534,c),merge(d),merge(e)].
+
+given #912 (T,wt=4): 2652 lane2(person3) | lane2(person1).  [resolve(2651,a,2531,c),merge(c),merge(d)].
+
+given #913 (T,wt=4): 2653 lane2(person1) | -lane2(person2).  [resolve(2652,a,191,b)].
+
+given #914 (A,wt=16): 918 freestyle(person1) | lane2(person4) | lane3(person4) | lane3(person2) | -Daisy(x) | -USA(y) | lane3(y) | lane1(y).  [resolve(912,b,99,b),merge(h)].
+
+given #915 (T,wt=4): 2654 lane2(person1) | lane3(person2).  [resolve(2653,b,1827,a),merge(c)].
+
+given #916 (T,wt=6): 2656 lane3(person2) | lane3(person4) | lane2(person2).  [resolve(2654,a,2138,d),merge(c)].
+
+given #917 (T,wt=6): 2657 lane3(person2) | lane3(person4) | -lane2(person1).  [resolve(2656,c,194,b)].
+
+given #918 (T,wt=4): 2658 lane3(person2) | lane3(person4).  [resolve(2657,c,2654,a),merge(c)].
+
+given #919 (A,wt=18): 945 USA(person1) | lane2(person2) | lane3(person2) | -Daisy(x) | -USA(y) | lane3(y) | lane4(y) | lane3(x) | lane4(x).  [resolve(943,b,103,b)].
+
+given #920 (T,wt=4): 2659 lane3(person2) | -lane3(person3).  [resolve(2658,b,195,b)].
+
+given #921 (T,wt=2): 2660 lane3(person2).  [resolve(2659,b,2459,b),merge(b)].
+
+given #922 (T,wt=2): 2668 lane2(person1).  [back_unit_del(2537),unit_del(a,2662),unit_del(c,2661)].
+
+given #923 (T,wt=2): 2673 lane1(person3).  [back_unit_del(2589),unit_del(b,2662)].
+
+given #924 (A,wt=14): 2567 freestyle(person4) | freestyle(person3) | freestyle(person2) | lane4(x) | Carol(x) | Daisy(x) | -UK(x).  [back_unit_del(1191),unit_del(d,2484)].
+
+given #925 (F,wt=2): 2661 -lane3(person1).  [back_unit_del(200),unit_del(b,2660)].
+
+given #926 (F,wt=2): 2662 -lane3(person3).  [back_unit_del(197),unit_del(a,2660)].
+
+given #927 (F,wt=2): 2663 -lane3(person4).  [back_unit_del(196),unit_del(a,2660)].
+
+given #928 (F,wt=2): 2674 -lane1(person2).  [back_unit_del(2588),unit_del(b,2662)].
+
+given #929 (T,wt=4): 2692 USA(person1) | freestyle(person1).  [back_unit_del(2563),unit_del(c,2683),unit_del(d,2684)].
+
+given #930 (T,wt=6): 2687 -UK(x) | lane3(x) | lane1(x).  [back_unit_del(2670),unit_del(b,2675)].
+
+given #931 (T,wt=6): 2688 USA(person1) | -USA(x) | lane3(x).  [back_unit_del(2678),unit_del(b,2683),unit_del(c,2684)].
+
+given #932 (T,wt=2): 2696 USA(person1).  [resolve(2688,b,748,a),merge(c),unit_del(b,2663)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.18 (+ 0.01) seconds.
+% Length of proof is 331.
+% Level of proof is 48.
+% Maximum clause weight is 20.
+% Given clauses 932.
+
+7 butterfly(x) & butterfly(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+8 dolphin(x) & dolphin(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+9 freestyle(x) & freestyle(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+10 lane1(x) & lane1(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+11 lane2(x) & lane2(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+12 lane3(x) & lane3(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+13 lane4(x) & lane4(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+14 Australia(x) & Australia(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+15 Canada(x) & Canada(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+16 UK(x) & UK(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+18 Betty(x) -> -UK(x) # label(non_clause).  [assumption].
+19 Betty(x) & UK(y) -> (lane1(x) & lane2(y) | lane2(x) & lane3(y) | lane3(x) & lane4(y) | lane1(y) & lane2(x) | lane2(y) & lane3(x) | lane3(y) & lane4(x)) & -butterfly(x) & -butterfly(y) # label(non_clause).  [assumption].
+20 Emily(x) -> -backstroke(x) # label(non_clause).  [assumption].
+21 Emily(x) & backstroke(y) -> UK(x) & lane4(y) | UK(y) & lane4(x) # label(non_clause).  [assumption].
+22 Carol(x) -> (butterfly(x) | freestyle(x)) & (UK(x) | Canada(x) | USA(x)) & (lane1(x) | lane3(x)) # label(non_clause).  [assumption].
+23 Daisy(x) -> -USA(x) # label(non_clause).  [assumption].
+24 freestyle(x) -> -USA(x) # label(non_clause).  [assumption].
+25 Daisy(x) & freestyle(y) & USA(z) -> lane1(x) & lane2(y) & lane3(z) | lane2(x) & lane3(y) & lane4(z) | lane1(z) & lane2(y) & lane3(x) | lane2(z) & lane3(y) & lane4(x) # label(non_clause).  [assumption].
+26 Carol(x) -> -USA(x) # label(non_clause).  [assumption].
+27 USA(x) & Carol(y) -> lane1(x) & lane2(y) | lane2(x) & lane3(y) | lane3(x) & lane4(y) | lane1(y) & lane2(x) | lane2(y) & lane3(x) | lane3(y) & lane4(x) # label(non_clause).  [assumption].
+28 Daisy(x) -> lane1(x) | lane3(x) | lane4(x) # label(non_clause).  [assumption].
+29 Daisy(person3) & Australia(person3) # label(non_clause) # label(goal).  [goal].
+30 differentFrom(person1,person2).  [assumption].
+31 differentFrom(person1,person3).  [assumption].
+32 differentFrom(person1,person4).  [assumption].
+33 differentFrom(person2,person3).  [assumption].
+34 differentFrom(person2,person4).  [assumption].
+35 differentFrom(person3,person4).  [assumption].
+38 backstroke(x) | butterfly(x) | dolphin(x) | freestyle(x).  [assumption].
+39 lane1(x) | lane2(x) | lane3(x) | lane4(x).  [assumption].
+40 Australia(x) | Canada(x) | UK(x) | USA(x).  [assumption].
+41 Betty(person1).  [assumption].
+42 Carol(person2).  [assumption].
+43 Daisy(person3).  [assumption].
+44 Emily(person4).  [assumption].
+50 -butterfly(x) | -butterfly(y) | -differentFrom(x,y).  [clausify(7)].
+51 -dolphin(x) | -dolphin(y) | -differentFrom(x,y).  [clausify(8)].
+52 -freestyle(x) | -freestyle(y) | -differentFrom(x,y).  [clausify(9)].
+53 -lane1(x) | -lane1(y) | -differentFrom(x,y).  [clausify(10)].
+54 -lane2(x) | -lane2(y) | -differentFrom(x,y).  [clausify(11)].
+55 -lane3(x) | -lane3(y) | -differentFrom(x,y).  [clausify(12)].
+56 -lane4(x) | -lane4(y) | -differentFrom(x,y).  [clausify(13)].
+57 -Australia(x) | -Australia(y) | -differentFrom(x,y).  [clausify(14)].
+58 -Canada(x) | -Canada(y) | -differentFrom(x,y).  [clausify(15)].
+59 -UK(x) | -UK(y) | -differentFrom(x,y).  [clausify(16)].
+61 -Betty(x) | -UK(x).  [clausify(18)].
+67 -Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane4(y) | lane4(x).  [clausify(19)].
+70 -Betty(x) | -UK(y) | -butterfly(y).  [clausify(19)].
+71 -Emily(x) | -backstroke(x).  [clausify(20)].
+72 -Emily(x) | -backstroke(y) | UK(x) | UK(y).  [clausify(21)].
+73 -Emily(x) | -backstroke(y) | UK(x) | lane4(x).  [clausify(21)].
+74 -Emily(x) | -backstroke(y) | lane4(y) | UK(y).  [clausify(21)].
+75 -Emily(x) | -backstroke(y) | lane4(y) | lane4(x).  [clausify(21)].
+76 -Carol(x) | butterfly(x) | freestyle(x).  [clausify(22)].
+77 -Carol(x) | UK(x) | Canada(x) | USA(x).  [clausify(22)].
+78 -Carol(x) | lane1(x) | lane3(x).  [clausify(22)].
+79 -Daisy(x) | -USA(x).  [clausify(23)].
+80 -freestyle(x) | -USA(x).  [clausify(24)].
+84 -Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane3(y) | lane1(z).  [clausify(25)].
+91 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane2(x) | lane4(x).  [clausify(25)].
+92 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane3(y).  [clausify(25)].
+94 -Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane4(z) | lane4(x).  [clausify(25)].
+98 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane3(x) | lane4(x).  [clausify(25)].
+103 -Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane3(x) | lane4(x).  [clausify(25)].
+104 -Carol(x) | -USA(x).  [clausify(26)].
+105 -USA(x) | -Carol(y) | lane1(x) | lane2(x) | lane3(x) | lane3(y).  [clausify(27)].
+108 -USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane4(y) | lane3(y).  [clausify(27)].
+110 -Daisy(x) | lane1(x) | lane3(x) | lane4(x).  [clausify(28)].
+111 -Daisy(person3) | -Australia(person3).  [deny(29)].
+112 -Australia(person3).  [copy(111),unit_del(a,43)].
+165 -butterfly(person3) | -butterfly(person4).  [resolve(50,c,35,a)].
+166 -butterfly(person2) | -butterfly(person4).  [resolve(50,c,34,a)].
+167 -butterfly(person2) | -butterfly(person3).  [resolve(50,c,33,a)].
+168 -butterfly(person1) | -butterfly(person4).  [resolve(50,c,32,a)].
+169 -butterfly(person1) | -butterfly(person3).  [resolve(50,c,31,a)].
+170 -butterfly(person1) | -butterfly(person2).  [resolve(50,c,30,a)].
+171 -dolphin(person3) | -dolphin(person4).  [resolve(51,c,35,a)].
+174 -dolphin(person1) | -dolphin(person4).  [resolve(51,c,32,a)].
+175 -dolphin(person1) | -dolphin(person3).  [resolve(51,c,31,a)].
+177 -freestyle(person3) | -freestyle(person4).  [resolve(52,c,35,a)].
+178 -freestyle(person2) | -freestyle(person4).  [resolve(52,c,34,a)].
+179 -freestyle(person2) | -freestyle(person3).  [resolve(52,c,33,a)].
+181 -freestyle(person1) | -freestyle(person3).  [resolve(52,c,31,a)].
+182 -freestyle(person1) | -freestyle(person2).  [resolve(52,c,30,a)].
+184 -lane1(person2) | -lane1(person4).  [resolve(53,c,34,a)].
+185 -lane1(person2) | -lane1(person3).  [resolve(53,c,33,a)].
+187 -lane1(person1) | -lane1(person3).  [resolve(53,c,31,a)].
+189 -lane2(person3) | -lane2(person4).  [resolve(54,c,35,a)].
+191 -lane2(person2) | -lane2(person3).  [resolve(54,c,33,a)].
+192 -lane2(person1) | -lane2(person4).  [resolve(54,c,32,a)].
+193 -lane2(person1) | -lane2(person3).  [resolve(54,c,31,a)].
+194 -lane2(person1) | -lane2(person2).  [resolve(54,c,30,a)].
+195 -lane3(person3) | -lane3(person4).  [resolve(55,c,35,a)].
+196 -lane3(person2) | -lane3(person4).  [resolve(55,c,34,a)].
+197 -lane3(person2) | -lane3(person3).  [resolve(55,c,33,a)].
+200 -lane3(person1) | -lane3(person2).  [resolve(55,c,30,a)].
+201 -lane4(person3) | -lane4(person4).  [resolve(56,c,35,a)].
+202 -lane4(person2) | -lane4(person4).  [resolve(56,c,34,a)].
+203 -lane4(person2) | -lane4(person3).  [resolve(56,c,33,a)].
+204 -lane4(person1) | -lane4(person4).  [resolve(56,c,32,a)].
+206 -lane4(person1) | -lane4(person2).  [resolve(56,c,30,a)].
+208 -Australia(person1) | -Australia(person4).  [resolve(57,c,32,a)].
+210 -Canada(person3) | -Canada(person4).  [resolve(58,c,35,a)].
+211 -Canada(person2) | -Canada(person4).  [resolve(58,c,34,a)].
+212 -Canada(person2) | -Canada(person3).  [resolve(58,c,33,a)].
+214 -Canada(person1) | -Canada(person3).  [resolve(58,c,31,a)].
+215 -Canada(person1) | -Canada(person2).  [resolve(58,c,30,a)].
+216 -UK(person3) | -UK(person4).  [resolve(59,c,35,a)].
+217 -UK(person2) | -UK(person4).  [resolve(59,c,34,a)].
+218 -UK(person2) | -UK(person3).  [resolve(59,c,33,a)].
+228 -UK(person1).  [resolve(61,a,41,a)].
+234 -UK(x) | lane2(x) | lane2(person1) | lane4(x) | lane4(person1).  [resolve(67,a,41,a)].
+236 -backstroke(person4).  [ur(71,a,44,a)].
+237 butterfly(person2) | freestyle(person2).  [resolve(76,a,42,a)].
+238 UK(person2) | Canada(person2) | USA(person2).  [resolve(77,a,42,a)].
+239 lane1(person2) | lane3(person2).  [resolve(78,a,42,a)].
+240 -USA(person3).  [resolve(79,a,43,a)].
+241 -USA(person2).  [resolve(104,a,42,a)].
+242 UK(person2) | Canada(person2).  [back_unit_del(238),unit_del(c,241)].
+243 -USA(x) | lane1(x) | lane2(x) | lane3(x) | lane3(person2).  [resolve(105,b,42,a)].
+246 -USA(x) | lane2(person2) | lane2(x) | lane4(person2) | lane3(person2).  [resolve(108,b,42,a)].
+248 lane1(person3) | lane3(person3) | lane4(person3).  [resolve(110,a,43,a)].
+249 Canada(person3) | UK(person3).  [resolve(112,a,40,a),unit_del(c,240)].
+250 freestyle(person2) | -Betty(x) | -UK(person2).  [resolve(237,a,70,c)].
+251 freestyle(person2) | -UK(person2).  [resolve(250,b,41,a)].
+252 -butterfly(person1) | freestyle(person2).  [resolve(170,b,237,a)].
+253 -dolphin(person3) | butterfly(person4) | freestyle(person4).  [resolve(171,b,38,c),unit_del(b,236)].
+256 -dolphin(person1) | butterfly(person4) | freestyle(person4).  [resolve(174,b,38,c),unit_del(b,236)].
+257 butterfly(person4) | freestyle(person4) | backstroke(person3) | butterfly(person3) | freestyle(person3).  [resolve(253,a,38,c)].
+258 butterfly(person4) | freestyle(person4) | backstroke(person1) | butterfly(person1) | freestyle(person1).  [resolve(256,a,38,c)].
+259 -dolphin(person1) | backstroke(person3) | butterfly(person3) | freestyle(person3).  [resolve(175,b,38,c)].
+260 backstroke(person3) | butterfly(person3) | freestyle(person3) | backstroke(person1) | butterfly(person1) | freestyle(person1).  [resolve(259,a,38,c)].
+261 freestyle(person4) | backstroke(person3) | butterfly(person3) | freestyle(person3) | -butterfly(person1).  [resolve(257,a,168,b)].
+262 freestyle(person4) | backstroke(person3) | butterfly(person3) | freestyle(person3) | -butterfly(person2).  [resolve(257,a,166,b)].
+264 freestyle(person4) | backstroke(person1) | butterfly(person1) | freestyle(person1) | -butterfly(person2).  [resolve(258,a,166,b)].
+265 freestyle(person4) | backstroke(person1) | butterfly(person1) | freestyle(person1) | -butterfly(person3).  [resolve(258,a,165,b)].
+271 -lane1(person2) | lane3(person3) | lane4(person3).  [resolve(185,b,248,a)].
+273 -lane1(person1) | lane3(person3) | lane4(person3).  [resolve(187,b,248,a)].
+276 lane3(person3) | lane4(person3) | lane3(person2).  [resolve(271,a,239,a)].
+277 lane3(person3) | lane4(person3) | lane2(person1) | lane3(person1) | lane4(person1).  [resolve(273,a,39,a)].
+279 freestyle(person4) | backstroke(person3) | butterfly(person3) | freestyle(person3) | freestyle(person2).  [resolve(262,e,237,a)].
+280 freestyle(person4) | backstroke(person1) | butterfly(person1) | freestyle(person1) | freestyle(person2).  [resolve(264,e,237,a)].
+281 freestyle(person4) | backstroke(person3) | freestyle(person3) | freestyle(person2) | -butterfly(person2).  [resolve(279,c,167,b)].
+294 -Australia(person1) | Canada(person4) | UK(person4) | USA(person4).  [resolve(208,b,40,a)].
+299 Canada(person4) | UK(person4) | USA(person4) | Canada(person1) | USA(person1).  [resolve(294,a,40,a),unit_del(e,228)].
+300 -Canada(person2) | UK(person3).  [resolve(212,b,249,a)].
+301 -Canada(person1) | UK(person3).  [resolve(214,b,249,a)].
+302 UK(person3) | UK(person2).  [resolve(300,a,242,b)].
+304 UK(person2) | lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1).  [resolve(302,a,234,a)].
+310 -Canada(person1) | UK(person2).  [resolve(215,b,242,b)].
+312 backstroke(person3) | freestyle(person3) | backstroke(person1) | butterfly(person1) | freestyle(person1) | freestyle(person4).  [resolve(260,b,265,e),merge(g),merge(h),merge(i)].
+313 backstroke(person3) | freestyle(person3) | backstroke(person1) | butterfly(person1) | freestyle(person1) | -butterfly(person2).  [resolve(260,b,167,b)].
+315 freestyle(person4) | backstroke(person1) | freestyle(person1) | freestyle(person2).  [resolve(280,c,252,a),merge(e)].
+319 freestyle(person4) | freestyle(person1) | freestyle(person2) | -Emily(x) | UK(x).  [resolve(315,b,72,b),unit_del(f,228)].
+320 freestyle(person4) | backstroke(person3) | freestyle(person3) | freestyle(person2).  [resolve(281,e,237,a),merge(e)].
+326 freestyle(person4) | freestyle(person3) | freestyle(person2) | -Emily(x) | UK(x) | lane4(x).  [resolve(320,b,73,b)].
+357 UK(person4) | USA(person4) | Canada(person1) | USA(person1) | -Canada(person2).  [resolve(299,a,211,b)].
+358 UK(person4) | USA(person4) | Canada(person1) | USA(person1) | -Canada(person3).  [resolve(299,a,210,b)].
+362 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | freestyle(person2).  [resolve(304,a,251,b)].
+363 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | lane2(person2) | lane4(person2).  [resolve(304,a,234,a),merge(f),merge(h)].
+372 backstroke(person3) | freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | butterfly(person3).  [resolve(312,d,261,e),merge(f),merge(g),merge(i)].
+407 backstroke(person3) | freestyle(person3) | backstroke(person1) | butterfly(person1) | freestyle(person1) | freestyle(person2).  [resolve(313,f,237,a)].
+408 freestyle(person4) | freestyle(person1) | freestyle(person2) | UK(person4).  [resolve(319,d,44,a)].
+415 freestyle(person4) | freestyle(person1) | freestyle(person2) | -UK(person3).  [resolve(408,d,216,b)].
+416 freestyle(person4) | freestyle(person1) | freestyle(person2) | UK(person2).  [resolve(415,d,302,a)].
+417 freestyle(person4) | freestyle(person1) | freestyle(person2).  [resolve(416,d,251,b),merge(d)].
+419 freestyle(person1) | freestyle(person2) | -freestyle(person3).  [resolve(417,a,177,b)].
+431 freestyle(person1) | freestyle(person2) | -Daisy(x) | -USA(y) | lane2(person4) | lane3(person4).  [resolve(417,a,92,b)].
+442 freestyle(person1) | freestyle(person2) | -USA(person4).  [resolve(417,a,80,a)].
+445 UK(person4) | USA(person4) | Canada(person1) | USA(person1) | UK(person2).  [resolve(357,e,242,b)].
+447 UK(person4) | USA(person4) | Canada(person1) | USA(person1) | UK(person3).  [resolve(358,e,249,a)].
+484 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -freestyle(person1).  [resolve(362,e,182,b)].
+497 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -Daisy(x) | -USA(y) | lane2(person2) | lane2(x) | lane4(x).  [resolve(362,e,91,b)].
+515 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | -USA(x) | lane2(person2).  [factor(497,a,h),merge(h),unit_del(e,43)].
+545 freestyle(person4) | freestyle(person3) | freestyle(person2) | UK(person4) | lane4(person4).  [resolve(326,d,44,a)].
+685 UK(person4) | USA(person4) | USA(person1) | UK(person2).  [resolve(445,c,310,a),merge(e)].
+695 USA(person4) | USA(person1) | UK(person2) | -UK(person3).  [resolve(685,a,216,b)].
+696 USA(person4) | USA(person1) | UK(person2).  [resolve(695,d,302,a),merge(d)].
+727 UK(person4) | USA(person4) | USA(person1) | UK(person3).  [resolve(447,c,301,a),merge(e)].
+737 USA(person4) | USA(person1) | UK(person3) | -UK(person2).  [resolve(727,a,217,b)].
+738 USA(person4) | USA(person1) | UK(person3).  [resolve(737,d,696,c),merge(d),merge(e)].
+747 USA(person4) | USA(person1) | -UK(person2).  [resolve(738,c,218,b)].
+748 USA(person4) | USA(person1).  [resolve(747,c,696,c),merge(c),merge(d)].
+749 USA(person1) | freestyle(person1) | freestyle(person2).  [resolve(748,a,442,c)].
+751 USA(person1) | lane2(person2) | lane2(person4) | lane4(person2) | lane3(person2).  [resolve(748,a,246,a)].
+754 USA(person1) | lane1(person4) | lane2(person4) | lane3(person4) | lane3(person2).  [resolve(748,a,243,a)].
+764 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane2(person2) | lane4(y) | lane4(x).  [resolve(749,c,94,b)].
+766 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane2(person2) | lane3(person2).  [resolve(749,c,92,b)].
+767 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane2(person2) | lane2(x) | lane4(x).  [resolve(749,c,91,b)].
+773 USA(person1) | freestyle(person1) | -Daisy(x) | -USA(y) | lane1(x) | lane3(person2) | lane1(y).  [resolve(749,c,84,b)].
+777 backstroke(person3) | freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | -butterfly(person1).  [resolve(372,f,169,b)].
+783 freestyle(person4) | freestyle(person3) | freestyle(person2) | lane4(person4) | -UK(person3).  [resolve(545,d,216,b)].
+792 backstroke(person3) | freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2).  [resolve(407,d,252,a),merge(f)].
+804 lane2(person2) | lane2(person4) | lane4(person2) | lane3(person2) | lane2(person1).  [resolve(751,a,246,a),merge(e),merge(g),merge(h)].
+807 USA(person1) | lane2(person4) | lane3(person4) | lane3(person2) | -lane1(person2).  [resolve(754,b,184,b)].
+809 freestyle(person4) | freestyle(person3) | freestyle(person2) | lane4(person4) | UK(person2).  [resolve(783,e,302,a)].
+811 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | -Emily(x) | lane4(person3) | lane4(x).  [resolve(792,a,75,b)].
+813 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | -Emily(x) | UK(x) | lane4(x).  [resolve(792,a,73,b)].
+845 lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1) | -lane4(person1).  [resolve(804,c,206,b)].
+846 USA(person1) | lane2(person4) | lane3(person4) | lane3(person2).  [resolve(807,e,239,a),merge(e)].
+847 freestyle(person4) | freestyle(person3) | freestyle(person2) | lane4(person4).  [resolve(809,e,251,b),merge(e)].
+872 freestyle(person3) | freestyle(person2) | lane4(person4) | -USA(person4).  [resolve(847,a,80,a)].
+873 freestyle(person3) | freestyle(person2) | lane4(person4) | USA(person1).  [resolve(872,d,748,a)].
+874 freestyle(person2) | lane4(person4) | USA(person1) | -freestyle(person1).  [resolve(873,a,181,b)].
+911 freestyle(person1) | freestyle(person2) | -USA(x) | lane2(person4) | lane3(person4).  [resolve(431,c,43,a)].
+912 freestyle(person1) | freestyle(person2) | lane2(person4) | lane3(person4) | lane3(person2).  [resolve(911,c,846,a),merge(e),merge(f)].
+921 freestyle(person1) | lane2(person4) | lane3(person4) | lane3(person2) | -Daisy(x) | -USA(y) | lane2(person2).  [resolve(912,b,92,b),merge(h)].
+933 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | lane2(person2) | USA(person1).  [resolve(515,e,748,a)].
+941 USA(person1) | freestyle(person1) | -USA(x) | lane2(person2) | lane3(person2).  [resolve(766,c,43,a)].
+943 USA(person1) | freestyle(person1) | lane2(person2) | lane3(person2).  [resolve(941,c,748,a),merge(e)].
+944 USA(person1) | lane2(person2) | lane3(person2) | freestyle(person2) | lane4(person4).  [resolve(943,b,874,d),merge(f)].
+964 USA(person1) | lane2(person2) | lane3(person2) | lane4(person4) | -freestyle(person1).  [resolve(944,d,182,b)].
+970 USA(person1) | lane2(person2) | lane3(person2) | lane4(person4).  [resolve(964,e,943,b),merge(e),merge(f),merge(g)].
+976 lane2(person2) | lane3(person2) | lane4(person4) | lane2(person1) | lane4(person2).  [resolve(970,a,246,a),merge(d),merge(g)].
+978 lane2(person2) | lane3(person2) | lane2(person1) | lane4(person2) | -lane4(person1).  [resolve(976,c,204,b)].
+979 lane2(person2) | lane3(person2) | lane2(person1) | lane4(person2) | -lane4(person3).  [resolve(976,c,201,b)].
+986 lane2(person2) | lane3(person2) | lane2(person1) | lane4(person2) | lane2(person3) | lane4(person1).  [resolve(979,e,363,c),merge(f),merge(h),merge(i)].
+997 backstroke(person3) | freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4).  [resolve(777,f,312,d),merge(f),merge(g),merge(h),merge(i),merge(j)].
+1000 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | -Emily(x) | lane4(person3) | UK(person3).  [resolve(997,a,74,b)].
+1001 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | -Emily(x) | UK(x) | lane4(x).  [resolve(997,a,73,b)].
+1166 lane2(person3) | lane2(person1) | lane4(person3) | lane4(person1) | lane2(person2).  [resolve(933,f,515,e),merge(f),merge(g),merge(h),merge(i),merge(j)].
+1168 lane2(person3) | lane2(person1) | lane4(person1) | lane2(person2) | -lane4(person2).  [resolve(1166,c,203,b)].
+1193 lane2(person2) | lane3(person2) | lane2(person1) | lane2(person3) | lane4(person1).  [resolve(986,d,1168,e),merge(f),merge(g),merge(h),merge(i)].
+1194 lane2(person2) | lane3(person2) | lane2(person1) | lane2(person3) | lane4(person2).  [resolve(1193,e,978,e),merge(e),merge(f),merge(g)].
+1196 lane2(person2) | lane3(person2) | lane2(person1) | lane2(person3) | -lane4(person1).  [resolve(1194,e,206,b)].
+1197 lane2(person2) | lane3(person2) | lane2(person1) | lane2(person3).  [resolve(1196,e,1193,e),merge(e),merge(f),merge(g),merge(h)].
+1331 USA(person1) | freestyle(person1) | -USA(x) | lane2(person2) | lane4(x) | lane4(person3).  [resolve(764,c,43,a)].
+1332 USA(person1) | freestyle(person1) | lane2(person2) | lane4(person4) | lane4(person3).  [resolve(1331,c,748,a),merge(f)].
+1333 USA(person1) | lane2(person2) | lane4(person4) | lane4(person3) | freestyle(person2).  [resolve(1332,b,874,d),merge(f),merge(g)].
+1370 USA(person1) | lane2(person2) | lane4(person4) | lane4(person3) | -freestyle(person1).  [resolve(1333,e,182,b)].
+1379 USA(person1) | lane2(person2) | lane4(person4) | lane4(person3).  [resolve(1370,e,1332,b),merge(e),merge(f),merge(g),merge(h)].
+1431 USA(person1) | freestyle(person1) | -USA(x) | lane2(person2) | lane2(person3) | lane4(person3).  [resolve(767,c,43,a)].
+1432 USA(person1) | freestyle(person1) | lane2(person2) | lane2(person3) | lane4(person3).  [resolve(1431,c,748,a),merge(f)].
+1437 USA(person1) | lane2(person2) | lane2(person3) | lane4(person3) | -Daisy(x) | -USA(y) | lane3(y) | lane2(x) | lane3(x) | lane4(x).  [resolve(1432,b,98,b)].
+1456 USA(person1) | lane2(person2) | lane2(person3) | lane4(person3) | -USA(x) | lane3(x) | lane3(person3).  [factor(1437,c,h),merge(i),unit_del(e,43)].
+1573 USA(person1) | freestyle(person1) | -USA(x) | lane1(person3) | lane3(person2) | lane1(x).  [resolve(773,c,43,a)].
+1574 USA(person1) | freestyle(person1) | lane1(person3) | lane3(person2) | lane1(person4).  [resolve(1573,c,748,a),merge(f)].
+1577 USA(person1) | lane1(person3) | lane3(person2) | lane1(person4) | freestyle(person2) | lane4(person4).  [resolve(1574,b,874,d),merge(g)].
+1612 USA(person1) | lane1(person3) | lane3(person2) | lane1(person4) | lane4(person4) | -freestyle(person1).  [resolve(1577,e,182,b)].
+1633 USA(person1) | lane1(person3) | lane3(person2) | lane1(person4) | lane4(person4).  [resolve(1612,f,1574,b),merge(f),merge(g),merge(h),merge(i)].
+1634 USA(person1) | lane1(person3) | lane3(person2) | lane4(person4) | -lane1(person2).  [resolve(1633,d,184,b)].
+1635 USA(person1) | lane1(person3) | lane3(person2) | lane4(person4).  [resolve(1634,e,239,a),merge(e)].
+1636 USA(person1) | lane3(person2) | lane4(person4) | -lane1(person2).  [resolve(1635,b,185,b)].
+1637 USA(person1) | lane3(person2) | lane4(person4).  [resolve(1636,d,239,a),merge(d)].
+1667 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | lane4(person3) | lane4(person4).  [resolve(811,e,44,a)].
+1669 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person3) | lane4(person4) | -Emily(x) | lane4(person1) | lane4(x).  [resolve(1667,b,75,b)].
+1673 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person3) | lane4(person4) | lane4(person1).  [factor(1669,e,h),unit_del(f,44)].
+1675 freestyle(person1) | freestyle(person2) | lane4(person3) | lane4(person4) | lane4(person1).  [resolve(1673,a,419,c),merge(f),merge(g)].
+1685 freestyle(person1) | lane4(person3) | lane4(person4) | lane4(person1) | -Daisy(x) | -USA(y) | lane2(person2) | lane4(y) | lane4(x).  [resolve(1675,b,94,b)].
+1706 freestyle(person1) | lane4(person3) | lane4(person4) | lane4(person1) | -USA(x) | lane2(person2) | lane4(x).  [factor(1685,b,i),unit_del(e,43)].
+1723 freestyle(person1) | lane4(person3) | lane4(person4) | lane4(person1) | -USA(person1) | lane2(person2).  [factor(1706,d,g)].
+1732 freestyle(person1) | lane4(person3) | lane4(person4) | lane4(person1) | lane2(person2).  [resolve(1723,e,1379,a),merge(f),merge(g),merge(h)].
+1754 lane4(person3) | lane4(person4) | lane4(person1) | lane2(person2) | -USA(person1).  [resolve(1732,a,80,a)].
+1777 lane4(person3) | lane4(person4) | lane4(person1) | lane2(person2).  [resolve(1754,e,1379,a),merge(e),merge(f),merge(g)].
+1778 lane4(person3) | lane4(person1) | lane2(person2) | -lane4(person2).  [resolve(1777,b,202,b)].
+1779 lane4(person3) | lane4(person1) | lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1).  [resolve(1778,d,804,c),merge(d)].
+1781 lane4(person1) | lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1) | -lane4(person2).  [resolve(1779,a,203,b)].
+1824 lane4(person1) | lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1).  [resolve(1781,f,804,c),merge(f),merge(g),merge(h),merge(i)].
+1825 lane2(person2) | lane2(person4) | lane3(person2) | lane2(person1).  [resolve(1824,a,845,e),merge(e),merge(f),merge(g),merge(h)].
+1826 lane2(person2) | lane3(person2) | lane2(person1) | -lane2(person3).  [resolve(1825,b,189,b)].
+1827 lane2(person2) | lane3(person2) | lane2(person1).  [resolve(1826,d,1197,d),merge(d),merge(e),merge(f)].
+1966 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person2) | UK(person4) | lane4(person4).  [resolve(813,e,44,a)].
+1970 freestyle(person3) | freestyle(person1) | freestyle(person2) | UK(person4) | lane4(person4) | -Emily(x) | UK(x) | lane4(x).  [resolve(1966,b,73,b)].
+1973 freestyle(person3) | freestyle(person1) | freestyle(person2) | UK(person4) | lane4(person4).  [factor(1970,d,g),merge(g),unit_del(f,44)].
+1978 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person4) | -UK(person3).  [resolve(1973,d,216,b)].
+1979 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person4) | UK(person2).  [resolve(1978,e,302,a)].
+1980 freestyle(person3) | freestyle(person1) | freestyle(person2) | lane4(person4).  [resolve(1979,e,251,b),merge(e)].
+1981 freestyle(person1) | freestyle(person2) | lane4(person4).  [resolve(1980,a,419,c),merge(d),merge(e)].
+2118 freestyle(person1) | lane2(person4) | lane3(person4) | lane3(person2) | -USA(x) | lane2(person2).  [resolve(921,e,43,a)].
+2120 freestyle(person1) | lane2(person4) | lane3(person4) | lane3(person2) | lane2(person2).  [resolve(2118,e,846,a),merge(f),merge(g),merge(h)].
+2135 lane2(person4) | lane3(person4) | lane3(person2) | lane2(person2) | -USA(person1).  [resolve(2120,a,80,a)].
+2137 lane2(person4) | lane3(person4) | lane3(person2) | lane2(person2).  [resolve(2135,e,846,a),merge(e),merge(f),merge(g)].
+2138 lane3(person4) | lane3(person2) | lane2(person2) | -lane2(person1).  [resolve(2137,a,192,b)].
+2352 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | lane4(person3) | UK(person3).  [resolve(1000,e,44,a)].
+2357 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | UK(person4) | lane4(person4).  [resolve(1001,e,44,a)].
+2361 freestyle(person3) | freestyle(person1) | freestyle(person4) | UK(person4) | lane4(person4) | -Emily(x) | UK(x) | lane4(x).  [resolve(2357,b,73,b)].
+2364 freestyle(person3) | freestyle(person1) | freestyle(person4) | UK(person4) | lane4(person4).  [factor(2361,d,g),merge(g),unit_del(f,44)].
+2371 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person4) | -UK(person2).  [resolve(2364,d,217,b)].
+2372 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person4) | -UK(person3).  [resolve(2364,d,216,b)].
+2378 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person4) | UK(person2).  [resolve(2372,e,302,a)].
+2384 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane4(person4).  [resolve(2378,e,2371,e),merge(e),merge(f),merge(g),merge(h)].
+2385 freestyle(person3) | freestyle(person1) | lane4(person4) | -freestyle(person2).  [resolve(2384,c,178,b)].
+2397 freestyle(person3) | freestyle(person1) | lane4(person4).  [resolve(2385,d,1981,b),merge(d),merge(e)].
+2398 freestyle(person1) | lane4(person4) | -freestyle(person2).  [resolve(2397,a,179,b)].
+2409 freestyle(person1) | lane4(person4).  [resolve(2398,c,1981,b),merge(c),merge(d)].
+2416 lane4(person4) | freestyle(person2) | USA(person1).  [resolve(2409,a,874,d),merge(c)].
+2445 lane4(person4) | -USA(person1).  [resolve(2409,a,80,a)].
+2454 lane4(person4) | lane3(person2).  [resolve(2445,b,1637,a),merge(c)].
+2458 lane3(person2) | -lane4(person3).  [resolve(2454,a,201,b)].
+2459 lane3(person2) | lane3(person3).  [resolve(2458,b,276,b),merge(c)].
+2461 lane4(person4) | USA(person1) | -freestyle(person1).  [resolve(2416,b,182,b)].
+2480 lane4(person4) | USA(person1).  [resolve(2461,c,2409,a),merge(c)].
+2481 lane4(person4).  [resolve(2480,b,2445,b),merge(b)].
+2482 -lane4(person1).  [back_unit_del(204),unit_del(b,2481)].
+2484 -lane4(person3).  [back_unit_del(201),unit_del(b,2481)].
+2531 lane2(person3) | lane2(person1) | -freestyle(person1).  [back_unit_del(484),unit_del(c,2484),unit_del(d,2482)].
+2534 lane2(person3) | lane2(person1) | freestyle(person2).  [back_unit_del(362),unit_del(c,2484),unit_del(d,2482)].
+2537 lane3(person3) | lane2(person1) | lane3(person1).  [back_unit_del(277),unit_del(b,2484),unit_del(e,2482)].
+2538 -UK(x) | lane2(x) | lane2(person1) | lane4(x).  [back_unit_del(234),unit_del(e,2482)].
+2543 freestyle(person3) | backstroke(person1) | freestyle(person1) | freestyle(person4) | UK(person3).  [back_unit_del(2352),unit_del(e,2484)].
+2552 USA(person1) | lane2(person2) | lane2(person3) | -USA(x) | lane3(x) | lane3(person3).  [back_unit_del(1456),unit_del(d,2484)].
+2591 -backstroke(person1).  [ur(74,a,44,a,c,2482,a,d,228,a)].
+2598 freestyle(person3) | freestyle(person1) | freestyle(person4) | UK(person3).  [back_unit_del(2543),unit_del(b,2591)].
+2615 freestyle(person3) | freestyle(person1) | freestyle(person4) | lane2(person3) | lane2(person1).  [resolve(2598,d,2538,a),unit_del(f,2484)].
+2632 freestyle(person3) | freestyle(person1) | lane2(person3) | lane2(person1) | -freestyle(person2).  [resolve(2615,c,178,b)].
+2648 freestyle(person3) | freestyle(person1) | lane2(person3) | lane2(person1).  [resolve(2632,e,2534,c),merge(e),merge(f)].
+2649 freestyle(person1) | lane2(person3) | lane2(person1) | -freestyle(person2).  [resolve(2648,a,179,b)].
+2651 freestyle(person1) | lane2(person3) | lane2(person1).  [resolve(2649,d,2534,c),merge(d),merge(e)].
+2652 lane2(person3) | lane2(person1).  [resolve(2651,a,2531,c),merge(c),merge(d)].
+2653 lane2(person1) | -lane2(person2).  [resolve(2652,a,191,b)].
+2654 lane2(person1) | lane3(person2).  [resolve(2653,b,1827,a),merge(c)].
+2656 lane3(person2) | lane3(person4) | lane2(person2).  [resolve(2654,a,2138,d),merge(c)].
+2657 lane3(person2) | lane3(person4) | -lane2(person1).  [resolve(2656,c,194,b)].
+2658 lane3(person2) | lane3(person4).  [resolve(2657,c,2654,a),merge(c)].
+2659 lane3(person2) | -lane3(person3).  [resolve(2658,b,195,b)].
+2660 lane3(person2).  [resolve(2659,b,2459,b),merge(b)].
+2661 -lane3(person1).  [back_unit_del(200),unit_del(b,2660)].
+2662 -lane3(person3).  [back_unit_del(197),unit_del(a,2660)].
+2663 -lane3(person4).  [back_unit_del(196),unit_del(a,2660)].
+2668 lane2(person1).  [back_unit_del(2537),unit_del(a,2662),unit_del(c,2661)].
+2678 USA(person1) | lane2(person2) | lane2(person3) | -USA(x) | lane3(x).  [back_unit_del(2552),unit_del(f,2662)].
+2680 freestyle(person1) | freestyle(person2) | -USA(x) | lane2(person4).  [back_unit_del(911),unit_del(e,2663)].
+2683 -lane2(person2).  [back_unit_del(194),unit_del(a,2668)].
+2684 -lane2(person3).  [back_unit_del(193),unit_del(a,2668)].
+2685 -lane2(person4).  [back_unit_del(192),unit_del(a,2668)].
+2688 USA(person1) | -USA(x) | lane3(x).  [back_unit_del(2678),unit_del(b,2683),unit_del(c,2684)].
+2695 freestyle(person1) | freestyle(person2) | -USA(x).  [back_unit_del(2680),unit_del(d,2685)].
+2696 USA(person1).  [resolve(2688,b,748,a),merge(c),unit_del(b,2663)].
+2701 -freestyle(x).  [ur(103,a,43,a,c,2696,a,d,2661,a,e,2482,a,f,2662,a,g,2484,a)].
+2716 -USA(x).  [back_unit_del(2695),unit_del(a,2701),unit_del(b,2701)].
+2717 $F.  [resolve(2716,a,2696,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=932. Generated=9997. Kept=2686. proofs=1.
+Usable=150. Sos=9. Demods=0. Limbo=15, Disabled=2601. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=7311. Back_subsumed=2277.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=234.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=14196. Nonunit_bsub_feature_tests=8373.
+Megabytes=1.63.
+User_CPU=0.18, System_CPU=0.01, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 4011 exit (max_proofs) Thu Jan 12 11:42:41 2023

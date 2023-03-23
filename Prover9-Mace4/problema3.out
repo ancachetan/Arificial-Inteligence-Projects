@@ -1,0 +1,196 @@
+============================== Prover9 ===============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 9945 was started by student on SO-VirtualBox,
+Sun Jan 15 19:09:56 2023
+The command was "prover9 -f problema3.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file problema3.in
+
+
+formulas(assumptions).
+cititor_romane(x) -> cititor_romane_dragoste(x) & cititor_romane_politiste(x).
+(all x (cititor_romane_dragoste(x) | cititor_romane_politiste(x) | cititor_romane(x))).
+-(exists x (cititor_romane_dragoste(x) & ii_place(x,FilmComedie))).
+(all x (cititor_romane_politiste(x) -> ii_place(x,FilmActiune))).
+ii_place(Anca,FilmComedie).
+ii_place(Anca,FilmActiune).
+(all y (-ii_place(Anca,y) -> ii_place(Alina,y))).
+(all y (ii_place(Anca,y) -> -ii_place(Alina,y))).
+end_of_list.
+
+formulas(goals).
+(exists x (cititor_romane_dragoste(x) & -cititor_romane_politiste(x))).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 cititor_romane(x) -> cititor_romane_dragoste(x) & cititor_romane_politiste(x) # label(non_clause).  [assumption].
+2 (all x (cititor_romane_dragoste(x) | cititor_romane_politiste(x) | cititor_romane(x))) # label(non_clause).  [assumption].
+3 -(exists x (cititor_romane_dragoste(x) & ii_place(x,FilmComedie))) # label(non_clause).  [assumption].
+4 (all x (cititor_romane_politiste(x) -> ii_place(x,FilmActiune))) # label(non_clause).  [assumption].
+5 (all y (-ii_place(Anca,y) -> ii_place(Alina,y))) # label(non_clause).  [assumption].
+6 (all y (ii_place(Anca,y) -> -ii_place(Alina,y))) # label(non_clause).  [assumption].
+7 (exists x (cititor_romane_dragoste(x) & -cititor_romane_politiste(x))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-cititor_romane(x) | cititor_romane_dragoste(x).  [clausify(1)].
+-cititor_romane(x) | cititor_romane_politiste(x).  [clausify(1)].
+cititor_romane_dragoste(x) | cititor_romane_politiste(x) | cititor_romane(x).  [clausify(2)].
+-cititor_romane_dragoste(x) | -ii_place(x,FilmComedie).  [clausify(3)].
+-cititor_romane_politiste(x) | ii_place(x,FilmActiune).  [clausify(4)].
+ii_place(Anca,FilmComedie).  [assumption].
+ii_place(Anca,FilmActiune).  [assumption].
+ii_place(Anca,x) | ii_place(Alina,x).  [clausify(5)].
+-ii_place(Anca,x) | -ii_place(Alina,x).  [clausify(6)].
+-cititor_romane_dragoste(x) | cititor_romane_politiste(x).  [deny(7)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating cititor_romane/1
+8 cititor_romane_dragoste(x) | cititor_romane_politiste(x) | cititor_romane(x).  [clausify(2)].
+9 -cititor_romane(x) | cititor_romane_dragoste(x).  [clausify(1)].
+10 -cititor_romane(x) | cititor_romane_politiste(x).  [clausify(1)].
+Derived: cititor_romane_dragoste(x) | cititor_romane_politiste(x) | cititor_romane_dragoste(x).  [resolve(8,c,9,a)].
+
+Eliminating cititor_romane_politiste/1
+11 -cititor_romane_dragoste(x) | cititor_romane_politiste(x).  [deny(7)].
+12 -cititor_romane_politiste(x) | ii_place(x,FilmActiune).  [clausify(4)].
+Derived: -cititor_romane_dragoste(x) | ii_place(x,FilmActiune).  [resolve(11,b,12,a)].
+13 cititor_romane_dragoste(x) | cititor_romane_politiste(x) | cititor_romane_dragoste(x).  [resolve(8,c,9,a)].
+Derived: cititor_romane_dragoste(x) | cititor_romane_dragoste(x) | ii_place(x,FilmActiune).  [resolve(13,b,12,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ cititor_romane_dragoste, ii_place ]).
+Function symbol precedence:  function_order([ Anca, FilmActiune, Alina, FilmComedie ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+14 -cititor_romane_dragoste(x) | -ii_place(x,FilmComedie).  [clausify(3)].
+15 ii_place(Anca,FilmComedie).  [assumption].
+16 ii_place(Anca,FilmActiune).  [assumption].
+17 ii_place(Anca,x) | ii_place(Alina,x).  [clausify(5)].
+18 -ii_place(Anca,x) | -ii_place(Alina,x).  [clausify(6)].
+19 -cititor_romane_dragoste(x) | ii_place(x,FilmActiune).  [resolve(11,b,12,a)].
+21 cititor_romane_dragoste(x) | ii_place(x,FilmActiune).  [copy(20),merge(b)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=5): 14 -cititor_romane_dragoste(x) | -ii_place(x,FilmComedie).  [clausify(3)].
+
+given #2 (I,wt=3): 15 ii_place(Anca,FilmComedie).  [assumption].
+
+given #3 (I,wt=3): 16 ii_place(Anca,FilmActiune).  [assumption].
+
+given #4 (I,wt=6): 17 ii_place(Anca,x) | ii_place(Alina,x).  [clausify(5)].
+
+given #5 (I,wt=6): 18 -ii_place(Anca,x) | -ii_place(Alina,x).  [clausify(6)].
+
+given #6 (I,wt=5): 19 -cititor_romane_dragoste(x) | ii_place(x,FilmActiune).  [resolve(11,b,12,a)].
+
+given #7 (I,wt=5): 21 cititor_romane_dragoste(x) | ii_place(x,FilmActiune).  [copy(20),merge(b)].
+
+given #8 (A,wt=2): 22 -cititor_romane_dragoste(Anca).  [resolve(15,a,14,b)].
+
+given #9 (F,wt=3): 23 -ii_place(Alina,FilmActiune).  [ur(18,a,16,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 18.
+% Level of proof is 6.
+% Maximum clause weight is 6.
+% Given clauses 9.
+
+1 cititor_romane(x) -> cititor_romane_dragoste(x) & cititor_romane_politiste(x) # label(non_clause).  [assumption].
+2 (all x (cititor_romane_dragoste(x) | cititor_romane_politiste(x) | cititor_romane(x))) # label(non_clause).  [assumption].
+4 (all x (cititor_romane_politiste(x) -> ii_place(x,FilmActiune))) # label(non_clause).  [assumption].
+6 (all y (ii_place(Anca,y) -> -ii_place(Alina,y))) # label(non_clause).  [assumption].
+7 (exists x (cititor_romane_dragoste(x) & -cititor_romane_politiste(x))) # label(non_clause) # label(goal).  [goal].
+8 cititor_romane_dragoste(x) | cititor_romane_politiste(x) | cititor_romane(x).  [clausify(2)].
+9 -cititor_romane(x) | cititor_romane_dragoste(x).  [clausify(1)].
+11 -cititor_romane_dragoste(x) | cititor_romane_politiste(x).  [deny(7)].
+12 -cititor_romane_politiste(x) | ii_place(x,FilmActiune).  [clausify(4)].
+13 cititor_romane_dragoste(x) | cititor_romane_politiste(x) | cititor_romane_dragoste(x).  [resolve(8,c,9,a)].
+16 ii_place(Anca,FilmActiune).  [assumption].
+18 -ii_place(Anca,x) | -ii_place(Alina,x).  [clausify(6)].
+19 -cititor_romane_dragoste(x) | ii_place(x,FilmActiune).  [resolve(11,b,12,a)].
+20 cititor_romane_dragoste(x) | cititor_romane_dragoste(x) | ii_place(x,FilmActiune).  [resolve(13,b,12,a)].
+21 cititor_romane_dragoste(x) | ii_place(x,FilmActiune).  [copy(20),merge(b)].
+23 -ii_place(Alina,FilmActiune).  [ur(18,a,16,a)].
+25 cititor_romane_dragoste(Alina).  [resolve(21,b,18,b),unit_del(b,16)].
+26 $F.  [ur(19,b,23,a),unit_del(a,25)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=9. Generated=17. Kept=11. proofs=1.
+Usable=9. Sos=2. Demods=0. Limbo=0, Disabled=13. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=5. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=5.
+Megabytes=0.03.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 9945 exit (max_proofs) Sun Jan 15 19:09:56 2023

@@ -1,0 +1,96 @@
+%https://www.brainzilla.com/logic/logic-grid/swimming-pool/
+%There are four swimmers, each training their favorite style. Each one is from a different 
+%country and is swimming alone in their lane. What kind of swimming style is the Canadian %practicing?
+
+%uncomment this for mace4
+%assign(domain_size, 4).
+
+formulas(assumptions).
+
+differentFrom(person1,person2).
+differentFrom(person1,person3).
+differentFrom(person1,person4).
+differentFrom(person2,person3).
+differentFrom(person2,person4).
+differentFrom(person3,person4).
+
+differentFrom(x,y) ->  differentFrom(y,x).
+
+Betty(x) | Carol(x)  | Daisy(x)  | Emily(x).
+backstroke(x) | butterfly(x) | dolphin(x) | freestyle(x).
+lane1(x) | lane2(x) | lane3(x) | lane4(x).
+Australia(x) | Canada(x) | UK(x) | USA(x).
+
+Betty(person1).
+Carol(person2).
+Daisy(person3).
+Emily(person4).
+
+Betty(x) & Betty(y) -> -differentFrom(x,y).
+Carol(x) & Carol(y) -> -differentFrom(x,y).
+Daisy(x) & Daisy(y) -> -differentFrom(x,y).
+Emily(x) & Emily(y) -> -differentFrom(x,y).
+
+backstroke(x) & backstroke(y) -> -differentFrom(x,y).
+butterfly(x) & butterfly(y)   -> -differentFrom(x,y).
+dolphin(x) & dolphin(y)       -> -differentFrom(x,y).
+freestyle(x) & freestyle(y)   -> -differentFrom(x,y).
+
+lane1(x) & lane1(y) -> -differentFrom(x,y).
+lane2(x) & lane2(y) -> -differentFrom(x,y).
+lane3(x) & lane3(y) -> -differentFrom(x,y).
+lane4(x) & lane4(y) -> -differentFrom(x,y).
+
+Australia(x) & Australia(y) -> -differentFrom(x,y).
+Canada(x) & Canada(y) -> -differentFrom(x,y).
+UK(x) & UK(y) -> -differentFrom(x,y).
+USA(x) & USA(y) -> -differentFrom(x,y).
+
+%The clues
+
+%Betty is swimming next to the athlete from the UK. Neither of them is swimming Butterfly
+
+Betty(x) -> -UK(x).
+Betty(x) & UK(y) -> ((lane1(x) & lane2(y)) | (lane2(x) & lane3(y)) | (lane3(x) & lane4(y)) | (lane1(y) & lane2(x)) | (lane2(y) & lane3(x)) | (lane3(y) & lane4(x))) & (-butterfly(x) & -butterfly(y)).
+
+%Amoung Emily and the Backstroker, one is from the UK and the other is in the forth lane
+
+Emily(x) -> -backstroke(x).
+Emily(x) & backstroke(y) -> (UK(x) & lane4(y)) | (UK(y) & lane4(x)).
+
+%Carol is not swimming Backstroke nor Dolphin. She is not Australian and she is not swimming in lanes #2 nor #4
+
+Carol(x) -> (butterfly(x) | freestyle(x)) & (UK(x) | Canada(x) | USA(x)) & (lane1(x)  | lane3(x)).
+
+%Freestyle is next to both Daisy and the American swimmer
+
+Daisy(x) -> -USA(x).
+freestyle(x) -> -USA(x).
+Daisy(x) & freestyle(y) & USA(z) -> (lane1(x) & lane2(y) & lane3(z)) | (lane2(x) & lane3(y) & lane4(z)) | (lane1(z) & lane2(y) & lane3(x)) | (lane2(z) & lane3(y) & lane4(x)).
+
+%The American swimmer is next to Carol
+
+Carol(x) -> -USA(x).
+USA(x) & Carol(y) -> (lane1(x) & lane2(y)) | (lane2(x) & lane3(y)) | (lane3(x) & lane4(y)) | (lane1(y) & lane2(x)) | (lane2(y) & lane3(x)) | (lane3(y) & lane4(x)).
+
+%Daisy is not swimming in lane #2
+
+Daisy(x) -> lane1(x) | lane3(x) | lane4(x).
+
+end_of_list.
+
+%uncomment this for prover9
+formulas(goals).
+  Daisy(person3) & Australia(person3). 
+end_of_list.
+
+
+
+
+
+
+
+
+
+
+

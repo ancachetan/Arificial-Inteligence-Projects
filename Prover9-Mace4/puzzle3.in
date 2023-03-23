@@ -1,0 +1,118 @@
+%https://www.brainzilla.com/logic/logic-grid/bowling-night/
+%Four friends brought their favorite bowling ball to play bowling together. How many points 
+%did the Blue Ball's owner score?
+
+%uncomment this for mace4
+%assign(domain_size, 4).
+
+formulas(assumptions).
+
+differentFrom(person1,person2).
+differentFrom(person1,person3).
+differentFrom(person1,person4).
+differentFrom(person2,person3).
+differentFrom(person2,person4).
+differentFrom(person3,person4).
+
+differentFrom(x,y) ->  differentFrom(y,x).
+
+Josh(x) | Kelly(x)  | Mark(x)  | Paula(x).
+score_95(x) | score_100(x) | score_105(x) | score_110(x).
+weight_13(x) | weight_14(x) | weight_15(x) | weight_16(x).
+color_black(x) | color_blue(x) | color_green(x) | color_gold(x).
+
+Josh(person1).
+Kelly(person2).
+Mark(person3).
+Paula(person4).
+
+Josh(x) & Josh(y)   -> -differentFrom(x,y).
+Kelly(x) & Kelly(y) -> -differentFrom(x,y).
+Mark(x) & Mark(y)   -> -differentFrom(x,y).
+Paula(x) & Paula(y) -> -differentFrom(x,y).
+
+score_95(x) & score_95(y)   -> -differentFrom(x,y).
+score_100(x) & score_100(y) -> -differentFrom(x,y).
+score_105(x) & score_105(y) -> -differentFrom(x,y).
+score_110(x) & score_110(y) -> -differentFrom(x,y).
+
+weight_13(x) & weight_13(y) -> -differentFrom(x,y).
+weight_14(x) & weight_14(y) -> -differentFrom(x,y).
+weight_15(x) & weight_15(y) -> -differentFrom(x,y).
+weight_16(x) & weight_16(y) -> -differentFrom(x,y).
+
+color_black(x) & color_black(y) -> -differentFrom(x,y).
+color_blue(x) & color_blue(y)   -> -differentFrom(x,y).
+color_green(x) & color_green(y) -> -differentFrom(x,y).
+color_gold(x) & color_gold(y)   -> -differentFrom(x,y).
+
+%The clues
+
+%Kelly, the player who scored 100 points and the player who scored the 95 points are three different persons.
+
+Kelly(x) & score_100(y) & score_95(z)  -> differentFrom(x,y) & differentFrom(x,z) & differentFrom(y,z).
+%Kelly(x) & score_100(y) -> differentFrom(x,y).
+%Kelly(x) & score_95(y)     -> differentFrom(x,y).
+%score_100(x) & score_95(y) -> differentFrom(x,y).
+
+%The gold ball weights 15 lb
+
+color_gold(x) -> weight_15(x).
+
+%Josh's ball is black
+
+Josh(x) -> color_black(x).
+
+%The player who scored 100 points, Paula and Josh are three different players
+
+Paula(x) & score_100(y) & Josh(z) -> differentFrom(x,y) & differentFrom(x,z) & differentFrom(y,z).
+%Paula(x) & score_100(y) -> differentFrom(x,y).
+%Josh(x) & score_100(y)  -> differentFrom(x,y).
+%Paula(x) & Josh(y)      -> differentFrom(x,y).
+
+
+%Paula scored 10 points less than the player who owns the 14 lb ball
+
+Paula(x) & weight_14(y) -> (score_95(x) & score_105(y)) | (score_100(x) & score_110(y)).
+
+
+%The player that scored 100 points is either the owner of the green ball or the owner of the 15 lb ball
+
+score_100(x) -> color_green(x) | weight_15(x).
+
+%The owner of the haviest ball scored 5 points less than the player who has the green ball
+
+color_green(x) & weight_16(y) -> (score_100(x) & score_95(y)) | (score_105(x) & score_100(y)) | (score_110(x) & score_105(y)).
+
+end_of_list.
+
+%uncomment this for prover9
+formulas(goals).
+  color_blue(person4) & score_95(person4). 
+end_of_list.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

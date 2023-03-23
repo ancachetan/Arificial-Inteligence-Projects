@@ -1,0 +1,2334 @@
+============================== Prover9 ===============================
+Prover9 (32) version Dec-2007, Dec 2007.
+Process 3980 was started by student on SO-VirtualBox,
+Thu Jan 12 11:42:25 2023
+The command was "prover9 -f puzzle3.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file puzzle3.in
+
+
+formulas(assumptions).
+differentFrom(person1,person2).
+differentFrom(person1,person3).
+differentFrom(person1,person4).
+differentFrom(person2,person3).
+differentFrom(person2,person4).
+differentFrom(person3,person4).
+differentFrom(x,y) -> differentFrom(y,x).
+Josh(x) | Kelly(x) | Mark(x) | Paula(x).
+score_95(x) | score_100(x) | score_105(x) | score_110(x).
+weight_13(x) | weight_14(x) | weight_15(x) | weight_16(x).
+color_black(x) | color_blue(x) | color_green(x) | color_gold(x).
+Josh(person1).
+Kelly(person2).
+Mark(person3).
+Paula(person4).
+Josh(x) & Josh(y) -> -differentFrom(x,y).
+Kelly(x) & Kelly(y) -> -differentFrom(x,y).
+Mark(x) & Mark(y) -> -differentFrom(x,y).
+Paula(x) & Paula(y) -> -differentFrom(x,y).
+score_95(x) & score_95(y) -> -differentFrom(x,y).
+score_100(x) & score_100(y) -> -differentFrom(x,y).
+score_105(x) & score_105(y) -> -differentFrom(x,y).
+score_110(x) & score_110(y) -> -differentFrom(x,y).
+weight_13(x) & weight_13(y) -> -differentFrom(x,y).
+weight_14(x) & weight_14(y) -> -differentFrom(x,y).
+weight_15(x) & weight_15(y) -> -differentFrom(x,y).
+weight_16(x) & weight_16(y) -> -differentFrom(x,y).
+color_black(x) & color_black(y) -> -differentFrom(x,y).
+color_blue(x) & color_blue(y) -> -differentFrom(x,y).
+color_green(x) & color_green(y) -> -differentFrom(x,y).
+color_gold(x) & color_gold(y) -> -differentFrom(x,y).
+Kelly(x) & score_100(y) & score_95(z) -> differentFrom(x,y) & differentFrom(x,z) & differentFrom(y,z).
+color_gold(x) -> weight_15(x).
+Josh(x) -> color_black(x).
+Paula(x) & score_100(y) & Josh(z) -> differentFrom(x,y) & differentFrom(x,z) & differentFrom(y,z).
+Paula(x) & weight_14(y) -> score_95(x) & score_105(y) | score_100(x) & score_110(y).
+score_100(x) -> color_green(x) | weight_15(x).
+color_green(x) & weight_16(y) -> score_100(x) & score_95(y) | score_105(x) & score_100(y) | score_110(x) & score_105(y).
+end_of_list.
+
+formulas(goals).
+color_blue(person4) & score_95(person4).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 differentFrom(x,y) -> differentFrom(y,x) # label(non_clause).  [assumption].
+2 Josh(x) & Josh(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+3 Kelly(x) & Kelly(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+4 Mark(x) & Mark(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+5 Paula(x) & Paula(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+6 score_95(x) & score_95(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+7 score_100(x) & score_100(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+8 score_105(x) & score_105(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+9 score_110(x) & score_110(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+10 weight_13(x) & weight_13(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+11 weight_14(x) & weight_14(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+12 weight_15(x) & weight_15(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+13 weight_16(x) & weight_16(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+14 color_black(x) & color_black(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+15 color_blue(x) & color_blue(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+16 color_green(x) & color_green(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+17 color_gold(x) & color_gold(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+18 Kelly(x) & score_100(y) & score_95(z) -> differentFrom(x,y) & differentFrom(x,z) & differentFrom(y,z) # label(non_clause).  [assumption].
+19 color_gold(x) -> weight_15(x) # label(non_clause).  [assumption].
+20 Josh(x) -> color_black(x) # label(non_clause).  [assumption].
+21 Paula(x) & score_100(y) & Josh(z) -> differentFrom(x,y) & differentFrom(x,z) & differentFrom(y,z) # label(non_clause).  [assumption].
+22 Paula(x) & weight_14(y) -> score_95(x) & score_105(y) | score_100(x) & score_110(y) # label(non_clause).  [assumption].
+23 score_100(x) -> color_green(x) | weight_15(x) # label(non_clause).  [assumption].
+24 color_green(x) & weight_16(y) -> score_100(x) & score_95(y) | score_105(x) & score_100(y) | score_110(x) & score_105(y) # label(non_clause).  [assumption].
+25 color_blue(person4) & score_95(person4) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+differentFrom(person1,person2).  [assumption].
+differentFrom(person1,person3).  [assumption].
+differentFrom(person1,person4).  [assumption].
+differentFrom(person2,person3).  [assumption].
+differentFrom(person2,person4).  [assumption].
+differentFrom(person3,person4).  [assumption].
+-differentFrom(x,y) | differentFrom(y,x).  [clausify(1)].
+Josh(x) | Kelly(x) | Mark(x) | Paula(x).  [assumption].
+score_95(x) | score_100(x) | score_105(x) | score_110(x).  [assumption].
+weight_13(x) | weight_14(x) | weight_15(x) | weight_16(x).  [assumption].
+color_black(x) | color_blue(x) | color_green(x) | color_gold(x).  [assumption].
+Josh(person1).  [assumption].
+Kelly(person2).  [assumption].
+Mark(person3).  [assumption].
+Paula(person4).  [assumption].
+-Josh(x) | -Josh(y) | -differentFrom(x,y).  [clausify(2)].
+-Kelly(x) | -Kelly(y) | -differentFrom(x,y).  [clausify(3)].
+-Mark(x) | -Mark(y) | -differentFrom(x,y).  [clausify(4)].
+-Paula(x) | -Paula(y) | -differentFrom(x,y).  [clausify(5)].
+-score_95(x) | -score_95(y) | -differentFrom(x,y).  [clausify(6)].
+-score_100(x) | -score_100(y) | -differentFrom(x,y).  [clausify(7)].
+-score_105(x) | -score_105(y) | -differentFrom(x,y).  [clausify(8)].
+-score_110(x) | -score_110(y) | -differentFrom(x,y).  [clausify(9)].
+-weight_13(x) | -weight_13(y) | -differentFrom(x,y).  [clausify(10)].
+-weight_14(x) | -weight_14(y) | -differentFrom(x,y).  [clausify(11)].
+-weight_15(x) | -weight_15(y) | -differentFrom(x,y).  [clausify(12)].
+-weight_16(x) | -weight_16(y) | -differentFrom(x,y).  [clausify(13)].
+-color_black(x) | -color_black(y) | -differentFrom(x,y).  [clausify(14)].
+-color_blue(x) | -color_blue(y) | -differentFrom(x,y).  [clausify(15)].
+-color_green(x) | -color_green(y) | -differentFrom(x,y).  [clausify(16)].
+-color_gold(x) | -color_gold(y) | -differentFrom(x,y).  [clausify(17)].
+-Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(x,y).  [clausify(18)].
+-Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(x,z).  [clausify(18)].
+-Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(y,z).  [clausify(18)].
+-color_gold(x) | weight_15(x).  [clausify(19)].
+-Josh(x) | color_black(x).  [clausify(20)].
+-Paula(x) | -score_100(y) | -Josh(z) | differentFrom(x,y).  [clausify(21)].
+-Paula(x) | -score_100(y) | -Josh(z) | differentFrom(x,z).  [clausify(21)].
+-Paula(x) | -score_100(y) | -Josh(z) | differentFrom(y,z).  [clausify(21)].
+-Paula(x) | -weight_14(y) | score_95(x) | score_100(x).  [clausify(22)].
+-Paula(x) | -weight_14(y) | score_95(x) | score_110(y).  [clausify(22)].
+-Paula(x) | -weight_14(y) | score_105(y) | score_100(x).  [clausify(22)].
+-Paula(x) | -weight_14(y) | score_105(y) | score_110(y).  [clausify(22)].
+-score_100(x) | color_green(x) | weight_15(x).  [clausify(23)].
+-color_green(x) | -weight_16(y) | score_100(x) | score_105(x) | score_110(x).  [clausify(24)].
+-color_green(x) | -weight_16(y) | score_100(x) | score_105(x) | score_105(y).  [clausify(24)].
+-color_green(x) | -weight_16(y) | score_100(x) | score_100(y) | score_110(x).  [clausify(24)].
+-color_green(x) | -weight_16(y) | score_100(x) | score_100(y) | score_105(y).  [clausify(24)].
+-color_green(x) | -weight_16(y) | score_95(y) | score_105(x) | score_110(x).  [clausify(24)].
+-color_green(x) | -weight_16(y) | score_95(y) | score_105(x) | score_105(y).  [clausify(24)].
+-color_green(x) | -weight_16(y) | score_95(y) | score_100(y) | score_110(x).  [clausify(24)].
+-color_green(x) | -weight_16(y) | score_95(y) | score_100(y) | score_105(y).  [clausify(24)].
+-color_blue(person4) | -score_95(person4).  [deny(25)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ score_100, score_105, color_green, score_95, Paula, weight_16, score_110, Josh, Kelly, weight_14, weight_15, Mark, color_black, color_gold, color_blue, weight_13, differentFrom ]).
+Function symbol precedence:  function_order([ person1, person2, person3, person4 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+26 differentFrom(person1,person2).  [assumption].
+27 differentFrom(person1,person3).  [assumption].
+28 differentFrom(person1,person4).  [assumption].
+29 differentFrom(person2,person3).  [assumption].
+30 differentFrom(person2,person4).  [assumption].
+31 differentFrom(person3,person4).  [assumption].
+32 -differentFrom(x,y) | differentFrom(y,x).  [clausify(1)].
+33 Josh(x) | Kelly(x) | Mark(x) | Paula(x).  [assumption].
+34 score_95(x) | score_100(x) | score_105(x) | score_110(x).  [assumption].
+35 weight_13(x) | weight_14(x) | weight_15(x) | weight_16(x).  [assumption].
+36 color_black(x) | color_blue(x) | color_green(x) | color_gold(x).  [assumption].
+37 Josh(person1).  [assumption].
+38 Kelly(person2).  [assumption].
+39 Mark(person3).  [assumption].
+40 Paula(person4).  [assumption].
+41 -Josh(x) | -Josh(y) | -differentFrom(x,y).  [clausify(2)].
+42 -Kelly(x) | -Kelly(y) | -differentFrom(x,y).  [clausify(3)].
+43 -Mark(x) | -Mark(y) | -differentFrom(x,y).  [clausify(4)].
+44 -Paula(x) | -Paula(y) | -differentFrom(x,y).  [clausify(5)].
+45 -score_95(x) | -score_95(y) | -differentFrom(x,y).  [clausify(6)].
+46 -score_100(x) | -score_100(y) | -differentFrom(x,y).  [clausify(7)].
+47 -score_105(x) | -score_105(y) | -differentFrom(x,y).  [clausify(8)].
+48 -score_110(x) | -score_110(y) | -differentFrom(x,y).  [clausify(9)].
+49 -weight_13(x) | -weight_13(y) | -differentFrom(x,y).  [clausify(10)].
+50 -weight_14(x) | -weight_14(y) | -differentFrom(x,y).  [clausify(11)].
+51 -weight_15(x) | -weight_15(y) | -differentFrom(x,y).  [clausify(12)].
+52 -weight_16(x) | -weight_16(y) | -differentFrom(x,y).  [clausify(13)].
+53 -color_black(x) | -color_black(y) | -differentFrom(x,y).  [clausify(14)].
+54 -color_blue(x) | -color_blue(y) | -differentFrom(x,y).  [clausify(15)].
+55 -color_green(x) | -color_green(y) | -differentFrom(x,y).  [clausify(16)].
+56 -color_gold(x) | -color_gold(y) | -differentFrom(x,y).  [clausify(17)].
+57 -Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(x,y).  [clausify(18)].
+58 -Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(x,z).  [clausify(18)].
+59 -Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(y,z).  [clausify(18)].
+60 -color_gold(x) | weight_15(x).  [clausify(19)].
+61 -Josh(x) | color_black(x).  [clausify(20)].
+62 -Paula(x) | -score_100(y) | -Josh(z) | differentFrom(x,y).  [clausify(21)].
+63 -Paula(x) | -score_100(y) | -Josh(z) | differentFrom(x,z).  [clausify(21)].
+64 -Paula(x) | -score_100(y) | -Josh(z) | differentFrom(y,z).  [clausify(21)].
+65 -Paula(x) | -weight_14(y) | score_95(x) | score_100(x).  [clausify(22)].
+66 -Paula(x) | -weight_14(y) | score_95(x) | score_110(y).  [clausify(22)].
+67 -Paula(x) | -weight_14(y) | score_105(y) | score_100(x).  [clausify(22)].
+68 -Paula(x) | -weight_14(y) | score_105(y) | score_110(y).  [clausify(22)].
+69 -score_100(x) | color_green(x) | weight_15(x).  [clausify(23)].
+70 -color_green(x) | -weight_16(y) | score_100(x) | score_105(x) | score_110(x).  [clausify(24)].
+71 -color_green(x) | -weight_16(y) | score_100(x) | score_105(x) | score_105(y).  [clausify(24)].
+72 -color_green(x) | -weight_16(y) | score_100(x) | score_100(y) | score_110(x).  [clausify(24)].
+73 -color_green(x) | -weight_16(y) | score_100(x) | score_100(y) | score_105(y).  [clausify(24)].
+74 -color_green(x) | -weight_16(y) | score_95(y) | score_105(x) | score_110(x).  [clausify(24)].
+75 -color_green(x) | -weight_16(y) | score_95(y) | score_105(x) | score_105(y).  [clausify(24)].
+76 -color_green(x) | -weight_16(y) | score_95(y) | score_100(y) | score_110(x).  [clausify(24)].
+77 -color_green(x) | -weight_16(y) | score_95(y) | score_100(y) | score_105(y).  [clausify(24)].
+78 -color_blue(person4) | -score_95(person4).  [deny(25)].
+79 -Josh(x) | -differentFrom(x,x).  [factor(41,a,b)].
+80 -Kelly(x) | -differentFrom(x,x).  [factor(42,a,b)].
+81 -Mark(x) | -differentFrom(x,x).  [factor(43,a,b)].
+82 -Paula(x) | -differentFrom(x,x).  [factor(44,a,b)].
+83 -score_95(x) | -differentFrom(x,x).  [factor(45,a,b)].
+84 -score_100(x) | -differentFrom(x,x).  [factor(46,a,b)].
+85 -score_105(x) | -differentFrom(x,x).  [factor(47,a,b)].
+86 -score_110(x) | -differentFrom(x,x).  [factor(48,a,b)].
+87 -weight_13(x) | -differentFrom(x,x).  [factor(49,a,b)].
+88 -weight_14(x) | -differentFrom(x,x).  [factor(50,a,b)].
+89 -weight_15(x) | -differentFrom(x,x).  [factor(51,a,b)].
+90 -weight_16(x) | -differentFrom(x,x).  [factor(52,a,b)].
+91 -color_black(x) | -differentFrom(x,x).  [factor(53,a,b)].
+92 -color_blue(x) | -differentFrom(x,x).  [factor(54,a,b)].
+93 -color_green(x) | -differentFrom(x,x).  [factor(55,a,b)].
+94 -color_gold(x) | -differentFrom(x,x).  [factor(56,a,b)].
+95 -color_green(x) | -weight_16(x) | score_100(x) | score_105(x).  [factor(71,d,e)].
+96 -color_green(x) | -weight_16(x) | score_100(x) | score_110(x).  [factor(72,c,d)].
+97 -color_green(x) | -weight_16(x) | score_95(x) | score_105(x).  [factor(75,d,e)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=3): 26 differentFrom(person1,person2).  [assumption].
+
+given #2 (I,wt=3): 27 differentFrom(person1,person3).  [assumption].
+
+given #3 (I,wt=3): 28 differentFrom(person1,person4).  [assumption].
+
+given #4 (I,wt=3): 29 differentFrom(person2,person3).  [assumption].
+
+given #5 (I,wt=3): 30 differentFrom(person2,person4).  [assumption].
+
+given #6 (I,wt=3): 31 differentFrom(person3,person4).  [assumption].
+
+given #7 (I,wt=6): 32 -differentFrom(x,y) | differentFrom(y,x).  [clausify(1)].
+
+given #8 (I,wt=8): 33 Josh(x) | Kelly(x) | Mark(x) | Paula(x).  [assumption].
+
+given #9 (I,wt=8): 34 score_95(x) | score_100(x) | score_105(x) | score_110(x).  [assumption].
+
+given #10 (I,wt=8): 35 weight_13(x) | weight_14(x) | weight_15(x) | weight_16(x).  [assumption].
+
+given #11 (I,wt=8): 36 color_black(x) | color_blue(x) | color_green(x) | color_gold(x).  [assumption].
+
+given #12 (I,wt=2): 37 Josh(person1).  [assumption].
+
+given #13 (I,wt=2): 38 Kelly(person2).  [assumption].
+
+given #14 (I,wt=2): 39 Mark(person3).  [assumption].
+
+given #15 (I,wt=2): 40 Paula(person4).  [assumption].
+
+given #16 (I,wt=7): 41 -Josh(x) | -Josh(y) | -differentFrom(x,y).  [clausify(2)].
+
+given #17 (I,wt=7): 42 -Kelly(x) | -Kelly(y) | -differentFrom(x,y).  [clausify(3)].
+
+given #18 (I,wt=7): 43 -Mark(x) | -Mark(y) | -differentFrom(x,y).  [clausify(4)].
+
+given #19 (I,wt=7): 44 -Paula(x) | -Paula(y) | -differentFrom(x,y).  [clausify(5)].
+
+given #20 (I,wt=7): 45 -score_95(x) | -score_95(y) | -differentFrom(x,y).  [clausify(6)].
+
+given #21 (I,wt=7): 46 -score_100(x) | -score_100(y) | -differentFrom(x,y).  [clausify(7)].
+
+given #22 (I,wt=7): 47 -score_105(x) | -score_105(y) | -differentFrom(x,y).  [clausify(8)].
+
+given #23 (I,wt=7): 48 -score_110(x) | -score_110(y) | -differentFrom(x,y).  [clausify(9)].
+
+given #24 (I,wt=7): 49 -weight_13(x) | -weight_13(y) | -differentFrom(x,y).  [clausify(10)].
+
+given #25 (I,wt=7): 50 -weight_14(x) | -weight_14(y) | -differentFrom(x,y).  [clausify(11)].
+
+given #26 (I,wt=7): 51 -weight_15(x) | -weight_15(y) | -differentFrom(x,y).  [clausify(12)].
+
+given #27 (I,wt=7): 52 -weight_16(x) | -weight_16(y) | -differentFrom(x,y).  [clausify(13)].
+
+given #28 (I,wt=7): 53 -color_black(x) | -color_black(y) | -differentFrom(x,y).  [clausify(14)].
+
+given #29 (I,wt=7): 54 -color_blue(x) | -color_blue(y) | -differentFrom(x,y).  [clausify(15)].
+
+given #30 (I,wt=7): 55 -color_green(x) | -color_green(y) | -differentFrom(x,y).  [clausify(16)].
+
+given #31 (I,wt=7): 56 -color_gold(x) | -color_gold(y) | -differentFrom(x,y).  [clausify(17)].
+
+given #32 (I,wt=9): 57 -Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(x,y).  [clausify(18)].
+
+given #33 (I,wt=9): 58 -Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(x,z).  [clausify(18)].
+
+given #34 (I,wt=9): 59 -Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(y,z).  [clausify(18)].
+
+given #35 (I,wt=4): 60 -color_gold(x) | weight_15(x).  [clausify(19)].
+
+given #36 (I,wt=4): 61 -Josh(x) | color_black(x).  [clausify(20)].
+
+given #37 (I,wt=9): 62 -Paula(x) | -score_100(y) | -Josh(z) | differentFrom(x,y).  [clausify(21)].
+
+given #38 (I,wt=9): 63 -Paula(x) | -score_100(y) | -Josh(z) | differentFrom(x,z).  [clausify(21)].
+
+given #39 (I,wt=9): 64 -Paula(x) | -score_100(y) | -Josh(z) | differentFrom(y,z).  [clausify(21)].
+
+given #40 (I,wt=8): 65 -Paula(x) | -weight_14(y) | score_95(x) | score_100(x).  [clausify(22)].
+
+given #41 (I,wt=8): 66 -Paula(x) | -weight_14(y) | score_95(x) | score_110(y).  [clausify(22)].
+
+given #42 (I,wt=8): 67 -Paula(x) | -weight_14(y) | score_105(y) | score_100(x).  [clausify(22)].
+
+given #43 (I,wt=8): 68 -Paula(x) | -weight_14(y) | score_105(y) | score_110(y).  [clausify(22)].
+
+given #44 (I,wt=6): 69 -score_100(x) | color_green(x) | weight_15(x).  [clausify(23)].
+
+given #45 (I,wt=10): 70 -color_green(x) | -weight_16(y) | score_100(x) | score_105(x) | score_110(x).  [clausify(24)].
+
+given #46 (I,wt=10): 71 -color_green(x) | -weight_16(y) | score_100(x) | score_105(x) | score_105(y).  [clausify(24)].
+
+given #47 (I,wt=10): 72 -color_green(x) | -weight_16(y) | score_100(x) | score_100(y) | score_110(x).  [clausify(24)].
+
+given #48 (I,wt=10): 73 -color_green(x) | -weight_16(y) | score_100(x) | score_100(y) | score_105(y).  [clausify(24)].
+
+given #49 (I,wt=10): 74 -color_green(x) | -weight_16(y) | score_95(y) | score_105(x) | score_110(x).  [clausify(24)].
+
+given #50 (I,wt=10): 75 -color_green(x) | -weight_16(y) | score_95(y) | score_105(x) | score_105(y).  [clausify(24)].
+
+given #51 (I,wt=10): 76 -color_green(x) | -weight_16(y) | score_95(y) | score_100(y) | score_110(x).  [clausify(24)].
+
+given #52 (I,wt=10): 77 -color_green(x) | -weight_16(y) | score_95(y) | score_100(y) | score_105(y).  [clausify(24)].
+
+given #53 (I,wt=4): 78 -color_blue(person4) | -score_95(person4).  [deny(25)].
+
+given #54 (I,wt=5): 79 -Josh(x) | -differentFrom(x,x).  [factor(41,a,b)].
+
+given #55 (I,wt=5): 80 -Kelly(x) | -differentFrom(x,x).  [factor(42,a,b)].
+
+given #56 (I,wt=5): 81 -Mark(x) | -differentFrom(x,x).  [factor(43,a,b)].
+
+given #57 (I,wt=5): 82 -Paula(x) | -differentFrom(x,x).  [factor(44,a,b)].
+
+given #58 (I,wt=5): 83 -score_95(x) | -differentFrom(x,x).  [factor(45,a,b)].
+
+given #59 (I,wt=5): 84 -score_100(x) | -differentFrom(x,x).  [factor(46,a,b)].
+
+given #60 (I,wt=5): 85 -score_105(x) | -differentFrom(x,x).  [factor(47,a,b)].
+
+given #61 (I,wt=5): 86 -score_110(x) | -differentFrom(x,x).  [factor(48,a,b)].
+
+given #62 (I,wt=5): 87 -weight_13(x) | -differentFrom(x,x).  [factor(49,a,b)].
+
+given #63 (I,wt=5): 88 -weight_14(x) | -differentFrom(x,x).  [factor(50,a,b)].
+
+given #64 (I,wt=5): 89 -weight_15(x) | -differentFrom(x,x).  [factor(51,a,b)].
+
+given #65 (I,wt=5): 90 -weight_16(x) | -differentFrom(x,x).  [factor(52,a,b)].
+
+given #66 (I,wt=5): 91 -color_black(x) | -differentFrom(x,x).  [factor(53,a,b)].
+
+given #67 (I,wt=5): 92 -color_blue(x) | -differentFrom(x,x).  [factor(54,a,b)].
+
+given #68 (I,wt=5): 93 -color_green(x) | -differentFrom(x,x).  [factor(55,a,b)].
+
+given #69 (I,wt=5): 94 -color_gold(x) | -differentFrom(x,x).  [factor(56,a,b)].
+
+given #70 (I,wt=8): 95 -color_green(x) | -weight_16(x) | score_100(x) | score_105(x).  [factor(71,d,e)].
+
+given #71 (I,wt=8): 96 -color_green(x) | -weight_16(x) | score_100(x) | score_110(x).  [factor(72,c,d)].
+
+given #72 (I,wt=8): 97 -color_green(x) | -weight_16(x) | score_95(x) | score_105(x).  [factor(75,d,e)].
+
+given #73 (A,wt=3): 98 differentFrom(person4,person3).  [resolve(32,a,31,a)].
+
+given #74 (F,wt=2): 107 -Josh(person4).  [resolve(41,c,28,a),unit_del(a,37)].
+
+given #75 (F,wt=2): 108 -Josh(person3).  [resolve(41,c,27,a),unit_del(a,37)].
+
+given #76 (F,wt=2): 109 -Josh(person2).  [resolve(41,c,26,a),unit_del(a,37)].
+
+given #77 (F,wt=2): 112 -Kelly(person4).  [resolve(42,c,30,a),unit_del(a,38)].
+
+given #78 (T,wt=2): 199 color_black(person1).  [resolve(61,a,37,a)].
+
+given #79 (T,wt=3): 99 differentFrom(person4,person2).  [resolve(32,a,30,a)].
+
+given #80 (T,wt=3): 100 differentFrom(person3,person2).  [resolve(32,a,29,a)].
+
+given #81 (T,wt=3): 101 differentFrom(person4,person1).  [resolve(32,a,28,a)].
+
+given #82 (A,wt=3): 102 differentFrom(person3,person1).  [resolve(32,a,27,a)].
+
+given #83 (F,wt=2): 113 -Kelly(person3).  [resolve(42,c,29,a),unit_del(a,38)].
+
+given #84 (F,wt=2): 114 -Kelly(person1).  [resolve(42,c,26,a),unit_del(b,38)].
+
+given #85 (F,wt=2): 116 -Mark(person4).  [resolve(43,c,31,a),unit_del(a,39)].
+
+given #86 (F,wt=2): 117 -Mark(person2).  [resolve(43,c,29,a),unit_del(b,39)].
+
+given #87 (T,wt=3): 103 differentFrom(person2,person1).  [resolve(32,a,26,a)].
+
+given #88 (T,wt=6): 206 -score_95(person4) | color_green(person4) | color_gold(person4).  [resolve(78,a,36,b),unit_del(b,202)].
+
+given #89 (T,wt=7): 196 -score_100(x) | -score_95(y) | differentFrom(person2,x).  [resolve(57,a,38,a)].
+
+given #90 (T,wt=7): 197 -score_100(x) | -score_95(y) | differentFrom(person2,y).  [resolve(58,a,38,a)].
+
+given #91 (A,wt=3): 110 -differentFrom(person1,person1).  [ur(41,a,37,a,b,37,a)].
+
+given #92 (F,wt=2): 118 -Mark(person1).  [resolve(43,c,27,a),unit_del(b,39)].
+
+given #93 (F,wt=2): 120 -Paula(person3).  [resolve(44,c,31,a),unit_del(b,40)].
+
+given #94 (F,wt=2): 121 -Paula(person2).  [resolve(44,c,30,a),unit_del(b,40)].
+
+given #95 (F,wt=2): 122 -Paula(person1).  [resolve(44,c,28,a),unit_del(b,40)].
+
+given #96 (T,wt=7): 198 -score_100(x) | -score_95(y) | differentFrom(x,y).  [resolve(59,a,38,a)].
+
+given #97 (T,wt=7): 203 -Paula(x) | -score_100(y) | differentFrom(x,y).  [resolve(62,c,37,a)].
+
+given #98 (T,wt=5): 208 -score_100(x) | differentFrom(person4,x).  [resolve(203,a,40,a)].
+
+given #99 (T,wt=7): 204 -Paula(x) | -score_100(y) | differentFrom(x,person1).  [resolve(63,c,37,a)].
+
+given #100 (A,wt=3): 115 -differentFrom(person2,person2).  [ur(42,a,38,a,b,38,a)].
+
+given #101 (F,wt=2): 200 -color_black(person2).  [back_unit_del(177),unit_del(a,199)].
+
+given #102 (F,wt=2): 201 -color_black(person3).  [back_unit_del(176),unit_del(a,199)].
+
+given #103 (F,wt=2): 202 -color_black(person4).  [back_unit_del(175),unit_del(a,199)].
+
+given #104 (F,wt=2): 207 -score_100(person1).  [ur(64,a,40,a,c,37,a,d,110,a)].
+
+given #105 (T,wt=7): 205 -Paula(x) | -score_100(y) | differentFrom(y,person1).  [resolve(64,c,37,a)].
+
+given #106 (T,wt=5): 209 -score_100(x) | differentFrom(x,person1).  [resolve(205,a,40,a)].
+
+given #107 (A,wt=3): 119 -differentFrom(person3,person3).  [ur(43,a,39,a,b,39,a)].
+
+given #108 (F,wt=3): 123 -differentFrom(person4,person4).  [ur(44,a,40,a,b,40,a)].
+
+given #109 (F,wt=2): 210 -score_100(person4).  [ur(208,b,123,a)].
+
+given #110 (F,wt=4): 124 -score_95(person3) | -score_95(person4).  [resolve(45,c,31,a)].
+
+given #111 (F,wt=4): 125 -score_95(person2) | -score_95(person4).  [resolve(45,c,30,a)].
+
+given #112 (A,wt=4): 126 -score_95(person2) | -score_95(person3).  [resolve(45,c,29,a)].
+
+given #113 (F,wt=4): 127 -score_95(person1) | -score_95(person4).  [resolve(45,c,28,a)].
+
+given #114 (F,wt=4): 128 -score_95(person1) | -score_95(person3).  [resolve(45,c,27,a)].
+
+given #115 (F,wt=4): 129 -score_95(person1) | -score_95(person2).  [resolve(45,c,26,a)].
+
+given #116 (F,wt=4): 132 -score_100(person2) | -score_100(person3).  [resolve(46,c,29,a)].
+
+given #117 (A,wt=4): 136 -score_105(person3) | -score_105(person4).  [resolve(47,c,31,a)].
+
+given #118 (F,wt=4): 137 -score_105(person2) | -score_105(person4).  [resolve(47,c,30,a)].
+
+given #119 (F,wt=4): 138 -score_105(person2) | -score_105(person3).  [resolve(47,c,29,a)].
+
+given #120 (F,wt=4): 139 -score_105(person1) | -score_105(person4).  [resolve(47,c,28,a)].
+
+given #121 (F,wt=4): 140 -score_105(person1) | -score_105(person3).  [resolve(47,c,27,a)].
+
+given #122 (A,wt=4): 141 -score_105(person1) | -score_105(person2).  [resolve(47,c,26,a)].
+
+given #123 (F,wt=4): 142 -score_110(person3) | -score_110(person4).  [resolve(48,c,31,a)].
+
+given #124 (F,wt=4): 143 -score_110(person2) | -score_110(person4).  [resolve(48,c,30,a)].
+
+given #125 (F,wt=4): 144 -score_110(person2) | -score_110(person3).  [resolve(48,c,29,a)].
+
+given #126 (F,wt=4): 145 -score_110(person1) | -score_110(person4).  [resolve(48,c,28,a)].
+
+given #127 (T,wt=6): 211 -score_110(person3) | score_95(person4) | score_105(person4).  [resolve(142,b,34,d),unit_del(c,210)].
+
+given #128 (T,wt=6): 212 -score_110(person2) | score_95(person4) | score_105(person4).  [resolve(143,b,34,d),unit_del(c,210)].
+
+given #129 (T,wt=6): 214 -score_110(person1) | score_95(person4) | score_105(person4).  [resolve(145,b,34,d),unit_del(c,210)].
+
+given #130 (T,wt=8): 213 -score_110(person2) | score_95(person3) | score_100(person3) | score_105(person3).  [resolve(144,b,34,d)].
+
+given #131 (A,wt=4): 146 -score_110(person1) | -score_110(person3).  [resolve(48,c,27,a)].
+
+given #132 (F,wt=4): 147 -score_110(person1) | -score_110(person2).  [resolve(48,c,26,a)].
+
+given #133 (F,wt=4): 148 -weight_13(person3) | -weight_13(person4).  [resolve(49,c,31,a)].
+
+given #134 (F,wt=4): 149 -weight_13(person2) | -weight_13(person4).  [resolve(49,c,30,a)].
+
+given #135 (F,wt=4): 150 -weight_13(person2) | -weight_13(person3).  [resolve(49,c,29,a)].
+
+given #136 (T,wt=8): 217 score_95(person4) | score_105(person4) | score_95(person1) | score_105(person1).  [resolve(214,a,34,d),unit_del(d,207)].
+
+given #137 (T,wt=8): 219 -score_110(person1) | score_95(person3) | score_100(person3) | score_105(person3).  [resolve(146,b,34,d)].
+
+given #138 (T,wt=8): 220 -score_110(person1) | score_95(person2) | score_100(person2) | score_105(person2).  [resolve(147,b,34,d)].
+
+given #139 (T,wt=8): 221 -weight_13(person3) | weight_14(person4) | weight_15(person4) | weight_16(person4).  [resolve(148,b,35,a)].
+
+given #140 (A,wt=4): 151 -weight_13(person1) | -weight_13(person4).  [resolve(49,c,28,a)].
+
+given #141 (F,wt=4): 152 -weight_13(person1) | -weight_13(person3).  [resolve(49,c,27,a)].
+
+given #142 (F,wt=4): 153 -weight_13(person1) | -weight_13(person2).  [resolve(49,c,26,a)].
+
+given #143 (F,wt=4): 154 -weight_14(person3) | -weight_14(person4).  [resolve(50,c,31,a)].
+
+given #144 (F,wt=4): 155 -weight_14(person2) | -weight_14(person4).  [resolve(50,c,30,a)].
+
+given #145 (T,wt=8): 222 -weight_13(person2) | weight_14(person4) | weight_15(person4) | weight_16(person4).  [resolve(149,b,35,a)].
+
+given #146 (T,wt=8): 223 -weight_13(person2) | weight_14(person3) | weight_15(person3) | weight_16(person3).  [resolve(150,b,35,a)].
+
+given #147 (T,wt=8): 227 score_105(person4) | score_95(person1) | score_105(person1) | -score_95(person2).  [resolve(217,a,125,b)].
+
+given #148 (T,wt=8): 228 score_105(person4) | score_95(person1) | score_105(person1) | -score_95(person3).  [resolve(217,a,124,b)].
+
+given #149 (A,wt=4): 156 -weight_14(person2) | -weight_14(person3).  [resolve(50,c,29,a)].
+
+given #150 (F,wt=4): 157 -weight_14(person1) | -weight_14(person4).  [resolve(50,c,28,a)].
+
+given #151 (F,wt=4): 158 -weight_14(person1) | -weight_14(person3).  [resolve(50,c,27,a)].
+
+given #152 (F,wt=4): 159 -weight_14(person1) | -weight_14(person2).  [resolve(50,c,26,a)].
+
+given #153 (F,wt=4): 160 -weight_15(person3) | -weight_15(person4).  [resolve(51,c,31,a)].
+
+given #154 (T,wt=8): 232 -weight_13(person1) | weight_14(person4) | weight_15(person4) | weight_16(person4).  [resolve(151,b,35,a)].
+
+given #155 (T,wt=8): 233 -weight_13(person1) | weight_14(person3) | weight_15(person3) | weight_16(person3).  [resolve(152,b,35,a)].
+
+given #156 (T,wt=8): 234 -weight_13(person1) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(153,b,35,a)].
+
+given #157 (T,wt=10): 215 score_95(person4) | score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3).  [resolve(211,a,34,d)].
+
+given #158 (A,wt=4): 161 -weight_15(person2) | -weight_15(person4).  [resolve(51,c,30,a)].
+
+given #159 (F,wt=4): 162 -weight_15(person2) | -weight_15(person3).  [resolve(51,c,29,a)].
+
+given #160 (F,wt=4): 163 -weight_15(person1) | -weight_15(person4).  [resolve(51,c,28,a)].
+
+given #161 (F,wt=4): 164 -weight_15(person1) | -weight_15(person3).  [resolve(51,c,27,a)].
+
+given #162 (F,wt=4): 165 -weight_15(person1) | -weight_15(person2).  [resolve(51,c,26,a)].
+
+given #163 (T,wt=10): 216 score_95(person4) | score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2).  [resolve(212,a,34,d)].
+
+given #164 (T,wt=10): 224 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | color_gold(person4).  [resolve(217,a,206,a)].
+
+given #165 (T,wt=10): 229 score_95(person3) | score_100(person3) | score_105(person3) | score_95(person1) | score_105(person1).  [resolve(219,a,34,d),unit_del(e,207)].
+
+given #166 (T,wt=10): 230 score_95(person2) | score_100(person2) | score_105(person2) | score_95(person1) | score_105(person1).  [resolve(220,a,34,d),unit_del(e,207)].
+
+given #167 (A,wt=4): 166 -weight_16(person3) | -weight_16(person4).  [resolve(52,c,31,a)].
+
+given #168 (F,wt=4): 167 -weight_16(person2) | -weight_16(person4).  [resolve(52,c,30,a)].
+
+given #169 (F,wt=4): 168 -weight_16(person2) | -weight_16(person3).  [resolve(52,c,29,a)].
+
+given #170 (F,wt=4): 169 -weight_16(person1) | -weight_16(person4).  [resolve(52,c,28,a)].
+
+given #171 (F,wt=4): 170 -weight_16(person1) | -weight_16(person3).  [resolve(52,c,27,a)].
+
+given #172 (T,wt=10): 243 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | -score_95(person1).  [resolve(215,a,127,b)].
+
+given #173 (T,wt=10): 244 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | -score_95(person2).  [resolve(215,a,125,b)].
+
+given #174 (T,wt=10): 248 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | -score_95(person1).  [resolve(216,a,127,b)].
+
+given #175 (T,wt=10): 249 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | -score_95(person3).  [resolve(216,a,124,b)].
+
+given #176 (A,wt=4): 171 -weight_16(person1) | -weight_16(person2).  [resolve(52,c,26,a)].
+
+given #177 (F,wt=4): 178 -color_blue(person3) | -color_blue(person4).  [resolve(54,c,31,a)].
+
+given #178 (F,wt=4): 179 -color_blue(person2) | -color_blue(person4).  [resolve(54,c,30,a)].
+
+given #179 (F,wt=4): 180 -color_blue(person2) | -color_blue(person3).  [resolve(54,c,29,a)].
+
+given #180 (F,wt=4): 181 -color_blue(person1) | -color_blue(person4).  [resolve(54,c,28,a)].
+
+given #181 (T,wt=6): 258 -color_blue(person3) | color_green(person4) | color_gold(person4).  [resolve(178,b,36,b),unit_del(b,202)].
+
+given #182 (T,wt=6): 259 -color_blue(person2) | color_green(person4) | color_gold(person4).  [resolve(179,b,36,b),unit_del(b,202)].
+
+given #183 (T,wt=6): 260 -color_blue(person2) | color_green(person3) | color_gold(person3).  [resolve(180,b,36,b),unit_del(b,201)].
+
+given #184 (T,wt=6): 261 -color_blue(person1) | color_green(person4) | color_gold(person4).  [resolve(181,b,36,b),unit_del(b,202)].
+
+given #185 (A,wt=4): 182 -color_blue(person1) | -color_blue(person3).  [resolve(54,c,27,a)].
+
+given #186 (F,wt=4): 183 -color_blue(person1) | -color_blue(person2).  [resolve(54,c,26,a)].
+
+given #187 (F,wt=4): 184 -color_green(person3) | -color_green(person4).  [resolve(55,c,31,a)].
+
+given #188 (F,wt=4): 185 -color_green(person2) | -color_green(person4).  [resolve(55,c,30,a)].
+
+given #189 (F,wt=4): 186 -color_green(person2) | -color_green(person3).  [resolve(55,c,29,a)].
+
+given #190 (T,wt=6): 265 -color_blue(person1) | color_green(person3) | color_gold(person3).  [resolve(182,b,36,b),unit_del(b,201)].
+
+given #191 (T,wt=6): 266 -color_blue(person1) | color_green(person2) | color_gold(person2).  [resolve(183,b,36,b),unit_del(b,200)].
+
+given #192 (T,wt=8): 262 color_green(person4) | color_gold(person4) | color_green(person3) | color_gold(person3).  [resolve(258,a,36,b),unit_del(c,201)].
+
+given #193 (T,wt=8): 263 color_green(person4) | color_gold(person4) | color_green(person2) | color_gold(person2).  [resolve(259,a,36,b),unit_del(c,200)].
+
+given #194 (A,wt=4): 187 -color_green(person1) | -color_green(person4).  [resolve(55,c,28,a)].
+
+given #195 (F,wt=4): 188 -color_green(person1) | -color_green(person3).  [resolve(55,c,27,a)].
+
+given #196 (F,wt=4): 189 -color_green(person1) | -color_green(person2).  [resolve(55,c,26,a)].
+
+given #197 (F,wt=4): 190 -color_gold(person3) | -color_gold(person4).  [resolve(56,c,31,a)].
+
+given #198 (F,wt=4): 191 -color_gold(person2) | -color_gold(person4).  [resolve(56,c,30,a)].
+
+given #199 (T,wt=8): 264 color_green(person3) | color_gold(person3) | color_green(person2) | color_gold(person2).  [resolve(260,a,36,b),unit_del(c,200)].
+
+given #200 (T,wt=8): 267 color_green(person4) | color_green(person3) | color_gold(person3) | weight_15(person4).  [resolve(262,b,60,a)].
+
+given #201 (T,wt=8): 268 color_green(person4) | color_green(person2) | color_gold(person2) | weight_15(person4).  [resolve(263,b,60,a)].
+
+given #202 (T,wt=8): 269 -color_gold(person3) | color_green(person4) | color_green(person2) | color_gold(person2).  [resolve(190,b,263,b)].
+
+given #203 (A,wt=4): 192 -color_gold(person2) | -color_gold(person3).  [resolve(56,c,29,a)].
+
+given #204 (F,wt=4): 193 -color_gold(person1) | -color_gold(person4).  [resolve(56,c,28,a)].
+
+given #205 (F,wt=4): 194 -color_gold(person1) | -color_gold(person3).  [resolve(56,c,27,a)].
+
+given #206 (F,wt=4): 195 -color_gold(person1) | -color_gold(person2).  [resolve(56,c,26,a)].
+
+given #207 (T,wt=8): 271 -color_gold(person2) | color_green(person4) | color_green(person3) | color_gold(person3).  [resolve(191,b,262,b)].
+
+given #208 (T,wt=8): 273 color_green(person3) | color_green(person2) | color_gold(person2) | weight_15(person3).  [resolve(264,b,60,a)].
+
+given #209 (T,wt=8): 274 color_green(person4) | color_green(person3) | weight_15(person4) | weight_15(person3).  [resolve(267,c,60,a)].
+
+given #210 (T,wt=8): 275 color_green(person4) | color_green(person2) | weight_15(person4) | weight_15(person2).  [resolve(268,c,60,a)].
+
+given #211 (A,wt=12): 218 score_95(person3) | score_100(person3) | score_105(person3) | score_95(person2) | score_100(person2) | score_105(person2).  [resolve(213,a,34,d)].
+
+given #212 (T,wt=8): 276 color_green(person4) | color_green(person2) | color_gold(person2) | color_green(person3).  [resolve(269,a,264,b),merge(e),merge(f)].
+
+given #213 (T,wt=8): 277 -color_gold(person2) | color_green(person4) | color_green(person3) | weight_15(person4).  [resolve(192,b,267,c)].
+
+given #214 (T,wt=8): 278 -color_gold(person1) | color_green(person4) | color_green(person2) | color_gold(person2).  [resolve(193,b,263,b)].
+
+given #215 (T,wt=8): 279 -color_gold(person1) | color_green(person4) | color_green(person3) | color_gold(person3).  [resolve(193,b,262,b)].
+
+given #216 (A,wt=11): 225 score_105(person4) | score_95(person1) | score_105(person1) | -score_100(x) | differentFrom(x,person4).  [resolve(217,a,198,b)].
+
+given #217 (T,wt=8): 281 -color_gold(person1) | color_green(person4) | color_green(person3) | weight_15(person4).  [resolve(194,b,267,c)].
+
+given #218 (T,wt=8): 282 -color_gold(person1) | color_green(person3) | color_green(person2) | color_gold(person2).  [resolve(194,b,264,b)].
+
+given #219 (T,wt=8): 283 -color_gold(person1) | color_green(person4) | color_green(person2) | weight_15(person4).  [resolve(195,b,268,c)].
+
+given #220 (T,wt=8): 285 color_green(person3) | color_green(person2) | weight_15(person3) | -color_gold(person1).  [resolve(273,c,195,b)].
+
+given #221 (A,wt=11): 226 score_105(person4) | score_95(person1) | score_105(person1) | -score_100(x) | differentFrom(person2,x).  [resolve(217,a,196,b)].
+
+given #222 (T,wt=8): 286 color_green(person3) | color_green(person2) | weight_15(person3) | weight_15(person2).  [resolve(273,c,60,a)].
+
+given #223 (T,wt=8): 287 color_green(person4) | color_green(person3) | weight_15(person3) | -weight_15(person1).  [resolve(274,c,163,b)].
+
+given #224 (T,wt=8): 288 color_green(person4) | color_green(person3) | weight_15(person3) | -weight_15(person2).  [resolve(274,c,161,b)].
+
+given #225 (T,wt=8): 289 color_green(person4) | color_green(person2) | weight_15(person2) | -weight_15(person1).  [resolve(275,c,163,b)].
+
+given #226 (A,wt=12): 231 weight_14(person4) | weight_15(person4) | weight_16(person4) | weight_14(person3) | weight_15(person3) | weight_16(person3).  [resolve(221,a,35,a)].
+
+given #227 (T,wt=8): 290 color_green(person4) | color_green(person2) | weight_15(person2) | -weight_15(person3).  [resolve(275,c,160,b)].
+
+given #228 (T,wt=8): 295 color_green(person4) | color_green(person2) | color_green(person3) | color_gold(person3).  [resolve(276,c,271,a),merge(d),merge(e)].
+
+given #229 (T,wt=8): 296 color_green(person4) | color_green(person2) | color_green(person3) | -color_gold(person1).  [resolve(276,c,195,b)].
+
+given #230 (T,wt=8): 297 color_green(person4) | color_green(person2) | color_green(person3) | weight_15(person2).  [resolve(276,c,60,a)].
+
+given #231 (A,wt=12): 235 weight_14(person4) | weight_15(person4) | weight_16(person4) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(222,a,35,a)].
+
+given #232 (T,wt=8): 298 color_green(person4) | color_green(person3) | weight_15(person4) | color_green(person2).  [resolve(277,a,276,c),merge(d),merge(f)].
+
+given #233 (T,wt=8): 299 color_green(person3) | color_green(person2) | weight_15(person2) | -weight_15(person1).  [resolve(286,c,164,b)].
+
+given #234 (T,wt=8): 302 color_green(person4) | color_green(person2) | color_green(person3) | -color_gold(person2).  [resolve(295,d,192,b)].
+
+given #235 (T,wt=6): 309 color_green(person4) | color_green(person2) | color_green(person3).  [resolve(302,d,276,c),merge(d),merge(e),merge(f)].
+
+given #236 (A,wt=12): 236 weight_14(person3) | weight_15(person3) | weight_16(person3) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(223,a,35,a)].
+
+given #237 (T,wt=6): 310 color_green(person2) | color_green(person3) | -color_green(person1).  [resolve(309,a,187,b)].
+
+given #238 (T,wt=10): 250 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_15(person4).  [resolve(224,e,60,a)].
+
+given #239 (T,wt=10): 251 score_100(person3) | score_105(person3) | score_95(person1) | score_105(person1) | score_105(person4).  [resolve(229,a,228,d),merge(f),merge(g)].
+
+given #240 (T,wt=10): 254 score_100(person3) | score_105(person3) | score_95(person1) | score_105(person1) | -score_95(person2).  [resolve(229,a,126,b)].
+
+given #241 (A,wt=12): 237 weight_14(person4) | weight_15(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(232,a,35,a)].
+
+given #242 (T,wt=10): 255 score_100(person2) | score_105(person2) | score_95(person1) | score_105(person1) | score_105(person4).  [resolve(230,a,227,d),merge(f),merge(g)].
+
+given #243 (T,wt=10): 257 score_100(person2) | score_105(person2) | score_95(person1) | score_105(person1) | -score_100(x).  [resolve(230,a,197,b),unit_del(f,115)].
+
+given #244 (T,wt=10): 270 -color_gold(person3) | score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4).  [resolve(190,b,224,e)].
+
+given #245 (T,wt=10): 272 -color_gold(person2) | score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4).  [resolve(191,b,224,e)].
+
+given #246 (A,wt=12): 238 weight_14(person3) | weight_15(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(233,a,35,a)].
+
+given #247 (T,wt=10): 280 -color_gold(person1) | score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4).  [resolve(193,b,224,e)].
+
+given #248 (T,wt=10): 313 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | -weight_15(person1).  [resolve(250,e,163,b)].
+
+given #249 (T,wt=10): 314 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | -weight_15(person2).  [resolve(250,e,161,b)].
+
+given #250 (T,wt=10): 315 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | -weight_15(person3).  [resolve(250,e,160,b)].
+
+given #251 (A,wt=12): 239 weight_14(person2) | weight_15(person2) | weight_16(person2) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(234,a,35,a)].
+
+given #252 (T,wt=10): 316 score_100(person3) | score_105(person3) | score_105(person1) | score_105(person4) | score_95(person3).  [resolve(251,c,243,e),merge(e),merge(g),merge(h)].
+
+given #253 (T,wt=10): 321 score_100(person2) | score_105(person2) | score_105(person1) | score_105(person4) | score_95(person2).  [resolve(255,c,248,e),merge(e),merge(g),merge(h)].
+
+given #254 (T,wt=10): 330 score_100(person3) | score_105(person3) | score_105(person1) | score_105(person4) | -score_95(person1).  [resolve(316,e,128,b)].
+
+given #255 (T,wt=8): 336 score_100(person3) | score_105(person3) | score_105(person1) | score_105(person4).  [resolve(330,e,251,c),merge(e),merge(f),merge(g),merge(h)].
+
+given #256 (A,wt=12): 240 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | color_gold(person4).  [resolve(215,a,206,a)].
+
+given #257 (T,wt=8): 337 score_100(person3) | score_105(person3) | score_105(person1) | -score_105(person2).  [resolve(336,d,137,b)].
+
+given #258 (T,wt=10): 333 score_100(person2) | score_105(person2) | score_105(person1) | score_105(person4) | -score_100(x).  [resolve(321,e,197,b),unit_del(f,115)].
+
+given #259 (T,wt=10): 334 score_100(person2) | score_105(person2) | score_105(person1) | score_105(person4) | -score_95(person1).  [resolve(321,e,129,b)].
+
+given #260 (T,wt=8): 342 score_100(person2) | score_105(person2) | score_105(person1) | score_105(person4).  [resolve(334,e,255,c),merge(e),merge(f),merge(g),merge(h)].
+
+given #261 (A,wt=13): 241 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | -score_100(x) | differentFrom(x,person4).  [resolve(215,a,198,b)].
+
+given #262 (T,wt=8): 343 score_100(person2) | score_105(person2) | score_105(person1) | -score_105(person3).  [resolve(342,d,136,b)].
+
+given #263 (T,wt=12): 245 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | color_gold(person4).  [resolve(216,a,206,a)].
+
+given #264 (T,wt=12): 291 score_100(person3) | score_105(person3) | score_95(person2) | score_100(person2) | score_105(person2) | score_105(person4).  [resolve(218,a,249,e),merge(g),merge(h),merge(i)].
+
+given #265 (T,wt=12): 294 score_100(person3) | score_105(person3) | score_95(person2) | score_100(person2) | score_105(person2) | -score_95(person1).  [resolve(218,a,128,b)].
+
+given #266 (A,wt=13): 242 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | -score_100(x) | differentFrom(person2,x).  [resolve(215,a,196,b)].
+
+given #267 (T,wt=12): 300 weight_14(person4) | weight_16(person4) | weight_14(person3) | weight_15(person3) | weight_16(person3) | -weight_15(person1).  [resolve(231,b,163,b)].
+
+given #268 (T,wt=12): 301 weight_14(person4) | weight_16(person4) | weight_14(person3) | weight_15(person3) | weight_16(person3) | -weight_15(person2).  [resolve(231,b,161,b)].
+
+given #269 (T,wt=12): 305 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_15(person2) | weight_16(person2) | -weight_15(person1).  [resolve(235,b,163,b)].
+
+given #270 (T,wt=12): 306 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_15(person2) | weight_16(person2) | -weight_15(person3).  [resolve(235,b,160,b)].
+
+given #271 (A,wt=13): 246 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | -score_100(x) | differentFrom(x,person4).  [resolve(216,a,198,b)].
+
+given #272 (T,wt=12): 312 weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_15(person2) | weight_16(person2) | -weight_15(person1).  [resolve(236,b,164,b)].
+
+given #273 (T,wt=12): 318 score_100(person3) | score_105(person3) | score_95(person1) | score_105(person1) | score_100(person2) | score_105(person2).  [resolve(254,e,230,a),merge(g),merge(h)].
+
+given #274 (T,wt=12): 319 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1) | -weight_15(person2).  [resolve(237,b,161,b)].
+
+given #275 (T,wt=12): 320 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1) | -weight_15(person3).  [resolve(237,b,160,b)].
+
+given #276 (A,wt=13): 247 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | -score_100(x) | differentFrom(person2,x).  [resolve(216,a,196,b)].
+
+given #277 (T,wt=12): 324 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1) | -weight_15(person2).  [resolve(238,b,162,b)].
+
+given #278 (T,wt=12): 338 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | -color_gold(person1).  [resolve(240,f,193,b)].
+
+given #279 (T,wt=12): 339 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | -color_gold(person2).  [resolve(240,f,191,b)].
+
+given #280 (T,wt=12): 340 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | -color_gold(person3).  [resolve(240,f,190,b)].
+
+given #281 (A,wt=13): 252 score_100(person3) | score_105(person3) | score_95(person1) | score_105(person1) | -score_100(x) | differentFrom(x,person3).  [resolve(229,a,198,b)].
+
+given #282 (T,wt=12): 341 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | weight_15(person4).  [resolve(240,f,60,a)].
+
+given #283 (T,wt=12): 344 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | -color_gold(person1).  [resolve(245,f,193,b)].
+
+given #284 (T,wt=12): 345 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | -color_gold(person2).  [resolve(245,f,191,b)].
+
+given #285 (T,wt=12): 346 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | -color_gold(person3).  [resolve(245,f,190,b)].
+
+given #286 (A,wt=13): 253 score_100(person3) | score_105(person3) | score_95(person1) | score_105(person1) | -score_100(x) | differentFrom(person2,x).  [resolve(229,a,196,b)].
+
+given #287 (T,wt=12): 347 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | weight_15(person4).  [resolve(245,f,60,a)].
+
+given #288 (T,wt=12): 348 score_100(person3) | score_105(person3) | score_100(person2) | score_105(person2) | score_105(person4) | score_95(person3).  [resolve(291,c,244,e),merge(f),merge(h),merge(i)].
+
+given #289 (T,wt=12): 350 score_100(person3) | score_105(person3) | score_100(person2) | score_105(person2) | score_105(person4) | -score_100(x).  [resolve(291,c,197,b),unit_del(g,115)].
+
+given #290 (T,wt=12): 351 score_100(person3) | score_105(person3) | score_100(person2) | score_105(person2) | score_105(person4) | -score_95(person1).  [resolve(291,c,129,b)].
+
+given #291 (A,wt=15): 292 score_100(person3) | score_105(person3) | score_95(person2) | score_100(person2) | score_105(person2) | -score_100(x) | differentFrom(x,person3).  [resolve(218,a,198,b)].
+
+given #292 (T,wt=12): 354 score_100(person3) | score_105(person3) | score_105(person1) | score_100(person2) | score_105(person2) | score_95(person2).  [resolve(318,c,294,f),merge(f),merge(g),merge(i),merge(j)].
+
+given #293 (T,wt=12): 360 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | -weight_15(person1).  [resolve(341,f,163,b)].
+
+given #294 (T,wt=12): 361 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | -weight_15(person2).  [resolve(341,f,161,b)].
+
+given #295 (T,wt=12): 362 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | -weight_15(person3).  [resolve(341,f,160,b)].
+
+given #296 (A,wt=15): 293 score_100(person3) | score_105(person3) | score_95(person2) | score_100(person2) | score_105(person2) | -score_100(x) | differentFrom(person2,x).  [resolve(218,a,196,b)].
+
+given #297 (T,wt=12): 363 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | -weight_15(person1).  [resolve(347,f,163,b)].
+
+given #298 (T,wt=12): 364 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | -weight_15(person2).  [resolve(347,f,161,b)].
+
+given #299 (T,wt=12): 365 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | -weight_15(person3).  [resolve(347,f,160,b)].
+
+given #300 (T,wt=12): 366 score_100(person3) | score_105(person3) | score_100(person2) | score_105(person2) | score_105(person4) | -score_95(person2).  [resolve(348,f,126,b)].
+
+given #301 (A,wt=14): 311 weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_15(person2) | weight_16(person2) | color_green(person4) | color_green(person2).  [resolve(236,b,290,d),merge(h)].
+
+given #302 (T,wt=10): 376 score_100(person3) | score_105(person3) | score_100(person2) | score_105(person2) | score_105(person4).  [resolve(366,f,291,c),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #303 (T,wt=10): 382 score_100(person3) | score_105(person3) | score_100(person2) | score_105(person2) | -score_105(person1).  [resolve(376,e,139,b)].
+
+given #304 (T,wt=12): 368 score_100(person3) | score_105(person3) | score_105(person1) | score_100(person2) | score_105(person2) | -score_100(x).  [resolve(354,f,197,b),unit_del(g,115)].
+
+given #305 (T,wt=12): 369 score_100(person3) | score_105(person3) | score_105(person1) | score_100(person2) | score_105(person2) | -score_95(person1).  [resolve(354,f,129,b)].
+
+given #306 (A,wt=16): 323 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1) | color_green(person4) | color_green(person2) | weight_15(person2).  [resolve(238,b,290,d)].
+
+given #307 (T,wt=10): 383 score_100(person3) | score_105(person3) | score_105(person1) | score_100(person2) | score_105(person2).  [resolve(369,f,318,c),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #308 (T,wt=8): 385 score_100(person3) | score_105(person1) | score_100(person2) | score_105(person2).  [resolve(383,b,343,d),merge(e),merge(f),merge(g)].
+
+given #309 (T,wt=8): 386 score_100(person3) | score_105(person1) | score_100(person2) | score_105(person3).  [resolve(385,d,337,d),merge(d),merge(f)].
+
+given #310 (T,wt=8): 387 score_100(person3) | score_105(person1) | score_100(person2) | -score_105(person2).  [resolve(386,d,138,b)].
+
+given #311 (A,wt=18): 325 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(315,e,238,b)].
+
+given #312 (T,wt=6): 388 score_100(person3) | score_105(person1) | score_100(person2).  [resolve(387,d,385,d),merge(d),merge(e),merge(f)].
+
+given #313 (T,wt=8): 390 score_100(person3) | score_100(person2) | score_105(person3) | score_105(person2).  [resolve(388,b,382,e),merge(c),merge(e)].
+
+given #314 (T,wt=8): 391 score_100(person3) | score_100(person2) | score_105(person2) | -score_105(person1).  [resolve(390,c,140,b)].
+
+given #315 (T,wt=6): 392 score_100(person3) | score_100(person2) | score_105(person2).  [resolve(391,d,388,b),merge(d),merge(e)].
+
+given #316 (A,wt=18): 326 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(315,e,236,b)].
+
+given #317 (T,wt=6): 393 score_100(person3) | score_100(person2) | -score_105(person1).  [resolve(392,c,141,b)].
+
+given #318 (T,wt=4): 395 score_100(person3) | score_100(person2).  [resolve(393,c,388,b),merge(c),merge(d)].
+
+given #319 (T,wt=6): 397 score_100(person2) | color_green(person3) | weight_15(person3).  [resolve(395,a,69,a)].
+
+given #320 (T,wt=6): 402 score_100(person2) | color_green(person3) | -weight_15(person1).  [resolve(397,c,164,b)].
+
+given #321 (A,wt=18): 327 weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_15(person1) | weight_16(person1) | score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4).  [resolve(239,b,314,e)].
+
+given #322 (T,wt=6): 403 score_100(person2) | color_green(person3) | -weight_15(person2).  [resolve(397,c,162,b)].
+
+given #323 (T,wt=8): 396 score_100(person2) | score_105(person2) | score_95(person1) | score_105(person1).  [resolve(395,a,257,e),merge(b)].
+
+given #324 (T,wt=11): 406 score_100(person2) | score_105(person2) | score_105(person1) | -score_100(x) | differentFrom(person2,x).  [resolve(396,c,196,b)].
+
+given #325 (T,wt=12): 398 score_100(person2) | color_green(person3) | score_105(person4) | score_95(person2) | score_105(person2) | color_green(person4).  [resolve(397,c,365,f),merge(e)].
+
+given #326 (A,wt=16): 328 weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_15(person1) | weight_16(person1) | color_green(person4) | color_green(person3) | weight_15(person3).  [resolve(239,b,288,d)].
+
+given #327 (T,wt=12): 400 score_100(person2) | color_green(person3) | score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4).  [resolve(397,c,315,e)].
+
+given #328 (T,wt=12): 408 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | color_green(person4) | -score_100(x).  [resolve(398,d,197,b),unit_del(g,115)].
+
+given #329 (T,wt=10): 412 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | color_green(person4).  [resolve(408,f,395,a),merge(f)].
+
+given #330 (T,wt=10): 413 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | -color_green(person1).  [resolve(412,e,187,b)].
+
+given #331 (A,wt=14): 352 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_15(person2) | weight_16(person2) | color_green(person3) | color_green(person2).  [resolve(306,f,286,c),merge(h)].
+
+given #332 (T,wt=10): 414 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | -color_green(person2).  [resolve(412,e,185,b)].
+
+given #333 (T,wt=14): 353 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_15(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3).  [resolve(306,f,236,b),merge(h),merge(i),merge(j)].
+
+given #334 (T,wt=14): 356 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2).  [resolve(319,f,239,b),merge(h),merge(i),merge(j)].
+
+given #335 (T,wt=14): 358 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3).  [resolve(320,f,238,b),merge(h),merge(i),merge(j)].
+
+given #336 (A,wt=16): 357 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1) | color_green(person3) | color_green(person2) | weight_15(person2).  [resolve(320,f,286,c)].
+
+given #337 (T,wt=14): 359 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2).  [resolve(324,f,239,b),merge(h),merge(i),merge(j)].
+
+given #338 (T,wt=14): 381 weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_16(person2) | color_green(person4) | color_green(person2) | -weight_15(person1).  [resolve(311,d,165,b)].
+
+given #339 (T,wt=14): 384 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1) | color_green(person4) | color_green(person2).  [resolve(323,h,324,f),merge(h),merge(i),merge(j),merge(k),merge(l)].
+
+given #340 (T,wt=14): 399 score_100(person2) | color_green(person3) | weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(397,c,320,f)].
+
+given #341 (A,wt=20): 370 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(361,f,239,b)].
+
+given #342 (T,wt=12): 444 score_100(person2) | color_green(person3) | weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1).  [resolve(399,f,402,c),merge(g),merge(h)].
+
+given #343 (T,wt=12): 446 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | -weight_14(person2).  [resolve(444,c,155,b)].
+
+given #344 (T,wt=12): 447 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | -weight_14(person3).  [resolve(444,c,154,b)].
+
+given #345 (T,wt=14): 401 score_100(person2) | color_green(person3) | weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(397,c,306,f)].
+
+given #346 (A,wt=20): 371 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(362,f,238,b)].
+
+given #347 (T,wt=12): 452 score_100(person2) | color_green(person3) | weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_16(person2).  [resolve(401,f,403,c),merge(g),merge(h)].
+
+given #348 (T,wt=12): 454 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | -weight_14(person1).  [resolve(452,c,157,b)].
+
+given #349 (T,wt=12): 455 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | -weight_14(person3).  [resolve(452,c,154,b)].
+
+given #350 (T,wt=14): 405 score_100(person2) | color_green(person3) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(403,c,239,b)].
+
+given #351 (A,wt=20): 372 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(362,f,236,b)].
+
+given #352 (T,wt=12): 460 score_100(person2) | color_green(person3) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_16(person1).  [resolve(405,f,402,c),merge(g),merge(h)].
+
+given #353 (T,wt=12): 462 score_100(person2) | color_green(person3) | weight_16(person2) | weight_14(person1) | weight_16(person1) | weight_16(person4).  [resolve(460,c,446,f),merge(f),merge(g),merge(i),merge(j)].
+
+given #354 (T,wt=12): 467 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | weight_16(person4) | weight_14(person2).  [resolve(462,d,454,f),merge(f),merge(g),merge(h),merge(j)].
+
+given #355 (T,wt=12): 472 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | weight_16(person4) | -weight_14(person1).  [resolve(467,f,159,b)].
+
+given #356 (A,wt=20): 373 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(364,f,239,b)].
+
+given #357 (T,wt=10): 476 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | weight_16(person4).  [resolve(472,f,462,d),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #358 (T,wt=10): 478 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -weight_16(person3).  [resolve(476,e,166,b)].
+
+given #359 (T,wt=12): 480 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -color_green(person4) | score_110(person4).  [resolve(476,e,96,b),unit_del(f,210)].
+
+given #360 (T,wt=12): 481 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -color_green(person4) | score_105(person4).  [resolve(476,e,95,b),unit_del(f,210)].
+
+given #361 (A,wt=20): 374 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(365,f,238,b)].
+
+given #362 (T,wt=12): 486 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -color_green(person2) | score_105(person4).  [factor(484,a,f)].
+
+given #363 (T,wt=12): 487 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -color_green(person2) | score_110(person2).  [factor(485,a,f)].
+
+given #364 (T,wt=12): 489 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_110(person4) | color_green(person2).  [resolve(480,e,309,a),merge(g)].
+
+given #365 (T,wt=12): 490 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_105(person4) | score_105(person2).  [resolve(481,e,412,e),merge(f),merge(g),merge(h)].
+
+given #366 (A,wt=20): 375 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(365,f,236,b)].
+
+given #367 (T,wt=12): 491 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_105(person4) | color_green(person2).  [resolve(481,e,309,a),merge(g)].
+
+given #368 (T,wt=12): 493 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | color_green(person2) | -score_110(person1).  [resolve(489,e,145,b)].
+
+given #369 (T,wt=12): 494 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | color_green(person2) | -score_110(person2).  [resolve(489,e,143,b)].
+
+given #370 (T,wt=12): 495 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | color_green(person2) | -score_110(person3).  [resolve(489,e,142,b)].
+
+given #371 (A,wt=16): 389 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1).  [resolve(325,h,313,e),merge(i),merge(j),merge(k),merge(l)].
+
+given #372 (T,wt=14): 417 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_16(person2) | color_green(person3) | color_green(person2) | -weight_15(person1).  [resolve(352,d,165,b)].
+
+given #373 (T,wt=14): 421 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | weight_15(person3).  [resolve(353,d,301,f),merge(g),merge(h),merge(i),merge(k)].
+
+given #374 (T,wt=14): 422 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | -weight_15(person1).  [resolve(353,d,165,b)].
+
+given #375 (T,wt=14): 426 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | weight_15(person2).  [resolve(356,d,305,f),merge(g),merge(h),merge(i),merge(k)].
+
+given #376 (A,wt=16): 394 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_16(person2).  [resolve(326,h,314,e),merge(i),merge(j),merge(k),merge(l)].
+
+given #377 (T,wt=14): 431 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | weight_15(person3).  [resolve(358,d,300,f),merge(g),merge(h),merge(i),merge(k)].
+
+given #378 (T,wt=14): 434 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1) | color_green(person3) | color_green(person2).  [resolve(357,h,319,f),merge(h),merge(i),merge(j),merge(k),merge(l)].
+
+given #379 (T,wt=14): 438 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | weight_15(person2).  [resolve(359,d,312,f),merge(g),merge(h),merge(i),merge(k)].
+
+given #380 (T,wt=14): 443 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1) | color_green(person4) | color_green(person2) | weight_15(person2).  [resolve(384,d,289,d),merge(g),merge(h)].
+
+given #381 (A,wt=16): 404 weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_16(person1) | score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4).  [resolve(327,d,313,e),merge(i),merge(j),merge(k),merge(l)].
+
+given #382 (T,wt=14): 482 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -color_green(x) | score_95(person4) | score_105(person4).  [resolve(476,e,77,b),unit_del(g,210)].
+
+given #383 (T,wt=14): 483 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -color_green(x) | score_95(person4) | score_110(x).  [resolve(476,e,76,b),unit_del(g,210)].
+
+given #384 (T,wt=14): 484 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -color_green(x) | score_100(x) | score_105(person4).  [resolve(476,e,73,b),unit_del(g,210)].
+
+given #385 (T,wt=14): 485 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -color_green(x) | score_100(x) | score_110(x).  [resolve(476,e,72,b),unit_del(g,210)].
+
+given #386 (A,wt=16): 410 weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_15(person1) | weight_16(person1) | color_green(person4) | color_green(person3) | -weight_15(person2).  [resolve(328,h,162,b)].
+
+given #387 (T,wt=14): 496 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | score_105(person2) | -color_green(x) | score_95(person2).  [resolve(490,c,77,b),merge(h),merge(i)].
+
+given #388 (T,wt=12): 528 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | score_105(person2) | score_95(person2).  [resolve(496,f,412,e),merge(g),merge(h),merge(i),merge(j)].
+
+given #389 (T,wt=14): 497 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | score_105(person2) | -color_green(x) | score_100(x).  [resolve(490,c,73,b),merge(h),merge(i)].
+
+given #390 (T,wt=10): 531 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | score_105(person2).  [resolve(497,f,412,e),merge(g),merge(h),merge(i),merge(j),unit_del(f,210)].
+
+given #391 (A,wt=15): 411 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person1) | color_green(person4) | -score_100(x) | differentFrom(person2,x).  [resolve(400,d,196,b)].
+
+given #392 (T,wt=14): 501 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | color_green(person2) | score_95(person1) | score_105(person1).  [resolve(493,f,34,d),unit_del(g,207)].
+
+given #393 (T,wt=14): 502 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | color_green(person2) | score_95(person2) | score_105(person2).  [resolve(494,f,34,d),merge(g)].
+
+given #394 (T,wt=14): 510 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | -weight_15(person2).  [resolve(421,g,162,b)].
+
+given #395 (T,wt=12): 537 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3).  [resolve(510,g,353,d),merge(g),merge(h),merge(i),merge(j),merge(k),merge(l)].
+
+given #396 (A,wt=18): 427 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | color_green(person4) | color_green(person3) | weight_15(person3).  [resolve(356,d,287,d)].
+
+given #397 (T,wt=12): 538 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | -weight_14(person1).  [resolve(537,a,157,b)].
+
+given #398 (T,wt=14): 512 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -weight_15(person1).  [resolve(426,g,165,b)].
+
+given #399 (T,wt=12): 544 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2).  [resolve(512,g,356,d),merge(g),merge(h),merge(i),merge(j),merge(k),merge(l)].
+
+given #400 (T,wt=12): 545 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -weight_14(person3).  [resolve(544,a,154,b)].
+
+given #401 (A,wt=18): 439 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | color_green(person4) | color_green(person3) | weight_15(person3).  [resolve(359,d,287,d)].
+
+given #402 (T,wt=14): 518 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | -weight_15(person1).  [resolve(431,g,164,b)].
+
+given #403 (T,wt=12): 553 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3).  [resolve(518,g,358,d),merge(g),merge(h),merge(i),merge(j),merge(k),merge(l)].
+
+given #404 (T,wt=12): 554 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | -weight_14(person2).  [resolve(553,a,155,b)].
+
+given #405 (T,wt=14): 520 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | color_green(person3) | color_green(person2) | weight_15(person2).  [resolve(434,d,299,d),merge(g),merge(h)].
+
+given #406 (A,wt=16): 440 weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_16(person2) | color_green(person4) | color_green(person2) | weight_14(person1) | weight_16(person1).  [resolve(381,g,359,d),merge(g),merge(h),merge(k),merge(l)].
+
+given #407 (T,wt=14): 521 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -weight_15(person1).  [resolve(438,g,165,b)].
+
+given #408 (T,wt=12): 565 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2).  [resolve(521,g,359,d),merge(g),merge(h),merge(i),merge(j),merge(k),merge(l)].
+
+given #409 (T,wt=12): 566 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | weight_16(person4).  [resolve(565,a,545,f),merge(g),merge(h),merge(i),merge(j)].
+
+given #410 (T,wt=12): 571 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_16(person2) | weight_16(person4) | weight_14(person3).  [resolve(566,d,554,f),merge(f),merge(g),merge(h),merge(j)].
+
+given #411 (A,wt=18): 445 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_16(person1).  [resolve(370,i,360,f),merge(j),merge(k),merge(l),merge(m),merge(n)].
+
+given #412 (T,wt=12): 576 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_16(person2) | weight_16(person4) | -weight_14(person2).  [resolve(571,f,156,b)].
+
+given #413 (T,wt=10): 584 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_16(person2) | weight_16(person4).  [resolve(576,f,566,d),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #414 (T,wt=12): 585 weight_16(person3) | weight_16(person1) | weight_16(person2) | weight_16(person4) | weight_14(person2) | weight_14(person3).  [resolve(584,b,538,f),merge(e),merge(g),merge(i)].
+
+given #415 (T,wt=12): 590 weight_16(person3) | weight_16(person1) | weight_16(person2) | weight_16(person4) | weight_14(person2) | -weight_14(person1).  [resolve(585,f,158,b)].
+
+given #416 (A,wt=16): 448 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_105(person4) | score_110(person4).  [resolve(444,c,68,b)].
+
+given #417 (T,wt=10): 594 weight_16(person3) | weight_16(person1) | weight_16(person2) | weight_16(person4) | weight_14(person2).  [resolve(590,f,584,b),merge(f),merge(g),merge(h),merge(i)].
+
+given #418 (T,wt=10): 596 weight_16(person3) | weight_16(person1) | weight_16(person2) | weight_16(person4) | -weight_14(person1).  [resolve(594,e,159,b)].
+
+given #419 (T,wt=8): 600 weight_16(person3) | weight_16(person1) | weight_16(person2) | weight_16(person4).  [resolve(596,e,584,b),merge(e),merge(f),merge(g),merge(h)].
+
+given #420 (T,wt=10): 602 weight_16(person3) | weight_16(person1) | weight_16(person2) | -color_green(person4) | score_110(person4).  [resolve(600,d,96,b),unit_del(e,210)].
+
+given #421 (A,wt=16): 449 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_105(person4) | score_100(x).  [resolve(444,c,67,b)].
+
+given #422 (T,wt=10): 603 weight_16(person3) | weight_16(person1) | weight_16(person2) | -color_green(person4) | score_105(person4).  [resolve(600,d,95,b),unit_del(e,210)].
+
+given #423 (T,wt=12): 604 weight_16(person3) | weight_16(person1) | weight_16(person2) | -color_green(x) | score_95(person4) | score_105(person4).  [resolve(600,d,77,b),unit_del(f,210)].
+
+given #424 (T,wt=12): 605 weight_16(person3) | weight_16(person1) | weight_16(person2) | -color_green(x) | score_95(person4) | score_110(x).  [resolve(600,d,76,b),unit_del(f,210)].
+
+given #425 (T,wt=12): 606 weight_16(person3) | weight_16(person1) | weight_16(person2) | -color_green(x) | score_100(x) | score_105(person4).  [resolve(600,d,73,b),unit_del(f,210)].
+
+given #426 (A,wt=16): 450 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_95(x) | score_110(person4).  [resolve(444,c,66,b)].
+
+given #427 (T,wt=12): 607 weight_16(person3) | weight_16(person1) | weight_16(person2) | -color_green(x) | score_100(x) | score_110(x).  [resolve(600,d,72,b),unit_del(f,210)].
+
+given #428 (T,wt=12): 608 weight_16(person3) | weight_16(person1) | weight_16(person2) | score_110(person4) | color_green(person2) | color_green(person3).  [resolve(602,d,309,a)].
+
+given #429 (T,wt=12): 609 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | score_105(person4).  [resolve(449,f,40,a),unit_del(g,210)].
+
+given #430 (T,wt=12): 610 weight_16(person3) | weight_16(person1) | weight_16(person2) | score_105(person4) | color_green(person2) | color_green(person3).  [resolve(603,d,309,a)].
+
+given #431 (A,wt=16): 451 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_95(x) | score_100(x).  [resolve(444,c,65,b)].
+
+given #432 (T,wt=12): 612 weight_16(person3) | weight_16(person1) | weight_16(person2) | color_green(person2) | color_green(person3) | -score_110(person1).  [resolve(608,d,145,b)].
+
+given #433 (T,wt=12): 613 weight_16(person3) | weight_16(person1) | weight_16(person2) | color_green(person2) | color_green(person3) | -score_110(person2).  [resolve(608,d,143,b)].
+
+given #434 (T,wt=12): 614 weight_16(person3) | weight_16(person1) | weight_16(person2) | color_green(person2) | color_green(person3) | -score_110(person3).  [resolve(608,d,142,b)].
+
+given #435 (T,wt=12): 631 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | score_95(person4).  [resolve(451,f,40,a),unit_del(g,210)].
+
+given #436 (A,wt=18): 453 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1).  [resolve(371,i,360,f),merge(j),merge(k),merge(l),merge(m),merge(n)].
+
+given #437 (T,wt=10): 639 score_100(person2) | color_green(person3) | weight_16(person4) | weight_16(person1) | score_95(person4).  [factor(637,e,g),unit_del(f,40),unit_del(g,210)].
+
+given #438 (T,wt=10): 642 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person4) | -weight_16(person2).  [resolve(639,c,167,b)].
+
+given #439 (T,wt=10): 643 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person4) | -weight_16(person3).  [resolve(639,c,166,b)].
+
+given #440 (T,wt=12): 646 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person4) | -color_green(x) | score_105(person4).  [resolve(639,c,77,b),merge(f),unit_del(f,210)].
+
+given #441 (A,wt=16): 456 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_105(person4) | score_110(person4).  [resolve(452,c,68,b)].
+
+given #442 (T,wt=12): 647 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person4) | -color_green(x) | score_110(x).  [resolve(639,c,76,b),merge(f),unit_del(f,210)].
+
+given #443 (T,wt=12): 650 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person4) | score_105(person4) | color_green(person2).  [resolve(642,e,491,c),merge(e),merge(f),merge(g)].
+
+given #444 (T,wt=12): 652 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person4) | score_110(person4) | color_green(person2).  [resolve(647,e,309,a),merge(g)].
+
+given #445 (T,wt=12): 656 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person4) | color_green(person2) | -score_110(person1).  [resolve(652,e,145,b)].
+
+given #446 (A,wt=16): 457 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_105(person4) | score_100(x).  [resolve(452,c,67,b)].
+
+given #447 (T,wt=12): 657 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person4) | color_green(person2) | -score_110(person2).  [resolve(652,e,143,b)].
+
+given #448 (T,wt=12): 658 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person4) | color_green(person2) | -score_110(person3).  [resolve(652,e,142,b)].
+
+given #449 (T,wt=12): 659 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | score_105(person4).  [resolve(457,f,40,a),unit_del(g,210)].
+
+given #450 (T,wt=12): 660 score_100(person2) | color_green(person3) | weight_16(person4) | weight_16(person2) | score_105(person4) | -weight_14(person1).  [resolve(659,d,159,b)].
+
+given #451 (A,wt=16): 458 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_95(x) | score_110(person4).  [resolve(452,c,66,b)].
+
+given #452 (T,wt=14): 522 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1) | color_green(person4) | color_green(person2) | -weight_15(person1).  [resolve(443,g,165,b)].
+
+given #453 (T,wt=12): 666 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1) | color_green(person4) | color_green(person2).  [resolve(522,g,384,d),merge(g),merge(h),merge(i),merge(j),merge(k),merge(l)].
+
+given #454 (T,wt=12): 667 weight_16(person3) | weight_14(person1) | weight_16(person1) | color_green(person4) | color_green(person2) | -weight_14(person2).  [resolve(666,a,156,b)].
+
+given #455 (T,wt=14): 527 weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_15(person1) | weight_16(person1) | color_green(person4) | color_green(person3).  [resolve(410,h,239,b),merge(h),merge(i),merge(j),merge(k),merge(l)].
+
+given #456 (A,wt=16): 459 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_95(x) | score_100(x).  [resolve(452,c,65,b)].
+
+given #457 (T,wt=12): 675 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | score_95(person4).  [resolve(459,f,40,a),unit_del(g,210)].
+
+given #458 (T,wt=10): 682 score_100(person2) | color_green(person3) | weight_16(person4) | weight_16(person2) | score_95(person4).  [factor(680,e,g),unit_del(f,40),unit_del(g,210)].
+
+given #459 (T,wt=10): 683 score_100(person2) | color_green(person3) | weight_16(person2) | score_95(person4) | -weight_16(person1).  [resolve(682,c,169,b)].
+
+given #460 (T,wt=10): 684 score_100(person2) | color_green(person3) | weight_16(person2) | score_95(person4) | -weight_16(person3).  [resolve(682,c,166,b)].
+
+given #461 (A,wt=18): 461 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_16(person2).  [resolve(372,i,361,f),merge(j),merge(k),merge(l),merge(m),merge(n)].
+
+given #462 (T,wt=12): 687 score_100(person2) | color_green(person3) | weight_16(person2) | score_95(person4) | -color_green(x) | score_105(person4).  [resolve(682,c,77,b),merge(f),unit_del(f,210)].
+
+given #463 (T,wt=12): 688 score_100(person2) | color_green(person3) | weight_16(person2) | score_95(person4) | -color_green(x) | score_110(x).  [resolve(682,c,76,b),merge(f),unit_del(f,210)].
+
+given #464 (T,wt=12): 689 score_100(person2) | color_green(person3) | weight_16(person2) | score_95(person4) | score_105(person4) | color_green(person2).  [resolve(683,e,650,c),merge(e),merge(f),merge(g)].
+
+given #465 (T,wt=12): 690 score_100(person2) | color_green(person3) | weight_16(person2) | score_95(person4) | score_105(person4) | score_105(person2).  [resolve(683,e,531,c),merge(e),merge(f)].
+
+given #466 (A,wt=16): 463 score_100(person2) | color_green(person3) | weight_16(person2) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_105(person2) | score_110(person2).  [resolve(460,c,68,b)].
+
+given #467 (T,wt=12): 693 score_100(person2) | color_green(person3) | weight_16(person2) | score_95(person4) | score_110(person4) | color_green(person2).  [resolve(688,e,309,a),merge(g)].
+
+given #468 (T,wt=12): 694 score_100(person2) | color_green(person3) | score_95(person4) | score_105(person4) | color_green(person2) | -weight_16(person1).  [resolve(689,c,171,b)].
+
+given #469 (T,wt=10): 703 score_100(person2) | color_green(person3) | score_95(person4) | score_105(person4) | color_green(person2).  [resolve(694,f,650,c),merge(f),merge(g),merge(h),merge(i),merge(j)].
+
+given #470 (T,wt=10): 706 score_100(person2) | color_green(person3) | score_105(person4) | color_green(person2) | -score_95(person1).  [resolve(703,c,127,b)].
+
+given #471 (A,wt=16): 464 score_100(person2) | color_green(person3) | weight_16(person2) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_105(person2) | score_100(x).  [resolve(460,c,67,b)].
+
+given #472 (T,wt=10): 707 score_100(person2) | color_green(person3) | score_105(person4) | color_green(person2) | -score_95(person2).  [resolve(703,c,125,b)].
+
+given #473 (T,wt=10): 708 score_100(person2) | color_green(person3) | score_105(person4) | color_green(person2) | -score_95(person3).  [resolve(703,c,124,b)].
+
+given #474 (T,wt=12): 697 score_100(person2) | color_green(person3) | score_95(person4) | score_105(person4) | score_105(person2) | -weight_16(person1).  [resolve(690,c,171,b)].
+
+given #475 (T,wt=10): 710 score_100(person2) | color_green(person3) | score_95(person4) | score_105(person4) | score_105(person2).  [resolve(697,f,531,c),merge(f),merge(g),merge(h),merge(i)].
+
+given #476 (A,wt=16): 465 score_100(person2) | color_green(person3) | weight_16(person2) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_95(x) | score_110(person2).  [resolve(460,c,66,b)].
+
+given #477 (T,wt=10): 713 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | -score_95(person1).  [resolve(710,c,127,b)].
+
+given #478 (T,wt=10): 714 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | -score_95(person2).  [resolve(710,c,125,b)].
+
+given #479 (T,wt=10): 715 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | -score_95(person3).  [resolve(710,c,124,b)].
+
+given #480 (T,wt=12): 700 score_100(person2) | color_green(person3) | weight_16(person2) | score_95(person4) | color_green(person2) | -score_110(person1).  [resolve(693,e,145,b)].
+
+given #481 (A,wt=16): 466 score_100(person2) | color_green(person3) | weight_16(person2) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_95(x) | score_100(x).  [resolve(460,c,65,b)].
+
+given #482 (T,wt=12): 701 score_100(person2) | color_green(person3) | weight_16(person2) | score_95(person4) | color_green(person2) | -score_110(person2).  [resolve(693,e,143,b)].
+
+given #483 (T,wt=12): 702 score_100(person2) | color_green(person3) | weight_16(person2) | score_95(person4) | color_green(person2) | -score_110(person3).  [resolve(693,e,142,b)].
+
+given #484 (T,wt=12): 709 score_100(person2) | color_green(person3) | weight_16(person2) | weight_14(person1) | weight_16(person1) | score_105(person2).  [resolve(464,f,40,a),unit_del(g,210)].
+
+given #485 (T,wt=12): 718 score_100(person2) | color_green(person3) | weight_16(person2) | weight_14(person1) | weight_16(person1) | score_95(person4).  [resolve(466,f,40,a),unit_del(g,210)].
+
+given #486 (A,wt=18): 477 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_16(person1).  [resolve(373,i,363,f),merge(j),merge(k),merge(l),merge(m),merge(n)].
+
+given #487 (T,wt=10): 729 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_95(person4).  [factor(727,e,g),unit_del(f,40),unit_del(g,210)].
+
+given #488 (T,wt=8): 732 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person4).  [resolve(729,c,642,e),merge(e),merge(f),merge(g),merge(h)].
+
+given #489 (T,wt=8): 733 score_100(person2) | color_green(person3) | score_95(person4) | weight_16(person2).  [resolve(732,c,683,e),merge(d),merge(e),merge(g)].
+
+given #490 (T,wt=8): 743 score_100(person2) | color_green(person3) | score_95(person4) | -weight_16(person1).  [resolve(733,d,171,b)].
+
+given #491 (A,wt=18): 492 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1).  [resolve(374,i,363,f),merge(j),merge(k),merge(l),merge(m),merge(n)].
+
+given #492 (T,wt=6): 749 score_100(person2) | color_green(person3) | score_95(person4).  [resolve(743,d,732,c),merge(d),merge(e),merge(f)].
+
+given #493 (T,wt=6): 758 score_100(person2) | color_green(person3) | -score_95(person1).  [resolve(749,c,127,b)].
+
+given #494 (T,wt=6): 759 score_100(person2) | color_green(person3) | -score_95(person2).  [resolve(749,c,125,b)].
+
+given #495 (T,wt=6): 760 score_100(person2) | color_green(person3) | -score_95(person3).  [resolve(749,c,124,b)].
+
+given #496 (A,wt=18): 498 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_16(person2).  [resolve(375,i,364,f),merge(j),merge(k),merge(l),merge(m),merge(n)].
+
+given #497 (T,wt=8): 755 score_100(person2) | color_green(person3) | color_green(person4) | color_gold(person4).  [resolve(749,c,206,a)].
+
+given #498 (T,wt=8): 762 score_100(person2) | color_green(person3) | score_105(person2) | score_105(person1).  [resolve(758,c,396,c),merge(c)].
+
+given #499 (T,wt=8): 768 score_100(person2) | color_green(person3) | color_green(person4) | -color_gold(person1).  [resolve(755,d,193,b)].
+
+given #500 (T,wt=8): 769 score_100(person2) | color_green(person3) | color_green(person4) | -color_gold(person2).  [resolve(755,d,191,b)].
+
+given #501 (A,wt=16): 499 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | color_green(person2) | -color_green(x) | score_95(person2) | score_110(x).  [resolve(491,c,76,b),merge(h)].
+
+given #502 (T,wt=8): 770 score_100(person2) | color_green(person3) | color_green(person4) | -color_gold(person3).  [resolve(755,d,190,b)].
+
+given #503 (T,wt=8): 771 score_100(person2) | color_green(person3) | color_green(person4) | weight_15(person4).  [resolve(755,d,60,a)].
+
+given #504 (T,wt=8): 773 score_100(person2) | score_105(person2) | score_105(person1) | -color_green(person1).  [resolve(762,b,188,b)].
+
+given #505 (T,wt=8): 774 score_100(person2) | score_105(person2) | score_105(person1) | -color_green(person2).  [resolve(762,b,186,b)].
+
+given #506 (A,wt=16): 500 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | color_green(person2) | -color_green(x) | score_100(x) | score_110(x).  [resolve(491,c,72,b),merge(h)].
+
+given #507 (T,wt=8): 776 score_100(person2) | color_green(person3) | color_green(person4) | -weight_15(person3).  [resolve(771,d,160,b)].
+
+given #508 (T,wt=6): 778 score_100(person2) | color_green(person3) | color_green(person4).  [resolve(776,d,397,c),merge(d),merge(e)].
+
+given #509 (T,wt=6): 783 score_100(person2) | color_green(person3) | -color_green(person1).  [resolve(778,c,187,b)].
+
+given #510 (T,wt=6): 784 score_100(person2) | color_green(person3) | -color_green(person2).  [resolve(778,c,185,b)].
+
+given #511 (A,wt=16): 503 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_16(person3) | weight_14(person1) | weight_16(person1) | -weight_14(person2).  [resolve(389,e,156,b)].
+
+given #512 (T,wt=9): 756 score_100(person2) | color_green(person3) | -score_100(x) | differentFrom(x,person4).  [resolve(749,c,198,b)].
+
+given #513 (T,wt=9): 757 score_100(person2) | color_green(person3) | -score_100(x) | differentFrom(person2,x).  [resolve(749,c,196,b)].
+
+given #514 (T,wt=10): 781 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_110(person4).  [resolve(778,c,485,e),merge(c),merge(d),unit_del(e,210)].
+
+given #515 (T,wt=10): 782 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_105(person4).  [resolve(778,c,484,e),merge(c),merge(d),unit_del(e,210)].
+
+given #516 (A,wt=20): 504 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_16(person3) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_105(person3) | score_110(person3).  [resolve(389,e,68,b)].
+
+given #517 (T,wt=10): 786 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -score_110(person1).  [resolve(781,e,145,b)].
+
+given #518 (T,wt=10): 787 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -score_110(person2).  [resolve(781,e,143,b)].
+
+given #519 (T,wt=10): 788 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -score_110(person3).  [resolve(781,e,142,b)].
+
+given #520 (T,wt=12): 777 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | color_green(person2) | score_110(person4).  [resolve(500,f,309,a),merge(h),merge(i),unit_del(f,210)].
+
+given #521 (A,wt=20): 505 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_16(person3) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_105(person3) | score_100(x).  [resolve(389,e,67,b)].
+
+given #522 (T,wt=12): 792 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_95(person1) | score_105(person1).  [resolve(786,e,34,d),unit_del(f,207)].
+
+given #523 (T,wt=12): 793 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_95(person2) | score_105(person2).  [resolve(787,e,34,d),merge(f)].
+
+given #524 (T,wt=12): 794 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | color_green(person2) | -score_110(person1).  [resolve(777,f,145,b)].
+
+given #525 (T,wt=12): 795 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | color_green(person2) | -score_110(person2).  [resolve(777,f,143,b)].
+
+given #526 (A,wt=20): 506 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_16(person3) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_95(x) | score_110(person3).  [resolve(389,e,66,b)].
+
+given #527 (T,wt=12): 796 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | color_green(person2) | -score_110(person3).  [resolve(777,f,142,b)].
+
+given #528 (T,wt=12): 800 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person2) | score_105(person2) | -color_green(x).  [resolve(793,c,77,b),merge(g),merge(h),merge(i)].
+
+given #529 (T,wt=10): 802 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person2) | score_105(person2).  [resolve(800,f,778,c),merge(f),merge(g)].
+
+given #530 (T,wt=14): 532 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | -color_green(x) | score_95(person1) | score_110(x).  [resolve(531,c,76,b),unit_del(g,207)].
+
+given #531 (A,wt=20): 507 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_16(person3) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_95(x) | score_100(x).  [resolve(389,e,65,b)].
+
+given #532 (T,wt=12): 805 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | score_95(person1) | score_110(person4).  [resolve(532,e,778,c),merge(g),merge(h)].
+
+given #533 (T,wt=12): 806 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | score_95(person1) | -score_110(person1).  [resolve(805,f,145,b)].
+
+given #534 (T,wt=12): 807 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | score_95(person1) | -score_110(person2).  [resolve(805,f,143,b)].
+
+given #535 (T,wt=12): 808 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | score_95(person1) | -score_110(person3).  [resolve(805,f,142,b)].
+
+given #536 (A,wt=16): 513 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_16(person3) | weight_14(person2) | weight_16(person2) | -weight_14(person1).  [resolve(394,e,158,b)].
+
+given #537 (T,wt=12): 809 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | score_95(person1) | score_95(person2).  [resolve(807,f,34,d),merge(g),merge(h)].
+
+given #538 (T,wt=10): 810 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2) | score_95(person1).  [resolve(809,f,759,c),merge(f),merge(g)].
+
+given #539 (T,wt=8): 811 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person2).  [resolve(810,e,758,c),merge(e),merge(f)].
+
+given #540 (T,wt=8): 814 score_100(person2) | score_105(person4) | score_105(person2) | -color_green(person1).  [resolve(811,b,188,b)].
+
+given #541 (A,wt=20): 514 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_16(person3) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_105(person3) | score_110(person3).  [resolve(394,e,68,b)].
+
+given #542 (T,wt=8): 815 score_100(person2) | score_105(person4) | score_105(person2) | -color_green(person2).  [resolve(811,b,186,b)].
+
+given #543 (T,wt=14): 559 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | color_green(person3) | color_green(person2) | -weight_15(person1).  [resolve(520,g,165,b)].
+
+given #544 (T,wt=12): 817 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | color_green(person3) | color_green(person2).  [resolve(559,g,434,d),merge(g),merge(h),merge(i),merge(j),merge(k),merge(l)].
+
+given #545 (T,wt=12): 818 weight_16(person4) | weight_14(person1) | weight_16(person1) | color_green(person3) | color_green(person2) | -weight_14(person2).  [resolve(817,a,155,b)].
+
+given #546 (A,wt=20): 515 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_16(person3) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_105(person3) | score_100(x).  [resolve(394,e,67,b)].
+
+given #547 (T,wt=12): 819 weight_16(person4) | weight_14(person1) | weight_16(person1) | color_green(person3) | color_green(person2) | -weight_14(person3).  [resolve(817,a,154,b)].
+
+given #548 (T,wt=14): 629 weight_16(person1) | weight_16(person2) | score_105(person4) | color_green(person2) | color_green(person3) | -color_green(person4) | score_105(person3).  [factor(625,c,h),unit_del(g,210)].
+
+given #549 (T,wt=12): 825 weight_16(person1) | weight_16(person2) | score_105(person4) | color_green(person2) | color_green(person3) | score_105(person3).  [resolve(629,f,309,a),merge(g),merge(h)].
+
+given #550 (T,wt=14): 630 weight_16(person1) | weight_16(person2) | score_105(person4) | color_green(person2) | color_green(person3) | -color_green(person4) | score_110(person4).  [factor(626,c,h),unit_del(g,210)].
+
+given #551 (A,wt=20): 516 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_16(person3) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_95(x) | score_110(person3).  [resolve(394,e,66,b)].
+
+given #552 (T,wt=12): 834 weight_16(person1) | weight_16(person2) | score_105(person4) | color_green(person2) | color_green(person3) | score_110(person4).  [resolve(630,f,309,a),merge(g),merge(h)].
+
+given #553 (T,wt=12): 835 weight_16(person1) | weight_16(person2) | score_105(person4) | color_green(person2) | color_green(person3) | -score_110(person1).  [resolve(834,f,145,b)].
+
+given #554 (T,wt=12): 836 weight_16(person1) | weight_16(person2) | score_105(person4) | color_green(person2) | color_green(person3) | -score_110(person2).  [resolve(834,f,143,b)].
+
+given #555 (T,wt=12): 837 weight_16(person1) | weight_16(person2) | score_105(person4) | color_green(person2) | color_green(person3) | -score_110(person3).  [resolve(834,f,142,b)].
+
+given #556 (A,wt=20): 517 score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | weight_16(person3) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_95(x) | score_100(x).  [resolve(394,e,65,b)].
+
+given #557 (T,wt=14): 632 weight_16(person3) | weight_16(person1) | weight_16(person2) | color_green(person2) | color_green(person3) | score_95(person1) | score_105(person1).  [resolve(612,f,34,d),unit_del(g,207)].
+
+given #558 (T,wt=14): 674 weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_16(person1) | color_green(person4) | color_green(person3) | weight_15(person3).  [resolve(527,d,287,d),merge(g),merge(h)].
+
+given #559 (T,wt=14): 789 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | -color_green(x) | score_95(person2) | score_110(x).  [resolve(782,c,76,b),merge(g)].
+
+given #560 (T,wt=12): 848 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | score_95(person2) | score_110(person4).  [resolve(789,e,778,c),merge(g),merge(h)].
+
+given #561 (A,wt=20): 523 weight_16(person2) | weight_14(person1) | weight_16(person1) | score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | -Paula(x) | score_105(person2) | score_110(person2).  [resolve(404,a,68,b)].
+
+given #562 (T,wt=12): 849 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | score_95(person2) | -score_110(person1).  [resolve(848,f,145,b)].
+
+given #563 (T,wt=12): 850 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | score_95(person2) | -score_110(person2).  [resolve(848,f,143,b)].
+
+given #564 (T,wt=12): 851 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | score_95(person2) | -score_110(person3).  [resolve(848,f,142,b)].
+
+given #565 (T,wt=14): 790 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | -color_green(x) | score_100(x) | score_110(x).  [resolve(782,c,72,b),merge(g)].
+
+given #566 (A,wt=20): 524 weight_16(person2) | weight_14(person1) | weight_16(person1) | score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | -Paula(x) | score_105(person2) | score_100(x).  [resolve(404,a,67,b)].
+
+given #567 (T,wt=10): 854 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | score_110(person4).  [resolve(790,e,778,c),merge(g),merge(h),unit_del(e,210)].
+
+given #568 (T,wt=10): 856 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | -score_110(person1).  [resolve(854,e,145,b)].
+
+given #569 (T,wt=10): 857 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | -score_110(person2).  [resolve(854,e,143,b)].
+
+given #570 (T,wt=10): 858 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | -score_110(person3).  [resolve(854,e,142,b)].
+
+given #571 (A,wt=20): 525 weight_16(person2) | weight_14(person1) | weight_16(person1) | score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | -Paula(x) | score_95(x) | score_110(person2).  [resolve(404,a,66,b)].
+
+given #572 (T,wt=12): 859 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person4) | score_95(person1) | score_105(person1).  [resolve(856,e,34,d),unit_del(f,207)].
+
+given #573 (T,wt=12): 860 score_100(person2) | color_green(person3) | score_105(person4) | score_95(person1) | score_105(person1) | -color_green(x).  [resolve(859,c,77,b),merge(g),merge(i),unit_del(g,207)].
+
+given #574 (T,wt=10): 861 score_100(person2) | color_green(person3) | score_105(person4) | score_95(person1) | score_105(person1).  [resolve(860,f,778,c),merge(f),merge(g)].
+
+given #575 (T,wt=8): 862 score_100(person2) | color_green(person3) | score_105(person4) | score_105(person1).  [resolve(861,d,758,c),merge(e),merge(f)].
+
+given #576 (A,wt=20): 526 weight_16(person2) | weight_14(person1) | weight_16(person1) | score_105(person4) | score_95(person1) | score_105(person1) | color_green(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(404,a,65,b)].
+
+given #577 (T,wt=8): 865 score_100(person2) | score_105(person4) | score_105(person1) | -color_green(person1).  [resolve(862,b,188,b)].
+
+given #578 (T,wt=8): 866 score_100(person2) | score_105(person4) | score_105(person1) | -color_green(person2).  [resolve(862,b,186,b)].
+
+given #579 (T,wt=14): 803 score_100(person2) | color_green(person3) | score_95(person2) | score_105(person2) | -color_green(x) | score_95(person1) | score_110(x).  [resolve(802,c,76,b),unit_del(g,207)].
+
+given #580 (T,wt=12): 867 score_100(person2) | color_green(person3) | score_95(person2) | score_105(person2) | score_95(person1) | score_110(person4).  [resolve(803,e,778,c),merge(g),merge(h)].
+
+given #581 (A,wt=16): 539 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | -Paula(x) | score_105(person4) | score_110(person4).  [resolve(537,a,68,b)].
+
+given #582 (T,wt=12): 868 score_100(person2) | color_green(person3) | score_95(person2) | score_105(person2) | score_95(person1) | -score_110(person2).  [resolve(867,f,143,b)].
+
+given #583 (T,wt=10): 871 score_100(person2) | color_green(person3) | score_95(person2) | score_105(person2) | score_95(person1).  [resolve(868,f,34,d),merge(f),merge(g),merge(h)].
+
+given #584 (T,wt=8): 872 score_100(person2) | color_green(person3) | score_105(person2) | score_95(person1).  [resolve(871,c,759,c),merge(e),merge(f)].
+
+given #585 (T,wt=6): 873 score_100(person2) | color_green(person3) | score_105(person2).  [resolve(872,d,758,c),merge(d),merge(e)].
+
+given #586 (A,wt=16): 540 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | -Paula(x) | score_105(person4) | score_100(x).  [resolve(537,a,67,b)].
+
+given #587 (T,wt=6): 875 score_100(person2) | score_105(person2) | -color_green(person1).  [resolve(873,b,188,b)].
+
+given #588 (T,wt=6): 876 score_100(person2) | score_105(person2) | -color_green(person2).  [resolve(873,b,186,b)].
+
+given #589 (T,wt=12): 877 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | score_105(person4).  [resolve(540,f,40,a),unit_del(g,210)].
+
+given #590 (T,wt=12): 878 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_16(person3) | score_105(person4) | -weight_14(person1).  [resolve(877,d,158,b)].
+
+given #591 (A,wt=16): 541 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | -Paula(x) | score_95(x) | score_110(person4).  [resolve(537,a,66,b)].
+
+given #592 (T,wt=14): 813 score_100(person2) | score_105(person4) | score_105(person2) | weight_16(person3) | weight_16(person1) | weight_16(person2) | score_95(person4).  [resolve(811,b,604,d),merge(h)].
+
+given #593 (T,wt=14): 832 weight_16(person1) | score_105(person4) | color_green(person2) | color_green(person3) | score_105(person3) | -color_green(person4) | score_105(person2).  [factor(828,b,h),unit_del(g,210)].
+
+given #594 (T,wt=12): 893 weight_16(person1) | score_105(person4) | color_green(person2) | color_green(person3) | score_105(person3) | score_105(person2).  [resolve(832,f,309,a),merge(g),merge(h)].
+
+given #595 (T,wt=14): 833 weight_16(person1) | score_105(person4) | color_green(person2) | color_green(person3) | score_105(person3) | -color_green(person4) | score_110(person4).  [factor(829,b,h),unit_del(g,210)].
+
+given #596 (A,wt=16): 542 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | -Paula(x) | score_95(x) | score_100(x).  [resolve(537,a,65,b)].
+
+given #597 (T,wt=12): 898 weight_16(person1) | score_105(person4) | color_green(person2) | color_green(person3) | score_105(person3) | score_110(person4).  [resolve(833,f,309,a),merge(g),merge(h)].
+
+given #598 (T,wt=12): 899 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | score_95(person4).  [resolve(542,f,40,a),unit_del(g,210)].
+
+given #599 (T,wt=10): 909 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_16(person3) | score_95(person4).  [factor(907,e,g),unit_del(f,40),unit_del(g,210)].
+
+given #600 (T,wt=8): 916 weight_16(person4) | weight_16(person2) | weight_16(person3) | score_95(person4).  [factor(914,d,f),unit_del(e,40),unit_del(f,210)].
+
+given #601 (A,wt=16): 546 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_105(person4) | score_110(person4).  [resolve(544,a,68,b)].
+
+given #602 (T,wt=8): 917 weight_16(person2) | weight_16(person3) | score_95(person4) | -weight_16(person1).  [resolve(916,a,169,b)].
+
+given #603 (T,wt=10): 920 weight_16(person2) | weight_16(person3) | score_95(person4) | -color_green(x) | score_105(person4).  [resolve(916,a,77,b),merge(e),unit_del(e,210)].
+
+given #604 (T,wt=10): 921 weight_16(person2) | weight_16(person3) | score_95(person4) | -color_green(x) | score_110(x).  [resolve(916,a,76,b),merge(e),unit_del(e,210)].
+
+given #605 (T,wt=12): 900 weight_16(person1) | score_105(person4) | color_green(person2) | color_green(person3) | score_105(person3) | -score_110(person1).  [resolve(898,f,145,b)].
+
+given #606 (A,wt=16): 547 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_105(person4) | score_100(x).  [resolve(544,a,67,b)].
+
+given #607 (T,wt=12): 901 weight_16(person1) | score_105(person4) | color_green(person2) | color_green(person3) | score_105(person3) | -score_110(person2).  [resolve(898,f,143,b)].
+
+given #608 (T,wt=12): 902 weight_16(person1) | score_105(person4) | color_green(person2) | color_green(person3) | score_105(person3) | -score_110(person3).  [resolve(898,f,142,b)].
+
+given #609 (T,wt=12): 924 weight_16(person2) | weight_16(person3) | score_95(person4) | score_105(person4) | score_100(person2) | score_105(person2).  [resolve(920,d,873,b)].
+
+given #610 (T,wt=12): 925 weight_16(person2) | weight_16(person3) | score_95(person4) | score_105(person4) | score_100(person2) | score_105(person1).  [resolve(920,d,862,b),merge(f)].
+
+given #611 (A,wt=16): 548 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_95(x) | score_110(person4).  [resolve(544,a,66,b)].
+
+given #612 (T,wt=12): 926 weight_16(person2) | weight_16(person3) | score_95(person4) | score_105(person4) | color_green(person2) | color_green(person3).  [resolve(920,d,309,a)].
+
+given #613 (T,wt=12): 927 weight_16(person2) | weight_16(person3) | score_95(person4) | score_110(person3) | score_100(person2) | score_105(person2).  [resolve(921,d,873,b)].
+
+given #614 (T,wt=12): 928 weight_16(person2) | weight_16(person3) | score_95(person4) | score_110(person4) | color_green(person2) | color_green(person3).  [resolve(921,d,309,a)].
+
+given #615 (T,wt=12): 930 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | score_105(person4).  [resolve(547,f,40,a),unit_del(g,210)].
+
+given #616 (A,wt=16): 549 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_95(x) | score_100(x).  [resolve(544,a,65,b)].
+
+given #617 (T,wt=12): 932 weight_16(person2) | score_95(person4) | score_105(person4) | score_100(person2) | score_105(person2) | -weight_16(person1).  [resolve(924,b,170,b)].
+
+given #618 (T,wt=12): 942 weight_16(person2) | score_95(person4) | score_105(person4) | score_100(person2) | score_105(person1) | -weight_16(person1).  [resolve(925,b,170,b)].
+
+given #619 (T,wt=12): 953 weight_16(person2) | score_95(person4) | score_105(person4) | color_green(person2) | color_green(person3) | -weight_16(person1).  [resolve(926,b,170,b)].
+
+given #620 (T,wt=12): 965 weight_16(person2) | weight_16(person3) | score_95(person4) | score_100(person2) | score_105(person2) | -score_110(person1).  [resolve(927,d,146,b)].
+
+given #621 (A,wt=16): 555 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | -Paula(x) | score_105(person4) | score_110(person4).  [resolve(553,a,68,b)].
+
+given #622 (T,wt=12): 966 weight_16(person2) | weight_16(person3) | score_95(person4) | score_100(person2) | score_105(person2) | -score_110(person2).  [resolve(927,d,144,b)].
+
+given #623 (T,wt=12): 967 weight_16(person2) | weight_16(person3) | score_95(person4) | color_green(person2) | color_green(person3) | -score_110(person1).  [resolve(928,d,145,b)].
+
+given #624 (T,wt=12): 968 weight_16(person2) | weight_16(person3) | score_95(person4) | color_green(person2) | color_green(person3) | -score_110(person2).  [resolve(928,d,143,b)].
+
+given #625 (T,wt=12): 969 weight_16(person2) | weight_16(person3) | score_95(person4) | color_green(person2) | color_green(person3) | -score_110(person3).  [resolve(928,d,142,b)].
+
+given #626 (A,wt=16): 556 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | -Paula(x) | score_105(person4) | score_100(x).  [resolve(553,a,67,b)].
+
+given #627 (T,wt=12): 975 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | score_95(person4).  [resolve(549,f,40,a),unit_del(g,210)].
+
+given #628 (T,wt=10): 988 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_95(person4).  [factor(986,e,g),unit_del(f,40),unit_del(g,210)].
+
+given #629 (T,wt=8): 994 weight_16(person4) | weight_16(person1) | weight_16(person2) | score_95(person4).  [factor(992,d,f),unit_del(e,40),unit_del(f,210)].
+
+given #630 (T,wt=8): 995 weight_16(person1) | weight_16(person2) | score_95(person4) | -weight_16(person3).  [resolve(994,a,166,b)].
+
+given #631 (A,wt=16): 557 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | -Paula(x) | score_95(x) | score_110(person4).  [resolve(553,a,66,b)].
+
+given #632 (T,wt=10): 998 weight_16(person1) | weight_16(person2) | score_95(person4) | -color_green(x) | score_105(person4).  [resolve(994,a,77,b),merge(e),unit_del(e,210)].
+
+given #633 (T,wt=10): 999 weight_16(person1) | weight_16(person2) | score_95(person4) | -color_green(x) | score_110(x).  [resolve(994,a,76,b),merge(e),unit_del(e,210)].
+
+given #634 (T,wt=12): 978 weight_16(person2) | weight_16(person3) | score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2).  [resolve(966,f,34,d),merge(g),merge(h)].
+
+given #635 (T,wt=12): 981 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | score_105(person4).  [resolve(556,f,40,a),unit_del(g,210)].
+
+given #636 (A,wt=16): 558 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | -Paula(x) | score_95(x) | score_100(x).  [resolve(553,a,65,b)].
+
+given #637 (T,wt=12): 1000 weight_16(person1) | weight_16(person2) | score_95(person4) | score_105(person4) | color_green(person2) | color_green(person3).  [resolve(995,d,926,b),merge(d),merge(e)].
+
+given #638 (T,wt=12): 1001 weight_16(person1) | weight_16(person2) | score_95(person4) | score_105(person4) | score_100(person2) | score_105(person1).  [resolve(995,d,925,b),merge(d),merge(e)].
+
+given #639 (T,wt=12): 1002 weight_16(person1) | weight_16(person2) | score_95(person4) | score_105(person4) | score_100(person2) | score_105(person2).  [resolve(995,d,924,b),merge(d),merge(e)].
+
+given #640 (T,wt=12): 1005 weight_16(person1) | weight_16(person2) | score_95(person4) | score_110(person3) | score_100(person2) | score_105(person2).  [resolve(999,d,873,b)].
+
+given #641 (A,wt=16): 567 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_105(person3) | score_110(person3).  [resolve(565,a,68,b)].
+
+given #642 (T,wt=12): 1006 weight_16(person1) | weight_16(person2) | score_95(person4) | score_110(person4) | color_green(person2) | color_green(person3).  [resolve(999,d,309,a)].
+
+given #643 (T,wt=12): 1007 weight_16(person2) | score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2) | weight_16(person1).  [resolve(978,b,995,d),merge(g),merge(h)].
+
+given #644 (T,wt=12): 1008 weight_16(person2) | score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2) | -weight_16(person1).  [resolve(978,b,170,b)].
+
+given #645 (T,wt=12): 1015 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person3) | score_105(person4) | -weight_14(person2).  [resolve(981,d,156,b)].
+
+given #646 (A,wt=16): 568 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_105(person3) | score_100(x).  [resolve(565,a,67,b)].
+
+given #647 (T,wt=12): 1020 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | score_95(person4).  [resolve(558,f,40,a),unit_del(g,210)].
+
+given #648 (T,wt=10): 1047 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person3) | score_95(person4).  [factor(1045,e,g),unit_del(f,40),unit_del(g,210)].
+
+given #649 (T,wt=8): 1053 weight_16(person4) | weight_16(person1) | weight_16(person3) | score_95(person4).  [factor(1051,d,f),unit_del(e,40),unit_del(f,210)].
+
+given #650 (T,wt=8): 1054 weight_16(person1) | weight_16(person3) | score_95(person4) | -weight_16(person2).  [resolve(1053,a,167,b)].
+
+given #651 (A,wt=16): 569 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_95(x) | score_110(person3).  [resolve(565,a,66,b)].
+
+given #652 (T,wt=10): 1057 weight_16(person1) | weight_16(person3) | score_95(person4) | -color_green(x) | score_105(person4).  [resolve(1053,a,77,b),merge(e),unit_del(e,210)].
+
+given #653 (T,wt=10): 1058 weight_16(person1) | weight_16(person3) | score_95(person4) | -color_green(x) | score_110(x).  [resolve(1053,a,76,b),merge(e),unit_del(e,210)].
+
+given #654 (T,wt=12): 1032 weight_16(person1) | weight_16(person2) | score_95(person4) | score_100(person2) | score_105(person2) | -score_110(person1).  [resolve(1005,d,146,b)].
+
+given #655 (T,wt=12): 1033 weight_16(person1) | weight_16(person2) | score_95(person4) | score_100(person2) | score_105(person2) | -score_110(person2).  [resolve(1005,d,144,b)].
+
+given #656 (A,wt=16): 570 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_95(x) | score_100(x).  [resolve(565,a,65,b)].
+
+given #657 (T,wt=12): 1035 weight_16(person1) | weight_16(person2) | score_95(person4) | color_green(person2) | color_green(person3) | -score_110(person1).  [resolve(1006,d,145,b)].
+
+given #658 (T,wt=12): 1036 weight_16(person1) | weight_16(person2) | score_95(person4) | color_green(person2) | color_green(person3) | -score_110(person2).  [resolve(1006,d,143,b)].
+
+given #659 (T,wt=12): 1037 weight_16(person1) | weight_16(person2) | score_95(person4) | color_green(person2) | color_green(person3) | -score_110(person3).  [resolve(1006,d,142,b)].
+
+given #660 (T,wt=12): 1038 score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2) | weight_16(person1) | -color_green(x).  [resolve(1007,a,77,b),merge(g),merge(h),merge(i)].
+
+given #661 (A,wt=22): 580 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | weight_16(person2) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_105(person2) | score_110(person2).  [resolve(445,f,68,b)].
+
+given #662 (T,wt=10): 1068 score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2) | weight_16(person1).  [resolve(1038,f,873,b),merge(f),merge(g)].
+
+given #663 (T,wt=10): 1070 score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2) | weight_16(person2).  [resolve(1068,e,1008,f),merge(f),merge(g),merge(h),merge(i)].
+
+given #664 (T,wt=10): 1074 score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2) | -weight_16(person1).  [resolve(1070,e,171,b)].
+
+given #665 (T,wt=8): 1076 score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2).  [resolve(1074,e,1068,e),merge(e),merge(f),merge(g),merge(h)].
+
+given #666 (A,wt=22): 581 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | weight_16(person2) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_105(person2) | score_100(x).  [resolve(445,f,67,b)].
+
+given #667 (T,wt=8): 1080 score_100(person2) | score_105(person2) | score_95(person2) | -score_95(person1).  [resolve(1076,a,127,b)].
+
+given #668 (T,wt=8): 1081 score_100(person2) | score_105(person2) | score_95(person2) | -score_95(person3).  [resolve(1076,a,124,b)].
+
+given #669 (T,wt=8): 1083 score_100(person2) | score_105(person2) | score_95(person2) | score_105(person1).  [resolve(1080,d,396,c),merge(d),merge(e)].
+
+given #670 (T,wt=8): 1085 score_100(person2) | score_105(person2) | score_105(person1) | -score_100(x).  [resolve(1083,c,197,b),unit_del(e,115)].
+
+given #671 (A,wt=22): 582 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | weight_16(person2) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_95(x) | score_110(person2).  [resolve(445,f,66,b)].
+
+given #672 (T,wt=6): 1087 score_100(person2) | score_105(person2) | score_105(person1).  [resolve(1085,d,395,a),merge(d)].
+
+given #673 (T,wt=10): 1077 score_100(person2) | score_105(person2) | score_95(person2) | color_green(person4) | color_gold(person4).  [resolve(1076,a,206,a)].
+
+given #674 (T,wt=10): 1088 score_100(person2) | score_105(person2) | score_95(person2) | color_green(person4) | -color_gold(person1).  [resolve(1077,e,193,b)].
+
+given #675 (T,wt=10): 1089 score_100(person2) | score_105(person2) | score_95(person2) | color_green(person4) | -color_gold(person2).  [resolve(1077,e,191,b)].
+
+given #676 (A,wt=22): 583 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | color_green(person4) | weight_16(person2) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_95(x) | score_100(x).  [resolve(445,f,65,b)].
+
+given #677 (T,wt=10): 1090 score_100(person2) | score_105(person2) | score_95(person2) | color_green(person4) | -color_gold(person3).  [resolve(1077,e,190,b)].
+
+given #678 (T,wt=10): 1091 score_100(person2) | score_105(person2) | score_95(person2) | color_green(person4) | weight_15(person4).  [resolve(1077,e,60,a)].
+
+given #679 (T,wt=10): 1092 score_100(person2) | score_105(person2) | score_95(person2) | color_green(person4) | -weight_15(person1).  [resolve(1091,e,163,b)].
+
+given #680 (T,wt=10): 1093 score_100(person2) | score_105(person2) | score_95(person2) | color_green(person4) | -weight_15(person2).  [resolve(1091,e,161,b)].
+
+given #681 (A,wt=16): 617 score_100(person2) | color_green(person3) | weight_16(person4) | weight_16(person1) | score_105(person4) | -Paula(x) | score_95(x) | score_110(person1).  [resolve(609,d,66,b)].
+
+given #682 (T,wt=10): 1094 score_100(person2) | score_105(person2) | score_95(person2) | color_green(person4) | -weight_15(person3).  [resolve(1091,e,160,b)].
+
+given #683 (T,wt=11): 1078 score_100(person2) | score_105(person2) | score_95(person2) | -score_100(x) | differentFrom(x,person4).  [resolve(1076,a,198,b)].
+
+given #684 (T,wt=11): 1079 score_100(person2) | score_105(person2) | score_95(person2) | -score_100(x) | differentFrom(person2,x).  [resolve(1076,a,196,b)].
+
+given #685 (T,wt=12): 1039 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | score_105(person3).  [resolve(568,f,40,a),unit_del(g,210)].
+
+given #686 (A,wt=16): 618 score_100(person2) | color_green(person3) | weight_16(person4) | weight_16(person1) | score_105(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(609,d,65,b)].
+
+given #687 (T,wt=12): 1060 weight_16(person1) | weight_16(person3) | score_95(person4) | score_105(person4) | score_100(person2) | score_105(person2).  [resolve(1054,d,1002,b),merge(d),merge(e)].
+
+given #688 (T,wt=12): 1061 weight_16(person1) | weight_16(person3) | score_95(person4) | score_105(person4) | score_100(person2) | score_105(person1).  [resolve(1054,d,1001,b),merge(d),merge(e)].
+
+given #689 (T,wt=12): 1062 weight_16(person1) | weight_16(person3) | score_95(person4) | score_105(person4) | color_green(person2) | color_green(person3).  [resolve(1054,d,1000,b),merge(d),merge(e)].
+
+given #690 (T,wt=12): 1064 weight_16(person1) | weight_16(person3) | score_95(person4) | score_110(person3) | score_100(person2) | score_105(person2).  [resolve(1058,d,873,b)].
+
+given #691 (A,wt=18): 620 weight_16(person1) | weight_16(person2) | score_105(person4) | color_green(person2) | color_green(person3) | -color_green(x) | score_95(person3) | score_100(person3) | score_110(x).  [resolve(610,a,76,b)].
+
+given #692 (T,wt=12): 1065 weight_16(person1) | weight_16(person3) | score_95(person4) | score_110(person4) | color_green(person2) | color_green(person3).  [resolve(1058,d,309,a)].
+
+given #693 (T,wt=12): 1066 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | score_95(person4).  [resolve(570,f,40,a),unit_del(g,210)].
+
+given #694 (T,wt=10): 1138 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_95(person4).  [factor(1136,e,g),unit_del(f,40),unit_del(g,210)].
+
+given #695 (T,wt=8): 1144 weight_16(person3) | weight_16(person1) | weight_16(person2) | score_95(person4).  [factor(1142,d,f),unit_del(e,40),unit_del(f,210)].
+
+given #696 (A,wt=18): 622 weight_16(person1) | weight_16(person2) | score_105(person4) | color_green(person2) | color_green(person3) | -color_green(x) | score_95(person3) | score_105(x) | score_110(x).  [resolve(610,a,74,b)].
+
+given #697 (T,wt=6): 1145 weight_16(person1) | weight_16(person2) | score_95(person4).  [resolve(1144,a,995,d),merge(d),merge(e),merge(f)].
+
+given #698 (T,wt=6): 1146 weight_16(person1) | score_95(person4) | weight_16(person3).  [resolve(1145,b,1054,d),merge(c),merge(e)].
+
+given #699 (T,wt=6): 1156 weight_16(person1) | score_95(person4) | -weight_16(person2).  [resolve(1146,c,168,b)].
+
+given #700 (T,wt=4): 1167 weight_16(person1) | score_95(person4).  [resolve(1156,c,1145,b),merge(c),merge(d)].
+
+given #701 (A,wt=18): 624 weight_16(person1) | weight_16(person2) | score_105(person4) | color_green(person2) | color_green(person3) | -color_green(x) | score_100(x) | score_100(person3) | score_110(x).  [resolve(610,a,72,b)].
+
+given #702 (T,wt=6): 1171 score_95(person4) | weight_16(person2) | weight_16(person3).  [resolve(1167,a,917,d),merge(d)].
+
+given #703 (T,wt=6): 1173 score_95(person4) | -color_green(person1) | score_110(person1).  [resolve(1167,a,96,b),unit_del(c,207)].
+
+given #704 (T,wt=6): 1174 score_95(person4) | -color_green(person1) | score_105(person1).  [resolve(1167,a,95,b),unit_del(c,207)].
+
+given #705 (T,wt=6): 1179 score_95(person4) | weight_16(person2) | -weight_16(person1).  [resolve(1171,c,170,b)].
+
+given #706 (A,wt=18): 626 weight_16(person1) | weight_16(person2) | score_105(person4) | color_green(person2) | color_green(person3) | -color_green(x) | score_100(x) | score_105(x) | score_110(x).  [resolve(610,a,70,b)].
+
+given #707 (T,wt=4): 1188 score_95(person4) | weight_16(person2).  [resolve(1179,c,1167,a),merge(c)].
+
+given #708 (T,wt=4): 1189 score_95(person4) | -weight_16(person1).  [resolve(1188,b,171,b)].
+
+given #709 (T,wt=2): 1196 score_95(person4).  [resolve(1189,b,1167,a),merge(b)].
+
+given #710 (T,wt=2): 1378 score_100(person3).  [back_unit_del(395),unit_del(b,1302)].
+
+given #711 (A,wt=16): 668 weight_16(person3) | weight_14(person1) | weight_16(person1) | color_green(person4) | color_green(person2) | -Paula(x) | score_105(person3) | score_110(person3).  [resolve(666,a,68,b)].
+
+given #712 (F,wt=2): 1198 -score_95(person1).  [back_unit_del(127),unit_del(b,1196)].
+
+given #713 (F,wt=2): 1199 -score_95(person2).  [back_unit_del(125),unit_del(b,1196)].
+
+given #714 (F,wt=2): 1200 -score_95(person3).  [back_unit_del(124),unit_del(b,1196)].
+
+given #715 (F,wt=2): 1201 -color_blue(person4).  [back_unit_del(78),unit_del(b,1196)].
+
+given #716 (T,wt=4): 1197 color_green(person4) | color_gold(person4).  [back_unit_del(206),unit_del(a,1196)].
+
+given #717 (T,wt=4): 1303 -score_110(person1) | score_105(person2).  [back_unit_del(1274),unit_del(b,1302)].
+
+given #718 (T,wt=4): 1333 score_105(person2) | score_105(person1).  [back_unit_del(1087),unit_del(a,1302)].
+
+given #719 (T,wt=4): 1334 score_105(person2) | -color_green(person2).  [back_unit_del(876),unit_del(a,1302)].
+
+given #720 (A,wt=16): 669 weight_16(person3) | weight_14(person1) | weight_16(person1) | color_green(person4) | color_green(person2) | -Paula(x) | score_105(person3) | score_100(x).  [resolve(666,a,67,b)].
+
+given #721 (F,wt=2): 1302 -score_100(person2).  [ur(196,b,1196,a,c,115,a)].
+
+given #722 (T,wt=4): 1335 score_105(person2) | -color_green(person1).  [back_unit_del(875),unit_del(a,1302)].
+
+given #723 (T,wt=4): 1336 color_green(person3) | score_105(person2).  [back_unit_del(873),unit_del(a,1302)].
+
+given #724 (T,wt=4): 1347 color_green(person3) | -color_green(person2).  [back_unit_del(784),unit_del(a,1302)].
+
+given #725 (T,wt=4): 1348 color_green(person3) | -color_green(person1).  [back_unit_del(783),unit_del(a,1302)].
+
+given #726 (A,wt=16): 670 weight_16(person3) | weight_14(person1) | weight_16(person1) | color_green(person4) | color_green(person2) | -Paula(x) | score_95(x) | score_110(person3).  [resolve(666,a,66,b)].
+
+given #727 (T,wt=4): 1351 color_green(person3) | color_green(person4).  [back_unit_del(778),unit_del(a,1302)].
+
+given #728 (T,wt=4): 1375 color_green(person3) | -weight_15(person2).  [back_unit_del(403),unit_del(a,1302)].
+
+given #729 (T,wt=4): 1376 color_green(person3) | -weight_15(person1).  [back_unit_del(402),unit_del(a,1302)].
+
+given #730 (T,wt=4): 1377 color_green(person3) | weight_15(person3).  [back_unit_del(397),unit_del(a,1302)].
+
+given #731 (A,wt=16): 671 weight_16(person3) | weight_14(person1) | weight_16(person1) | color_green(person4) | color_green(person2) | -Paula(x) | score_95(x) | score_100(x).  [resolve(666,a,65,b)].
+
+given #732 (T,wt=4): 1380 color_green(person4) | -color_gold(person1).  [resolve(1197,b,193,b)].
+
+given #733 (T,wt=4): 1381 color_green(person4) | -color_gold(person2).  [resolve(1197,b,191,b)].
+
+given #734 (T,wt=4): 1382 color_green(person4) | -color_gold(person3).  [resolve(1197,b,190,b)].
+
+given #735 (T,wt=4): 1383 color_green(person4) | weight_15(person4).  [resolve(1197,b,60,a)].
+
+given #736 (A,wt=16): 879 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_16(person3) | score_105(person4) | -Paula(x) | score_105(person3) | score_110(person3).  [resolve(877,d,68,b)].
+
+given #737 (T,wt=4): 1385 color_green(person4) | -weight_15(person1).  [resolve(1383,b,163,b)].
+
+given #738 (T,wt=4): 1386 color_green(person4) | -weight_15(person2).  [resolve(1383,b,161,b)].
+
+given #739 (T,wt=4): 1387 color_green(person4) | -weight_15(person3).  [resolve(1383,b,160,b)].
+
+given #740 (T,wt=5): 1300 -score_100(x) | differentFrom(x,person4).  [resolve(1196,a,198,b)].
+
+given #741 (A,wt=16): 880 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_16(person3) | score_105(person4) | -Paula(x) | score_105(person3) | score_100(x).  [resolve(877,d,67,b)].
+
+given #742 (T,wt=5): 1301 -score_100(x) | differentFrom(person2,x).  [resolve(1196,a,196,b)].
+
+given #743 (T,wt=6): 1337 score_105(person4) | score_105(person1) | -color_green(person2).  [back_unit_del(866),unit_del(a,1302)].
+
+given #744 (T,wt=6): 1338 score_105(person4) | score_105(person1) | -color_green(person1).  [back_unit_del(865),unit_del(a,1302)].
+
+given #745 (T,wt=6): 1339 color_green(person3) | score_105(person4) | score_105(person1).  [back_unit_del(862),unit_del(a,1302)].
+
+given #746 (A,wt=16): 881 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_16(person3) | score_105(person4) | -Paula(x) | score_95(x) | score_110(person3).  [resolve(877,d,66,b)].
+
+given #747 (T,wt=8): 1331 color_green(person3) | weight_16(person2) | weight_16(person1) | score_105(person1).  [back_unit_del(1218),unit_del(a,1302)].
+
+given #748 (T,wt=8): 1340 color_green(person3) | weight_16(person1) | score_105(person4) | -score_110(person3).  [back_unit_del(858),unit_del(a,1302)].
+
+given #749 (T,wt=8): 1341 color_green(person3) | weight_16(person1) | score_105(person4) | -score_110(person2).  [back_unit_del(857),unit_del(a,1302)].
+
+given #750 (T,wt=8): 1342 color_green(person3) | weight_16(person1) | score_105(person4) | -score_110(person1).  [back_unit_del(856),unit_del(a,1302)].
+
+given #751 (A,wt=16): 882 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_16(person3) | score_105(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(877,d,65,b)].
+
+given #752 (T,wt=8): 1343 color_green(person3) | weight_16(person1) | score_105(person4) | score_110(person4).  [back_unit_del(854),unit_del(a,1302)].
+
+given #753 (T,wt=8): 1344 color_green(person3) | weight_16(person2) | weight_16(person1) | -score_110(person3).  [back_unit_del(788),unit_del(a,1302)].
+
+given #754 (T,wt=8): 1345 color_green(person3) | weight_16(person2) | weight_16(person1) | -score_110(person2).  [back_unit_del(787),unit_del(a,1302)].
+
+given #755 (T,wt=8): 1346 color_green(person3) | weight_16(person2) | weight_16(person1) | -score_110(person1).  [back_unit_del(786),unit_del(a,1302)].
+
+given #756 (A,wt=16): 971 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_105(person4) | -Paula(x) | score_105(person2) | score_110(person2).  [resolve(930,d,68,b)].
+
+given #757 (T,wt=8): 1349 color_green(person3) | weight_16(person2) | weight_16(person1) | score_105(person4).  [back_unit_del(782),unit_del(a,1302)].
+
+given #758 (T,wt=8): 1350 color_green(person3) | weight_16(person2) | weight_16(person1) | score_110(person4).  [back_unit_del(781),unit_del(a,1302)].
+
+given #759 (T,wt=8): 1360 color_green(person3) | weight_16(person2) | weight_16(person1) | -weight_16(person3).  [back_unit_del(478),unit_del(a,1302)].
+
+given #760 (T,wt=8): 1361 color_green(person3) | weight_16(person2) | weight_16(person1) | weight_16(person4).  [back_unit_del(476),unit_del(a,1302)].
+
+given #761 (A,wt=16): 972 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_105(person4) | -Paula(x) | score_105(person2) | score_100(x).  [resolve(930,d,67,b)].
+
+given #762 (T,wt=10): 1319 color_green(person3) | weight_16(person1) | score_105(person4) | -color_green(x) | score_110(x).  [back_unit_del(1258),unit_del(a,1302)].
+
+given #763 (T,wt=10): 1332 color_green(person3) | weight_16(person1) | score_105(person1) | -color_green(x) | score_110(x).  [back_unit_del(1216),unit_del(a,1302)].
+
+given #764 (T,wt=8): 1396 color_green(person3) | weight_16(person1) | score_105(person1) | score_110(person4).  [resolve(1332,d,1351,b),merge(e)].
+
+given #765 (T,wt=8): 1397 color_green(person3) | weight_16(person1) | score_105(person1) | -score_110(person1).  [resolve(1396,d,145,b)].
+
+given #766 (A,wt=16): 973 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_105(person4) | -Paula(x) | score_95(x) | score_110(person2).  [resolve(930,d,66,b)].
+
+given #767 (T,wt=6): 1400 color_green(person3) | weight_16(person1) | score_105(person1).  [resolve(1397,d,34,d),merge(f),unit_del(d,1198),unit_del(e,207)].
+
+given #768 (T,wt=6): 1401 color_green(person3) | score_105(person1) | -color_green(x).  [resolve(1400,b,77,b),merge(f),unit_del(d,1198),unit_del(e,207)].
+
+given #769 (T,wt=4): 1402 color_green(person3) | score_105(person1).  [resolve(1401,c,1351,b),merge(c)].
+
+given #770 (T,wt=4): 1403 score_105(person1) | -color_green(person1).  [resolve(1402,a,188,b)].
+
+given #771 (A,wt=16): 974 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_105(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(930,d,65,b)].
+
+given #772 (T,wt=4): 1404 score_105(person1) | -color_green(person2).  [resolve(1402,a,186,b)].
+
+given #773 (T,wt=10): 1354 color_green(person3) | weight_16(person4) | weight_16(person2) | score_105(person4) | -weight_14(person1).  [back_unit_del(660),unit_del(a,1302)].
+
+given #774 (T,wt=10): 1355 color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | score_105(person4).  [back_unit_del(659),unit_del(a,1302)].
+
+given #775 (T,wt=10): 1358 color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | score_105(person4).  [back_unit_del(609),unit_del(a,1302)].
+
+given #776 (A,wt=16): 1016 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person3) | score_105(person4) | -Paula(x) | score_105(person3) | score_110(person3).  [resolve(981,d,68,b)].
+
+given #777 (T,wt=10): 1364 color_green(person3) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_16(person1).  [back_unit_del(460),unit_del(a,1302)].
+
+given #778 (T,wt=10): 1367 color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | -weight_14(person3).  [back_unit_del(455),unit_del(a,1302)].
+
+given #779 (T,wt=10): 1368 color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | -weight_14(person1).  [back_unit_del(454),unit_del(a,1302)].
+
+given #780 (T,wt=10): 1369 color_green(person3) | weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_16(person2).  [back_unit_del(452),unit_del(a,1302)].
+
+given #781 (A,wt=16): 1017 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person3) | score_105(person4) | -Paula(x) | score_105(person3) | score_100(x).  [resolve(981,d,67,b)].
+
+given #782 (T,wt=10): 1372 color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | -weight_14(person3).  [back_unit_del(447),unit_del(a,1302)].
+
+given #783 (T,wt=10): 1373 color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | -weight_14(person2).  [back_unit_del(446),unit_del(a,1302)].
+
+given #784 (T,wt=10): 1374 color_green(person3) | weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1).  [back_unit_del(444),unit_del(a,1302)].
+
+given #785 (T,wt=12): 1359 color_green(person3) | weight_16(person2) | weight_16(person1) | -color_green(x) | score_100(x) | score_110(x).  [back_unit_del(485),unit_del(a,1302)].
+
+given #786 (A,wt=16): 1018 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person3) | score_105(person4) | -Paula(x) | score_95(x) | score_110(person3).  [resolve(981,d,66,b)].
+
+given #787 (T,wt=12): 1384 weight_16(person3) | weight_14(person1) | weight_16(person1) | color_green(person4) | color_green(person2) | score_105(person3).  [resolve(669,f,40,a),unit_del(g,210)].
+
+given #788 (T,wt=12): 1389 color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_16(person2) | color_green(person2).  [resolve(1386,b,311,d),merge(f)].
+
+given #789 (T,wt=12): 1390 color_green(person4) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(1386,b,239,b)].
+
+given #790 (T,wt=10): 1416 color_green(person4) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_16(person1).  [resolve(1390,e,1385,b),merge(f)].
+
+given #791 (A,wt=16): 1019 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person3) | score_105(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(981,d,65,b)].
+
+given #792 (T,wt=12): 1391 color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(1387,b,238,b)].
+
+given #793 (T,wt=10): 1422 color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1).  [resolve(1391,e,1385,b),merge(f)].
+
+given #794 (T,wt=10): 1423 color_green(person4) | weight_16(person3) | weight_14(person1) | weight_16(person1) | -weight_14(person2).  [resolve(1422,b,156,b)].
+
+given #795 (T,wt=10): 1428 color_green(person4) | weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_16(person2).  [resolve(1423,e,1416,b),merge(e),merge(g),merge(h)].
+
+given #796 (A,wt=16): 1100 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_105(person3) | -Paula(x) | score_105(person2) | score_110(person2).  [resolve(1039,d,68,b)].
+
+given #797 (T,wt=12): 1392 color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(1387,b,236,b)].
+
+given #798 (T,wt=10): 1434 color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_16(person2).  [resolve(1392,e,1386,b),merge(f)].
+
+given #799 (T,wt=10): 1435 color_green(person4) | weight_16(person3) | weight_14(person2) | weight_16(person2) | -weight_14(person1).  [resolve(1434,b,158,b)].
+
+given #800 (T,wt=10): 1440 color_green(person4) | weight_16(person3) | weight_14(person2) | weight_16(person2) | weight_16(person1).  [resolve(1435,e,1428,c),merge(e),merge(f),merge(h)].
+
+given #801 (A,wt=16): 1101 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_105(person3) | -Paula(x) | score_105(person2) | score_100(x).  [resolve(1039,d,67,b)].
+
+given #802 (T,wt=10): 1441 color_green(person4) | weight_16(person3) | weight_16(person2) | weight_16(person1) | -weight_14(person1).  [resolve(1440,c,159,b)].
+
+given #803 (T,wt=8): 1446 color_green(person4) | weight_16(person3) | weight_16(person2) | weight_16(person1).  [resolve(1441,e,1428,c),merge(e),merge(f),merge(g),merge(h)].
+
+given #804 (T,wt=10): 1447 color_green(person4) | weight_16(person2) | weight_16(person1) | -color_green(person3) | score_105(person3).  [resolve(1446,b,97,b),unit_del(e,1200)].
+
+given #805 (T,wt=10): 1450 color_green(person4) | weight_16(person2) | weight_16(person1) | score_105(person3) | score_105(person1).  [resolve(1447,d,1402,a)].
+
+given #806 (A,wt=16): 1102 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_105(person3) | -Paula(x) | score_95(x) | score_110(person2).  [resolve(1039,d,66,b)].
+
+given #807 (T,wt=10): 1451 color_green(person4) | weight_16(person2) | weight_16(person1) | score_105(person3) | score_105(person2).  [resolve(1447,d,1336,a)].
+
+given #808 (T,wt=10): 1453 color_green(person4) | weight_16(person1) | score_105(person3) | score_105(person2) | -color_green(x).  [resolve(1451,b,77,b),merge(h),unit_del(f,1199),unit_del(g,1302)].
+
+given #809 (T,wt=8): 1454 color_green(person4) | weight_16(person1) | score_105(person3) | score_105(person2).  [resolve(1453,e,1336,a),merge(e)].
+
+given #810 (T,wt=10): 1455 color_green(person4) | score_105(person3) | score_105(person2) | -color_green(x) | score_110(x).  [resolve(1454,b,76,b),unit_del(e,1198),unit_del(f,207)].
+
+given #811 (A,wt=16): 1103 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_105(person3) | -Paula(x) | score_95(x) | score_100(x).  [resolve(1039,d,65,b)].
+
+given #812 (T,wt=8): 1456 color_green(person4) | score_105(person3) | score_105(person2) | score_110(person3).  [resolve(1455,d,1336,a),merge(e)].
+
+given #813 (T,wt=8): 1457 color_green(person4) | score_105(person3) | score_105(person2) | -score_110(person2).  [resolve(1456,d,144,b)].
+
+given #814 (T,wt=6): 1458 color_green(person4) | score_105(person3) | score_105(person2).  [resolve(1457,d,34,d),merge(f),unit_del(d,1199),unit_del(e,1302)].
+
+given #815 (T,wt=6): 1461 score_105(person3) | score_105(person2) | -color_green(person3).  [resolve(1458,a,184,b)].
+
+given #816 (A,wt=14): 1214 score_105(person4) | score_105(person1) | color_green(person4) | weight_16(person3) | weight_14(person2) | weight_16(person2) | score_105(person3).  [back_unit_del(824),unit_del(b,1198)].
+
+given #817 (T,wt=4): 1462 score_105(person3) | score_105(person2).  [resolve(1461,c,1336,a),merge(c)].
+
+given #818 (T,wt=4): 1466 score_105(person2) | -score_105(person1).  [resolve(1462,a,140,b)].
+
+given #819 (T,wt=12): 1393 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_16(person3) | score_105(person4) | score_105(person3).  [resolve(880,f,40,a),unit_del(g,210)].
+
+given #820 (T,wt=12): 1395 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_105(person4) | score_105(person2).  [resolve(972,f,40,a),unit_del(g,210)].
+
+given #821 (A,wt=14): 1217 score_105(person4) | score_105(person1) | color_green(person4) | weight_16(person3) | weight_14(person1) | weight_16(person1) | score_105(person3).  [back_unit_del(797),unit_del(b,1198)].
+
+given #822 (T,wt=12): 1406 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person3) | score_105(person4) | score_105(person3).  [resolve(1017,f,40,a),unit_del(g,210)].
+
+given #823 (T,wt=12): 1448 color_green(person4) | weight_16(person2) | weight_16(person1) | -color_green(x) | score_105(x) | score_105(person3).  [resolve(1446,b,75,b),unit_del(e,1200)].
+
+given #824 (T,wt=12): 1449 color_green(person4) | weight_16(person2) | weight_16(person1) | -color_green(x) | score_105(x) | score_110(x).  [resolve(1446,b,74,b),unit_del(e,1200)].
+
+given #825 (T,wt=12): 1452 color_green(person4) | weight_16(person1) | score_105(person3) | score_105(person1) | -color_green(x) | score_110(x).  [resolve(1450,b,76,b),unit_del(f,1199),unit_del(g,1302)].
+
+given #826 (A,wt=14): 1352 color_green(person3) | weight_16(person4) | weight_16(person2) | score_105(person4) | -Paula(x) | score_95(x) | score_100(x).  [back_unit_del(664),unit_del(a,1302)].
+
+given #827 (T,wt=10): 1478 color_green(person4) | weight_16(person1) | score_105(person3) | score_105(person1) | score_110(person3).  [resolve(1452,e,1402,a),merge(f)].
+
+given #828 (T,wt=10): 1479 color_green(person4) | weight_16(person1) | score_105(person3) | score_105(person1) | -score_110(person1).  [resolve(1478,e,146,b)].
+
+given #829 (T,wt=8): 1481 color_green(person4) | weight_16(person1) | score_105(person3) | score_105(person1).  [resolve(1479,e,34,d),merge(g),unit_del(e,1198),unit_del(f,207)].
+
+given #830 (T,wt=8): 1482 color_green(person4) | score_105(person3) | score_105(person1) | -color_green(x).  [resolve(1481,b,77,b),merge(g),unit_del(e,1198),unit_del(f,207)].
+
+given #831 (A,wt=14): 1353 color_green(person3) | weight_16(person4) | weight_16(person2) | score_105(person4) | -Paula(x) | score_95(x) | score_110(person2).  [back_unit_del(663),unit_del(a,1302)].
+
+given #832 (T,wt=6): 1483 color_green(person4) | score_105(person3) | score_105(person1).  [resolve(1482,d,1402,a),merge(d)].
+
+given #833 (T,wt=6): 1486 score_105(person3) | score_105(person1) | -color_green(person3).  [resolve(1483,a,184,b)].
+
+given #834 (T,wt=4): 1487 score_105(person3) | score_105(person1).  [resolve(1486,c,1402,a),merge(c)].
+
+given #835 (T,wt=4): 1488 score_105(person1) | -score_105(person2).  [resolve(1487,a,138,b)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.07 (+ 0.02) seconds.
+% Length of proof is 359.
+% Level of proof is 65.
+% Maximum clause weight is 16.
+% Given clauses 835.
+
+2 Josh(x) & Josh(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+3 Kelly(x) & Kelly(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+5 Paula(x) & Paula(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+6 score_95(x) & score_95(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+8 score_105(x) & score_105(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+9 score_110(x) & score_110(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+10 weight_13(x) & weight_13(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+11 weight_14(x) & weight_14(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+12 weight_15(x) & weight_15(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+13 weight_16(x) & weight_16(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+14 color_black(x) & color_black(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+16 color_green(x) & color_green(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+18 Kelly(x) & score_100(y) & score_95(z) -> differentFrom(x,y) & differentFrom(x,z) & differentFrom(y,z) # label(non_clause).  [assumption].
+19 color_gold(x) -> weight_15(x) # label(non_clause).  [assumption].
+20 Josh(x) -> color_black(x) # label(non_clause).  [assumption].
+21 Paula(x) & score_100(y) & Josh(z) -> differentFrom(x,y) & differentFrom(x,z) & differentFrom(y,z) # label(non_clause).  [assumption].
+22 Paula(x) & weight_14(y) -> score_95(x) & score_105(y) | score_100(x) & score_110(y) # label(non_clause).  [assumption].
+23 score_100(x) -> color_green(x) | weight_15(x) # label(non_clause).  [assumption].
+24 color_green(x) & weight_16(y) -> score_100(x) & score_95(y) | score_105(x) & score_100(y) | score_110(x) & score_105(y) # label(non_clause).  [assumption].
+25 color_blue(person4) & score_95(person4) # label(non_clause) # label(goal).  [goal].
+26 differentFrom(person1,person2).  [assumption].
+27 differentFrom(person1,person3).  [assumption].
+28 differentFrom(person1,person4).  [assumption].
+29 differentFrom(person2,person3).  [assumption].
+30 differentFrom(person2,person4).  [assumption].
+31 differentFrom(person3,person4).  [assumption].
+34 score_95(x) | score_100(x) | score_105(x) | score_110(x).  [assumption].
+35 weight_13(x) | weight_14(x) | weight_15(x) | weight_16(x).  [assumption].
+36 color_black(x) | color_blue(x) | color_green(x) | color_gold(x).  [assumption].
+37 Josh(person1).  [assumption].
+38 Kelly(person2).  [assumption].
+40 Paula(person4).  [assumption].
+41 -Josh(x) | -Josh(y) | -differentFrom(x,y).  [clausify(2)].
+42 -Kelly(x) | -Kelly(y) | -differentFrom(x,y).  [clausify(3)].
+44 -Paula(x) | -Paula(y) | -differentFrom(x,y).  [clausify(5)].
+45 -score_95(x) | -score_95(y) | -differentFrom(x,y).  [clausify(6)].
+47 -score_105(x) | -score_105(y) | -differentFrom(x,y).  [clausify(8)].
+48 -score_110(x) | -score_110(y) | -differentFrom(x,y).  [clausify(9)].
+49 -weight_13(x) | -weight_13(y) | -differentFrom(x,y).  [clausify(10)].
+50 -weight_14(x) | -weight_14(y) | -differentFrom(x,y).  [clausify(11)].
+51 -weight_15(x) | -weight_15(y) | -differentFrom(x,y).  [clausify(12)].
+52 -weight_16(x) | -weight_16(y) | -differentFrom(x,y).  [clausify(13)].
+53 -color_black(x) | -color_black(y) | -differentFrom(x,y).  [clausify(14)].
+55 -color_green(x) | -color_green(y) | -differentFrom(x,y).  [clausify(16)].
+57 -Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(x,y).  [clausify(18)].
+58 -Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(x,z).  [clausify(18)].
+60 -color_gold(x) | weight_15(x).  [clausify(19)].
+61 -Josh(x) | color_black(x).  [clausify(20)].
+62 -Paula(x) | -score_100(y) | -Josh(z) | differentFrom(x,y).  [clausify(21)].
+64 -Paula(x) | -score_100(y) | -Josh(z) | differentFrom(y,z).  [clausify(21)].
+65 -Paula(x) | -weight_14(y) | score_95(x) | score_100(x).  [clausify(22)].
+69 -score_100(x) | color_green(x) | weight_15(x).  [clausify(23)].
+72 -color_green(x) | -weight_16(y) | score_100(x) | score_100(y) | score_110(x).  [clausify(24)].
+75 -color_green(x) | -weight_16(y) | score_95(y) | score_105(x) | score_105(y).  [clausify(24)].
+76 -color_green(x) | -weight_16(y) | score_95(y) | score_100(y) | score_110(x).  [clausify(24)].
+77 -color_green(x) | -weight_16(y) | score_95(y) | score_100(y) | score_105(y).  [clausify(24)].
+78 -color_blue(person4) | -score_95(person4).  [deny(25)].
+97 -color_green(x) | -weight_16(x) | score_95(x) | score_105(x).  [factor(75,d,e)].
+110 -differentFrom(person1,person1).  [ur(41,a,37,a,b,37,a)].
+115 -differentFrom(person2,person2).  [ur(42,a,38,a,b,38,a)].
+123 -differentFrom(person4,person4).  [ur(44,a,40,a,b,40,a)].
+124 -score_95(person3) | -score_95(person4).  [resolve(45,c,31,a)].
+125 -score_95(person2) | -score_95(person4).  [resolve(45,c,30,a)].
+126 -score_95(person2) | -score_95(person3).  [resolve(45,c,29,a)].
+127 -score_95(person1) | -score_95(person4).  [resolve(45,c,28,a)].
+128 -score_95(person1) | -score_95(person3).  [resolve(45,c,27,a)].
+129 -score_95(person1) | -score_95(person2).  [resolve(45,c,26,a)].
+136 -score_105(person3) | -score_105(person4).  [resolve(47,c,31,a)].
+137 -score_105(person2) | -score_105(person4).  [resolve(47,c,30,a)].
+138 -score_105(person2) | -score_105(person3).  [resolve(47,c,29,a)].
+139 -score_105(person1) | -score_105(person4).  [resolve(47,c,28,a)].
+140 -score_105(person1) | -score_105(person3).  [resolve(47,c,27,a)].
+141 -score_105(person1) | -score_105(person2).  [resolve(47,c,26,a)].
+142 -score_110(person3) | -score_110(person4).  [resolve(48,c,31,a)].
+143 -score_110(person2) | -score_110(person4).  [resolve(48,c,30,a)].
+144 -score_110(person2) | -score_110(person3).  [resolve(48,c,29,a)].
+145 -score_110(person1) | -score_110(person4).  [resolve(48,c,28,a)].
+146 -score_110(person1) | -score_110(person3).  [resolve(48,c,27,a)].
+147 -score_110(person1) | -score_110(person2).  [resolve(48,c,26,a)].
+148 -weight_13(person3) | -weight_13(person4).  [resolve(49,c,31,a)].
+149 -weight_13(person2) | -weight_13(person4).  [resolve(49,c,30,a)].
+150 -weight_13(person2) | -weight_13(person3).  [resolve(49,c,29,a)].
+151 -weight_13(person1) | -weight_13(person4).  [resolve(49,c,28,a)].
+152 -weight_13(person1) | -weight_13(person3).  [resolve(49,c,27,a)].
+153 -weight_13(person1) | -weight_13(person2).  [resolve(49,c,26,a)].
+155 -weight_14(person2) | -weight_14(person4).  [resolve(50,c,30,a)].
+156 -weight_14(person2) | -weight_14(person3).  [resolve(50,c,29,a)].
+157 -weight_14(person1) | -weight_14(person4).  [resolve(50,c,28,a)].
+158 -weight_14(person1) | -weight_14(person3).  [resolve(50,c,27,a)].
+159 -weight_14(person1) | -weight_14(person2).  [resolve(50,c,26,a)].
+160 -weight_15(person3) | -weight_15(person4).  [resolve(51,c,31,a)].
+161 -weight_15(person2) | -weight_15(person4).  [resolve(51,c,30,a)].
+162 -weight_15(person2) | -weight_15(person3).  [resolve(51,c,29,a)].
+163 -weight_15(person1) | -weight_15(person4).  [resolve(51,c,28,a)].
+164 -weight_15(person1) | -weight_15(person3).  [resolve(51,c,27,a)].
+165 -weight_15(person1) | -weight_15(person2).  [resolve(51,c,26,a)].
+166 -weight_16(person3) | -weight_16(person4).  [resolve(52,c,31,a)].
+167 -weight_16(person2) | -weight_16(person4).  [resolve(52,c,30,a)].
+168 -weight_16(person2) | -weight_16(person3).  [resolve(52,c,29,a)].
+169 -weight_16(person1) | -weight_16(person4).  [resolve(52,c,28,a)].
+170 -weight_16(person1) | -weight_16(person3).  [resolve(52,c,27,a)].
+171 -weight_16(person1) | -weight_16(person2).  [resolve(52,c,26,a)].
+175 -color_black(person1) | -color_black(person4).  [resolve(53,c,28,a)].
+184 -color_green(person3) | -color_green(person4).  [resolve(55,c,31,a)].
+196 -score_100(x) | -score_95(y) | differentFrom(person2,x).  [resolve(57,a,38,a)].
+197 -score_100(x) | -score_95(y) | differentFrom(person2,y).  [resolve(58,a,38,a)].
+199 color_black(person1).  [resolve(61,a,37,a)].
+202 -color_black(person4).  [back_unit_del(175),unit_del(a,199)].
+203 -Paula(x) | -score_100(y) | differentFrom(x,y).  [resolve(62,c,37,a)].
+206 -score_95(person4) | color_green(person4) | color_gold(person4).  [resolve(78,a,36,b),unit_del(b,202)].
+207 -score_100(person1).  [ur(64,a,40,a,c,37,a,d,110,a)].
+208 -score_100(x) | differentFrom(person4,x).  [resolve(203,a,40,a)].
+210 -score_100(person4).  [ur(208,b,123,a)].
+211 -score_110(person3) | score_95(person4) | score_105(person4).  [resolve(142,b,34,d),unit_del(c,210)].
+212 -score_110(person2) | score_95(person4) | score_105(person4).  [resolve(143,b,34,d),unit_del(c,210)].
+213 -score_110(person2) | score_95(person3) | score_100(person3) | score_105(person3).  [resolve(144,b,34,d)].
+214 -score_110(person1) | score_95(person4) | score_105(person4).  [resolve(145,b,34,d),unit_del(c,210)].
+215 score_95(person4) | score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3).  [resolve(211,a,34,d)].
+216 score_95(person4) | score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2).  [resolve(212,a,34,d)].
+217 score_95(person4) | score_105(person4) | score_95(person1) | score_105(person1).  [resolve(214,a,34,d),unit_del(d,207)].
+218 score_95(person3) | score_100(person3) | score_105(person3) | score_95(person2) | score_100(person2) | score_105(person2).  [resolve(213,a,34,d)].
+219 -score_110(person1) | score_95(person3) | score_100(person3) | score_105(person3).  [resolve(146,b,34,d)].
+220 -score_110(person1) | score_95(person2) | score_100(person2) | score_105(person2).  [resolve(147,b,34,d)].
+221 -weight_13(person3) | weight_14(person4) | weight_15(person4) | weight_16(person4).  [resolve(148,b,35,a)].
+222 -weight_13(person2) | weight_14(person4) | weight_15(person4) | weight_16(person4).  [resolve(149,b,35,a)].
+223 -weight_13(person2) | weight_14(person3) | weight_15(person3) | weight_16(person3).  [resolve(150,b,35,a)].
+227 score_105(person4) | score_95(person1) | score_105(person1) | -score_95(person2).  [resolve(217,a,125,b)].
+228 score_105(person4) | score_95(person1) | score_105(person1) | -score_95(person3).  [resolve(217,a,124,b)].
+229 score_95(person3) | score_100(person3) | score_105(person3) | score_95(person1) | score_105(person1).  [resolve(219,a,34,d),unit_del(e,207)].
+230 score_95(person2) | score_100(person2) | score_105(person2) | score_95(person1) | score_105(person1).  [resolve(220,a,34,d),unit_del(e,207)].
+231 weight_14(person4) | weight_15(person4) | weight_16(person4) | weight_14(person3) | weight_15(person3) | weight_16(person3).  [resolve(221,a,35,a)].
+232 -weight_13(person1) | weight_14(person4) | weight_15(person4) | weight_16(person4).  [resolve(151,b,35,a)].
+233 -weight_13(person1) | weight_14(person3) | weight_15(person3) | weight_16(person3).  [resolve(152,b,35,a)].
+234 -weight_13(person1) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(153,b,35,a)].
+235 weight_14(person4) | weight_15(person4) | weight_16(person4) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(222,a,35,a)].
+236 weight_14(person3) | weight_15(person3) | weight_16(person3) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(223,a,35,a)].
+237 weight_14(person4) | weight_15(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(232,a,35,a)].
+238 weight_14(person3) | weight_15(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(233,a,35,a)].
+239 weight_14(person2) | weight_15(person2) | weight_16(person2) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(234,a,35,a)].
+243 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | -score_95(person1).  [resolve(215,a,127,b)].
+244 score_105(person4) | score_95(person3) | score_100(person3) | score_105(person3) | -score_95(person2).  [resolve(215,a,125,b)].
+248 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | -score_95(person1).  [resolve(216,a,127,b)].
+249 score_105(person4) | score_95(person2) | score_100(person2) | score_105(person2) | -score_95(person3).  [resolve(216,a,124,b)].
+251 score_100(person3) | score_105(person3) | score_95(person1) | score_105(person1) | score_105(person4).  [resolve(229,a,228,d),merge(f),merge(g)].
+254 score_100(person3) | score_105(person3) | score_95(person1) | score_105(person1) | -score_95(person2).  [resolve(229,a,126,b)].
+255 score_100(person2) | score_105(person2) | score_95(person1) | score_105(person1) | score_105(person4).  [resolve(230,a,227,d),merge(f),merge(g)].
+257 score_100(person2) | score_105(person2) | score_95(person1) | score_105(person1) | -score_100(x).  [resolve(230,a,197,b),unit_del(f,115)].
+291 score_100(person3) | score_105(person3) | score_95(person2) | score_100(person2) | score_105(person2) | score_105(person4).  [resolve(218,a,249,e),merge(g),merge(h),merge(i)].
+294 score_100(person3) | score_105(person3) | score_95(person2) | score_100(person2) | score_105(person2) | -score_95(person1).  [resolve(218,a,128,b)].
+300 weight_14(person4) | weight_16(person4) | weight_14(person3) | weight_15(person3) | weight_16(person3) | -weight_15(person1).  [resolve(231,b,163,b)].
+301 weight_14(person4) | weight_16(person4) | weight_14(person3) | weight_15(person3) | weight_16(person3) | -weight_15(person2).  [resolve(231,b,161,b)].
+305 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_15(person2) | weight_16(person2) | -weight_15(person1).  [resolve(235,b,163,b)].
+306 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_15(person2) | weight_16(person2) | -weight_15(person3).  [resolve(235,b,160,b)].
+312 weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_15(person2) | weight_16(person2) | -weight_15(person1).  [resolve(236,b,164,b)].
+316 score_100(person3) | score_105(person3) | score_105(person1) | score_105(person4) | score_95(person3).  [resolve(251,c,243,e),merge(e),merge(g),merge(h)].
+318 score_100(person3) | score_105(person3) | score_95(person1) | score_105(person1) | score_100(person2) | score_105(person2).  [resolve(254,e,230,a),merge(g),merge(h)].
+319 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1) | -weight_15(person2).  [resolve(237,b,161,b)].
+320 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1) | -weight_15(person3).  [resolve(237,b,160,b)].
+321 score_100(person2) | score_105(person2) | score_105(person1) | score_105(person4) | score_95(person2).  [resolve(255,c,248,e),merge(e),merge(g),merge(h)].
+324 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1) | -weight_15(person2).  [resolve(238,b,162,b)].
+330 score_100(person3) | score_105(person3) | score_105(person1) | score_105(person4) | -score_95(person1).  [resolve(316,e,128,b)].
+334 score_100(person2) | score_105(person2) | score_105(person1) | score_105(person4) | -score_95(person1).  [resolve(321,e,129,b)].
+336 score_100(person3) | score_105(person3) | score_105(person1) | score_105(person4).  [resolve(330,e,251,c),merge(e),merge(f),merge(g),merge(h)].
+337 score_100(person3) | score_105(person3) | score_105(person1) | -score_105(person2).  [resolve(336,d,137,b)].
+342 score_100(person2) | score_105(person2) | score_105(person1) | score_105(person4).  [resolve(334,e,255,c),merge(e),merge(f),merge(g),merge(h)].
+343 score_100(person2) | score_105(person2) | score_105(person1) | -score_105(person3).  [resolve(342,d,136,b)].
+348 score_100(person3) | score_105(person3) | score_100(person2) | score_105(person2) | score_105(person4) | score_95(person3).  [resolve(291,c,244,e),merge(f),merge(h),merge(i)].
+353 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_15(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3).  [resolve(306,f,236,b),merge(h),merge(i),merge(j)].
+354 score_100(person3) | score_105(person3) | score_105(person1) | score_100(person2) | score_105(person2) | score_95(person2).  [resolve(318,c,294,f),merge(f),merge(g),merge(i),merge(j)].
+356 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2).  [resolve(319,f,239,b),merge(h),merge(i),merge(j)].
+358 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3).  [resolve(320,f,238,b),merge(h),merge(i),merge(j)].
+359 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2).  [resolve(324,f,239,b),merge(h),merge(i),merge(j)].
+366 score_100(person3) | score_105(person3) | score_100(person2) | score_105(person2) | score_105(person4) | -score_95(person2).  [resolve(348,f,126,b)].
+369 score_100(person3) | score_105(person3) | score_105(person1) | score_100(person2) | score_105(person2) | -score_95(person1).  [resolve(354,f,129,b)].
+376 score_100(person3) | score_105(person3) | score_100(person2) | score_105(person2) | score_105(person4).  [resolve(366,f,291,c),merge(f),merge(g),merge(h),merge(i),merge(j)].
+382 score_100(person3) | score_105(person3) | score_100(person2) | score_105(person2) | -score_105(person1).  [resolve(376,e,139,b)].
+383 score_100(person3) | score_105(person3) | score_105(person1) | score_100(person2) | score_105(person2).  [resolve(369,f,318,c),merge(f),merge(g),merge(h),merge(i),merge(j)].
+385 score_100(person3) | score_105(person1) | score_100(person2) | score_105(person2).  [resolve(383,b,343,d),merge(e),merge(f),merge(g)].
+386 score_100(person3) | score_105(person1) | score_100(person2) | score_105(person3).  [resolve(385,d,337,d),merge(d),merge(f)].
+387 score_100(person3) | score_105(person1) | score_100(person2) | -score_105(person2).  [resolve(386,d,138,b)].
+388 score_100(person3) | score_105(person1) | score_100(person2).  [resolve(387,d,385,d),merge(d),merge(e),merge(f)].
+390 score_100(person3) | score_100(person2) | score_105(person3) | score_105(person2).  [resolve(388,b,382,e),merge(c),merge(e)].
+391 score_100(person3) | score_100(person2) | score_105(person2) | -score_105(person1).  [resolve(390,c,140,b)].
+392 score_100(person3) | score_100(person2) | score_105(person2).  [resolve(391,d,388,b),merge(d),merge(e)].
+393 score_100(person3) | score_100(person2) | -score_105(person1).  [resolve(392,c,141,b)].
+395 score_100(person3) | score_100(person2).  [resolve(393,c,388,b),merge(c),merge(d)].
+396 score_100(person2) | score_105(person2) | score_95(person1) | score_105(person1).  [resolve(395,a,257,e),merge(b)].
+397 score_100(person2) | color_green(person3) | weight_15(person3).  [resolve(395,a,69,a)].
+399 score_100(person2) | color_green(person3) | weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(397,c,320,f)].
+401 score_100(person2) | color_green(person3) | weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(397,c,306,f)].
+402 score_100(person2) | color_green(person3) | -weight_15(person1).  [resolve(397,c,164,b)].
+403 score_100(person2) | color_green(person3) | -weight_15(person2).  [resolve(397,c,162,b)].
+405 score_100(person2) | color_green(person3) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(403,c,239,b)].
+421 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | weight_15(person3).  [resolve(353,d,301,f),merge(g),merge(h),merge(i),merge(k)].
+426 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | weight_15(person2).  [resolve(356,d,305,f),merge(g),merge(h),merge(i),merge(k)].
+431 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | weight_15(person3).  [resolve(358,d,300,f),merge(g),merge(h),merge(i),merge(k)].
+438 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | weight_15(person2).  [resolve(359,d,312,f),merge(g),merge(h),merge(i),merge(k)].
+444 score_100(person2) | color_green(person3) | weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1).  [resolve(399,f,402,c),merge(g),merge(h)].
+446 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | -weight_14(person2).  [resolve(444,c,155,b)].
+451 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_95(x) | score_100(x).  [resolve(444,c,65,b)].
+452 score_100(person2) | color_green(person3) | weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_16(person2).  [resolve(401,f,403,c),merge(g),merge(h)].
+454 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | -weight_14(person1).  [resolve(452,c,157,b)].
+459 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_95(x) | score_100(x).  [resolve(452,c,65,b)].
+460 score_100(person2) | color_green(person3) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_16(person1).  [resolve(405,f,402,c),merge(g),merge(h)].
+462 score_100(person2) | color_green(person3) | weight_16(person2) | weight_14(person1) | weight_16(person1) | weight_16(person4).  [resolve(460,c,446,f),merge(f),merge(g),merge(i),merge(j)].
+466 score_100(person2) | color_green(person3) | weight_16(person2) | weight_14(person1) | weight_16(person1) | -Paula(x) | score_95(x) | score_100(x).  [resolve(460,c,65,b)].
+467 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | weight_16(person4) | weight_14(person2).  [resolve(462,d,454,f),merge(f),merge(g),merge(h),merge(j)].
+472 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | weight_16(person4) | -weight_14(person1).  [resolve(467,f,159,b)].
+476 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | weight_16(person4).  [resolve(472,f,462,d),merge(f),merge(g),merge(h),merge(i),merge(j)].
+485 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -color_green(x) | score_100(x) | score_110(x).  [resolve(476,e,72,b),unit_del(g,210)].
+510 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | -weight_15(person2).  [resolve(421,g,162,b)].
+512 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -weight_15(person1).  [resolve(426,g,165,b)].
+518 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | -weight_15(person1).  [resolve(431,g,164,b)].
+521 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -weight_15(person1).  [resolve(438,g,165,b)].
+537 weight_14(person4) | weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3).  [resolve(510,g,353,d),merge(g),merge(h),merge(i),merge(j),merge(k),merge(l)].
+542 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | -Paula(x) | score_95(x) | score_100(x).  [resolve(537,a,65,b)].
+544 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2).  [resolve(512,g,356,d),merge(g),merge(h),merge(i),merge(j),merge(k),merge(l)].
+549 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_95(x) | score_100(x).  [resolve(544,a,65,b)].
+553 weight_14(person4) | weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3).  [resolve(518,g,358,d),merge(g),merge(h),merge(i),merge(j),merge(k),merge(l)].
+558 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | -Paula(x) | score_95(x) | score_100(x).  [resolve(553,a,65,b)].
+565 weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2).  [resolve(521,g,359,d),merge(g),merge(h),merge(i),merge(j),merge(k),merge(l)].
+570 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | -Paula(x) | score_95(x) | score_100(x).  [resolve(565,a,65,b)].
+631 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person1) | weight_16(person1) | score_95(person4).  [resolve(451,f,40,a),unit_del(g,210)].
+637 score_100(person2) | color_green(person3) | weight_16(person4) | weight_16(person1) | score_95(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(631,d,65,b)].
+639 score_100(person2) | color_green(person3) | weight_16(person4) | weight_16(person1) | score_95(person4).  [factor(637,e,g),unit_del(f,40),unit_del(g,210)].
+642 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person4) | -weight_16(person2).  [resolve(639,c,167,b)].
+675 score_100(person2) | color_green(person3) | weight_16(person4) | weight_14(person2) | weight_16(person2) | score_95(person4).  [resolve(459,f,40,a),unit_del(g,210)].
+680 score_100(person2) | color_green(person3) | weight_16(person4) | weight_16(person2) | score_95(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(675,d,65,b)].
+682 score_100(person2) | color_green(person3) | weight_16(person4) | weight_16(person2) | score_95(person4).  [factor(680,e,g),unit_del(f,40),unit_del(g,210)].
+683 score_100(person2) | color_green(person3) | weight_16(person2) | score_95(person4) | -weight_16(person1).  [resolve(682,c,169,b)].
+718 score_100(person2) | color_green(person3) | weight_16(person2) | weight_14(person1) | weight_16(person1) | score_95(person4).  [resolve(466,f,40,a),unit_del(g,210)].
+727 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_95(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(718,d,65,b)].
+729 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_95(person4).  [factor(727,e,g),unit_del(f,40),unit_del(g,210)].
+732 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person4).  [resolve(729,c,642,e),merge(e),merge(f),merge(g),merge(h)].
+733 score_100(person2) | color_green(person3) | score_95(person4) | weight_16(person2).  [resolve(732,c,683,e),merge(d),merge(e),merge(g)].
+743 score_100(person2) | color_green(person3) | score_95(person4) | -weight_16(person1).  [resolve(733,d,171,b)].
+749 score_100(person2) | color_green(person3) | score_95(person4).  [resolve(743,d,732,c),merge(d),merge(e),merge(f)].
+755 score_100(person2) | color_green(person3) | color_green(person4) | color_gold(person4).  [resolve(749,c,206,a)].
+758 score_100(person2) | color_green(person3) | -score_95(person1).  [resolve(749,c,127,b)].
+759 score_100(person2) | color_green(person3) | -score_95(person2).  [resolve(749,c,125,b)].
+771 score_100(person2) | color_green(person3) | color_green(person4) | weight_15(person4).  [resolve(755,d,60,a)].
+776 score_100(person2) | color_green(person3) | color_green(person4) | -weight_15(person3).  [resolve(771,d,160,b)].
+778 score_100(person2) | color_green(person3) | color_green(person4).  [resolve(776,d,397,c),merge(d),merge(e)].
+781 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_110(person4).  [resolve(778,c,485,e),merge(c),merge(d),unit_del(e,210)].
+786 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -score_110(person1).  [resolve(781,e,145,b)].
+787 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | -score_110(person2).  [resolve(781,e,143,b)].
+792 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_95(person1) | score_105(person1).  [resolve(786,e,34,d),unit_del(f,207)].
+793 score_100(person2) | color_green(person3) | weight_16(person2) | weight_16(person1) | score_95(person2) | score_105(person2).  [resolve(787,e,34,d),merge(f)].
+798 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person1) | score_105(person1) | -color_green(x) | score_95(person2) | score_110(x).  [resolve(792,c,76,b),merge(h)].
+800 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person2) | score_105(person2) | -color_green(x).  [resolve(793,c,77,b),merge(g),merge(h),merge(i)].
+802 score_100(person2) | color_green(person3) | weight_16(person1) | score_95(person2) | score_105(person2).  [resolve(800,f,778,c),merge(f),merge(g)].
+803 score_100(person2) | color_green(person3) | score_95(person2) | score_105(person2) | -color_green(x) | score_95(person1) | score_110(x).  [resolve(802,c,76,b),unit_del(g,207)].
+867 score_100(person2) | color_green(person3) | score_95(person2) | score_105(person2) | score_95(person1) | score_110(person4).  [resolve(803,e,778,c),merge(g),merge(h)].
+868 score_100(person2) | color_green(person3) | score_95(person2) | score_105(person2) | score_95(person1) | -score_110(person2).  [resolve(867,f,143,b)].
+871 score_100(person2) | color_green(person3) | score_95(person2) | score_105(person2) | score_95(person1).  [resolve(868,f,34,d),merge(f),merge(g),merge(h)].
+872 score_100(person2) | color_green(person3) | score_105(person2) | score_95(person1).  [resolve(871,c,759,c),merge(e),merge(f)].
+873 score_100(person2) | color_green(person3) | score_105(person2).  [resolve(872,d,758,c),merge(d),merge(e)].
+899 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_14(person3) | weight_16(person3) | score_95(person4).  [resolve(542,f,40,a),unit_del(g,210)].
+907 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_16(person3) | score_95(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(899,d,65,b)].
+909 weight_16(person4) | weight_14(person2) | weight_16(person2) | weight_16(person3) | score_95(person4).  [factor(907,e,g),unit_del(f,40),unit_del(g,210)].
+914 weight_16(person4) | weight_16(person2) | weight_16(person3) | score_95(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(909,b,65,b)].
+916 weight_16(person4) | weight_16(person2) | weight_16(person3) | score_95(person4).  [factor(914,d,f),unit_del(e,40),unit_del(f,210)].
+917 weight_16(person2) | weight_16(person3) | score_95(person4) | -weight_16(person1).  [resolve(916,a,169,b)].
+921 weight_16(person2) | weight_16(person3) | score_95(person4) | -color_green(x) | score_110(x).  [resolve(916,a,76,b),merge(e),unit_del(e,210)].
+927 weight_16(person2) | weight_16(person3) | score_95(person4) | score_110(person3) | score_100(person2) | score_105(person2).  [resolve(921,d,873,b)].
+966 weight_16(person2) | weight_16(person3) | score_95(person4) | score_100(person2) | score_105(person2) | -score_110(person2).  [resolve(927,d,144,b)].
+975 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | score_95(person4).  [resolve(549,f,40,a),unit_del(g,210)].
+978 weight_16(person2) | weight_16(person3) | score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2).  [resolve(966,f,34,d),merge(g),merge(h)].
+986 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_95(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(975,d,65,b)].
+988 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_95(person4).  [factor(986,e,g),unit_del(f,40),unit_del(g,210)].
+992 weight_16(person4) | weight_16(person1) | weight_16(person2) | score_95(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(988,b,65,b)].
+994 weight_16(person4) | weight_16(person1) | weight_16(person2) | score_95(person4).  [factor(992,d,f),unit_del(e,40),unit_del(f,210)].
+995 weight_16(person1) | weight_16(person2) | score_95(person4) | -weight_16(person3).  [resolve(994,a,166,b)].
+1007 weight_16(person2) | score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2) | weight_16(person1).  [resolve(978,b,995,d),merge(g),merge(h)].
+1008 weight_16(person2) | score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2) | -weight_16(person1).  [resolve(978,b,170,b)].
+1020 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_14(person3) | weight_16(person3) | score_95(person4).  [resolve(558,f,40,a),unit_del(g,210)].
+1038 score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2) | weight_16(person1) | -color_green(x).  [resolve(1007,a,77,b),merge(g),merge(h),merge(i)].
+1045 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person3) | score_95(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(1020,d,65,b)].
+1047 weight_16(person4) | weight_14(person1) | weight_16(person1) | weight_16(person3) | score_95(person4).  [factor(1045,e,g),unit_del(f,40),unit_del(g,210)].
+1051 weight_16(person4) | weight_16(person1) | weight_16(person3) | score_95(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(1047,b,65,b)].
+1053 weight_16(person4) | weight_16(person1) | weight_16(person3) | score_95(person4).  [factor(1051,d,f),unit_del(e,40),unit_del(f,210)].
+1054 weight_16(person1) | weight_16(person3) | score_95(person4) | -weight_16(person2).  [resolve(1053,a,167,b)].
+1066 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_14(person2) | weight_16(person2) | score_95(person4).  [resolve(570,f,40,a),unit_del(g,210)].
+1068 score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2) | weight_16(person1).  [resolve(1038,f,873,b),merge(f),merge(g)].
+1070 score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2) | weight_16(person2).  [resolve(1068,e,1008,f),merge(f),merge(g),merge(h),merge(i)].
+1074 score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2) | -weight_16(person1).  [resolve(1070,e,171,b)].
+1076 score_95(person4) | score_100(person2) | score_105(person2) | score_95(person2).  [resolve(1074,e,1068,e),merge(e),merge(f),merge(g),merge(h)].
+1080 score_100(person2) | score_105(person2) | score_95(person2) | -score_95(person1).  [resolve(1076,a,127,b)].
+1083 score_100(person2) | score_105(person2) | score_95(person2) | score_105(person1).  [resolve(1080,d,396,c),merge(d),merge(e)].
+1085 score_100(person2) | score_105(person2) | score_105(person1) | -score_100(x).  [resolve(1083,c,197,b),unit_del(e,115)].
+1087 score_100(person2) | score_105(person2) | score_105(person1).  [resolve(1085,d,395,a),merge(d)].
+1136 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_95(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(1066,d,65,b)].
+1138 weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_16(person2) | score_95(person4).  [factor(1136,e,g),unit_del(f,40),unit_del(g,210)].
+1142 weight_16(person3) | weight_16(person1) | weight_16(person2) | score_95(person4) | -Paula(x) | score_95(x) | score_100(x).  [resolve(1138,b,65,b)].
+1144 weight_16(person3) | weight_16(person1) | weight_16(person2) | score_95(person4).  [factor(1142,d,f),unit_del(e,40),unit_del(f,210)].
+1145 weight_16(person1) | weight_16(person2) | score_95(person4).  [resolve(1144,a,995,d),merge(d),merge(e),merge(f)].
+1146 weight_16(person1) | score_95(person4) | weight_16(person3).  [resolve(1145,b,1054,d),merge(c),merge(e)].
+1156 weight_16(person1) | score_95(person4) | -weight_16(person2).  [resolve(1146,c,168,b)].
+1167 weight_16(person1) | score_95(person4).  [resolve(1156,c,1145,b),merge(c),merge(d)].
+1171 score_95(person4) | weight_16(person2) | weight_16(person3).  [resolve(1167,a,917,d),merge(d)].
+1179 score_95(person4) | weight_16(person2) | -weight_16(person1).  [resolve(1171,c,170,b)].
+1188 score_95(person4) | weight_16(person2).  [resolve(1179,c,1167,a),merge(c)].
+1189 score_95(person4) | -weight_16(person1).  [resolve(1188,b,171,b)].
+1196 score_95(person4).  [resolve(1189,b,1167,a),merge(b)].
+1197 color_green(person4) | color_gold(person4).  [back_unit_del(206),unit_del(a,1196)].
+1198 -score_95(person1).  [back_unit_del(127),unit_del(b,1196)].
+1199 -score_95(person2).  [back_unit_del(125),unit_del(b,1196)].
+1200 -score_95(person3).  [back_unit_del(124),unit_del(b,1196)].
+1216 score_100(person2) | color_green(person3) | weight_16(person1) | score_105(person1) | -color_green(x) | score_110(x).  [back_unit_del(798),unit_del(d,1198),unit_del(g,1199)].
+1302 -score_100(person2).  [ur(196,b,1196,a,c,115,a)].
+1332 color_green(person3) | weight_16(person1) | score_105(person1) | -color_green(x) | score_110(x).  [back_unit_del(1216),unit_del(a,1302)].
+1333 score_105(person2) | score_105(person1).  [back_unit_del(1087),unit_del(a,1302)].
+1336 color_green(person3) | score_105(person2).  [back_unit_del(873),unit_del(a,1302)].
+1351 color_green(person3) | color_green(person4).  [back_unit_del(778),unit_del(a,1302)].
+1383 color_green(person4) | weight_15(person4).  [resolve(1197,b,60,a)].
+1385 color_green(person4) | -weight_15(person1).  [resolve(1383,b,163,b)].
+1386 color_green(person4) | -weight_15(person2).  [resolve(1383,b,161,b)].
+1387 color_green(person4) | -weight_15(person3).  [resolve(1383,b,160,b)].
+1390 color_green(person4) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(1386,b,239,b)].
+1391 color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_15(person1) | weight_16(person1).  [resolve(1387,b,238,b)].
+1392 color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_15(person2) | weight_16(person2).  [resolve(1387,b,236,b)].
+1396 color_green(person3) | weight_16(person1) | score_105(person1) | score_110(person4).  [resolve(1332,d,1351,b),merge(e)].
+1397 color_green(person3) | weight_16(person1) | score_105(person1) | -score_110(person1).  [resolve(1396,d,145,b)].
+1400 color_green(person3) | weight_16(person1) | score_105(person1).  [resolve(1397,d,34,d),merge(f),unit_del(d,1198),unit_del(e,207)].
+1401 color_green(person3) | score_105(person1) | -color_green(x).  [resolve(1400,b,77,b),merge(f),unit_del(d,1198),unit_del(e,207)].
+1402 color_green(person3) | score_105(person1).  [resolve(1401,c,1351,b),merge(c)].
+1416 color_green(person4) | weight_14(person2) | weight_16(person2) | weight_14(person1) | weight_16(person1).  [resolve(1390,e,1385,b),merge(f)].
+1422 color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person1) | weight_16(person1).  [resolve(1391,e,1385,b),merge(f)].
+1423 color_green(person4) | weight_16(person3) | weight_14(person1) | weight_16(person1) | -weight_14(person2).  [resolve(1422,b,156,b)].
+1428 color_green(person4) | weight_16(person3) | weight_14(person1) | weight_16(person1) | weight_16(person2).  [resolve(1423,e,1416,b),merge(e),merge(g),merge(h)].
+1434 color_green(person4) | weight_14(person3) | weight_16(person3) | weight_14(person2) | weight_16(person2).  [resolve(1392,e,1386,b),merge(f)].
+1435 color_green(person4) | weight_16(person3) | weight_14(person2) | weight_16(person2) | -weight_14(person1).  [resolve(1434,b,158,b)].
+1440 color_green(person4) | weight_16(person3) | weight_14(person2) | weight_16(person2) | weight_16(person1).  [resolve(1435,e,1428,c),merge(e),merge(f),merge(h)].
+1441 color_green(person4) | weight_16(person3) | weight_16(person2) | weight_16(person1) | -weight_14(person1).  [resolve(1440,c,159,b)].
+1446 color_green(person4) | weight_16(person3) | weight_16(person2) | weight_16(person1).  [resolve(1441,e,1428,c),merge(e),merge(f),merge(g),merge(h)].
+1447 color_green(person4) | weight_16(person2) | weight_16(person1) | -color_green(person3) | score_105(person3).  [resolve(1446,b,97,b),unit_del(e,1200)].
+1450 color_green(person4) | weight_16(person2) | weight_16(person1) | score_105(person3) | score_105(person1).  [resolve(1447,d,1402,a)].
+1451 color_green(person4) | weight_16(person2) | weight_16(person1) | score_105(person3) | score_105(person2).  [resolve(1447,d,1336,a)].
+1452 color_green(person4) | weight_16(person1) | score_105(person3) | score_105(person1) | -color_green(x) | score_110(x).  [resolve(1450,b,76,b),unit_del(f,1199),unit_del(g,1302)].
+1453 color_green(person4) | weight_16(person1) | score_105(person3) | score_105(person2) | -color_green(x).  [resolve(1451,b,77,b),merge(h),unit_del(f,1199),unit_del(g,1302)].
+1454 color_green(person4) | weight_16(person1) | score_105(person3) | score_105(person2).  [resolve(1453,e,1336,a),merge(e)].
+1455 color_green(person4) | score_105(person3) | score_105(person2) | -color_green(x) | score_110(x).  [resolve(1454,b,76,b),unit_del(e,1198),unit_del(f,207)].
+1456 color_green(person4) | score_105(person3) | score_105(person2) | score_110(person3).  [resolve(1455,d,1336,a),merge(e)].
+1457 color_green(person4) | score_105(person3) | score_105(person2) | -score_110(person2).  [resolve(1456,d,144,b)].
+1458 color_green(person4) | score_105(person3) | score_105(person2).  [resolve(1457,d,34,d),merge(f),unit_del(d,1199),unit_del(e,1302)].
+1461 score_105(person3) | score_105(person2) | -color_green(person3).  [resolve(1458,a,184,b)].
+1462 score_105(person3) | score_105(person2).  [resolve(1461,c,1336,a),merge(c)].
+1466 score_105(person2) | -score_105(person1).  [resolve(1462,a,140,b)].
+1478 color_green(person4) | weight_16(person1) | score_105(person3) | score_105(person1) | score_110(person3).  [resolve(1452,e,1402,a),merge(f)].
+1479 color_green(person4) | weight_16(person1) | score_105(person3) | score_105(person1) | -score_110(person1).  [resolve(1478,e,146,b)].
+1481 color_green(person4) | weight_16(person1) | score_105(person3) | score_105(person1).  [resolve(1479,e,34,d),merge(g),unit_del(e,1198),unit_del(f,207)].
+1482 color_green(person4) | score_105(person3) | score_105(person1) | -color_green(x).  [resolve(1481,b,77,b),merge(g),unit_del(e,1198),unit_del(f,207)].
+1483 color_green(person4) | score_105(person3) | score_105(person1).  [resolve(1482,d,1402,a),merge(d)].
+1486 score_105(person3) | score_105(person1) | -color_green(person3).  [resolve(1483,a,184,b)].
+1487 score_105(person3) | score_105(person1).  [resolve(1486,c,1402,a),merge(c)].
+1488 score_105(person1) | -score_105(person2).  [resolve(1487,a,138,b)].
+1489 score_105(person1).  [resolve(1488,b,1333,a),merge(b)].
+1490 score_105(person2).  [back_unit_del(1466),unit_del(b,1489)].
+1491 $F.  [back_unit_del(141),unit_del(a,1489),unit_del(b,1490)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=835. Generated=3447. Kept=1465. proofs=1.
+Usable=278. Sos=29. Demods=0. Limbo=2, Disabled=1209. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=1981. Back_subsumed=968.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=188.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=3732. Nonunit_bsub_feature_tests=4197.
+Megabytes=0.89.
+User_CPU=0.07, System_CPU=0.02, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 3980 exit (max_proofs) Thu Jan 12 11:42:25 2023

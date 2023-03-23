@@ -1,0 +1,225 @@
+============================== Mace4 =================================
+Mace4 (32) version Dec-2007, Dec 2007.
+Process 3921 was started by student on SO-VirtualBox,
+Thu Jan 12 11:41:55 2023
+The command was "mace4 -c -f puzzle3.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file puzzle3.in
+
+assign(domain_size,4).
+    % assign(domain_size, 4) -> assign(start_size, 4).
+    % assign(domain_size, 4) -> assign(end_size, 4).
+
+formulas(assumptions).
+differentFrom(person1,person2).
+differentFrom(person1,person3).
+differentFrom(person1,person4).
+differentFrom(person2,person3).
+differentFrom(person2,person4).
+differentFrom(person3,person4).
+differentFrom(x,y) -> differentFrom(y,x).
+Josh(x) | Kelly(x) | Mark(x) | Paula(x).
+score_95(x) | score_100(x) | score_105(x) | score_110(x).
+weight_13(x) | weight_14(x) | weight_15(x) | weight_16(x).
+color_black(x) | color_blue(x) | color_green(x) | color_gold(x).
+Josh(person1).
+Kelly(person2).
+Mark(person3).
+Paula(person4).
+Josh(x) & Josh(y) -> -differentFrom(x,y).
+Kelly(x) & Kelly(y) -> -differentFrom(x,y).
+Mark(x) & Mark(y) -> -differentFrom(x,y).
+Paula(x) & Paula(y) -> -differentFrom(x,y).
+score_95(x) & score_95(y) -> -differentFrom(x,y).
+score_100(x) & score_100(y) -> -differentFrom(x,y).
+score_105(x) & score_105(y) -> -differentFrom(x,y).
+score_110(x) & score_110(y) -> -differentFrom(x,y).
+weight_13(x) & weight_13(y) -> -differentFrom(x,y).
+weight_14(x) & weight_14(y) -> -differentFrom(x,y).
+weight_15(x) & weight_15(y) -> -differentFrom(x,y).
+weight_16(x) & weight_16(y) -> -differentFrom(x,y).
+color_black(x) & color_black(y) -> -differentFrom(x,y).
+color_blue(x) & color_blue(y) -> -differentFrom(x,y).
+color_green(x) & color_green(y) -> -differentFrom(x,y).
+color_gold(x) & color_gold(y) -> -differentFrom(x,y).
+Kelly(x) & score_100(y) & score_95(z) -> differentFrom(x,y) & differentFrom(x,z) & differentFrom(y,z).
+color_gold(x) -> weight_15(x).
+Josh(x) -> color_black(x).
+Paula(x) & score_100(y) & Josh(z) -> differentFrom(x,y) & differentFrom(x,z) & differentFrom(y,z).
+Paula(x) & weight_14(y) -> score_95(x) & score_105(y) | score_100(x) & score_110(y).
+score_100(x) -> color_green(x) | weight_15(x).
+color_green(x) & weight_16(y) -> score_100(x) & score_95(y) | score_105(x) & score_100(y) | score_110(x) & score_105(y).
+end_of_list.
+
+formulas(goals).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 differentFrom(x,y) -> differentFrom(y,x) # label(non_clause).  [assumption].
+2 Josh(x) & Josh(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+3 Kelly(x) & Kelly(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+4 Mark(x) & Mark(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+5 Paula(x) & Paula(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+6 score_95(x) & score_95(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+7 score_100(x) & score_100(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+8 score_105(x) & score_105(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+9 score_110(x) & score_110(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+10 weight_13(x) & weight_13(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+11 weight_14(x) & weight_14(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+12 weight_15(x) & weight_15(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+13 weight_16(x) & weight_16(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+14 color_black(x) & color_black(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+15 color_blue(x) & color_blue(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+16 color_green(x) & color_green(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+17 color_gold(x) & color_gold(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+18 Kelly(x) & score_100(y) & score_95(z) -> differentFrom(x,y) & differentFrom(x,z) & differentFrom(y,z) # label(non_clause).  [assumption].
+19 color_gold(x) -> weight_15(x) # label(non_clause).  [assumption].
+20 Josh(x) -> color_black(x) # label(non_clause).  [assumption].
+21 Paula(x) & score_100(y) & Josh(z) -> differentFrom(x,y) & differentFrom(x,z) & differentFrom(y,z) # label(non_clause).  [assumption].
+22 Paula(x) & weight_14(y) -> score_95(x) & score_105(y) | score_100(x) & score_110(y) # label(non_clause).  [assumption].
+23 score_100(x) -> color_green(x) | weight_15(x) # label(non_clause).  [assumption].
+24 color_green(x) & weight_16(y) -> score_100(x) & score_95(y) | score_105(x) & score_100(y) | score_110(x) & score_105(y) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+differentFrom(person1,person2).
+differentFrom(person1,person3).
+differentFrom(person1,person4).
+differentFrom(person2,person3).
+differentFrom(person2,person4).
+differentFrom(person3,person4).
+-differentFrom(x,y) | differentFrom(y,x).
+Josh(x) | Kelly(x) | Mark(x) | Paula(x).
+score_95(x) | score_100(x) | score_105(x) | score_110(x).
+weight_13(x) | weight_14(x) | weight_15(x) | weight_16(x).
+color_black(x) | color_blue(x) | color_green(x) | color_gold(x).
+Josh(person1).
+Kelly(person2).
+Mark(person3).
+Paula(person4).
+-Josh(x) | -Josh(y) | -differentFrom(x,y).
+-Kelly(x) | -Kelly(y) | -differentFrom(x,y).
+-Mark(x) | -Mark(y) | -differentFrom(x,y).
+-Paula(x) | -Paula(y) | -differentFrom(x,y).
+-score_95(x) | -score_95(y) | -differentFrom(x,y).
+-score_100(x) | -score_100(y) | -differentFrom(x,y).
+-score_105(x) | -score_105(y) | -differentFrom(x,y).
+-score_110(x) | -score_110(y) | -differentFrom(x,y).
+-weight_13(x) | -weight_13(y) | -differentFrom(x,y).
+-weight_14(x) | -weight_14(y) | -differentFrom(x,y).
+-weight_15(x) | -weight_15(y) | -differentFrom(x,y).
+-weight_16(x) | -weight_16(y) | -differentFrom(x,y).
+-color_black(x) | -color_black(y) | -differentFrom(x,y).
+-color_blue(x) | -color_blue(y) | -differentFrom(x,y).
+-color_green(x) | -color_green(y) | -differentFrom(x,y).
+-color_gold(x) | -color_gold(y) | -differentFrom(x,y).
+-Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(x,y).
+-Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(x,z).
+-Kelly(x) | -score_100(y) | -score_95(z) | differentFrom(y,z).
+-color_gold(x) | weight_15(x).
+-Josh(x) | color_black(x).
+-Paula(x) | -score_100(y) | -Josh(z) | differentFrom(x,y).
+-Paula(x) | -score_100(y) | -Josh(z) | differentFrom(x,z).
+-Paula(x) | -score_100(y) | -Josh(z) | differentFrom(y,z).
+-Paula(x) | -weight_14(y) | score_95(x) | score_100(x).
+-Paula(x) | -weight_14(y) | score_95(x) | score_110(y).
+-Paula(x) | -weight_14(y) | score_105(y) | score_100(x).
+-Paula(x) | -weight_14(y) | score_105(y) | score_110(y).
+-score_100(x) | color_green(x) | weight_15(x).
+-color_green(x) | -weight_16(y) | score_100(x) | score_105(x) | score_110(x).
+-color_green(x) | -weight_16(y) | score_100(x) | score_105(x) | score_105(y).
+-color_green(x) | -weight_16(y) | score_100(x) | score_100(y) | score_110(x).
+-color_green(x) | -weight_16(y) | score_100(x) | score_100(y) | score_105(y).
+-color_green(x) | -weight_16(y) | score_95(y) | score_105(x) | score_110(x).
+-color_green(x) | -weight_16(y) | score_95(y) | score_105(x) | score_105(y).
+-color_green(x) | -weight_16(y) | score_95(y) | score_100(y) | score_110(x).
+-color_green(x) | -weight_16(y) | score_95(y) | score_100(y) | score_105(y).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no domain elements in the input.
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== MODEL =================================
+
+interpretation( 4, [number=1, seconds=0], [
+
+        function(person1, [ 0 ]),
+
+        function(person2, [ 1 ]),
+
+        function(person3, [ 2 ]),
+
+        function(person4, [ 3 ]),
+
+        relation(Josh(_), [ 1, 0, 0, 0 ]),
+
+        relation(Kelly(_), [ 0, 1, 0, 0 ]),
+
+        relation(Mark(_), [ 0, 0, 1, 0 ]),
+
+        relation(Paula(_), [ 0, 0, 0, 1 ]),
+
+        relation(color_black(_), [ 1, 0, 0, 0 ]),
+
+        relation(color_blue(_), [ 0, 0, 0, 1 ]),
+
+        relation(color_gold(_), [ 0, 1, 0, 0 ]),
+
+        relation(color_green(_), [ 0, 0, 1, 0 ]),
+
+        relation(score_100(_), [ 0, 0, 1, 0 ]),
+
+        relation(score_105(_), [ 1, 0, 0, 0 ]),
+
+        relation(score_110(_), [ 0, 1, 0, 0 ]),
+
+        relation(score_95(_), [ 0, 0, 0, 1 ]),
+
+        relation(weight_13(_), [ 0, 0, 1, 0 ]),
+
+        relation(weight_14(_), [ 1, 0, 0, 0 ]),
+
+        relation(weight_15(_), [ 0, 1, 0, 0 ]),
+
+        relation(weight_16(_), [ 0, 0, 0, 1 ]),
+
+        relation(differentFrom(_,_), [
+			   0, 1, 1, 1,
+			   1, 0, 1, 1,
+			   1, 1, 0, 1,
+			   1, 1, 1, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
+Ground clauses: seen=886, kept=886.
+Selections=67, assignments=125, propagations=614, current_models=1.
+Rewrite_terms=27, rewrite_bools=7159, indexes=13.
+Rules_from_neg_clauses=1, cross_offs=6.
+
+============================== end of statistics =====================
+
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 3921 exit (max_models) Thu Jan 12 11:41:55 2023
+The process finished Thu Jan 12 11:41:55 2023

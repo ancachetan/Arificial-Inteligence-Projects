@@ -1,0 +1,270 @@
+============================== Mace4 =================================
+Mace4 (32) version Dec-2007, Dec 2007.
+Process 4043 was started by student on SO-VirtualBox,
+Thu Jan 12 11:43:04 2023
+The command was "mace4 -c -f puzzle4.in".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+% Reading from file puzzle4.in
+
+assign(domain_size,4).
+    % assign(domain_size, 4) -> assign(start_size, 4).
+    % assign(domain_size, 4) -> assign(end_size, 4).
+
+formulas(assumptions).
+differentFrom(person1,person2).
+differentFrom(person1,person3).
+differentFrom(person1,person4).
+differentFrom(person2,person3).
+differentFrom(person2,person4).
+differentFrom(person3,person4).
+differentFrom(x,y) -> differentFrom(y,x).
+Betty(x) | Carol(x) | Daisy(x) | Emily(x).
+backstroke(x) | butterfly(x) | dolphin(x) | freestyle(x).
+lane1(x) | lane2(x) | lane3(x) | lane4(x).
+Australia(x) | Canada(x) | UK(x) | USA(x).
+Betty(person1).
+Carol(person2).
+Daisy(person3).
+Emily(person4).
+Betty(x) & Betty(y) -> -differentFrom(x,y).
+Carol(x) & Carol(y) -> -differentFrom(x,y).
+Daisy(x) & Daisy(y) -> -differentFrom(x,y).
+Emily(x) & Emily(y) -> -differentFrom(x,y).
+backstroke(x) & backstroke(y) -> -differentFrom(x,y).
+butterfly(x) & butterfly(y) -> -differentFrom(x,y).
+dolphin(x) & dolphin(y) -> -differentFrom(x,y).
+freestyle(x) & freestyle(y) -> -differentFrom(x,y).
+lane1(x) & lane1(y) -> -differentFrom(x,y).
+lane2(x) & lane2(y) -> -differentFrom(x,y).
+lane3(x) & lane3(y) -> -differentFrom(x,y).
+lane4(x) & lane4(y) -> -differentFrom(x,y).
+Australia(x) & Australia(y) -> -differentFrom(x,y).
+Canada(x) & Canada(y) -> -differentFrom(x,y).
+UK(x) & UK(y) -> -differentFrom(x,y).
+USA(x) & USA(y) -> -differentFrom(x,y).
+Betty(x) -> -UK(x).
+Betty(x) & UK(y) -> (lane1(x) & lane2(y) | lane2(x) & lane3(y) | lane3(x) & lane4(y) | lane1(y) & lane2(x) | lane2(y) & lane3(x) | lane3(y) & lane4(x)) & -butterfly(x) & -butterfly(y).
+Emily(x) -> -backstroke(x).
+Emily(x) & backstroke(y) -> UK(x) & lane4(y) | UK(y) & lane4(x).
+Carol(x) -> (butterfly(x) | freestyle(x)) & (UK(x) | Canada(x) | USA(x)) & (lane1(x) | lane3(x)).
+Daisy(x) -> -USA(x).
+freestyle(x) -> -USA(x).
+Daisy(x) & freestyle(y) & USA(z) -> lane1(x) & lane2(y) & lane3(z) | lane2(x) & lane3(y) & lane4(z) | lane1(z) & lane2(y) & lane3(x) | lane2(z) & lane3(y) & lane4(x).
+Carol(x) -> -USA(x).
+USA(x) & Carol(y) -> lane1(x) & lane2(y) | lane2(x) & lane3(y) | lane3(x) & lane4(y) | lane1(y) & lane2(x) | lane2(y) & lane3(x) | lane3(y) & lane4(x).
+Daisy(x) -> lane1(x) | lane3(x) | lane4(x).
+end_of_list.
+
+formulas(goals).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 differentFrom(x,y) -> differentFrom(y,x) # label(non_clause).  [assumption].
+2 Betty(x) & Betty(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+3 Carol(x) & Carol(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+4 Daisy(x) & Daisy(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+5 Emily(x) & Emily(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+6 backstroke(x) & backstroke(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+7 butterfly(x) & butterfly(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+8 dolphin(x) & dolphin(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+9 freestyle(x) & freestyle(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+10 lane1(x) & lane1(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+11 lane2(x) & lane2(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+12 lane3(x) & lane3(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+13 lane4(x) & lane4(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+14 Australia(x) & Australia(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+15 Canada(x) & Canada(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+16 UK(x) & UK(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+17 USA(x) & USA(y) -> -differentFrom(x,y) # label(non_clause).  [assumption].
+18 Betty(x) -> -UK(x) # label(non_clause).  [assumption].
+19 Betty(x) & UK(y) -> (lane1(x) & lane2(y) | lane2(x) & lane3(y) | lane3(x) & lane4(y) | lane1(y) & lane2(x) | lane2(y) & lane3(x) | lane3(y) & lane4(x)) & -butterfly(x) & -butterfly(y) # label(non_clause).  [assumption].
+20 Emily(x) -> -backstroke(x) # label(non_clause).  [assumption].
+21 Emily(x) & backstroke(y) -> UK(x) & lane4(y) | UK(y) & lane4(x) # label(non_clause).  [assumption].
+22 Carol(x) -> (butterfly(x) | freestyle(x)) & (UK(x) | Canada(x) | USA(x)) & (lane1(x) | lane3(x)) # label(non_clause).  [assumption].
+23 Daisy(x) -> -USA(x) # label(non_clause).  [assumption].
+24 freestyle(x) -> -USA(x) # label(non_clause).  [assumption].
+25 Daisy(x) & freestyle(y) & USA(z) -> lane1(x) & lane2(y) & lane3(z) | lane2(x) & lane3(y) & lane4(z) | lane1(z) & lane2(y) & lane3(x) | lane2(z) & lane3(y) & lane4(x) # label(non_clause).  [assumption].
+26 Carol(x) -> -USA(x) # label(non_clause).  [assumption].
+27 USA(x) & Carol(y) -> lane1(x) & lane2(y) | lane2(x) & lane3(y) | lane3(x) & lane4(y) | lane1(y) & lane2(x) | lane2(y) & lane3(x) | lane3(y) & lane4(x) # label(non_clause).  [assumption].
+28 Daisy(x) -> lane1(x) | lane3(x) | lane4(x) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+differentFrom(person1,person2).
+differentFrom(person1,person3).
+differentFrom(person1,person4).
+differentFrom(person2,person3).
+differentFrom(person2,person4).
+differentFrom(person3,person4).
+-differentFrom(x,y) | differentFrom(y,x).
+Betty(x) | Carol(x) | Daisy(x) | Emily(x).
+backstroke(x) | butterfly(x) | dolphin(x) | freestyle(x).
+lane1(x) | lane2(x) | lane3(x) | lane4(x).
+Australia(x) | Canada(x) | UK(x) | USA(x).
+Betty(person1).
+Carol(person2).
+Daisy(person3).
+Emily(person4).
+-Betty(x) | -Betty(y) | -differentFrom(x,y).
+-Carol(x) | -Carol(y) | -differentFrom(x,y).
+-Daisy(x) | -Daisy(y) | -differentFrom(x,y).
+-Emily(x) | -Emily(y) | -differentFrom(x,y).
+-backstroke(x) | -backstroke(y) | -differentFrom(x,y).
+-butterfly(x) | -butterfly(y) | -differentFrom(x,y).
+-dolphin(x) | -dolphin(y) | -differentFrom(x,y).
+-freestyle(x) | -freestyle(y) | -differentFrom(x,y).
+-lane1(x) | -lane1(y) | -differentFrom(x,y).
+-lane2(x) | -lane2(y) | -differentFrom(x,y).
+-lane3(x) | -lane3(y) | -differentFrom(x,y).
+-lane4(x) | -lane4(y) | -differentFrom(x,y).
+-Australia(x) | -Australia(y) | -differentFrom(x,y).
+-Canada(x) | -Canada(y) | -differentFrom(x,y).
+-UK(x) | -UK(y) | -differentFrom(x,y).
+-USA(x) | -USA(y) | -differentFrom(x,y).
+-Betty(x) | -UK(x).
+-Betty(x) | -UK(y) | lane1(x) | lane2(x) | lane3(x) | lane3(y).
+-Betty(x) | -UK(y) | lane1(x) | lane2(x) | lane3(x) | lane4(x).
+-Betty(x) | -UK(y) | lane1(x) | lane3(y) | lane3(x) | lane1(y).
+-Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane3(x) | lane3(y).
+-Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane3(x) | lane4(x).
+-Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane4(y) | lane3(y).
+-Betty(x) | -UK(y) | lane2(y) | lane2(x) | lane4(y) | lane4(x).
+-Betty(x) | -UK(y) | lane2(y) | lane3(y) | lane3(x) | lane1(y).
+-Betty(x) | -UK(y) | lane2(y) | lane3(y) | lane4(y) | lane1(y).
+-Betty(x) | -UK(y) | -butterfly(x).
+-Betty(x) | -UK(y) | -butterfly(y).
+-Emily(x) | -backstroke(x).
+-Emily(x) | -backstroke(y) | UK(x) | UK(y).
+-Emily(x) | -backstroke(y) | UK(x) | lane4(x).
+-Emily(x) | -backstroke(y) | lane4(y) | UK(y).
+-Emily(x) | -backstroke(y) | lane4(y) | lane4(x).
+-Carol(x) | butterfly(x) | freestyle(x).
+-Carol(x) | UK(x) | Canada(x) | USA(x).
+-Carol(x) | lane1(x) | lane3(x).
+-Daisy(x) | -USA(x).
+-freestyle(x) | -USA(x).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane1(z) | lane2(z).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane1(z) | lane4(x).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane3(x) | lane2(z).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane2(x) | lane3(x) | lane4(x).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane3(y) | lane1(z).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane3(y) | lane3(x).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane1(z) | lane2(z).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane1(z) | lane4(x).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane3(x) | lane2(z).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane1(x) | lane4(z) | lane3(x) | lane4(x).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane2(x) | lane2(z).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane2(x) | lane4(x).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane3(y).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane4(z) | lane2(z).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane2(y) | lane4(z) | lane4(x).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane1(z) | lane2(z).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane1(z) | lane4(x).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane3(x) | lane2(z).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane2(x) | lane3(x) | lane4(x).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane3(y) | lane1(z).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane3(y) | lane3(x).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane1(z) | lane2(z).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane1(z) | lane4(x).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane3(x) | lane2(z).
+-Daisy(x) | -freestyle(y) | -USA(z) | lane3(z) | lane4(z) | lane3(x) | lane4(x).
+-Carol(x) | -USA(x).
+-USA(x) | -Carol(y) | lane1(x) | lane2(x) | lane3(x) | lane3(y).
+-USA(x) | -Carol(y) | lane1(x) | lane2(x) | lane3(x) | lane4(x).
+-USA(x) | -Carol(y) | lane1(x) | lane3(y) | lane3(x) | lane1(y).
+-USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane3(x) | lane3(y).
+-USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane3(x) | lane4(x).
+-USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane4(y) | lane3(y).
+-USA(x) | -Carol(y) | lane2(y) | lane2(x) | lane4(y) | lane4(x).
+-USA(x) | -Carol(y) | lane2(y) | lane3(y) | lane3(x) | lane1(y).
+-USA(x) | -Carol(y) | lane2(y) | lane3(y) | lane4(y) | lane1(y).
+-Daisy(x) | lane1(x) | lane3(x) | lane4(x).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no domain elements in the input.
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== MODEL =================================
+
+interpretation( 4, [number=1, seconds=0], [
+
+        function(person1, [ 0 ]),
+
+        function(person2, [ 1 ]),
+
+        function(person3, [ 2 ]),
+
+        function(person4, [ 3 ]),
+
+        relation(Australia(_), [ 0, 0, 1, 0 ]),
+
+        relation(Betty(_), [ 1, 0, 0, 0 ]),
+
+        relation(Canada(_), [ 0, 1, 0, 0 ]),
+
+        relation(Carol(_), [ 0, 1, 0, 0 ]),
+
+        relation(Daisy(_), [ 0, 0, 1, 0 ]),
+
+        relation(Emily(_), [ 0, 0, 0, 1 ]),
+
+        relation(UK(_), [ 0, 0, 0, 1 ]),
+
+        relation(USA(_), [ 1, 0, 0, 0 ]),
+
+        relation(backstroke(_), [ 0, 0, 1, 0 ]),
+
+        relation(butterfly(_), [ 0, 1, 0, 0 ]),
+
+        relation(dolphin(_), [ 1, 0, 0, 0 ]),
+
+        relation(freestyle(_), [ 0, 0, 0, 1 ]),
+
+        relation(lane1(_), [ 0, 1, 0, 0 ]),
+
+        relation(lane2(_), [ 1, 0, 0, 0 ]),
+
+        relation(lane3(_), [ 0, 0, 0, 1 ]),
+
+        relation(lane4(_), [ 0, 0, 1, 0 ]),
+
+        relation(differentFrom(_,_), [
+			   0, 1, 1, 1,
+			   1, 0, 1, 1,
+			   1, 1, 0, 1,
+			   1, 1, 1, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=2318, kept=2318.
+Selections=17, assignments=24, propagations=125, current_models=1.
+Rewrite_terms=27, rewrite_bools=4014, indexes=13.
+Rules_from_neg_clauses=1, cross_offs=6.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.01, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 4043 exit (max_models) Thu Jan 12 11:43:04 2023
+The process finished Thu Jan 12 11:43:04 2023

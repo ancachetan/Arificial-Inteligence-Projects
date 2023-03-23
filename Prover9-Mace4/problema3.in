@@ -1,0 +1,42 @@
+%Anca, Andreea si Alina fac parte din clubul de lectura. Fiecare membru din 
+%acest club citeste fie romane de dragoste fie romane politiste sau ambele.
+%Niciunui cititor de romane de dragoste nu le plac filmele de comedie si 
+%tuturor cititorilor de romane politiste le plac filmele de actiune. 
+%Ancai ii plac atat filmele de comedie cat si cele de actiune. 
+%Alinei ii displace tot ce ii place Ancai si ii place tot ce ii displace Ancai. 
+%Exista un membru la clubul de lectura care citeste romane de dragoste 
+%si nu citeste romane politiste?
+ 
+formulas(assumptions).
+
+%cititori de romane de dragoste si romane politiste
+cititor_romane(x) -> cititor_romane_dragoste(x) & cititor_romane_politiste(x).
+
+%Fiecare membru din club fie citeste romane de dragoste, fie romane politiste sau ambele
+all x (cititor_romane_dragoste(x) | cititor_romane_politiste(x) | cititor_romane(x)).
+
+%Niciunui citior de romane de dragoste nu ii plac filmele de comedie
+-(exists x (cititor_romane_dragoste(x) & ii_place(x, FilmComedie))).
+
+%Tuturor cititorilor de romane politiste le plac filmele de actiune
+all x (cititor_romane_politiste(x) -> ii_place(x, FilmActiune)).
+
+%Ancai ii plac filmele de comedie
+ii_place(Anca, FilmComedie).
+
+%Ancai ii plac filmele de actiune
+ii_place(Anca, FilmActiune).
+
+%Alinei ii place ce nu ii place Ancai si ii displace ce ii place Ancai
+%all y (ii_place(Alina, y) <-> -(ii_place(Anca, y))).
+all y (-(ii_place(Anca, y)) -> ii_place(Alina, y)).
+all y (ii_place(Anca, y) -> -(ii_place(Alina, y))).
+ 
+end_of_list.
+
+formulas(goals).
+
+  %Exista un membru al clubului de lectura care citeste romane de dragoste si romane politiste nu?
+  exists x (cititor_romane_dragoste(x) & -(cititor_romane_politiste(x))).
+
+end_of_list.
